@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "0650B32A-DA33-492B-9B54-24048EE885C1"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84CF2F98-01ED-4808-844B-EAC46D43BE33"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Habits/ConfigVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "ConfigureVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "84CF2F98-01ED-4808-844B-EAC46D43BE33 - cd54ad4d71823604"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Habits.ConfigureVC.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Habits.ConfigureVC"
+                  moduleName = "Habits"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hoonsbrand/Desktop/AtomicHabits/AtomicHabits/Habits/ConfigVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "84CF2F98-01ED-4808-844B-EAC46D43BE33 - f2c295782849396d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Habits.ConfigureVC.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Habits.ConfigureVC"
+                  moduleName = "Habits"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hoonsbrand/Desktop/AtomicHabits/AtomicHabits/Habits/ConfigVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  uuid = "84CF2F98-01ED-4808-844B-EAC46D43BE33 - 7879f76712b397bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Habits.ConfigureVC.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Habits.ConfigureVC&gt;"
+                  moduleName = "Habits"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hoonsbrand/Desktop/AtomicHabits/AtomicHabits/Habits/ConfigVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "84CF2F98-01ED-4808-844B-EAC46D43BE33 - fccbc38b8d716cda"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Habits.ConfigureVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Habits.ConfigureVC&gt;"
+                  moduleName = "Habits"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hoonsbrand/Desktop/AtomicHabits/AtomicHabits/Habits/ConfigVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "84CF2F98-01ED-4808-844B-EAC46D43BE33 - ae7e74bacf95043a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Habits.ConfigureVC.__deallocating_deinit"
+                  moduleName = "Habits"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hoonsbrand/Desktop/AtomicHabits/AtomicHabits/Habits/ConfigVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A1CCEA5-4F78-4F0F-AA0A-701B166B5F75"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Habits/ConfigVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
