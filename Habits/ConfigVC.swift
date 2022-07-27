@@ -33,6 +33,7 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         loadHabitList()
     }
     
+    
 //    //MARK: - prepareMethod / CheckVC에 데이터 전달
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //

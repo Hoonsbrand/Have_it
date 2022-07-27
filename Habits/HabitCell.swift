@@ -36,6 +36,10 @@ class HabitCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
     // MARK: 버튼 눌렀을 때 델리게이트 메서드 호출 & 별 모양 바꾸기
     @IBAction func bookmarkButtonTapped(_ sender: UIButton) {
         
