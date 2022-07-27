@@ -33,20 +33,20 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         loadHabitList()
     }
     
-    //MARK: - prepareMethod / CheckVC에 데이터 전달
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        if segue.identifier == "sgCheck"{
-            let cell = sender as! UITableViewCell
-            guard let indexPath = self.myTableView.indexPath(for: cell) else { return }
-            let checkView = segue.destination as! CheckVC
-
-            // 해당 셀 realm 옵셔널바인딩
-            guard let list = listRealm?[(indexPath.row)] else { return }
-            checkView.receiveItem(list.title)
-
-        }
-    }
+//    //MARK: - prepareMethod / CheckVC에 데이터 전달
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "sgCheck"{
+//            let cell = sender as! UITableViewCell
+//            guard let indexPath = self.myTableView.indexPath(for: cell) else { return }
+//            let checkView = segue.destination as! CheckVC
+//
+//            // 해당 셀 realm 옵셔널바인딩
+//            guard let list = listRealm?[(indexPath.row)] else { return }
+//            checkView.receiveItem(list.title)
+//
+//        }
+//    }
 }
 
 
