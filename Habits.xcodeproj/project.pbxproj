@@ -78,13 +78,13 @@
 				20850888288A9A4300553252 /* SceneDelegate.swift */,
 				2085088A288A9A4300553252 /* ConfigVC.swift */,
 				2085089A288A9AA300553252 /* AddLIstVC.swift */,
+				72B695BC28902191009EBB23 /* CheckVC.swift */,
 				2085088C288A9A4300553252 /* Main.storyboard */,
 				2085088F288A9A4300553252 /* Assets.xcassets */,
 				20850894288A9A4300553252 /* Info.plist */,
 				20850891288A9A4300553252 /* LaunchScreen.storyboard */,
 				729D89F5288FDD3A00B77EE9 /* HabitCell.swift */,
 				729D89F6288FDD3A00B77EE9 /* HabitCell.xib */,
-				72B695BC28902191009EBB23 /* CheckVC.swift */,
 			);
 			path = Habits;
 			sourceTree = "<group>";

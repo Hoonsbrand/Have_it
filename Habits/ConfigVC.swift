@@ -50,24 +50,18 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         if segue.identifier == "sgCheck"{
             let cell = sender as! UITableViewCell
             guard let indexPath = self.myTableView.indexPath(for: cell) else { return }
-//            let checkView = segue.destination as! CheckVC         에러
+            let checkView = segue.destination as! CheckVC
             
-//            if let list = listRealm?[indexPath.row] {
-//                var content = cell.defaultContentConfiguration()
-//                content.text = list.title
-//                cell.contentConfiguration = content
-//            }
             // 해당 셀 realm 옵셔널바인딩
             guard let list = listRealm?[(indexPath.row)] else { return }
-//            checkView.receiveItem(list.title)                     에러
-            
+            checkView.receiveItem(list.title)
            
         }
         
     }
     
 }
-}
+
 
 // MARK : - TableView DataSource
 extension ConfigureVC : UITableViewDataSource, UITableViewDelegate {
