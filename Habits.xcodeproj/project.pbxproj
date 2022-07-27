@@ -16,9 +16,9 @@
 		20850893288A9A4300553252 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20850891288A9A4300553252 /* LaunchScreen.storyboard */; };
 		2085089B288A9AA300553252 /* AddLIstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085089A288A9AA300553252 /* AddLIstVC.swift */; };
 		2085089D288A9B5C00553252 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085089C288A9B5C00553252 /* Model.swift */; };
+		726DC33028915386005A9D6A /* CheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B695BC28902191009EBB23 /* CheckVC.swift */; };
 		729D89F7288FDD3A00B77EE9 /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729D89F5288FDD3A00B77EE9 /* HabitCell.swift */; };
 		729D89F8288FDD3A00B77EE9 /* HabitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 729D89F6288FDD3A00B77EE9 /* HabitCell.xib */; };
-		72B695BD28902191009EBB23 /* CheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B695BC28902191009EBB23 /* CheckVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -224,7 +224,7 @@
 			files = (
 				2085089D288A9B5C00553252 /* Model.swift in Sources */,
 				2085089B288A9AA300553252 /* AddLIstVC.swift in Sources */,
-				72B695BD28902191009EBB23 /* CheckVC.swift in Sources */,
+				726DC33028915386005A9D6A /* CheckVC.swift in Sources */,
 				729D89F7288FDD3A00B77EE9 /* HabitCell.swift in Sources */,
 				2085088B288A9A4300553252 /* ConfigVC.swift in Sources */,
 				20850887288A9A4300553252 /* AppDelegate.swift in Sources */,

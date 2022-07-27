@@ -10,17 +10,7 @@ import RealmSwift
 
 class ConfigureVC: UIViewController, BookmarkCellDelegate {
     
-    func bookmarkButtonTappedDelegate(_ habitCell: HabitCell, didTapButton button: UIButton) -> Bool? {
-        guard let row = myTableView.indexPath(for: habitCell)?.row else { return nil }
-        
-        if let bookmarkCheck = listRealm?[row].isBookmarked {
-            try! realm.write {
-                listRealm?[row].isBookmarked = !bookmarkCheck
-            }
-            return !bookmarkCheck
-        }
-        return nil
-    }
+    
 
     let realm = try! Realm()
     var listRealm: Results<Habits>?
@@ -29,7 +19,6 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
     
     @IBOutlet weak var myTableView: UITableView!
             
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,20 +35,18 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
     
     //MARK: - prepareMethod / CheckVC에 데이터 전달
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
+
         if segue.identifier == "sgCheck"{
             let cell = sender as! UITableViewCell
             guard let indexPath = self.myTableView.indexPath(for: cell) else { return }
             let checkView = segue.destination as! CheckVC
-            
+
             // 해당 셀 realm 옵셔널바인딩
             guard let list = listRealm?[(indexPath.row)] else { return }
             checkView.receiveItem(list.title)
-           
+
         }
-        
     }
-    
 }
 
 
@@ -85,9 +72,6 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate {
             if list.isBookmarked {
                 cell.bookmarkOutlet.setTitle("⭐", for: .normal)
             }
-//            var content = cell.defaultContentConfiguration()
-//            content.text = list.title
-//            cell.contentConfiguration = content
         }
         return cell
     }
@@ -95,5 +79,31 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate {
     func loadHabitList() {
         listRealm = realm.objects(Habits.self)
         myTableView.reloadData()
+    }
+    
+    // MARK: BookmarkCellDelegate Method 구현
+    func bookmarkButtonTappedDelegate(_ habitCell: HabitCell, didTapButton button: UIButton) -> Bool? {
+        guard let row = myTableView.indexPath(for: habitCell)?.row else { return nil }
+        
+        if let bookmarkCheck = listRealm?[row].isBookmarked {
+            try! realm.write {
+                listRealm?[row].isBookmarked = !bookmarkCheck
+            }
+            return !bookmarkCheck
+        }
+        return nil
+    }
+    
+    func DateType2String() -> String{
+        let current = Date()
+        
+        let formatter = DateFormatter()
+        //한국 시간으로 표시
+        formatter.locale = Locale(identifier: "ko_kr")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+        //형태 변환
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        return formatter.string(from: current)
     }
 }

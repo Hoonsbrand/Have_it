@@ -8,6 +8,7 @@
 import UIKit
 import RealmSwift
 
+// MARK: 즐겨찾기 버튼 누를 때 Realm 데이터에 넣기위한 프로토콜
 protocol BookmarkCellDelegate {
     func bookmarkButtonTappedDelegate(_ habitCell: HabitCell, didTapButton button: UIButton) -> Bool?
 }
@@ -35,6 +36,7 @@ class HabitCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // MARK: 버튼 눌렀을 때 델리게이트 메서드 호출 & 별 모양 바꾸기
     @IBAction func bookmarkButtonTapped(_ sender: UIButton) {
         
         if let result = self.delegate?.bookmarkButtonTappedDelegate(self, didTapButton: sender) {
