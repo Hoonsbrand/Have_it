@@ -24,8 +24,8 @@ class CheckVC: UIViewController {
     var initCheckVCTitle : String = "" // chekTitle 바꿀 데이터 전달 받을 변수
     var currentTime : String = "" // 그냥 처음에
     var pastTime : Date?
-    var dayCount : Int?
-    
+    var dayCount : Int = 0
+
     //MARK: - overrideMethod
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,16 +66,16 @@ class CheckVC: UIViewController {
     
     // MARK : - changeButtonImage (Button이미지 변경)
     func changButtonImage(_ btnCount : Int){
-        switch btnCount{
+        switch dayCount{
         case 0:
-            self.btnCount += 1
+            self.dayCount += 1
             checkOne.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal) //첫번째아이콘
         case 1:
-            self.btnCount += 1
+            self.dayCount += 1
             checkTwo.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal) // 두번째아이콘
-            print(self.btnCount)
+            print(self.dayCount)
         case 2:
-            self.btnCount += 1
+            self.dayCount += 1
             checkThree.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal) // 세번째 아이콘
       
         default:
@@ -86,19 +86,19 @@ class CheckVC: UIViewController {
     
     // MARK: clickSuccessButton ( 성공버튼 클릭 액션 )
     @IBAction func clickSuccessButton(_ sender: UIButton) {
-        if btnCount == 3 {
-            btnCount += 1 // 완료되었을 때
-            changButtonImage(btnCount)
+        if dayCount == 3 {
+            dayCount += 1 // 완료되었을 때
+            changButtonImage(dayCount)
         }else {
-            changButtonImage(btnCount)
+            changButtonImage(dayCount)
         }
-        makeAlert(btnCount) // 알람
+        makeAlert(dayCount) // 알람
     }
     
 }
 
 
-// MARK: - setDataMethod
+// MARK: - setData Method
 
 
 extension CheckVC {
@@ -125,14 +125,16 @@ extension CheckVC {
     }
     //MARK - RealmData 처리
     
-    //MARK:  cell에 해당하는 realm데이터 받아오기
-    func setRealmData() ->  Habits{
+    //MARK:  cell에 해당하는 realm데이터 받아옴
+    func setRealmData() {
         let realm = try! Realm()
-        let data = realm.objects(Habits.self).filter(NSPredicate(format: "title = %@", initCheckVCTitle ?? "")).first
-        pastTime = data?.createTime
-        dayCount = data?.dayCount
-        
+        let data = realm.objects(Habits.self).filter(NSPredicate(format: "title = %@", initCheckVCTitle )).first // title을 가지고있는 realm의 index를 찾는다.
+        pastTime = data?.createTime // 설정시간
+        guard let count = data?.dayCount else { return }
+        dayCount = count // 성공횟수
     }
+    
+    
     
     
 }
