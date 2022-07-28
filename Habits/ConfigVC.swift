@@ -7,17 +7,18 @@
 
 import UIKit
 import RealmSwift
+import Toast_Swift
 
 class ConfigureVC: UIViewController, BookmarkCellDelegate {
-    
-    
     
     let realm = try! Realm()
     var listRealm: Results<Habits>?
     
     var habitCell = HabitCell()
     var selectIndexPath = IndexPath()
+    
     @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,10 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.register(UINib(nibName: "HabitCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
-        loadHabitList()
         
+        searchBar.delegate = self
+        
+        loadHabitList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,24 +37,18 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         loadHabitList()
     }
     
+    // MARK: - SegueToAddView
+    @IBAction func showAddView(_ sender: UIBarButtonItem) {
+        if let numberOfList = listRealm?.count {
+            if numberOfList >= 20 {
+                self.view.makeToast("최대 추가 개수는 20개 입니다.", duration: 1.5, point: CGPoint(x: 187, y: 200), title: nil, image: nil, completion: nil)
+            } else {
+                performSegue(withIdentifier: "goToAddView", sender: sender)
+            }
+        }
+    }
     
-
-//    //MARK: - prepareMethod / CheckVC에 데이터 전달
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "sgCheck"{
-//            let cell = sender as! UITableViewCell
-//            guard let indexPath = self.myTableView.indexPath(for: cell) else { return }
-//            let checkView = segue.destination as! CheckVC
-//
-//            // 해당 셀 realm 옵셔널바인딩
-//            guard let list = listRealm?[(indexPath.row)] else { return }
-//            checkView.receiveItem(list.title)
-//
-//        }
-//    }
-
-    //    //MARK: - prepareMethod / CheckVC에 데이터 전달
+    //MARK: - prepareMethod / CheckVC에 데이터 전달
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("ConfigVC - preapare() Called  ")
         
@@ -62,15 +59,11 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
             guard let list = listRealm?[(selectIndexPath.row)] else { return }
             checkView.receiveItem(list.title)
         }
-        
-        
     }
-
 }
 
-
-// MARK : - TableView DataSource, Delegate
-extension ConfigureVC : UITableViewDataSource, UITableViewDelegate {
+    // MARK: - TableView DataSource, Delegate
+extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadList {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let habitList = listRealm {
@@ -79,11 +72,11 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate {
         return 0
     }
     
-    // 셀 추가
+    // MARK: - 셀 추가
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myTableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! HabitCell
         cell.delegate = self
-        
+        cell.loadDelegate = self
         
         if let list = listRealm?[indexPath.row] {
             cell.textLabel?.text = list.title
@@ -95,20 +88,21 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func loadHabitList() {
-        listRealm = realm.objects(Habits.self)
-        myTableView.reloadData()
-    }
+    // MARK: - 뷰 전환
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("ConfigVC - didSelectRowAt called()")
         print(indexPath)
         self.selectIndexPath = indexPath
         performSegue(withIdentifier: "sgCheck", sender: nil)
-        
-        
     }
     
-    // MARK: BookmarkCellDelegate Method 구현
+    // MARK: - 리스트 로드
+    func loadHabitList() {
+        listRealm = realm.objects(Habits.self).sorted(byKeyPath: "isBookmarked", ascending: false)
+        myTableView.reloadData()
+    }
+    
+    // MARK: - BookmarkCellDelegate Method
     func bookmarkButtonTappedDelegate(_ habitCell: HabitCell, didTapButton button: UIButton) -> Bool? {
         guard let row = myTableView.indexPath(for: habitCell)?.row else { return nil }
         
@@ -121,16 +115,41 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate {
         return nil
     }
     
-    func DateType2String() -> String{
-        let current = Date()
+    // MARK: - RequestLoadListDelegate Method
+    func reloadWhenTapBookmark() {
+        loadHabitList()
+    }
+    
+    // MARK: DateFormatter: 아직 사용 안함
+//    func DateType2String() -> String{
+//        let current = Date()
+//
+//        let formatter = DateFormatter()
+//        //한국 시간으로 표시
+//        formatter.locale = Locale(identifier: "ko_kr")
+//        formatter.timeZone = TimeZone(abbreviation: "KST")
+//        //형태 변환
+//        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//
+//        return formatter.string(from: current)
+//    }
+}
+
+// MARK: - UISearchBarDelegate
+extension ConfigureVC: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        listRealm = listRealm?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "isBookmarked", ascending: false)
         
-        let formatter = DateFormatter()
-        //한국 시간으로 표시
-        formatter.locale = Locale(identifier: "ko_kr")
-        formatter.timeZone = TimeZone(abbreviation: "KST")
-        //형태 변환
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        return formatter.string(from: current)
+        myTableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadHabitList()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
     }
 }

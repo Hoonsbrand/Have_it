@@ -20,7 +20,6 @@ class AddLIstVC: UIViewController, UITextFieldDelegate {
         
         inputHabitTextField.delegate = self
         inputHabitTextField.becomeFirstResponder()
-        // 첫번째 응답자로 설정함으로써 뷰가 보이자마자 텍스트필드에 자동으로 커서랑 키보드가 올라옴
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
 
@@ -56,7 +55,6 @@ class AddLIstVC: UIViewController, UITextFieldDelegate {
                 try! realm.write {
                     realm.add(newHabit)
                 }
-              
                 navigationController?.popViewController(animated: true)
             }
         }
