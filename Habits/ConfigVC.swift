@@ -35,7 +35,7 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
     }
     
     
-<<<<<<< HEAD
+
 //    //MARK: - prepareMethod / CheckVC에 데이터 전달
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //
@@ -50,7 +50,7 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
 //
 //        }
 //    }
-=======
+
     //    //MARK: - prepareMethod / CheckVC에 데이터 전달
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("ConfigVC - preapare() Called  ")
@@ -65,7 +65,7 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         
         
     }
->>>>>>> jihoonWorkSpace
+
 }
 
 
