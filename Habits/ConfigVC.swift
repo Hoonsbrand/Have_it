@@ -11,18 +11,19 @@ import RealmSwift
 class ConfigureVC: UIViewController, BookmarkCellDelegate {
     
     
-
+    
     let realm = try! Realm()
     var listRealm: Results<Habits>?
     
     var habitCell = HabitCell()
-    
+    var selectIndexPath = IndexPath()
     @IBOutlet weak var myTableView: UITableView!
-            
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         myTableView.dataSource = self
+        myTableView.delegate = self
         myTableView.register(UINib(nibName: "HabitCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         loadHabitList()
         
@@ -34,6 +35,7 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
     }
     
     
+<<<<<<< HEAD
 //    //MARK: - prepareMethod / CheckVC에 데이터 전달
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //
@@ -48,10 +50,26 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
 //
 //        }
 //    }
+=======
+    //    //MARK: - prepareMethod / CheckVC에 데이터 전달
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("ConfigVC - preapare() Called  ")
+        
+        if segue.identifier == "sgCheck"{
+            let checkView = segue.destination as! CheckVC
+            
+            // 해당 셀 realm 옵셔널바인딩
+            guard let list = listRealm?[(selectIndexPath.row)] else { return }
+            checkView.receiveItem(list.title)
+        }
+        
+        
+    }
+>>>>>>> jihoonWorkSpace
 }
 
 
-// MARK : - TableView DataSource
+// MARK : - TableView DataSource, Delegate
 extension ConfigureVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,6 +98,14 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate {
     func loadHabitList() {
         listRealm = realm.objects(Habits.self)
         myTableView.reloadData()
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("ConfigVC - didSelectRowAt called()")
+        print(indexPath)
+        self.selectIndexPath = indexPath
+        performSegue(withIdentifier: "sgCheck", sender: nil)
+        
+        
     }
     
     // MARK: BookmarkCellDelegate Method 구현

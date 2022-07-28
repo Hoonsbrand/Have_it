@@ -53,5 +53,7 @@ class HabitCell: UITableViewCell {
             }
         }
     }
+    // 전달 할 메서드...?
+  
 }
 

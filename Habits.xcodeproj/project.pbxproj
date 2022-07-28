@@ -79,12 +79,12 @@
 				2085088A288A9A4300553252 /* ConfigVC.swift */,
 				2085089A288A9AA300553252 /* AddLIstVC.swift */,
 				72B695BC28902191009EBB23 /* CheckVC.swift */,
+				729D89F5288FDD3A00B77EE9 /* HabitCell.swift */,
 				2085088C288A9A4300553252 /* Main.storyboard */,
+				729D89F6288FDD3A00B77EE9 /* HabitCell.xib */,
 				2085088F288A9A4300553252 /* Assets.xcassets */,
 				20850894288A9A4300553252 /* Info.plist */,
 				20850891288A9A4300553252 /* LaunchScreen.storyboard */,
-				729D89F5288FDD3A00B77EE9 /* HabitCell.swift */,
-				729D89F6288FDD3A00B77EE9 /* HabitCell.xib */,
 			);
 			path = Habits;
 			sourceTree = "<group>";
@@ -376,7 +376,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UM655SCS28;
+				DEVELOPMENT_TEAM = 5857WA4NG3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Habits/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -389,7 +389,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hoonsbrand.Habits;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reallywantit.Habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -405,7 +405,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UM655SCS28;
+				DEVELOPMENT_TEAM = 5857WA4NG3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Habits/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -418,7 +418,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hoonsbrand.Habits;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reallywantit.Habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

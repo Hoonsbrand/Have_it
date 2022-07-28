@@ -87,13 +87,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DetailView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULb-4Z-69b">
-                                <rect key="frame" x="77.666666666666671" y="64" width="234.66666666666663" height="62.333333333333343"/>
+                                <rect key="frame" x="77.666666666666671" y="107.99999999999999" width="234.66666666666663" height="62.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="52"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="NsW-IC-ZjI">
-                                <rect key="frame" x="50" y="276.33333333333331" width="290" height="30.666666666666686"/>
+                                <rect key="frame" x="50" y="320.33333333333331" width="290" height="30.666666666666686"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFU-7c-QjW">
                                         <rect key="frame" x="0.0" y="0.0" width="96" height="30.666666666666668"/>
@@ -113,7 +113,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uV-Yl-blH">
-                                <rect key="frame" x="162" y="407" width="67" height="31"/>
+                                <rect key="frame" x="162" y="451" width="67" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
@@ -165,6 +165,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="W26-vz-bQ9" kind="show" identifier="sgCheck" id="P0J-0O-Tre"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -15,7 +15,11 @@ class CheckVC: UIViewController {
     @IBOutlet weak var checkThree: UIButton! // 세번째 버튼
   
     
-    @IBOutlet weak var checkVCTitle: UILabel! // 제목
+    @IBOutlet weak var checkVCTitle: UILabel!{
+        didSet{
+            setTitle()
+        }
+    }
     
     
     // Model.daycount 활용
@@ -24,39 +28,44 @@ class CheckVC: UIViewController {
     var initCheckVCTitle : String = "" // chekTitle 바꿀 데이터 전달 받을 변수
     var currentTime : String = "" // 그냥 처음에
     var pastTime : Date?
-    var dayCount : Int = 0
+    var dayCount : Int = Int()
 
     //MARK: - overrideMethod
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        setTitle()
-        
+        // Do any additional setup after loading the view
+        getRealmData()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
+    
     
    
     
     // MARK: - makeAlert (  알람메세지 )
     func makeAlert(_ count : Int){
         
-        let completeAlert = UIAlertController(title: "완료",message: "\(count)일째 반복", preferredStyle: UIAlertController.Style.alert) // 완료 alert
+        let completeAlert = UIAlertController(title: "완료",message: "\(count + 1)일째 반복", preferredStyle: UIAlertController.Style.alert) // 완료 alert
         let completeAlertAction = UIAlertAction(title: "완료 하였습니다.", style: .default)// 완료 alert 확인버튼
         let finishAlert = UIAlertController(title: " 목표 완료 ", message: "작심삼일 성공.", preferredStyle: .alert)
         let finishAlertAction = UIAlertAction(title: "확인.", style: .default)
         
         completeAlert.addAction(completeAlertAction)
         finishAlert.addAction(finishAlertAction)
-        if( count <= 3) {
+        switch count {
+        case 0, 1:
             present(completeAlert, animated: true, completion: nil)
             print(count)
-            
-        }
-        if ( count > 3 ) {
+        
+        case 2:
+            present(completeAlert, animated: true, completion: nil)
             present(finishAlert,animated: true, completion: nil)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 self.navigationController?.popToRootViewController(animated: true)
             }// 1 초뒤 팝뷰 , 메인쓰레드에서만 동장해야됨.-> 공부필요
+        default:
+            return
         }
     }
     
@@ -68,16 +77,11 @@ class CheckVC: UIViewController {
     func changButtonImage(_ btnCount : Int){
         switch dayCount{
         case 0:
-            self.dayCount += 1
             checkOne.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal) //첫번째아이콘
         case 1:
-            self.dayCount += 1
             checkTwo.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal) // 두번째아이콘
-            print(self.dayCount)
         case 2:
-            self.dayCount += 1
             checkThree.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal) // 세번째 아이콘
-      
         default:
             return
         }
@@ -86,13 +90,16 @@ class CheckVC: UIViewController {
     
     // MARK: clickSuccessButton ( 성공버튼 클릭 액션 )
     @IBAction func clickSuccessButton(_ sender: UIButton) {
+        
         if dayCount == 3 {
-            dayCount += 1 // 완료되었을 때
+            print(" dayCount : \(dayCount)")
             changButtonImage(dayCount)
         }else {
+            print("dayCount : \(dayCount)")
             changButtonImage(dayCount)
         }
         makeAlert(dayCount) // 알람
+        dayCount += 1 // 완료되었을 때
     }
     
 }
@@ -113,7 +120,8 @@ extension CheckVC {
     
     //MARK: - CheckVCTitle 설정
     func setTitle(){
-        checkVCTitle.text = initCheckVCTitle // 텍스트 할당
+        print("CheckVC - setTitle called()")
+        checkVCTitle.text = initCheckVCTitle // 텍스트 할당3
         // 라벨의 사이즈를 해당크기에 맞게 설정
         checkVCTitle.sizeThatFits(CGSize(width: checkVCTitle.frame.width, height: checkVCTitle.frame.height))
         // checkVCTitle.sizeToFit() -> 자동으로 라벨의 크기를 텍스트에 맞게 수정
@@ -126,12 +134,17 @@ extension CheckVC {
     //MARK - RealmData 처리
     
     //MARK:  cell에 해당하는 realm데이터 받아옴
-    func setRealmData() {
+    func getRealmData() {
+        print(" CheckVC setRealmData called() ")
         let realm = try! Realm()
-        let data = realm.objects(Habits.self).filter(NSPredicate(format: "title = %@", initCheckVCTitle )).first // title을 가지고있는 realm의 index를 찾는다.
-        pastTime = data?.createTime // 설정시간
-        guard let count = data?.dayCount else { return }
+        guard let data = realm.objects(Habits.self).filter(NSPredicate(format: "title = %@", initCheckVCTitle )).first else { return }// title을 가지고있는 realm의 index를 찾는다.
+        let time = data.createTime  // 옵셔널 바인딩
+        let count = data.dayCount //
+        pastTime = time // 과거시간
         dayCount = count // 성공횟수
+        print(data)
+        print(pastTime)
+        print(dayCount)
     }
     
     
