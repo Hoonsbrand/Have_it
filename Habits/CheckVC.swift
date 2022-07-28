@@ -36,34 +36,37 @@ class CheckVC: UIViewController {
         // Do any additional setup after loading the view
         getRealmData()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    }
-    
-    
-   
     
     // MARK: - makeAlert (  알람메세지 )
     func makeAlert(_ count : Int){
         
-        let completeAlert = UIAlertController(title: "완료",message: "\(count + 1)일째 반복", preferredStyle: UIAlertController.Style.alert) // 완료 alert
-        let completeAlertAction = UIAlertAction(title: "완료 하였습니다.", style: .default)// 완료 alert 확인버튼
-        let finishAlert = UIAlertController(title: " 목표 완료 ", message: "작심삼일 성공.", preferredStyle: .alert)
+        let completeAlert = UIAlertController(title: "습관 완료", message: "\(count + 1)일째 완료하셨습니다.", preferredStyle: .alert) // 완료 alert
+        // 확인이 눌려야 실행
+        let completeAlertAction = UIAlertAction(title: "완료", style: .default){
+            (action) in self.changButtonImage(count)
+        }
+        // 습관을 완료하지 못했을 때
+        let completeAlertCancel = UIAlertAction(title: "취소", style: .destructive,handler: nil)
+        
+        let finishAlert = UIAlertController(title: "  성공  ", message: "\(count + 1)일 달성 완료", preferredStyle: .alert)
         let finishAlertAction = UIAlertAction(title: "확인.", style: .default)
         
+        // 알림창 설정
+        completeAlert.addAction(completeAlertCancel)
         completeAlert.addAction(completeAlertAction)
+        
         finishAlert.addAction(finishAlertAction)
         switch count {
         case 0, 1:
-            present(completeAlert, animated: true, completion: nil)
+            self.present(completeAlert, animated: true, completion: nil)
             print(count)
         
         case 2:
-            present(completeAlert, animated: true, completion: nil)
+            changButtonImage(count)
             present(finishAlert,animated: true, completion: nil)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.navigationController?.popToRootViewController(animated: true)
-            }// 1 초뒤 팝뷰 , 메인쓰레드에서만 동장해야됨.-> 공부필요
+            }  // 1 초뒤 팝뷰 , 메인쓰레드에서만 동장해야됨.-> 공부필요
         default:
             return
         }
@@ -74,7 +77,8 @@ class CheckVC: UIViewController {
     
     
     // MARK : - changeButtonImage (Button이미지 변경)
-    func changButtonImage(_ btnCount : Int){
+    func changButtonImage(_ dayCount : Int){
+        
         switch dayCount{
         case 0:
             checkOne.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal) //첫번째아이콘
@@ -85,21 +89,13 @@ class CheckVC: UIViewController {
         default:
             return
         }
+        self.dayCount += 1
     }
     // MARK: - IBAction Method
     
     // MARK: clickSuccessButton ( 성공버튼 클릭 액션 )
     @IBAction func clickSuccessButton(_ sender: UIButton) {
-        
-        if dayCount == 3 {
-            print(" dayCount : \(dayCount)")
-            changButtonImage(dayCount)
-        }else {
-            print("dayCount : \(dayCount)")
-            changButtonImage(dayCount)
-        }
-        makeAlert(dayCount) // 알람
-        dayCount += 1 // 완료되었을 때
+        makeAlert(dayCount) // 완료했을 때 취소 했을 때 나눔
     }
     
 }
@@ -131,6 +127,8 @@ extension CheckVC {
         checkVCTitle.minimumScaleFactor = 0.2 // 텍스트 간 최소간격
         checkVCTitle.numberOfLines = 1 // 텍스트라인의 수
     }
+    //MARK : - UIButton 설정
+    
     //MARK - RealmData 처리
     
     //MARK:  cell에 해당하는 realm데이터 받아옴
