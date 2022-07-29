@@ -86,36 +86,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CheckVC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULb-4Z-69b">
-                                <rect key="frame" x="88.666666666666671" y="107.99999999999999" width="212.66666666666663" height="62.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CheckVC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULb-4Z-69b">
+                                <rect key="frame" x="45" y="107.99999999999999" width="300" height="62.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="52"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="NsW-IC-ZjI">
-                                <rect key="frame" x="50" y="320.33333333333331" width="290" height="30.666666666666686"/>
+                                <rect key="frame" x="50" y="320.33333333333331" width="290" height="24"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFU-7c-QjW">
-                                        <rect key="frame" x="0.0" y="0.0" width="96" height="30.666666666666668"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="checkmark.seal" catalog="system"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="24"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="checkmark.seal" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97M-oc-PYI">
-                                        <rect key="frame" x="97" y="0.0" width="96" height="30.666666666666668"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="checkmark.seal" catalog="system"/>
+                                        <rect key="frame" x="97" y="0.0" width="96" height="24"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="checkmark.seal" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCK-5d-zZ5">
-                                        <rect key="frame" x="194" y="0.0" width="96" height="30.666666666666668"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="checkmark.seal" catalog="system"/>
+                                        <rect key="frame" x="194" y="0.0" width="96" height="24"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="checkmark.seal" catalog="system"/>
                                     </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uV-Yl-blH">
-                                <rect key="frame" x="162" y="451" width="67" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <rect key="frame" x="162" y="444.33333333333331" width="67" height="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="성공"/>
                                 <connections>
                                     <action selector="clickSuccessButton:" destination="W26-vz-bQ9" eventType="touchUpInside" id="rsS-NU-HFC"/>
                                 </connections>
@@ -125,6 +125,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9T3-1D-Pgm" firstAttribute="trailing" secondItem="NsW-IC-ZjI" secondAttribute="trailing" constant="50" id="1fN-3d-Rt4"/>
+                            <constraint firstItem="9T3-1D-Pgm" firstAttribute="trailing" secondItem="ULb-4Z-69b" secondAttribute="trailing" constant="45" id="AXt-lc-2lF"/>
+                            <constraint firstItem="ULb-4Z-69b" firstAttribute="leading" secondItem="9T3-1D-Pgm" secondAttribute="leading" constant="45" id="FvT-Zg-7hU"/>
                             <constraint firstItem="NsW-IC-ZjI" firstAttribute="top" secondItem="ULb-4Z-69b" secondAttribute="bottom" constant="150" id="GHC-mn-bp1"/>
                             <constraint firstItem="ULb-4Z-69b" firstAttribute="centerX" secondItem="Sz2-lo-iXy" secondAttribute="centerX" id="XjH-FW-ZRu"/>
                             <constraint firstItem="ULb-4Z-69b" firstAttribute="top" secondItem="9T3-1D-Pgm" secondAttribute="top" constant="20" id="a9Q-eq-NRg"/>
@@ -139,7 +141,8 @@
                         <outlet property="checkOne" destination="fFU-7c-QjW" id="P5N-Yx-WmV"/>
                         <outlet property="checkThree" destination="sCK-5d-zZ5" id="7S3-14-z0D"/>
                         <outlet property="checkTwo" destination="97M-oc-PYI" id="L1r-2X-BrA"/>
-                        <outlet property="checkVCTitle" destination="ULb-4Z-69b" id="4M9-WY-lWI"/>
+                        <outlet property="checkVCTitle" destination="ULb-4Z-69b" id="w2w-CY-WXR"/>
+                        <outlet property="successButton" destination="0uV-Yl-blH" id="YO5-nN-ZrJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sau-GV-aGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
