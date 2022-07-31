@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Habits
 //
-//  Created by 안지훈 on 7/22/22.
+//  Created by hoonsbrand on 7/22/22.
 //
 
 import UIKit
@@ -48,11 +48,16 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         }
     }
     
+    @IBAction func showCollectionView(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "goToCollectionView", sender: sender)
+    }
+    
+    
     //MARK: - prepareMethod / CheckVC에 데이터 전달
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("ConfigVC - preapare() Called  ")
         
-        if segue.identifier == "sgCheck"{
+        if segue.identifier == "sgCheck" {
             let checkView = segue.destination as! CheckVC
             
             // 해당 셀 realm 옵셔널바인딩
@@ -98,7 +103,7 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     
     // MARK: - 리스트 로드
     func loadHabitList() {
-        listRealm = realm.objects(Habits.self).sorted(byKeyPath: "isBookmarked", ascending: false)
+        listRealm = realm.objects(Habits.self).sorted(byKeyPath: "isBookmarked", ascending: false).filter("dayCount != 66")
         myTableView.reloadData()
     }
     
@@ -119,8 +124,6 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     func reloadWhenTapBookmark() {
         loadHabitList()
     }
-    
- 
 }
 
 // MARK: - UISearchBarDelegate
