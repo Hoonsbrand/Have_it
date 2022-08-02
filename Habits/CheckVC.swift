@@ -15,10 +15,10 @@ import Toast_Swift
 
 class CheckVC: UIViewController {
     
-    @IBOutlet weak var checkOne: UIButton! // 첫번째 버튼
-    @IBOutlet weak var checkTwo: UIButton! // 두번쨰 버튼
-    @IBOutlet weak var checkThree: UIButton! // 세번째 버튼
+    
     @IBOutlet weak var successButton: UIButton!
+    @IBOutlet weak var myView: UIView!
+    var btnArr : [UIButton] = []
     
     
     @IBOutlet weak var checkVCTitle: UILabel!{
@@ -49,7 +49,8 @@ class CheckVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view
         getRealmData()
-        setButton()
+        makeButton()
+        makeButtonLayout(btnArr)
         setButtonImage(self.dayCount)
  
 
@@ -106,17 +107,9 @@ class CheckVC: UIViewController {
     
     // MARK:  changeButtonImage (Button이미지 변경)
     func changeButtonImage(_ dayCount : Int){
-        print( "count \(dayCount)")
-        switch dayCount{
-        case 0:
-            checkOne.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal) //첫번째아이콘
-        case 1:
-            checkTwo.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal) // 두번째아이콘
-        case 2:
-            checkThree.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal) // 세번째 아이콘
-        default:
-            return
-        }
+       
+        btnArr[dayCount].setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal)
+     
     }
     
     
@@ -228,14 +221,46 @@ extension CheckVC {
         checkVCTitle.numberOfLines = 1 // 텍스트라인의 수
     }
     
-    //MARK:  UIButton 설정
-    func setButton(){
-        checkOne.setTitle("", for: .normal)
-        checkTwo.setTitle("", for: .normal)
-        checkThree.setTitle("", for: .normal)
-        
-        successButton.addTarget(self, action: #selector(changeColorSuccessBtn), for: .touchDown)
+    
+   
+    func makeButton(){
+        for num in 0...65{
+            let btn = UIButton()
+            btn.tag = num
+            self.myView.addSubview(btn)
+            btn.setImage(UIImage(systemName: "checkmark.seal"), for: .normal)
+            btn.setTitle("", for: .normal)
+//            btn.backgroundColor = .green.withAlphaComponent(0.3)
+//            btn.layer.borderColor = UIColor.black.cgColor
+//            btn.layer.borderWidth = 1
+            btnArr.append(btn)
+            print(btn.tag)
+            
+        }
     }
+    
+    func makeButtonLayout(_ btnArray : [UIButton]){
+        
+        
+        for btn in btnArray{
+            let index = btn.tag
+            
+            let column = index % 6
+            let row = index / 6
+            print(index)
+            
+            let width = self.myView.frame.size.width / 6
+            let height = self.myView.frame.size.height / 11
+          
+            
+            btn.frame = CGRect(x: CGFloat(column) * width, y: CGFloat(row) * height, width: width, height: height)
+           
+        }
+        
+        
+    }
+    
+    
     //MARK: - 이전에 달성한 습관 횟수 버튼에 구현
     func setButtonImage(_ count : Int){
         for count in 0..<count{
@@ -249,10 +274,14 @@ extension CheckVC {
         successButton.layer.cornerRadius = 5
         successButton.setTitleColor(.white, for: .normal)
     }
+    
     //MARK: 다시 초기 버튼모양
     func resetSuccessButton(){
         successButton.setTitle("성공", for: .normal)
         successButton.setTitleColor(.link, for: .normal)
         successButton.backgroundColor = .clear
     }
+    
+    
+    
 }

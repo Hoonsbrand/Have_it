@@ -93,28 +93,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="NsW-IC-ZjI">
-                                <rect key="frame" x="50" y="320.33333333333331" width="290" height="24"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFU-7c-QjW">
-                                        <rect key="frame" x="0.0" y="0.0" width="96" height="24"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="checkmark.seal" catalog="system"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97M-oc-PYI">
-                                        <rect key="frame" x="97" y="0.0" width="96" height="24"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="checkmark.seal" catalog="system"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCK-5d-zZ5">
-                                        <rect key="frame" x="194" y="0.0" width="96" height="24"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="checkmark.seal" catalog="system"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Tl-ck-vtn">
+                                <rect key="frame" x="45" y="190.33333333333334" width="300" height="480.66666666666663"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uV-Yl-blH">
-                                <rect key="frame" x="162" y="444.33333333333331" width="67" height="30"/>
+                                <rect key="frame" x="180" y="701" width="30" height="30"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="성공"/>
                                 <connections>
@@ -125,30 +109,27 @@
                         <viewLayoutGuide key="safeArea" id="9T3-1D-Pgm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="9T3-1D-Pgm" firstAttribute="trailing" secondItem="NsW-IC-ZjI" secondAttribute="trailing" constant="50" id="1fN-3d-Rt4"/>
-                            <constraint firstItem="9T3-1D-Pgm" firstAttribute="trailing" secondItem="ULb-4Z-69b" secondAttribute="trailing" constant="45" id="AXt-lc-2lF"/>
-                            <constraint firstItem="ULb-4Z-69b" firstAttribute="leading" secondItem="9T3-1D-Pgm" secondAttribute="leading" constant="45" id="FvT-Zg-7hU"/>
-                            <constraint firstItem="NsW-IC-ZjI" firstAttribute="top" secondItem="ULb-4Z-69b" secondAttribute="bottom" constant="150" id="GHC-mn-bp1"/>
-                            <constraint firstItem="ULb-4Z-69b" firstAttribute="centerX" secondItem="Sz2-lo-iXy" secondAttribute="centerX" id="XjH-FW-ZRu"/>
-                            <constraint firstItem="ULb-4Z-69b" firstAttribute="top" secondItem="9T3-1D-Pgm" secondAttribute="top" constant="20" id="a9Q-eq-NRg"/>
-                            <constraint firstItem="9T3-1D-Pgm" firstAttribute="trailing" secondItem="0uV-Yl-blH" secondAttribute="trailing" constant="161" id="giJ-QY-R1J"/>
-                            <constraint firstItem="0uV-Yl-blH" firstAttribute="top" secondItem="NsW-IC-ZjI" secondAttribute="bottom" constant="100" id="j0s-Cj-6yw"/>
-                            <constraint firstItem="0uV-Yl-blH" firstAttribute="leading" secondItem="9T3-1D-Pgm" secondAttribute="leading" constant="162" id="kaw-vI-Hnm"/>
-                            <constraint firstItem="NsW-IC-ZjI" firstAttribute="leading" secondItem="9T3-1D-Pgm" secondAttribute="leading" constant="50" id="v76-fU-k5d"/>
+                            <constraint firstItem="0uV-Yl-blH" firstAttribute="centerX" secondItem="Sz2-lo-iXy" secondAttribute="centerX" id="9Hw-oZ-NBV"/>
+                            <constraint firstItem="0Tl-ck-vtn" firstAttribute="leading" secondItem="9T3-1D-Pgm" secondAttribute="leading" constant="45" id="Ddu-pk-dw6"/>
+                            <constraint firstItem="0uV-Yl-blH" firstAttribute="top" secondItem="0Tl-ck-vtn" secondAttribute="bottom" constant="30" id="E1w-Iu-20p"/>
+                            <constraint firstItem="ULb-4Z-69b" firstAttribute="top" secondItem="9T3-1D-Pgm" secondAttribute="top" constant="20" id="XJS-0M-MEP"/>
+                            <constraint firstItem="0Tl-ck-vtn" firstAttribute="top" secondItem="ULb-4Z-69b" secondAttribute="bottom" constant="20" id="Y6u-03-oOD"/>
+                            <constraint firstItem="ULb-4Z-69b" firstAttribute="leading" secondItem="9T3-1D-Pgm" secondAttribute="leading" constant="45" id="eJo-3Q-u7u"/>
+                            <constraint firstItem="9T3-1D-Pgm" firstAttribute="trailing" secondItem="0Tl-ck-vtn" secondAttribute="trailing" constant="45" id="p0C-Nm-Li2"/>
+                            <constraint firstItem="9T3-1D-Pgm" firstAttribute="trailing" secondItem="ULb-4Z-69b" secondAttribute="trailing" constant="45" id="tBN-WK-fzh"/>
+                            <constraint firstItem="9T3-1D-Pgm" firstAttribute="bottom" secondItem="0uV-Yl-blH" secondAttribute="bottom" constant="30" id="ukR-Dp-BD1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yr0-am-MSL"/>
                     <connections>
-                        <outlet property="checkOne" destination="fFU-7c-QjW" id="P5N-Yx-WmV"/>
-                        <outlet property="checkThree" destination="sCK-5d-zZ5" id="7S3-14-z0D"/>
-                        <outlet property="checkTwo" destination="97M-oc-PYI" id="L1r-2X-BrA"/>
                         <outlet property="checkVCTitle" destination="ULb-4Z-69b" id="w2w-CY-WXR"/>
+                        <outlet property="myView" destination="0Tl-ck-vtn" id="PaY-au-Bpb"/>
                         <outlet property="successButton" destination="0uV-Yl-blH" id="YO5-nN-ZrJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sau-GV-aGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="925" y="-245"/>
+            <point key="canvasLocation" x="924.61538461538453" y="-245.260663507109"/>
         </scene>
         <!--Habits CollectionVC-->
         <scene sceneID="eYm-ub-QLK">
@@ -319,7 +300,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkmark.seal" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
