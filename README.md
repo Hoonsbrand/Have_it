@@ -99,18 +99,28 @@ AutoLayout
 
 ### Hoonsbrand
 
+- Realm 데이터 처리 ( 즐겨찾기, 추가, 명예의전당 )
+- texFildDelegate 
+- CollectionViewCell 색 처리 ( Code ) 
+
 - UI
 1. Custom Cell 
 2. Composible CollectionView 
 
-- Event
-1. protocol ( 즐겨찾기 이벤트 처리 )
-2. protocol ( 66일 달성 시 명예의 전당 추가 ) 
+- Event ( Protocol Delegate ) 
+1. 즐겨찾기 이벤트 처리
+2. 66일 달성 시 명예의 전당 추가 ) 
 
 - Toast 
 1. 습관 등록시 글자수 15제한 ( 넘으면 토스트 팝업 ) 
 2. 빈제목으로 등록 불가 
 3. 최대습관 20개 제한
+
+- AutoLayout 
+1. StoryBoard ( CustomCell, AddView ) 
+2. Code ( CollectionViewCell, TableViewCell )
+
+
 
 
 
