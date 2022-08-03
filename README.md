@@ -10,9 +10,8 @@
 ----
 
 # 동작
-![](https://velog.velcdn.com/![habitresist](https://user-images.githubusercontent.com/51688166/182623069-37c86300-b036-4869-a527-649de07dcf79.gif)
+![hallofFrame](https://user-images.githubusercontent.com/51688166/182628431-846069c9-b9ef-411c-82dc-839c7b678cf8.gif)
 ![habitresist](https://user-images.githubusercontent.com/51688166/182623152-0903af32-c5e8-4b93-88d0-683ffa964cc7.gif)
-
 ![recilickrestrict](https://user-images.githubusercontent.com/51688166/182623081-65a2761b-2ea3-4fb8-94d2-8fc444810d8c.gif)
 ![bookmark](https://user-images.githubusercontent.com/51688166/182623088-98289ec3-0131-4811-9d69-ae01eb1cd30d.gif)
 
