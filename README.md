@@ -10,11 +10,11 @@
 ----
 
 # 동작
+![](https://velog.velcdn.com/![habitresist](https://user-images.githubusercontent.com/51688166/182623069-37c86300-b036-4869-a527-649de07dcf79.gif)
+![habitresist](https://user-images.githubusercontent.com/51688166/182623152-0903af32-c5e8-4b93-88d0-683ffa964cc7.gif)
 
-![즐겨찾기](https://user-images.githubusercontent.com/51688166/182588740-0ad746f7-c781-4302-b12c-a832e584be77.gif)
-
-![중복클릭 방지](https://user-images.githubusercontent.com/51688166/182588750-31d7d2d8-6783-45b3-bed5-bc9a3636268d.gif)
-
+![recilickrestrict](https://user-images.githubusercontent.com/51688166/182623081-65a2761b-2ea3-4fb8-94d2-8fc444810d8c.gif)
+![bookmark](https://user-images.githubusercontent.com/51688166/182623088-98289ec3-0131-4811-9d69-ae01eb1cd30d.gif)
 
 
 
@@ -66,6 +66,45 @@
 
 </br>
 
+----
+
+</br>
+
+# 역할 
+
+### 공통 
+
+- 기본적인 UI 설정 
+- Realm데이터 생성 및 추가
+
+### AhnZ
+
+- Calender를 이용한 시간데이터 처리 
+- Realm데이터 처리
+- 버튼 이미지 변환
+
+1. 현재시간과 Realm데이터에 저장된 시간을 비교 
+2. Realm데이터 습관완료 숫자를 받아와서 그에 따른 UIbutton 설정
+3. Realm 데이터 Title의 길이에 따른 CheckVC타이틀 크기조정 
+
+- Toast 
+1. 하루에 한번 이상 클릭 시 제한 ( Toast )
+2. ToastStyle 지정 
+
+AutoLayout 
+1. 66개의 button 생성 및 각각 오토레이아웃 ( Code ) 
+2. StoryBoard Constraint에 맞춘 TitleLabel의 Font크기 조절 
+
+
+### Hoonsbrand
+- 커스텀 셀을 이용한 UI 디자인
+- 프로토콜을 이용한 즐겨찾기 버튼 클릭시 이벤트
+- 컴포지셔널 레이아웃을 이용한 커스텀 컬렉션 뷰로 명예의 전당 구현
+- 66일이 되었을 시 리스트에서 숨김 & 명예의 전당으로 이동
+- 습관 등록시 글자수 15자 제한 & Toast 팝업
+- 습관 등록시 빈 제목으로 등록 불가 & Toast 팝업
+- 최대 습관 등록 20개 제한 & Toast 팝업
+
 # 문제점
 
 - 습관의 진행사항 : 하루가 지나야 클릭 할 수 있지만. 2일이나 3일이 지나도  바로 다음날의 습관처럼 기록이 된다.
@@ -74,7 +113,6 @@
  o x x x x -> o o x x x x 이런식으로 기록된다. 
  
 - 동일한 습관을 등록 할 때, 등록한 습관이 명예의 전당에 있다면 데이터가 충될된다. 
-
 - 삭제 기능 ( 테이블뷰 CheckVC 중에 고민 ) 
 - 디자인 ( 기본 기능만 작동함 ) = 깔끔한 UI가 아님
 
