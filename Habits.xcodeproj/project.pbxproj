@@ -79,23 +79,55 @@
 		20850885288A9A4300553252 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
-				2085089C288A9B5C00553252 /* Model.swift */,
-				20850886288A9A4300553252 /* AppDelegate.swift */,
-				20850888288A9A4300553252 /* SceneDelegate.swift */,
-				2085088A288A9A4300553252 /* ConfigVC.swift */,
-				2085089A288A9AA300553252 /* AddLIstVC.swift */,
-				72B695BC28902191009EBB23 /* CheckVC.swift */,
-				729D89F5288FDD3A00B77EE9 /* HabitCell.swift */,
-				2085088C288A9A4300553252 /* Main.storyboard */,
-				729D89F6288FDD3A00B77EE9 /* HabitCell.xib */,
-				2085088F288A9A4300553252 /* Assets.xcassets */,
+				20DFD243289A4CEC000DF63A /* Service */,
+				20DFD240289A4CD1000DF63A /* Model */,
+				20DFD241289A4CE0000DF63A /* View */,
+				20DFD242289A4CE6000DF63A /* Controller */,
 				20850894288A9A4300553252 /* Info.plist */,
-				20850891288A9A4300553252 /* LaunchScreen.storyboard */,
-				722B891928965FD000158BC5 /* HabitsCollectionVC.swift */,
-				722B891F28967D8D00158BC5 /* HabitsCustomCollectionViewCell.swift */,
-				722B891D28967C9300158BC5 /* HabitsCustomCollectionViewCell.xib */,
+				2085088F288A9A4300553252 /* Assets.xcassets */,
+				20850888288A9A4300553252 /* SceneDelegate.swift */,
+				20850886288A9A4300553252 /* AppDelegate.swift */,
 			);
 			path = Habits;
+			sourceTree = "<group>";
+		};
+		20DFD240289A4CD1000DF63A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2085089C288A9B5C00553252 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		20DFD241289A4CE0000DF63A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2085088C288A9A4300553252 /* Main.storyboard */,
+				729D89F6288FDD3A00B77EE9 /* HabitCell.xib */,
+				722B891D28967C9300158BC5 /* HabitsCustomCollectionViewCell.xib */,
+				20850891288A9A4300553252 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		20DFD242289A4CE6000DF63A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				722B891F28967D8D00158BC5 /* HabitsCustomCollectionViewCell.swift */,
+				722B891928965FD000158BC5 /* HabitsCollectionVC.swift */,
+				729D89F5288FDD3A00B77EE9 /* HabitCell.swift */,
+				2085088A288A9A4300553252 /* ConfigVC.swift */,
+				72B695BC28902191009EBB23 /* CheckVC.swift */,
+				2085089A288A9AA300553252 /* AddLIstVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		20DFD243289A4CEC000DF63A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		CA920A1FE137C93E6E954091 /* Frameworks */ = {

@@ -112,9 +112,6 @@ class CheckVC: UIViewController {
     
     @IBAction func clickSuccessButton(_ sender: UIButton) {
         resetSuccessButton()
-        print("cleckbutton \(dayCount)")
-        print("pastTime \(clickedTime)")
-        print(Date())
         // 버튼입력일자가 하루 지났을 떄.
         if (compareDate(clickedTime) || self.dayCount == 0 || self.dayCount == 65){
             makeAlert(dayCount) // 완료했을 때 취소 했을 때 나눔
@@ -137,7 +134,6 @@ extension CheckVC {
     
     // MARK: configVC - prepared() 에서 데이터 전달 받는 데이터 변경 / title이 키 값
     func receiveItem(_ title : String) {
-        //        print("CheckVC - receiveItem called() item : \(title)")
         self.initCheckVCTitle = title
     }
     
@@ -146,7 +142,6 @@ extension CheckVC {
 extension CheckVC{
     //MARK: getRealmData() cell에 해당하는 realm데이터 받아옴
     func getRealmData() {
-        //        print(" CheckVC setRealmData called() ")
         let realm = try! Realm()
         
         guard let data = realm.objects(Habits.self).filter(NSPredicate(format: "title = %@", initCheckVCTitle )).first else { return }
@@ -159,7 +154,6 @@ extension CheckVC{
     
     //MARK: setRealmData() -> 뷰 나갈떄 Realm데이터 세팅
     func setRealmDate(){
-        //        print("CheckVC - setRealmData called() ")
         let realm = try! Realm()
         
         if let data = realm.objects(Habits.self).filter(NSPredicate(format: "title = %@", initCheckVCTitle )).first{
@@ -179,12 +173,6 @@ extension CheckVC {
         let currentTime = Calendar.current.dateComponents([.year , .month, .day], from: Date())
         let pastTime = Calendar.current.dateComponents([.year , .month, .day], from: date)
         
-        print(currentTime.year!)
-        print(pastTime.year!)
-        print(currentTime.month!)
-        print(pastTime.month!)
-        print(currentTime.day!)
-        print(pastTime.day!)
         if ( currentTime.year! > pastTime.year! || currentTime.month! > pastTime.month! ||  currentTime.day! > pastTime.day!){
             
             return true
@@ -202,7 +190,6 @@ extension CheckVC {
     
     //MARK:  CheckVCTitle 설정
     func setTitle(){
-        //        print("CheckVC - setTitle called()")
         checkVCTitle.text = initCheckVCTitle // 텍스트 할당3
         // 라벨의 사이즈를 해당크기에 맞게 설정
         checkVCTitle.sizeThatFits(CGSize(width: checkVCTitle.frame.width, height: checkVCTitle.frame.height))
@@ -228,7 +215,6 @@ extension CheckVC {
 //            btn.layer.borderColor = UIColor.black.cgColor
 //            btn.layer.borderWidth = 1
             btnArr.append(btn)
-            print(btn.tag)
             
         }
     }
@@ -241,7 +227,6 @@ extension CheckVC {
             
             let column = index % 6
             let row = index / 6
-            print(index)
             
             let width = self.myView.frame.size.width / 6
             let height = self.myView.frame.size.height / 11
