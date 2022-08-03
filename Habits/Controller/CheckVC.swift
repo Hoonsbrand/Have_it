@@ -34,13 +34,13 @@ class CheckVC: UIViewController {
     var initCheckVCTitle : String = "" // chekTitle 바꿀 데이터 전달 받을 변수
     var clickedTime : Date = Date()
     
-    var dateStr : Date = {
-        let date = "2022-06-30 16:30"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        guard let dataResult = dateFormatter.date(from: date) else { return Date() }
-        return dataResult
-    }()
+//    var dateStr : Date = {
+//        let date = "2022-06-30 16:30"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+//        guard let dataResult = dateFormatter.date(from: date) else { return Date() }
+//        return dataResult
+//    }()
     var dayCount : Int = Int()
     
     //MARK: - overrideMethod viewLifeCycle
@@ -52,6 +52,7 @@ class CheckVC: UIViewController {
         makeButton()
         makeButtonLayout(btnArr)
         setButtonImage(self.dayCount)
+        
  
 
         
@@ -138,6 +139,8 @@ extension CheckVC {
     }
     
 }
+
+
 //MARK: - RealmData 처리
 extension CheckVC{
     //MARK: getRealmData() cell에 해당하는 realm데이터 받아옴

@@ -24,7 +24,7 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         
         myTableView.dataSource = self
         myTableView.delegate = self
-        myTableView.register(UINib(nibName: "HabitCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        myTableView.register(UINib(nibName: Cell.nibName, bundle: nil), forCellReuseIdentifier: Cell.customTableViewCell)
         
         loadHabitList()
     }
@@ -40,20 +40,20 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
             if numberOfList >= 20 {
                 self.view.makeToast("최대 추가 개수는 20개 입니다.", duration: 1.5, point: CGPoint(x: 187, y: 200), title: nil, image: nil, completion: nil)
             } else {
-                performSegue(withIdentifier: "goToAddView", sender: sender)
+                performSegue(withIdentifier: Segue.goToAddView, sender: sender)
             }
         }
     }
     
     @IBAction func showCollectionView(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "goToCollectionView", sender: sender)
+        performSegue(withIdentifier: Segue.goToCollectionView, sender: sender)
     }
     
     
     //MARK: - prepareMethod / CheckVC에 데이터 전달
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "sgCheck" {
+        if segue.identifier == Segue.goToCheckVC {
             let checkView = segue.destination as! CheckVC
             
             // 해당 셀 realm 옵셔널바인딩
@@ -75,7 +75,7 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     
     // MARK: - 셀 추가
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = myTableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! HabitCell
+        let cell = myTableView.dequeueReusableCell(withIdentifier: Cell.customTableViewCell, for: indexPath) as! HabitCell
         cell.delegate = self
         cell.loadDelegate = self
         
@@ -93,7 +93,7 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   
         self.selectIndexPath = indexPath
-        performSegue(withIdentifier: "sgCheck", sender: nil)
+        performSegue(withIdentifier: Segue.goToCheckVC, sender: nil)
     }
     
     // MARK: - 리스트 로드
