@@ -152,6 +152,7 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                     print("Error deleting item, \(error)")
                 }
             }
+            self.loadHabitList()
         }
         
         deleteAction.image = UIImage(named: "delete-icon")
@@ -159,11 +160,11 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
         return [deleteAction]
     }
     
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-        var options = SwipeOptions()
-        options.expansionStyle = .none
-        
-        return options
-    }
+    
+//    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+//        var options = SwipeOptions()
+//        options.expansionStyle =
+//        return options
+//    }
 }
 
