@@ -106,48 +106,32 @@
 </br></br>
 
 ## Hoonsbrand
-
-- Realm 데이터 처리 ( 즐겨찾기, 추가, 명예의전당 )
-- texFildDelegate 
-- CollectionViewCell 색 처리 ( Code ) 
-
 </br>
 
 - UI
-1. Custom Cell 
-2. Composible CollectionView 
+1. 커스텀 셀을 이용한 UI 디자인
+2. 컴포지셔널 레이아웃을 이용한 커스텀 컬렉션 뷰로 명예의 전당 구현
+3. 66일이 되었을 시 리스트에서 숨김 & 명예의 전당으로 이동
 
 </br>
 
-- Event ( Protocol Delegate ) 
-1. 즐겨찾기 이벤트 처리
-2. 66일 달성 시 명예의 전당 추가 & 리스트에서 삭제
+- Event
+5. 프로토콜을 이용한 즐겨찾기 버튼 클릭시 이벤트
+6. 즐겨찾기 버튼 클릭시 리스트 리로드
 
 </br>
 
-- Toast 
-1. 습관 등록시 글자수 15제한 ( 넘으면 토스트 팝업 ) 
-2. 빈제목으로 등록 불가 
-3. 최대습관 20개 제한
-
-</br>
-
-- AutoLayout 
-1. StoryBoard ( CustomCell, AddView ) 
-2. Code ( CollectionViewCell, TableViewCell )
+- Toast
+4. 습관 등록시 글자수 15자 제한 & Toast 팝업
+5. 습관 등록시 빈 제목으로 등록 불가 & Toast 팝업
+6. 최대 습관 등록 20개 제한 & Toast 팝업
 
 
 </br>
 </br>
 
 
-- 커스텀 셀을 이용한 UI 디자인
-- 프로토콜을 이용한 즐겨찾기 버튼 클릭시 이벤트
-- 컴포지셔널 레이아웃을 이용한 커스텀 컬렉션 뷰로 명예의 전당 구현
-- 66일이 되었을 시 리스트에서 숨김 & 명예의 전당으로 이동
-- 습관 등록시 글자수 15자 제한 & Toast 팝업
-- 습관 등록시 빈 제목으로 등록 불가 & Toast 팝업
-- 최대 습관 등록 20개 제한 & Toast 팝업
+
 
 # 문제점
 
