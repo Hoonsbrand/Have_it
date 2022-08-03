@@ -79,12 +79,13 @@
 ## AhnZ
 
 - Calender를 이용한 시간데이터 처리 
-- Realm데이터 처리
+- 버튼 이미지 변환 ( Code ) 
+
 
 </br>
 
-- 버튼 이미지 변환 ( Code ) 
 
+- Realm데이터 처리
 1. 현재시간과 Realm데이터에 저장된 시간을 비교 
 2. Realm데이터 습관완료 숫자를 받아와서 그에 따른 UIbutton 설정
 3. Realm 데이터 Title의 길이에 따른 CheckVC타이틀 크기조정 
