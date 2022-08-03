@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
 // MARK: - 즐겨찾기 버튼 누를 때 Realm 데이터에 넣기위한 프로토콜
 protocol BookmarkCellDelegate {
@@ -18,7 +19,7 @@ protocol RequestLoadList {
     func reloadWhenTapBookmark()
 }
 
-class HabitCell: UITableViewCell {
+class HabitCell: SwipeTableViewCell {
     
     @IBOutlet weak var habitListBubble: UIView!
     @IBOutlet weak var bookmarkOutlet: UIButton!
@@ -26,7 +27,7 @@ class HabitCell: UITableViewCell {
     let realm = try! Realm()
     var listRealm: Results<Habits>?
     
-    var delegate: BookmarkCellDelegate?
+    var bookmarkDelegate: BookmarkCellDelegate?
     var loadDelegate: RequestLoadList?
     var index: Int = 0
     
@@ -52,7 +53,7 @@ class HabitCell: UITableViewCell {
     // MARK: - 버튼 눌렀을 때 델리게이트 메서드 호출 & 별 모양 바꾸기
     @IBAction func bookmarkButtonTapped(_ sender: UIButton) {
         
-        if let result = self.delegate?.bookmarkButtonTappedDelegate(self, didTapButton: sender) {
+        if let result = self.bookmarkDelegate?.bookmarkButtonTappedDelegate(self, didTapButton: sender) {
             if result {
                 bookmarkOutlet.setTitle("⭐", for: .normal)
             } else {

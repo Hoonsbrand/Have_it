@@ -8,8 +8,10 @@
 import UIKit
 import RealmSwift
 import Toast_Swift
+import SwipeCellKit
 
 class ConfigureVC: UIViewController, BookmarkCellDelegate {
+   
     
     let realm = try! Realm()
     var listRealm: Results<Habits>?
@@ -87,8 +89,9 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     // MARK: - 셀 추가
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myTableView.dequeueReusableCell(withIdentifier: Cell.customTableViewCell, for: indexPath) as! HabitCell
-        cell.delegate = self
+        cell.bookmarkDelegate = self
         cell.loadDelegate = self
+        cell.delegate = self
         
         if let list = listRealm?[indexPath.row] {
             cell.textLabel?.text = list.title
@@ -131,6 +134,36 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     // MARK: - RequestLoadListDelegate Method
     func reloadWhenTapBookmark() {
         loadHabitList()
+    }
+}
+
+extension ConfigureVC: SwipeTableViewCellDelegate {
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            if let itemForDeletetion = self.listRealm?[indexPath.row] {
+                do {
+                    try self.realm.write {
+                        self.realm.delete(itemForDeletetion)
+                    }
+                } catch {
+                    print("Error deleting item, \(error)")
+                }
+            }
+        }
+        
+        deleteAction.image = UIImage(named: "delete-icon")
+        
+        return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .none
+        
+        return options
     }
 }
 
