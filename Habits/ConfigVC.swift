@@ -18,7 +18,6 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
     var selectIndexPath = IndexPath()
     
     @IBOutlet weak var myTableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +25,6 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.register(UINib(nibName: "HabitCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
-        
-        searchBar.delegate = self
         
         loadHabitList()
     }
@@ -121,24 +118,5 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     // MARK: - RequestLoadListDelegate Method
     func reloadWhenTapBookmark() {
         loadHabitList()
-    }
-}
-
-// MARK: - UISearchBarDelegate
-extension ConfigureVC: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        listRealm = listRealm?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "isBookmarked", ascending: false)
-        
-        myTableView.reloadData()
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text?.count == 0 {
-            loadHabitList()
-            
-            DispatchQueue.main.async {
-                searchBar.resignFirstResponder()
-            }
-        }
     }
 }
