@@ -80,15 +80,18 @@
 
 - Calender를 이용한 시간데이터 처리 
 - Realm데이터 처리
+</br>
 - 버튼 이미지 변환 ( Code ) 
 
 1. 현재시간과 Realm데이터에 저장된 시간을 비교 
 2. Realm데이터 습관완료 숫자를 받아와서 그에 따른 UIbutton 설정
 3. Realm 데이터 Title의 길이에 따른 CheckVC타이틀 크기조정 
+</br>
 
 - Toast 
 1. 하루에 한번 이상 클릭 시 제한 ( Toast )
 2. ToastStyle 지정 
+</br>
 
 AutoLayout 
 1. 66개의 button 생성 및 각각 오토레이아웃 ( Code ) 
@@ -103,19 +106,26 @@ AutoLayout
 - texFildDelegate 
 - CollectionViewCell 색 처리 ( Code ) 
 
+</br>
+
 - UI
 1. Custom Cell 
 2. Composible CollectionView 
 
+</br>
+
 - Event ( Protocol Delegate ) 
 1. 즐겨찾기 이벤트 처리
 2. 66일 달성 시 명예의 전당 추가 ) 
+
+</br>
 
 - Toast 
 1. 습관 등록시 글자수 15제한 ( 넘으면 토스트 팝업 ) 
 2. 빈제목으로 등록 불가 
 3. 최대습관 20개 제한
 
+</br>
 - AutoLayout 
 1. StoryBoard ( CustomCell, AddView ) 
 2. Code ( CollectionViewCell, TableViewCell )
