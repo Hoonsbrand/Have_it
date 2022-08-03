@@ -67,18 +67,16 @@
 
 </br>
 
-----
 
-</br>
 
 # 역할 
 
-### 공통 
+## 공통 
 
 - 기본적인 UI 설정 
 - Realm데이터 생성 및 추가
 
-### AhnZ
+## AhnZ
 
 - Calender를 이용한 시간데이터 처리 
 - Realm데이터 처리
@@ -97,7 +95,9 @@ AutoLayout
 2. StoryBoard Constraint에 맞춘 TitleLabel의 Font크기 조절 
 
 
-### Hoonsbrand
+</br></br>
+
+## Hoonsbrand
 
 - Realm 데이터 처리 ( 즐겨찾기, 추가, 명예의전당 )
 - texFildDelegate 
@@ -121,7 +121,8 @@ AutoLayout
 2. Code ( CollectionViewCell, TableViewCell )
 
 
-
+</br>
+</br>
 
 
 - 커스텀 셀을 이용한 UI 디자인
