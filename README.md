@@ -98,6 +98,22 @@ AutoLayout
 
 
 ### Hoonsbrand
+
+- UI
+1. Custom Cell 
+2. Composible CollectionView 
+
+- Event
+1. protocol ( 즐겨찾기 이벤트 처리 )
+2. protocol ( 66일 달성 시 명예의 전당 추가 ) 
+
+- Toast 
+1. 습관 등록시 글자수 15제한 ( 넘으면 토스트 팝업 ) 
+2. 빈제목으로 등록 불가 
+3. 최대습관 20개 제한
+
+
+
 - 커스텀 셀을 이용한 UI 디자인
 - 프로토콜을 이용한 즐겨찾기 버튼 클릭시 이벤트
 - 컴포지셔널 레이아웃을 이용한 커스텀 컬렉션 뷰로 명예의 전당 구현
