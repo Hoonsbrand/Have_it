@@ -11,9 +11,9 @@
 
 # 동작
 ![hallofFrame](https://user-images.githubusercontent.com/51688166/182628562-d1f520b4-9b16-4d56-b2a7-384587f0f86a.gif)
-
-
 ![habitresist](https://user-images.githubusercontent.com/51688166/182623152-0903af32-c5e8-4b93-88d0-683ffa964cc7.gif)
+
+
 ![recilickrestrict](https://user-images.githubusercontent.com/51688166/182623081-65a2761b-2ea3-4fb8-94d2-8fc444810d8c.gif)
 ![bookmark](https://user-images.githubusercontent.com/51688166/182623088-98289ec3-0131-4811-9d69-ae01eb1cd30d.gif)
 
