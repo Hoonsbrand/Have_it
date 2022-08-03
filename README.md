@@ -43,7 +43,7 @@
 - `StoryBoard` & `Code`
 
 ### UI 
-`Main.storyboard` & `.xib`
+- `Main.storyboard` & `.xib`
 
 
 
