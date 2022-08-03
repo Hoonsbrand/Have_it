@@ -97,7 +97,7 @@
 
 </br>
 
-AutoLayout 
+- AutoLayout 
 1. 66개의 button 생성 및 각각 오토레이아웃 ( Code ) 
 2. StoryBoard Constraint에 맞춘 TitleLabel의 Font크기 조절 
 
