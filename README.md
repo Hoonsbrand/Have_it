@@ -9,7 +9,14 @@
 
 ----
 
-# gif
+# 동작
+
+![즐겨찾기](https://user-images.githubusercontent.com/51688166/182588740-0ad746f7-c781-4302-b12c-a832e584be77.gif)
+
+![중복클릭 방지](https://user-images.githubusercontent.com/51688166/182588750-31d7d2d8-6783-45b3-bed5-bc9a3636268d.gif)
+
+
+
 
 ----
 
