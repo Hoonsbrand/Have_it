@@ -26,8 +26,19 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         myTableView.delegate = self
         myTableView.register(UINib(nibName: Cell.nibName, bundle: nil), forCellReuseIdentifier: Cell.customTableViewCell)
         
+        let image = UIImage(named: "backgroundImg")
+        let imgView = UIImageView(image: image)
+        self.myTableView.backgroundView = imgView
+        let tableBackGround = self.myTableView.backgroundView
+        tableBackGround?.translatesAutoresizingMaskIntoConstraints = false
+        tableBackGround?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+        tableBackGround?.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
+        tableBackGround?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        tableBackGround?.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+        
         loadHabitList()
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         self.myTableView.reloadData()
@@ -85,6 +96,8 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
             if list.isBookmarked {
                 cell.bookmarkOutlet.setTitle("⭐", for: .normal)
             }
+            
+            cell.backgroundColor = .clear
         }
         return cell
     }
@@ -120,3 +133,4 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
         loadHabitList()
     }
 }
+
