@@ -55,7 +55,6 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
     
     //MARK: - prepareMethod / CheckVC에 데이터 전달
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("ConfigVC - preapare() Called  ")
         
         if segue.identifier == "sgCheck" {
             let checkView = segue.destination as! CheckVC
@@ -95,8 +94,7 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     
     // MARK: - 뷰 전환
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("ConfigVC - didSelectRowAt called()")
-        print(indexPath)
+  
         self.selectIndexPath = indexPath
         performSegue(withIdentifier: "sgCheck", sender: nil)
     }
