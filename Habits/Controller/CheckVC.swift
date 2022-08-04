@@ -15,11 +15,9 @@ import Toast_Swift
 
 class CheckVC: UIViewController {
     
-    
     @IBOutlet weak var successButton: UIButton!
     @IBOutlet weak var myView: UIView!
     var btnArr : [UIButton] = []
-    
     
     @IBOutlet weak var checkVCTitle: UILabel!{
         didSet{
@@ -27,20 +25,12 @@ class CheckVC: UIViewController {
         }
     }
     
-    
     // Model.daycount 활용
     // createTime -> pastTime으로 넘겨서 현재시간이랑 비교를 해야겠네
     // Date
     var initCheckVCTitle : String = "" // chekTitle 바꿀 데이터 전달 받을 변수
     var clickedTime : Date = Date()
     
-//    var dateStr : Date = {
-//        let date = "2022-06-30 16:30"
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-//        guard let dataResult = dateFormatter.date(from: date) else { return Date() }
-//        return dataResult
-//    }()
     var dayCount : Int = Int()
     
     //MARK: - overrideMethod viewLifeCycle
@@ -52,18 +42,14 @@ class CheckVC: UIViewController {
         makeButton()
         makeButtonLayout(btnArr)
         setButtonImage(self.dayCount)
-        
- 
-
-        
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         setRealmDate()
     }
     
     // MARK: - makeAlert (  알람메세지 )
     func makeAlert(_ count : Int){
-        
         let completeAlert = UIAlertController(title: "습관 완료", message: "\(count + 1)일째 완료하셨습니다.", preferredStyle: .alert) // 완료 alert
         // 확인이 눌려야 실행
         let completeAlertAction = UIAlertAction(title: "완료", style: .default){
@@ -71,11 +57,9 @@ class CheckVC: UIViewController {
             self.changeButtonImage(count)
             self.dayCount += 1
             self.resetSuccessButton()
-            
         }
         // 습관을 완료하지 못했을 때
         let completeAlertCancel = UIAlertAction(title: "취소", style: .destructive,handler:nil)
-        
         
         let finishAlert = UIAlertController(title: "  성공  ", message: "\(count + 1)일 달성 완료", preferredStyle: .alert)
         let finishAlertAction = UIAlertAction(title: "확인.", style: .default){
@@ -102,11 +86,8 @@ class CheckVC: UIViewController {
     
     // MARK:  changeButtonImage (Button이미지 변경)
     func changeButtonImage(_ dayCount : Int){
-       
         btnArr[dayCount].setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal)
-     
     }
-    
     
     // MARK: - @IBAction Method
     //MARK: clickSuccessButton ( 성공버튼 클릭 액션 )
@@ -123,23 +104,17 @@ class CheckVC: UIViewController {
             toastStyle.titleAlignment = .center
             toastStyle.messageAlignment = .center
             self.view.makeToast(" 아직 하루가 지나지 않았습니다. ", duration: 1.0, position: .center, title: " ❌ 실패 ❌", image: nil, style: toastStyle, completion: nil)
-            
         }
     }
-    
 }
-
 
 // MARK: - setData Method ( ConfigVC prepare()로 받아온 데이터 )
 extension CheckVC {
-    
     // MARK: configVC - prepared() 에서 데이터 전달 받는 데이터 변경 / title이 키 값
     func receiveItem(_ title : String) {
         self.initCheckVCTitle = title
     }
-    
 }
-
 
 //MARK: - RealmData 처리
 extension CheckVC{
@@ -154,7 +129,6 @@ extension CheckVC{
         self.clickedTime = time
     }
     
-    
     //MARK: setRealmData() -> 뷰 나갈떄 Realm데이터 세팅
     func setRealmDate(){
         let realm = try! Realm()
@@ -163,10 +137,8 @@ extension CheckVC{
             try! realm.write{
                 data.createTime = self.clickedTime
                 data.dayCount = self.dayCount
-                
             }
         }
-        
     }
 }
 
@@ -179,14 +151,9 @@ extension CheckVC {
         if ( currentTime.year! > pastTime.year! || currentTime.month! > pastTime.month! ||  currentTime.day! > pastTime.day!){
             
             return true
-        }
-        else { return false }
-        
+        } else { return false }
     }
-    
 }
-
-
 
 //MARK: - CheckVC UI설정
 extension CheckVC {
@@ -205,8 +172,6 @@ extension CheckVC {
         checkVCTitle.numberOfLines = 1 // 텍스트라인의 수
     }
     
-    
-   
     func makeButton(){
         for num in 0...65{
             let btn = UIButton()
@@ -214,17 +179,13 @@ extension CheckVC {
             self.myView.addSubview(btn)
             btn.setImage(UIImage(systemName: "checkmark.seal"), for: .normal)
             btn.setTitle("", for: .normal)
-//            btn.backgroundColor = .green.withAlphaComponent(0.3)
-//            btn.layer.borderColor = UIColor.black.cgColor
-//            btn.layer.borderWidth = 1
+
             btnArr.append(btn)
             
         }
     }
     
     func makeButtonLayout(_ btnArray : [UIButton]){
-        
-        
         for btn in btnArray{
             let index = btn.tag
             
@@ -238,10 +199,7 @@ extension CheckVC {
             btn.frame = CGRect(x: CGFloat(column) * width, y: CGFloat(row) * height, width: width, height: height)
            
         }
-        
-        
     }
-    
     
     //MARK: - 이전에 달성한 습관 횟수 버튼에 구현
     func setButtonImage(_ count : Int){
@@ -263,7 +221,4 @@ extension CheckVC {
         successButton.setTitleColor(.link, for: .normal)
         successButton.backgroundColor = .clear
     }
-    
-    
-    
 }
