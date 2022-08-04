@@ -73,9 +73,9 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
             guard let list = listRealm?[(selectIndexPath.row)] else { return }
             
             // 해당 셀의 id를 받아와 그 id의 title을 추출해서 넘겨줌
-            let getObject = realm.objects(Habits.self).filter("habitID = %@", list.habitID)
+            guard let getObject = realm.objects(Habits.self).filter("habitID = %@", list.habitID).first?.habitID else { return }
             
-            checkView.receiveItem(getObject.first!.title)
+            checkView.receiveItem(getObject)
         }
     }
 }
@@ -118,7 +118,7 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     
     // MARK: - 리스트 로드
     func loadHabitList() {
-        listRealm = realm.objects(Habits.self).sorted(byKeyPath: "isBookmarked", ascending: false).filter("dayCount != 66")
+        listRealm = realm.objects(Habits.self).sorted(byKeyPath: "isBookmarked", ascending: false).filter("isInHOF = false")
         myTableView.reloadData()
     }
     
@@ -148,6 +148,17 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
         
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             if let itemForDeletetion = self.listRealm?[indexPath.row] {
+                
+                let deleteAlert = UIAlertController(title: "습관 삭제", message: "정말 포기하시겠습니까?", preferredStyle: .alert)
+                
+                let keepChallengeAlertAction = UIAlertAction(title: "계속 도전", style: .default, handler: { _ in return })
+                let giveUpChallengeAlertAction = UIAlertAction(title: "포기하기", style: .destructive)
+                
+                deleteAlert.addAction(keepChallengeAlertAction)
+                deleteAlert.addAction(giveUpChallengeAlertAction)
+                
+                self.present(deleteAlert, animated: true, completion: nil)
+                
                 do {
                     try self.realm.write {
                         self.realm.delete(itemForDeletetion)

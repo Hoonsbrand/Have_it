@@ -33,6 +33,11 @@ class CheckVC: UIViewController {
     
     var dayCount : Int = Int()
     
+    // ========================== try! Realm() 이 중복되서 여기 선언하고 사용하시면 될거같아요. ==========================
+    let realm = try! Realm()
+    // ========================== 해당 데이터의 결과인 resultRealm 변수 입니다. 밑에서 계속 사용하니 만들었습니다. ==========================
+    var resultRealm: Habits?
+    
     //MARK: - overrideMethod viewLifeCycle
     
     override func viewDidLoad() {
@@ -78,6 +83,12 @@ class CheckVC: UIViewController {
         case 65:
             changeButtonImage(count)
             self.dayCount += 1
+            
+            // ========================== 66일이 되었을 때 새로만든 명예의 전당 관련 Bool변수를 true로 만듭니다. ==========================
+            try! realm.write {
+                resultRealm?.isInHOF = true
+            }
+            
             present(finishAlert,animated: true, completion: nil)
         default:
             return self.present(completeAlert, animated: true, completion: nil)
@@ -111,7 +122,11 @@ class CheckVC: UIViewController {
 // MARK: - setData Method ( ConfigVC prepare()로 받아온 데이터 )
 extension CheckVC {
     // MARK: configVC - prepared() 에서 데이터 전달 받는 데이터 변경 / title이 키 값
-    func receiveItem(_ title : String) {
+    func receiveItem(_ id : String) {       // ========================== id를 받아온다. ==========================
+        
+        // ========================== 해당 id를 이용해 resultRealm변수에 데이터를 넣어주고 resultRealm을 통해 title을 가져온다. ==========================
+        self.resultRealm = realm.objects(Habits.self).filter("habitID = %@", id).first
+        guard let title = resultRealm?.title else { return }
         self.initCheckVCTitle = title
     }
 }
@@ -120,9 +135,13 @@ extension CheckVC {
 extension CheckVC{
     //MARK: getRealmData() cell에 해당하는 realm데이터 받아옴
     func getRealmData() {
-        let realm = try! Realm()
+        // ========================== 여기서도 realm이 사용되서 위에서 선언해 계속 사용하면 좋을 것 같습니다. ==========================
+//        let realm = try! Realm()
         
-        guard let data = realm.objects(Habits.self).filter(NSPredicate(format: "title = %@", initCheckVCTitle )).first else { return }
+//        guard let data = realm.objects(Habits.self).filter(NSPredicate(format: "title = %@", initCheckVCTitle )).first else { return }
+        
+        // ========================== id를 기준으로 데이터를 받아옵니다. ==========================
+        guard let data = resultRealm else { return }
         guard let time = data.createTime else { return } // 옵셔널 바인딩
         let count = data.dayCount //
         self.dayCount = count // 성공횟수
@@ -131,9 +150,13 @@ extension CheckVC{
     
     //MARK: setRealmData() -> 뷰 나갈떄 Realm데이터 세팅
     func setRealmDate(){
-        let realm = try! Realm()
+        // ========================== 여기서도 realm이 사용되서 위에서 선언해 계속 사용하면 좋을 것 같습니다. ==========================
+//        let realm = try! Realm()
         
-        if let data = realm.objects(Habits.self).filter(NSPredicate(format: "title = %@", initCheckVCTitle )).first{
+//        if let data = realm.objects(Habits.self).filter(NSPredicate(format: "title = %@", initCheckVCTitle )).first{
+        
+        // ========================== id를 기준으로 데이터를 받아옵니다. ==========================
+        if let data = resultRealm {
             try! realm.write{
                 data.createTime = self.clickedTime
                 data.dayCount = self.dayCount

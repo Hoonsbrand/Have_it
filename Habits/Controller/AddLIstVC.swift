@@ -50,6 +50,17 @@ class AddLIstVC: UIViewController, UITextFieldDelegate {
                     self.view.makeToast("습관을 입력해주세요!", duration: 1.5, point: CGPoint(x: 187, y: 200), title: nil, image: nil, completion: nil)
                     return
                 }
+                
+                // 명예의 전당에 있지 않은 습관들 목록을 가져옴
+                let list = realm.objects(Habits.self).filter("isInHOF = false")
+                
+                // 그 목록들 중에서 이미 있는 습관 제목이면 등록을 막음
+                for elements in list {
+                    if elements.title == inputHabitTextField.text {
+                        self.view.makeToast("이미 있는 습관입니다!", duration: 1.5, point: CGPoint(x: 187, y: 200), title: nil, image: nil, completion: nil)
+                        return
+                    }
+                }
                 let newHabit = Habits(title: habitTitle, createTime: Date())
                 
                 try! realm.write {

@@ -83,7 +83,7 @@ extension HabitsCollectionVC: UICollectionViewDataSource {
     
     // 각 섹션에 들어가는 아이템 갯수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        listRealm = realm.objects(Habits.self).filter("dayCount = 66")
+        listRealm = realm.objects(Habits.self).filter("isInHOF = true")
         return listRealm?.count ?? 0
     }
     
