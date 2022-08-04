@@ -71,7 +71,11 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
             
             // 해당 셀 realm 옵셔널바인딩
             guard let list = listRealm?[(selectIndexPath.row)] else { return }
-            checkView.receiveItem(list.title)
+            
+            // 해당 셀의 id를 받아와 그 id의 title을 추출해서 넘겨줌
+            let getObject = realm.objects(Habits.self).filter("habitID = %@", list.habitID)
+            
+            checkView.receiveItem(getObject.first!.title)
         }
     }
 }
@@ -159,12 +163,5 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
         
         return [deleteAction]
     }
-    
-    
-//    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-//        var options = SwipeOptions()
-//        options.expansionStyle =
-//        return options
-//    }
 }
 
