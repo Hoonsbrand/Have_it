@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12EE17FA79C6DA251B1887E2 /* Pods_Habits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B15C2EC8BF252FEE02D21B3 /* Pods_Habits.framework */; };
+		204A50ED289CEC70000C03EA /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204A50EC289CEC70000C03EA /* TimeManager.swift */; };
 		20850887288A9A4300553252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20850886288A9A4300553252 /* AppDelegate.swift */; };
 		20850889288A9A4300553252 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20850888288A9A4300553252 /* SceneDelegate.swift */; };
 		2085088B288A9A4300553252 /* ConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085088A288A9A4300553252 /* ConfigVC.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		204A50EC289CEC70000C03EA /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		20850883288A9A4300553252 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20850886288A9A4300553252 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20850888288A9A4300553252 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		20DFD243289A4CEC000DF63A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				204A50EC289CEC70000C03EA /* TimeManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				726DC33028915386005A9D6A /* CheckVC.swift in Sources */,
 				20DFD245289A4F90000DF63A /* constants.swift in Sources */,
 				722B891A28965FD000158BC5 /* HabitsCollectionVC.swift in Sources */,
+				204A50ED289CEC70000C03EA /* TimeManager.swift in Sources */,
 				729D89F7288FDD3A00B77EE9 /* HabitCell.swift in Sources */,
 				2085088B288A9A4300553252 /* ConfigVC.swift in Sources */,
 				20850887288A9A4300553252 /* AppDelegate.swift in Sources */,

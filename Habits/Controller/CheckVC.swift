@@ -17,26 +17,25 @@ class CheckVC: UIViewController {
     
     @IBOutlet weak var successButton: UIButton!
     @IBOutlet weak var myView: UIView!
-    var btnArr : [UIButton] = []
-    
-    @IBOutlet weak var checkVCTitle: UILabel!{
+    @IBOutlet weak var dDayTitleLabel: UILabel!{
         didSet{
-            setTitle()
+            setDday()
         }
     }
     
-    // Model.daycount 활용
-    // createTime -> pastTime으로 넘겨서 현재시간이랑 비교를 해야겠네
-    // Date
-    var initCheckVCTitle : String = "" // chekTitle 바꿀 데이터 전달 받을 변수
-    var clickedTime : Date = Date()
+    var btnArr : [UIButton] = []
+    var habitTitle : String = "" // chekTitle 바꿀 데이터 전달 받을 변수
+    var clickedTime : Date = Date() // 클릭한 시간
+    // "D-Day" + \(dDayInt) 를 구성예정
+    var dDayInt : Int = 0 // 남은 D- day 숫자
+
+    var dDay : Date = Date() // Dday 시간.
+    var dayCount : Int = Int() // 완료 횟수
     
-    var dayCount : Int = Int()
-    
-    // ========================== try! Realm() 이 중복되서 여기 선언하고 사용하시면 될거같아요. ==========================
     let realm = try! Realm()
-    // ========================== 해당 데이터의 결과인 resultRealm 변수 입니다. 밑에서 계속 사용하니 만들었습니다. ==========================
     var resultRealm: Habits?
+
+    var timeManager = TimeManager()
     
     //MARK: - overrideMethod viewLifeCycle
     
@@ -47,11 +46,10 @@ class CheckVC: UIViewController {
         makeButton()
         makeButtonLayout(btnArr)
         setButtonImage(self.dayCount)
+        setHabitTitle()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        setRealmDate()
-    }
+   
     
     // MARK: - makeAlert (  알람메세지 )
     func makeAlert(_ count : Int){
@@ -62,6 +60,8 @@ class CheckVC: UIViewController {
             self.changeButtonImage(count)
             self.dayCount += 1
             self.resetSuccessButton()
+            self.setRealmDate()
+            
         }
         // 습관을 완료하지 못했을 때
         let completeAlertCancel = UIAlertAction(title: "취소", style: .destructive,handler:nil)
@@ -84,7 +84,7 @@ class CheckVC: UIViewController {
             changeButtonImage(count)
             self.dayCount += 1
             
-            // ========================== 66일이 되었을 때 새로만든 명예의 전당 관련 Bool변수를 true로 만듭니다. ==========================
+           
             try! realm.write {
                 resultRealm?.isInHOF = true
             }
@@ -106,7 +106,7 @@ class CheckVC: UIViewController {
     @IBAction func clickSuccessButton(_ sender: UIButton) {
         resetSuccessButton()
         // 버튼입력일자가 하루 지났을 떄.
-        if (compareDate(clickedTime) || self.dayCount == 0 || self.dayCount == 65){
+        if (timeManager.compareDate(clickedTime) || self.dayCount == 0 ){
             makeAlert(dayCount) // 완료했을 때 취소 했을 때 나눔
             self.clickedTime = Date() // 버튼 누른 시간을 기억
         } else {
@@ -122,12 +122,14 @@ class CheckVC: UIViewController {
 // MARK: - setData Method ( ConfigVC prepare()로 받아온 데이터 )
 extension CheckVC {
     // MARK: configVC - prepared() 에서 데이터 전달 받는 데이터 변경 / title이 키 값
-    func receiveItem(_ id : String) {       // ========================== id를 받아온다. ==========================
-        
-        // ========================== 해당 id를 이용해 resultRealm변수에 데이터를 넣어주고 resultRealm을 통해 title을 가져온다. ==========================
-        self.resultRealm = realm.objects(Habits.self).filter("habitID = %@", id).first
-        guard let title = resultRealm?.title else { return }
-        self.initCheckVCTitle = title
+    func receiveItem(_ id : String) {
+        guard let list = realm.objects(Habits.self).filter("habitID = %@", id).first else { return }
+        self.resultRealm = list
+        let title = list.title
+        self.habitTitle = title
+        self.dDay = list.dDay
+//        self.clickedTime = list.clickedTime
+        self.dDayInt = timeManager.calDateDiffer(dDay, clickedTime)
     }
 }
 
@@ -135,64 +137,49 @@ extension CheckVC {
 extension CheckVC{
     //MARK: getRealmData() cell에 해당하는 realm데이터 받아옴
     func getRealmData() {
-        // ========================== 여기서도 realm이 사용되서 위에서 선언해 계속 사용하면 좋을 것 같습니다. ==========================
-//        let realm = try! Realm()
-        
-//        guard let data = realm.objects(Habits.self).filter(NSPredicate(format: "title = %@", initCheckVCTitle )).first else { return }
-        
-        // ========================== id를 기준으로 데이터를 받아옵니다. ==========================
+   
         guard let data = resultRealm else { return }
-        guard let time = data.createTime else { return } // 옵셔널 바인딩
+        guard let time = data.clickedTime else { return } // 옵셔널 바인딩
         let count = data.dayCount //
         self.dayCount = count // 성공횟수
         self.clickedTime = time
+        
     }
     
     //MARK: setRealmData() -> 뷰 나갈떄 Realm데이터 세팅
     func setRealmDate(){
-        // ========================== 여기서도 realm이 사용되서 위에서 선언해 계속 사용하면 좋을 것 같습니다. ==========================
-//        let realm = try! Realm()
-        
-//        if let data = realm.objects(Habits.self).filter(NSPredicate(format: "title = %@", initCheckVCTitle )).first{
-        
-        // ========================== id를 기준으로 데이터를 받아옵니다. ==========================
-        if let data = resultRealm {
+        print("setRealmDate()")
+        if let data = resultRealm{
             try! realm.write{
-                data.createTime = self.clickedTime
+                data.clickedTime = self.clickedTime
                 data.dayCount = self.dayCount
             }
         }
-    }
-}
-
-//MARK: - 시간 처리
-extension CheckVC {
-    func compareDate(_ date : Date) -> Bool {
-        let currentTime = Calendar.current.dateComponents([.year , .month, .day], from: Date())
-        let pastTime = Calendar.current.dateComponents([.year , .month, .day], from: date)
         
-        if ( currentTime.year! > pastTime.year! || currentTime.month! > pastTime.month! ||  currentTime.day! > pastTime.day!){
-            
-            return true
-        } else { return false }
     }
+    
 }
 
 //MARK: - CheckVC UI설정
 extension CheckVC {
+    func setHabitTitle(){
+        self.navigationItem.title = habitTitle
+    }
+ 
     
     //MARK:  CheckVCTitle 설정
-    func setTitle(){
-        checkVCTitle.text = initCheckVCTitle // 텍스트 할당3
+    func setDday(){
+        
+        dDayTitleLabel.text = "D - \(dDayInt) 남음"
         // 라벨의 사이즈를 해당크기에 맞게 설정
-        checkVCTitle.sizeThatFits(CGSize(width: checkVCTitle.frame.width, height: checkVCTitle.frame.height))
+        dDayTitleLabel.sizeThatFits(CGSize(width: dDayTitleLabel.frame.width, height: dDayTitleLabel.frame.height))
         // checkVCTitle.sizeToFit() -> 자동으로 라벨의 크기를 텍스트에 맞게 수정
         // 뷰에 오토레이아웃을 작용하기위해 / 뷰에따라 자동으로 제약을 변환하는 기능을 꺼야됨
         
         //autolayout설정으로 인한, 텍스트잘림현상 해결
-        checkVCTitle.adjustsFontSizeToFitWidth = true // 라벨의 크기에 맞게 텍스트폰트변경
-        checkVCTitle.minimumScaleFactor = 0.2 // 텍스트 간 최소간격
-        checkVCTitle.numberOfLines = 1 // 텍스트라인의 수
+        dDayTitleLabel.adjustsFontSizeToFitWidth = true // 라벨의 크기에 맞게 텍스트폰트변경
+        dDayTitleLabel.minimumScaleFactor = 0.2 // 텍스트 간 최소간격
+        dDayTitleLabel.numberOfLines = 1 // 텍스트라인의 수
     }
     
     func makeButton(){

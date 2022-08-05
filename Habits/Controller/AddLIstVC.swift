@@ -12,6 +12,8 @@ import Toast_Swift
 class AddLIstVC: UIViewController, UITextFieldDelegate {
     
     let realm = try! Realm()
+    // D_day 시간계산을 위해
+    let timeManager = TimeManager()
     
     @IBOutlet weak var inputHabitTextField: UITextField!
     
@@ -62,7 +64,12 @@ class AddLIstVC: UIViewController, UITextFieldDelegate {
                     }
                 }
                 let newHabit = Habits(title: habitTitle, createTime: Date())
-                
+                // ==========================
+                guard let creatTime = newHabit.createTime else { return }
+                // dDay계산
+                newHabit.dDay = timeManager.getDday(creatTime)
+                print(creatTime)
+                print(newHabit.dDay)
                 try! realm.write {
                     realm.add(newHabit)
                 }

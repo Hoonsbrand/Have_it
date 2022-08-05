@@ -69,12 +69,9 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         if segue.identifier == Segue.goToCheckVC {
             let checkView = segue.destination as! CheckVC
             
-            // 해당 셀 realm 옵셔널바인딩
-            guard let list = listRealm?[(selectIndexPath.row)] else { return }
-            
+            guard let list = listRealm?[selectIndexPath.row] else { return }
             // 해당 셀의 id를 받아와 그 id의 title을 추출해서 넘겨줌
             guard let getObject = realm.objects(Habits.self).filter("habitID = %@", list.habitID).first?.habitID else { return }
-            
             checkView.receiveItem(getObject)
         }
     }
