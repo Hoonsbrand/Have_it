@@ -20,12 +20,8 @@
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Q1-uK-0Lz">
                         <rect key="frame" x="10" y="10" width="479" height="85"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMN-Yi-r8d">
-                                <rect key="frame" x="0.0" y="0.0" width="439" height="85"/>
-                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgd-xs-P04">
-                                <rect key="frame" x="449" y="0.0" width="30" height="85"/>
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="85"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="☆"/>
@@ -33,6 +29,23 @@
                                     <action selector="bookmarkButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DHX-Ej-wJj"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMN-Yi-r8d">
+                                <rect key="frame" x="40" y="0.0" width="439" height="85"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fefeefe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67f-ta-W1m">
+                                        <rect key="frame" x="8" y="29" width="65.5" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="67f-ta-W1m" firstAttribute="leading" secondItem="DMN-Yi-r8d" secondAttribute="leading" constant="8" id="JK4-dH-eUR"/>
+                                    <constraint firstItem="67f-ta-W1m" firstAttribute="top" secondItem="DMN-Yi-r8d" secondAttribute="top" constant="29" id="phl-bk-tYh"/>
+                                    <constraint firstAttribute="bottom" secondItem="67f-ta-W1m" secondAttribute="bottom" constant="29" id="qXc-P0-xdM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                     </stackView>
                 </subviews>
@@ -47,6 +60,7 @@
             <connections>
                 <outlet property="bookmarkOutlet" destination="wgd-xs-P04" id="Roh-MD-2Mw"/>
                 <outlet property="habitListBubble" destination="DMN-Yi-r8d" id="B7f-cf-KUy"/>
+                <outlet property="habitTitle" destination="67f-ta-W1m" id="u7a-HV-pKX"/>
             </connections>
             <point key="canvasLocation" x="267.39130434782612" y="141.62946428571428"/>
         </tableViewCell>

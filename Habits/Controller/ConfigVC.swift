@@ -95,8 +95,8 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
         cell.delegate = self
         
         if let list = listRealm?[indexPath.row] {
-            cell.textLabel?.text = list.title
-            
+            cell.habitTitle.text = list.title
+
             if list.isBookmarked {
                 cell.bookmarkOutlet.setTitle("⭐", for: .normal)
             }
@@ -145,41 +145,6 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
 extension ConfigureVC: SwipeTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-//        guard orientation == .right else { return nil }
-//
-//        let deleteAction = SwipeAction(style: .destructive, title: "삭제") { action, indexPath in
-//
-//            if let itemForDeletetion = self.listRealm?[indexPath.row] {
-//
-//                let deleteAlert = UIAlertController(title: "습관 삭제", message: "정말 포기하시겠습니까?", preferredStyle: .alert)
-//
-//                let keepChallengeAlertAction = UIAlertAction(title: "계속 도전", style: .cancel) { _ in
-//                    // 계속 도전을 누르면 swipe 숨기는 기능 필요
-//                }
-//                let giveUpChallengeAlertAction = UIAlertAction(title: "포기하기", style: .destructive) { _ in
-//                    do {
-//                        try self.realm.write {
-//                            self.realm.delete(itemForDeletetion)
-//                        }
-//                    } catch {
-//                        print("Error deleting item, \(error)")
-//                    }
-//
-//                    UIView.transition(with: tableView,
-//                                      duration: 0.35,
-//                                      options: .transitionCrossDissolve,
-//                                      animations: { self.myTableView.reloadData() })
-//                }
-//                deleteAlert.addAction(keepChallengeAlertAction)
-//                deleteAlert.addAction(giveUpChallengeAlertAction)
-//
-//                self.present(deleteAlert, animated: true, completion: nil)
-//            }
-//        }
-//
-//        deleteAction.image = UIImage(named: "delete-icon")
-//
-//        return [deleteAction]
         
         switch orientation {
         case .right:

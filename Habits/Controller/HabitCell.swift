@@ -21,6 +21,7 @@ protocol RequestLoadList {
 
 class HabitCell: SwipeTableViewCell {
     
+    @IBOutlet weak var habitTitle: UILabel!
     @IBOutlet weak var habitListBubble: UIView!
     @IBOutlet weak var bookmarkOutlet: UIButton!
     
