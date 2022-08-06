@@ -67,7 +67,7 @@ class CheckVC: UIViewController {
         let completeAlertCancel = UIAlertAction(title: "취소", style: .destructive,handler:nil)
         
         let finishAlert = UIAlertController(title: "  성공  ", message: "\(count + 1)일 달성 완료", preferredStyle: .alert)
-        let finishAlertAction = UIAlertAction(title: "확인.", style: .default){
+        let finishAlertAction = UIAlertAction(title: "확인", style: .default){
             _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.navigationController?.popToRootViewController(animated: true)
