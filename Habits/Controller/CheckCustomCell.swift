@@ -26,8 +26,6 @@ class CheckCustomCell : UICollectionViewCell{
         self.contentView.layer.borderWidth = 0.5
         self.contentView.backgroundColor = .clear
         self.cellImage.layer.cornerRadius = 7
-
-        
     }
     
     
