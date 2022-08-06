@@ -11,7 +11,7 @@ import UIKit
 
 class TimeManager {
     
-    // MARK: D-day 계산
+    // MARK: D-day 계산 (66일)
     func getDday(_ creatTime : Date) -> Date{
         
         if let dDay = Calendar.current.date(byAdding: .day, value: 66, to: creatTime) {

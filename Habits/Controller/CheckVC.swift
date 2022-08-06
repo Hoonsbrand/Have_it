@@ -15,6 +15,7 @@ import Toast_Swift
 
 class CheckVC: UIViewController {
     
+    @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var successButton: UIButton!
     @IBOutlet weak var myView: UIView!
     @IBOutlet weak var dDayTitleLabel: UILabel!{
@@ -42,6 +43,14 @@ class CheckVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
+        myCollectionView.backgroundColor = .clear
+        myCollectionView.delegate = self
+        myCollectionView.dataSource = self
+        let myCollectionViewCell = UINib(nibName: "CheckCustomCell", bundle: nil)
+        self.myCollectionView.register(myCollectionViewCell, forCellWithReuseIdentifier: String(describing: CheckCustomCell.self))
+        
+        //콜렉션뷰 레이아웃 설정
+        self.myCollectionView.collectionViewLayout = myCompositionLayout()
         getRealmData()
         makeButton()
         makeButtonLayout(btnArr)
@@ -128,8 +137,9 @@ extension CheckVC {
         let title = list.title
         self.habitTitle = title
         self.dDay = list.dDay
-//        self.clickedTime = list.clickedTime
-        self.dDayInt = timeManager.calDateDiffer(dDay, clickedTime)
+        guard let time = list.clickedTime else { return }
+        self.clickedTime = time
+        self.dDayInt = timeManager.calDateDiffer(dDay, Date()) // 현재시간으로 계산 
     }
 }
 
@@ -159,11 +169,69 @@ extension CheckVC{
     }
     
 }
+//MARK: - CollectionView Delegate, DataSorce
+extension CheckVC : UICollectionViewDelegate,UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 66
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellID = String(describing: CheckCustomCell.self)
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! CheckCustomCell
+        
+        cell.imgBackground = .green
+        let collectionViewHeight = myCollectionView.frame.size.height
+        print(collectionViewHeight)
+        return cell
+    }
+    
+    
+    
+}
+// 컬렉션뷰 컴퍼지셔널 레이아웃 설정.
+extension CheckVC {
+    fileprivate func myCompositionLayout() -> UICollectionViewCompositionalLayout{
+        
+        let layout = UICollectionViewCompositionalLayout{
+            (sectionIndex : Int, layoutEnvironment : NSCollectionLayoutEnvironment) ->
+            NSCollectionLayoutSection in
+            // item 사이즈 설정
+            let width = self.myView.frame.size.width / 11
+            let height = self.myView.frame.size.height
+            let itemSizeHeight = NSCollectionLayoutDimension.absolute(width)
+            let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(width), heightDimension: itemSizeHeight)
+            // item 만들기
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            
+            // item간의 간격 설정
+            item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+            //그룹은 하나로 설정 item높이만큼 그룹설정
+            
+            let groupHeight = NSCollectionLayoutDimension.absolute(height/6)
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: groupHeight )
+            
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 11)
+            
+            // 그룹으로 섹션만들기
+            let section = NSCollectionLayoutSection(group: group)
+            
+            return section
+            3
+             
+            
+        }
+        return layout
+    }
+}
+
+
 
 //MARK: - CheckVC UI설정
 extension CheckVC {
     func setHabitTitle(){
         self.navigationItem.title = habitTitle
+        
     }
  
     
@@ -171,6 +239,8 @@ extension CheckVC {
     func setDday(){
         
         dDayTitleLabel.text = "D - \(dDayInt) 남음"
+        dDayTitleLabel.textColor = .white
+        dDayTitleLabel.font = UIFont.boldSystemFont(ofSize: 55)
         // 라벨의 사이즈를 해당크기에 맞게 설정
         dDayTitleLabel.sizeThatFits(CGSize(width: dDayTitleLabel.frame.width, height: dDayTitleLabel.frame.height))
         // checkVCTitle.sizeToFit() -> 자동으로 라벨의 크기를 텍스트에 맞게 수정

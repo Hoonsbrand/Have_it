@@ -17,6 +17,8 @@
 		20850893288A9A4300553252 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20850891288A9A4300553252 /* LaunchScreen.storyboard */; };
 		2085089B288A9AA300553252 /* AddLIstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085089A288A9AA300553252 /* AddLIstVC.swift */; };
 		2085089D288A9B5C00553252 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085089C288A9B5C00553252 /* Model.swift */; };
+		20D96FDE289E66F300B4D6EB /* CheckCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D96FDD289E66F300B4D6EB /* CheckCustomCell.swift */; };
+		20D96FE0289E670900B4D6EB /* CheckCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D96FDF289E670900B4D6EB /* CheckCustomCell.xib */; };
 		20DFD245289A4F90000DF63A /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFD244289A4F90000DF63A /* constants.swift */; };
 		722B891A28965FD000158BC5 /* HabitsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722B891928965FD000158BC5 /* HabitsCollectionVC.swift */; };
 		722B891E28967C9300158BC5 /* HabitsCustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 722B891D28967C9300158BC5 /* HabitsCustomCollectionViewCell.xib */; };
@@ -38,6 +40,8 @@
 		20850894288A9A4300553252 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2085089A288A9AA300553252 /* AddLIstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLIstVC.swift; sourceTree = "<group>"; };
 		2085089C288A9B5C00553252 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		20D96FDD289E66F300B4D6EB /* CheckCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckCustomCell.swift; sourceTree = "<group>"; };
+		20D96FDF289E670900B4D6EB /* CheckCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckCustomCell.xib; sourceTree = "<group>"; };
 		20DFD244289A4F90000DF63A /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		3D39E534B7259F1752BA5B5D /* Pods-Habits.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.debug.xcconfig"; path = "Target Support Files/Pods-Habits/Pods-Habits.debug.xcconfig"; sourceTree = "<group>"; };
 		5E5E6C8D9947140609408D83 /* Pods-Habits.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.release.xcconfig"; path = "Target Support Files/Pods-Habits/Pods-Habits.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			children = (
 				2085088C288A9A4300553252 /* Main.storyboard */,
 				729D89F6288FDD3A00B77EE9 /* HabitCell.xib */,
+				20D96FDF289E670900B4D6EB /* CheckCustomCell.xib */,
 				722B891D28967C9300158BC5 /* HabitsCustomCollectionViewCell.xib */,
 				20850891288A9A4300553252 /* LaunchScreen.storyboard */,
 			);
@@ -123,6 +128,7 @@
 				729D89F5288FDD3A00B77EE9 /* HabitCell.swift */,
 				2085088A288A9A4300553252 /* ConfigVC.swift */,
 				72B695BC28902191009EBB23 /* CheckVC.swift */,
+				20D96FDD289E66F300B4D6EB /* CheckCustomCell.swift */,
 				2085089A288A9AA300553252 /* AddLIstVC.swift */,
 			);
 			path = Controller;
@@ -213,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20D96FE0289E670900B4D6EB /* CheckCustomCell.xib in Resources */,
 				20850893288A9A4300553252 /* LaunchScreen.storyboard in Resources */,
 				722B891E28967C9300158BC5 /* HabitsCustomCollectionViewCell.xib in Resources */,
 				20850890288A9A4300553252 /* Assets.xcassets in Resources */,
@@ -280,6 +287,7 @@
 				2085088B288A9A4300553252 /* ConfigVC.swift in Sources */,
 				20850887288A9A4300553252 /* AppDelegate.swift in Sources */,
 				722B892028967D8D00158BC5 /* HabitsCustomCollectionViewCell.swift in Sources */,
+				20D96FDE289E66F300B4D6EB /* CheckCustomCell.swift in Sources */,
 				20850889288A9A4300553252 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
