@@ -274,7 +274,6 @@ extension CheckVC {
             
             let width = self.myView.frame.size.width / 6
             let height = self.myView.frame.size.height / 11
-          
             
             btn.frame = CGRect(x: CGFloat(column) * width, y: CGFloat(row) * height, width: width, height: height)
            
