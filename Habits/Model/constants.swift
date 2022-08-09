@@ -33,5 +33,7 @@ enum ProgressColor {
     static let puple = UIColor(red: 189/255, green: 178/255, blue: 255/255, alpha: 1)
 }
 
-
+enum API{
+    
+}
 
