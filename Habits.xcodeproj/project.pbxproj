@@ -17,8 +17,8 @@
 		20850893288A9A4300553252 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20850891288A9A4300553252 /* LaunchScreen.storyboard */; };
 		2085089B288A9AA300553252 /* AddLIstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085089A288A9AA300553252 /* AddLIstVC.swift */; };
 		2085089D288A9B5C00553252 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085089C288A9B5C00553252 /* Model.swift */; };
-		20A4B79C28A0FB56000957C3 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4B79B28A0FB56000957C3 /* CircleProgress.swift */; };
-		20DFD245289A4F90000DF63A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFD244289A4F90000DF63A /* Constants.swift */; };
+		20A4B7A628A24352000957C3 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4B7A528A24352000957C3 /* CircleProgress.swift */; };
+		20DFD245289A4F90000DF63A /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFD244289A4F90000DF63A /* constants.swift */; };
 		722B891A28965FD000158BC5 /* HabitsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722B891928965FD000158BC5 /* HabitsCollectionVC.swift */; };
 		722B891E28967C9300158BC5 /* HabitsCustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 722B891D28967C9300158BC5 /* HabitsCustomCollectionViewCell.xib */; };
 		722B892028967D8D00158BC5 /* HabitsCustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722B891F28967D8D00158BC5 /* HabitsCustomCollectionViewCell.swift */; };
@@ -39,8 +39,8 @@
 		20850894288A9A4300553252 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2085089A288A9AA300553252 /* AddLIstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLIstVC.swift; sourceTree = "<group>"; };
 		2085089C288A9B5C00553252 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		20A4B79B28A0FB56000957C3 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
-		20DFD244289A4F90000DF63A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		20A4B7A528A24352000957C3 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
+		20DFD244289A4F90000DF63A /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		3D39E534B7259F1752BA5B5D /* Pods-Habits.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.debug.xcconfig"; path = "Target Support Files/Pods-Habits/Pods-Habits.debug.xcconfig"; sourceTree = "<group>"; };
 		5E5E6C8D9947140609408D83 /* Pods-Habits.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.release.xcconfig"; path = "Target Support Files/Pods-Habits/Pods-Habits.release.xcconfig"; sourceTree = "<group>"; };
 		722B891928965FD000158BC5 /* HabitsCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsCollectionVC.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				2085089C288A9B5C00553252 /* Model.swift */,
-				20DFD244289A4F90000DF63A /* Constants.swift */,
+				20DFD244289A4F90000DF63A /* constants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -134,7 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				204A50EC289CEC70000C03EA /* TimeManager.swift */,
-				20A4B79B28A0FB56000957C3 /* CircleProgress.swift */,
+				20A4B7A528A24352000957C3 /* CircleProgress.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -275,13 +275,13 @@
 			files = (
 				2085089D288A9B5C00553252 /* Model.swift in Sources */,
 				2085089B288A9AA300553252 /* AddLIstVC.swift in Sources */,
-				20A4B79C28A0FB56000957C3 /* CircleProgress.swift in Sources */,
 				726DC33028915386005A9D6A /* CheckVC.swift in Sources */,
-				20DFD245289A4F90000DF63A /* Constants.swift in Sources */,
+				20DFD245289A4F90000DF63A /* constants.swift in Sources */,
 				722B891A28965FD000158BC5 /* HabitsCollectionVC.swift in Sources */,
 				204A50ED289CEC70000C03EA /* TimeManager.swift in Sources */,
 				729D89F7288FDD3A00B77EE9 /* HabitCell.swift in Sources */,
 				2085088B288A9A4300553252 /* ConfigVC.swift in Sources */,
+				20A4B7A628A24352000957C3 /* CircleProgress.swift in Sources */,
 				20850887288A9A4300553252 /* AppDelegate.swift in Sources */,
 				722B892028967D8D00158BC5 /* HabitsCustomCollectionViewCell.swift in Sources */,
 				20850889288A9A4300553252 /* SceneDelegate.swift in Sources */,

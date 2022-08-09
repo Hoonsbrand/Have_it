@@ -2,32 +2,32 @@ import UIKit
 import RealmSwift
 import Toast_Swift
 
-
 class CheckVC: UIViewController {
     
-    @IBOutlet weak var elevenCheckView: UIView!
-    @IBOutlet weak var circleProgressView: CircleProgress!
     
+    @IBOutlet weak var myProgress: CircleProgress!
     @IBOutlet weak var successButton: UIButton!
-    @IBOutlet weak var dDayLabel: UILabel!
-    @IBOutlet weak var successLabel: UILabel!
-    
-    
+    @IBOutlet weak var myView: UIView!
     @IBOutlet weak var dDayTitleLabel: UILabel!{
         didSet{
             setDday()
         }
     }
+    @IBOutlet weak var percentLabel: UILabel!
+    @IBOutlet weak var dDayLabel: UILabel!
+    @IBOutlet weak var successLabel: UILabel!
     
     var btnArr : [UIButton] = []
     var habitTitle : String = "" // chekTitle 바꿀 데이터 전달 받을 변수
     var clickedTime : Date = Date() // 클릭한 시간
     // "D-Day" + \(dDayInt) 를 구성예정
-    var dDayInt : Int = 0 // 남은 D- day 숫자
     
-    var dDay : Date = Date() // Dday 시간.
+    var dDayInt : Int = 0 // 남은 D- day 숫자
+    var dDay : Date = Date() // Dday 날짜
     var dayCount : Int = Int() // 완료 횟수
-    var checkVCColor : UIColor = UIColor()
+    
+    
+    
     let realm = try! Realm()
     var resultRealm: Habits?
     
@@ -38,19 +38,21 @@ class CheckVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
+        getRealmData()
+        makeButton()
+        makeButtonLayout(btnArr)
+        setButtonImage(self.dayCount)
+        setHabitTitle()
+        setDdayLabelSuccessLabel()
+        filterCycle(dayCount: self.dayCount)
+        setPercentageLabel(dayCount: self.dayCount)
         
-        getRealmData() // realm데이터 받아오기
-        makeButton() // 버튼배열 만들기
-        makeButtonLayout(btnArr) // 버튼레이어 표시
-        successCount() // 완료한 숫자 표시
-        setButtonImage(self.dayCount) // 이전에 완료한 습관 표시
-        setHabitTitle() // 맨위에 제목표시
-        dDaytext() // dday 날짜 전체표시
-        setColor(self.dayCount)
-        circleProgressView.layer.cornerRadius = 20
-        elevenCheckView.layer.cornerRadius = 20
+        self.myProgress.layer.cornerRadius = 20
+        self.myView.layer.cornerRadius = 20
+        self.myProgress.backgroundColor = .lightGray
         
-    
+        let elevenDayCount = dayCount % 11
+        self.myProgress.filleProgress(fromValue: CGFloat(elevenDayCount) - 1.0 , toValue: CGFloat(elevenDayCount))
         
         
     }
@@ -63,14 +65,15 @@ class CheckVC: UIViewController {
         // 확인이 눌려야 실행
         let completeAlertAction = UIAlertAction(title: "완료", style: .default){
             (action) in
-            self.changeElevenButtonImage(count)
+            self.changeButtonImage(count)
             self.dayCount += 1
             self.resetSuccessButton()
             self.setRealmDate()
-            self.setColor(self.dayCount)
-            let elevenDayCount = self.dayCount % 11
-            self.circleProgressView.filleProgress(fromValue: CGFloat(elevenDayCount) - 1.0, toValue: CGFloat(elevenDayCount))
-            
+            let elevenDayCount = count % 11
+            self.myProgress.filleProgress(fromValue: CGFloat(elevenDayCount) - 1.0 , toValue: CGFloat(elevenDayCount))
+            self.setDdayLabelSuccessLabel()
+            self.filterCycle(dayCount: self.dayCount)
+            self.setPercentageLabel(dayCount: self.dayCount)
         }
         // 습관을 완료하지 못했을 때
         let completeAlertCancel = UIAlertAction(title: "취소", style: .destructive,handler:nil)
@@ -90,23 +93,25 @@ class CheckVC: UIViewController {
         finishAlert.addAction(finishAlertAction)
         switch count {
         case 65:
-            changeElevenButtonImage(count)
+            changeButtonImage(count)
             self.dayCount += 1
+            
             
             try! realm.write {
                 resultRealm?.isInHOF = true
             }
-            
             present(finishAlert,animated: true, completion: nil)
+            
         default:
             return self.present(completeAlert, animated: true, completion: nil)
         }
     }
     
     // MARK:  changeButtonImage (Button이미지 변경)
-    func changeElevenButtonImage(_ dayCount : Int){
-        let transEleven = dayCount % 10
-        btnArr[transEleven].setImage(UIImage(systemName: "flame.fill"), for: .normal)
+    func changeButtonImage(_ dayCount : Int){
+        let filterCycle = dayCount % 11
+        let count = filterCycle % 10
+        btnArr[count].setImage(UIImage(systemName: "flame.fill"), for: .normal)
     }
     
 // MARK: - @IBAction Method
@@ -114,8 +119,9 @@ class CheckVC: UIViewController {
     
     @IBAction func clickSuccessButton(_ sender: UIButton) {
         resetSuccessButton()
+        filterCycle(dayCount: self.dayCount)
         // 버튼입력일자가 하루 지났을 떄.
-        if (timeManager.compareDate(clickedTime) || self.dayCount == 0 || self.dayCount<65){
+        if (timeManager.compareDate(clickedTime) || self.dayCount == 0 || self.dayCount < 66){
             makeAlert(dayCount) // 완료했을 때 취소 했을 때 나눔
             self.clickedTime = Date() // 버튼 누른 시간을 기억
         } else {
@@ -133,13 +139,14 @@ extension CheckVC {
     // MARK: configVC - prepared() 에서 데이터 전달 받는 데이터 변경 / title이 키 값
     func receiveItem(_ id : String) {
         guard let list = realm.objects(Habits.self).filter("habitID = %@", id).first else { return }
-        self.resultRealm = list
+        resultRealm = list
         let title = list.title
-        self.habitTitle = title
-        self.dDay = list.dDay
+        habitTitle = title
+        dDay = list.dDay
         guard let time = list.clickedTime else { return }
-        self.clickedTime = time
-        self.dDayInt = timeManager.calDateDiffer(dDay, Date()) // 현재시간으로 계산
+        clickedTime = time
+        dDayInt = timeManager.calDateDiffer(dDay, Date()) // 현재시간으로 계산
+        // 11로 나눈 숫자를 사용하기위해
     }
 }
 
@@ -158,7 +165,7 @@ extension CheckVC{
     
     //MARK: setRealmData() -> 뷰 나갈떄 Realm데이터 세팅
     func setRealmDate(){
-        print("setRealmDate()")
+        
         if let data = resultRealm{
             try! realm.write{
                 data.clickedTime = self.clickedTime
@@ -171,32 +178,19 @@ extension CheckVC{
 }
 
 
-
-
 //MARK: - CheckVC UI설정
 extension CheckVC {
     func setHabitTitle(){
         self.navigationItem.title = habitTitle
         
     }
-    //Date형식을 string으로 변환
-    func dDaytext(){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dDayText = dateFormatter.string(from: dDay)
-        dDayLabel.text = dDayText
-    }
-    func successCount(){
-        successLabel.text = "\(dayCount)"
-    }
-    
     
     
     //MARK:  CheckVCTitle 설정
     func setDday(){
         
-        dDayTitleLabel.text = "D - \(dDayInt) 남음"
-        dDayTitleLabel.textColor = .link
+        dDayTitleLabel.text = resultRealm?.title
+        dDayTitleLabel.textColor = .black
         dDayTitleLabel.font = UIFont.boldSystemFont(ofSize: 55)
         // 라벨의 사이즈를 해당크기에 맞게 설정
         dDayTitleLabel.sizeThatFits(CGSize(width: dDayTitleLabel.frame.width, height: dDayTitleLabel.frame.height))
@@ -213,11 +207,12 @@ extension CheckVC {
         for num in 0...9{
             let btn = UIButton()
             btn.tag = num
-            self.elevenCheckView.addSubview(btn)
-            
-            btn.setTitle("", for: .normal)
+            self.myView.addSubview(btn)
             btn.setImage(UIImage(systemName: "flame"), for: .normal)
+            btn.setTitle("", for: .normal)
+            
             btnArr.append(btn)
+            
         }
     }
     
@@ -228,22 +223,25 @@ extension CheckVC {
             let column = index % 5
             let row = index / 5
             
-            let width = self.elevenCheckView.frame.size.width / 5
-            let height = self.elevenCheckView.frame.size.height / 2
+            let width = self.myView.frame.size.width / 5
+            let height = self.myView.frame.size.height / 2
+            
             
             btn.frame = CGRect(x: CGFloat(column) * width, y: CGFloat(row) * height, width: width, height: height)
             
-            //            btn.backgroundColor = .link
-            //            btn.layer.cornerRadius = btn.frame.size.width / 2
         }
     }
     
     //MARK: - 이전에 달성한 습관 횟수 버튼에 구현
     func setButtonImage(_ count : Int){
-        for count in 0..<count{
-            changeElevenButtonImage(count)
+        let filterCylce = count % 11
+        let tenCount = filterCylce % 10
+        for tenCount in 0..<tenCount{
+            // 10 개의 배열일 경우로 초기화
+            changeButtonImage(tenCount)
         }
     }
+    
     
     //MARK: 버튼이 눌리는동안 색 변환
     @objc func changeColorSuccessBtn(){
@@ -258,37 +256,59 @@ extension CheckVC {
         successButton.setTitleColor(.link, for: .normal)
         successButton.backgroundColor = .clear
     }
-}
-
-
-
-//MARK: - Progressbar 세팅
-extension CheckVC {
-
-    func setColor(_ dayCount : Int){
+    //MARK: 디데이,성공횟수 라벨 설정
+    func setDdayLabelSuccessLabel(){
+        self.dDayLabel.text = "D - \(dDayInt)"
+        self.successLabel.text = "\(dayCount) 회"
+    }
+    //MARK: 11일로 도는 사이클의 percentage Label
+    func setPercentageLabel(dayCount : Int){
+        let hundred = dayCount / 11
+        let percent = dayCount % 11
+       print(hundred)
+        let initPercent : Float = Float(dayCount) / 11.0
+        let multiPercent = initPercent * 100
+        let percent1 = Int(multiPercent) % 100
+        let result = floor(Double(percent1))
+   
+        
+        if hundred > 0, percent == 0 {
+            self.percentLabel.text = " 100 % "
+        }
+        else{
+            self.percentLabel.text = "\(Int(result))% "
+        }
+    }
+    
+    func filterCycle(dayCount : Int){
         let result = dayCount / 11
         switch result {
         case 0 :
-            self.checkVCColor = MyColor.pink
+            self.myProgress.trackColor = MyColor.pink
+            self.myProgress.progressColor = MyColor.pink.withAlphaComponent(0.3)
+            
         case 1:
-            self.checkVCColor = MyColor.orange
+            self.myProgress.trackColor = MyColor.orange
+            self.myProgress.progressColor = MyColor.orange.withAlphaComponent(0.3)
         case 2:
-            self.checkVCColor = MyColor.yellow
+            self.myProgress.trackColor = MyColor.yellow
+            self.myProgress.progressColor = MyColor.yellow.withAlphaComponent(0.3)
         case 3:
-            self.checkVCColor = MyColor.green
+            self.myProgress.trackColor = MyColor.green
+            self.myProgress.progressColor = MyColor.green.withAlphaComponent(0.3)
         case 4:
-            self.checkVCColor = MyColor.sky
+            self.myProgress.trackColor = MyColor.sky
+            self.myProgress.progressColor = MyColor.sky.withAlphaComponent(0.3)
         case 5:
-            self.checkVCColor = MyColor.blue
+            self.myProgress.trackColor = MyColor.blue
+            self.myProgress.progressColor = MyColor.blue.withAlphaComponent(0.3)
         case 6:
-            self.checkVCColor = MyColor.puple
+            self.myProgress.trackColor = MyColor.puple
+            self.myProgress.progressColor = MyColor.puple.withAlphaComponent(0.3)
         default :
-            self.checkVCColor = MyColor.pink
+            self.myProgress.trackColor = MyColor.pink
+            self.myProgress.progressColor = MyColor.pink.withAlphaComponent(0.3)
         }
-        NotificationCenter.default.post(name: MyNotificationName.changeColor, object: nil , userInfo: nil )
-        print("setColor called () ")
     }
     
 }
-
-

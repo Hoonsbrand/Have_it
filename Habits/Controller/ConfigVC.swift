@@ -28,10 +28,11 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         myTableView.delegate = self
         myTableView.register(UINib(nibName: Cell.nibName, bundle: nil), forCellReuseIdentifier: Cell.customTableViewCell)
         
-        let image = UIImage(named: "backgroundImg")
+        let image = UIImage(named: "sparkle")
         let imgView = UIImageView(image: image)
         self.myTableView.backgroundView = imgView
         let tableBackGround = self.myTableView.backgroundView
+        
         tableBackGround?.translatesAutoresizingMaskIntoConstraints = false
         tableBackGround?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
         tableBackGround?.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
@@ -51,7 +52,7 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
     @IBAction func showAddView(_ sender: UIBarButtonItem) {
         if let numberOfList = listRealm?.count {
             if numberOfList >= 20 {
-                self.view.makeToast("최대 추가 개수는 20개 입니다.", duration: 1.5, point: CGPoint(x: 187, y: 200), title: nil, image: nil, completion: nil)
+                self.view.makeToast("최대 추가 개수는 20개 입니다.", duration: 1.5, position: .center, title: nil, image: nil, completion: nil)
             } else {
                 performSegue(withIdentifier: Segue.goToAddView, sender: sender)
             }
@@ -70,7 +71,7 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
             let checkView = segue.destination as! CheckVC
             
             guard let list = listRealm?[selectIndexPath.row] else { return }
-            // 해당 셀의 id를 받아와 그 id의 title을x 추출해서 넘겨줌
+            // 해당 셀의 id를 받아와 그 id의 title을 추출해서 넘겨줌
             guard let getObject = realm.objects(Habits.self).filter("habitID = %@", list.habitID).first?.habitID else { return }
             checkView.receiveItem(getObject)
         }
@@ -110,16 +111,14 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   
         self.selectIndexPath = indexPath
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.goToCheckVC, sender: nil)
-        }
         
+        performSegue(withIdentifier: Segue.goToCheckVC, sender: nil)
     }
     
     // MARK: - 리스트 로드
     func loadHabitList() {
         listRealm = realm.objects(Habits.self).sorted(byKeyPath: "isBookmarked", ascending: false).filter("isInHOF = false")
-        myTableView.reloadData()
+
         UIView.transition(with: myTableView,
                           duration: 0.35,
                           options: .transitionCrossDissolve,
@@ -159,6 +158,11 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                     
                     let keepChallengeAlertAction = UIAlertAction(title: "계속 도전", style: .cancel) { _ in
                         // 계속 도전을 누르면 swipe 숨기는 기능 필요
+                        UIView.transition(with: tableView,
+                                          duration: 0.35,
+                                          options: .transitionFlipFromTop,
+                                          animations: { self.myTableView.reloadData() })
+                        self.view.makeToast("👍 잘 선택 하셨어요! 끝까지 화이팅! 👍", duration: 1.5, position: .center, title: nil, image: nil, completion: nil)
                     }
                     let giveUpChallengeAlertAction = UIAlertAction(title: "포기하기", style: .destructive) { _ in
                         do {

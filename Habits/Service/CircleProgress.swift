@@ -2,8 +2,9 @@
 //  CircleProgress.swift
 //  Habits
 //
-//  Created by 안지훈 on 8/8/22.
+//  Created by 안지훈 on 8/9/22.
 //
+
 
 import UIKit
 
@@ -11,6 +12,7 @@ class CircleProgress : UIView {
     
     fileprivate let progressLayer = CAShapeLayer()
     fileprivate let trackLayer = CAShapeLayer()
+    
     
     override init(frame : CGRect){
         super.init(frame: frame)
@@ -24,28 +26,31 @@ class CircleProgress : UIView {
         self.frame.origin.x = 0
         self.frame.origin.y = 0
         setProgress()
+       
     }
     
-    var progressColor = ProgressColor.pink {
+    var progressColor = MyColor.pink {
         didSet {
             progressLayer.strokeColor = progressColor.cgColor
         }
     }
-    var trackColor = ProgressColor.pink.withAlphaComponent(0.5) {
+    var trackColor = MyColor.pink.withAlphaComponent(0.5) {
         didSet {
             trackLayer.strokeColor = trackColor.withAlphaComponent(0.3).cgColor
         }
     }
     
-    //MARK: - 프로그래스바 설정 색 and 초기 설정
     
+    
+    
+    //MARK: - 프로그래스바 설정 색 and 초기 설정
     fileprivate func setProgress(){
         
         print("createProgress")
         
         let center = self.center
-        let radius = self.frame.size.width / 2
-        let circularPath = UIBezierPath(arcCenter: center , radius: radius, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let radius = self.frame.size.width * 0.5 - 8
+        let circularPath = UIBezierPath(arcCenter: center , radius: radius, startAngle: -CGFloat.pi * 0.5, endAngle: 1.5 * CGFloat.pi, clockwise: true)
         
         trackLayer.path = circularPath.cgPath
         
@@ -71,16 +76,18 @@ class CircleProgress : UIView {
     
     // 프로그래스바 색칠하기
     
-    func filleProgress(_ fill : CGFloat){
+    func filleProgress(fromValue : CGFloat, toValue : CGFloat){
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.duration = 1.5
-        animation.fromValue = (fill - 1.0) / 11
-        animation.toValue = fill / 11
+        animation.fromValue = fromValue * 0.1
+        animation.toValue = toValue * 0.1
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        progressLayer.strokeEnd = fill / 12
+        progressLayer.strokeEnd = toValue * 0.1
         progressLayer.add(animation, forKey: "animateprogress")
         
     }
     
+    
 }
+
