@@ -13,11 +13,20 @@ import UIKit
 import RealmSwift
 import Toast_Swift
 
+
 class CheckVC: UIViewController {
     
-    @IBOutlet weak var myCollectionView: UICollectionView!
+    @IBOutlet weak var elevenCheckView: UIView!
+    @IBOutlet weak var sixBadge: UIView!
+    
+    
+    @IBOutlet weak var circleProgressView: CircleProgress!
+    
     @IBOutlet weak var successButton: UIButton!
-    @IBOutlet weak var myView: UIView!
+    @IBOutlet weak var dDayLabel: UILabel!
+    @IBOutlet weak var successLabel: UILabel!
+    
+    
     @IBOutlet weak var dDayTitleLabel: UILabel!{
         didSet{
             setDday()
@@ -29,13 +38,13 @@ class CheckVC: UIViewController {
     var clickedTime : Date = Date() // 클릭한 시간
     // "D-Day" + \(dDayInt) 를 구성예정
     var dDayInt : Int = 0 // 남은 D- day 숫자
-
+    
     var dDay : Date = Date() // Dday 시간.
     var dayCount : Int = Int() // 완료 횟수
     
     let realm = try! Realm()
     var resultRealm: Habits?
-
+    
     var timeManager = TimeManager()
     
     //MARK: - overrideMethod viewLifeCycle
@@ -43,22 +52,20 @@ class CheckVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
-        myCollectionView.backgroundColor = .clear
-        myCollectionView.delegate = self
-        myCollectionView.dataSource = self
-        let myCollectionViewCell = UINib(nibName: "CheckCustomCell", bundle: nil)
-        self.myCollectionView.register(myCollectionViewCell, forCellWithReuseIdentifier: String(describing: CheckCustomCell.self))
         
-        //콜렉션뷰 레이아웃 설정
-        self.myCollectionView.collectionViewLayout = myCompositionLayout()
-        getRealmData()
-        makeButton()
-        makeButtonLayout(btnArr)
-        setButtonImage(self.dayCount)
-        setHabitTitle()
+        getRealmData() // realm데이터 받아오기
+        makeButton() // 버튼배열 만들기
+        makeButtonLayout(btnArr) // 버튼레이어 표시
+        successCount() // 완료한 숫자 표시
+        setButtonImage(self.dayCount) // 이전에 완료한 습관 표시
+        setHabitTitle() // 맨위에 제목표시
+        dDaytext() // dday 날짜 전체표시
+    
+        
+        
     }
     
-   
+    
     
     // MARK: - makeAlert (  알람메세지 )
     func makeAlert(_ count : Int){
@@ -66,10 +73,12 @@ class CheckVC: UIViewController {
         // 확인이 눌려야 실행
         let completeAlertAction = UIAlertAction(title: "완료", style: .default){
             (action) in
-            self.changeButtonImage(count)
+            self.changeElevenButtonImage(count)
             self.dayCount += 1
             self.resetSuccessButton()
             self.setRealmDate()
+            let elevenDayCount = self.dayCount % 11
+            self.circleProgressView.filleProgress(CGFloat(elevenDayCount))
             
         }
         // 습관을 완료하지 못했을 때
@@ -90,10 +99,9 @@ class CheckVC: UIViewController {
         finishAlert.addAction(finishAlertAction)
         switch count {
         case 65:
-            changeButtonImage(count)
+            changeElevenButtonImage(count)
             self.dayCount += 1
             
-           
             try! realm.write {
                 resultRealm?.isInHOF = true
             }
@@ -101,21 +109,22 @@ class CheckVC: UIViewController {
             present(finishAlert,animated: true, completion: nil)
         default:
             return self.present(completeAlert, animated: true, completion: nil)
-              }
-          }
-    
-    // MARK:  changeButtonImage (Button이미지 변경)
-    func changeButtonImage(_ dayCount : Int){
-        btnArr[dayCount].setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal)
+        }
     }
     
-    // MARK: - @IBAction Method
+    // MARK:  changeButtonImage (Button이미지 변경)
+    func changeElevenButtonImage(_ dayCount : Int){
+        let transEleven = dayCount % 10
+        btnArr[transEleven].setImage(UIImage(systemName: "flame.fill"), for: .normal)
+    }
+    
+// MARK: - @IBAction Method
     //MARK: clickSuccessButton ( 성공버튼 클릭 액션 )
     
     @IBAction func clickSuccessButton(_ sender: UIButton) {
         resetSuccessButton()
         // 버튼입력일자가 하루 지났을 떄.
-        if (timeManager.compareDate(clickedTime) || self.dayCount == 0 ){
+        if (timeManager.compareDate(clickedTime) || self.dayCount == 0 || self.dayCount<65){
             makeAlert(dayCount) // 완료했을 때 취소 했을 때 나눔
             self.clickedTime = Date() // 버튼 누른 시간을 기억
         } else {
@@ -139,7 +148,7 @@ extension CheckVC {
         self.dDay = list.dDay
         guard let time = list.clickedTime else { return }
         self.clickedTime = time
-        self.dDayInt = timeManager.calDateDiffer(dDay, Date()) // 현재시간으로 계산 
+        self.dDayInt = timeManager.calDateDiffer(dDay, Date()) // 현재시간으로 계산
     }
 }
 
@@ -147,7 +156,7 @@ extension CheckVC {
 extension CheckVC{
     //MARK: getRealmData() cell에 해당하는 realm데이터 받아옴
     func getRealmData() {
-   
+        
         guard let data = resultRealm else { return }
         guard let time = data.clickedTime else { return } // 옵셔널 바인딩
         let count = data.dayCount //
@@ -169,61 +178,7 @@ extension CheckVC{
     }
     
 }
-//MARK: - CollectionView Delegate, DataSorce
-extension CheckVC : UICollectionViewDelegate,UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 66
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellID = String(describing: CheckCustomCell.self)
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! CheckCustomCell
-        
-        cell.imgBackground = .green
-        let collectionViewHeight = myCollectionView.frame.size.height
-        print(collectionViewHeight)
-        return cell
-    }
-    
-    
-    
-}
-// 컬렉션뷰 컴퍼지셔널 레이아웃 설정.
-extension CheckVC {
-    fileprivate func myCompositionLayout() -> UICollectionViewCompositionalLayout{
-        
-        let layout = UICollectionViewCompositionalLayout{
-            (sectionIndex : Int, layoutEnvironment : NSCollectionLayoutEnvironment) ->
-            NSCollectionLayoutSection in
-            // item 사이즈 설정
-            let width = self.myView.frame.size.width / 11
-            let height = self.myView.frame.size.height
-            let itemSizeHeight = NSCollectionLayoutDimension.absolute(width)
-            let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(width), heightDimension: itemSizeHeight)
-            // item 만들기
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            
-            // item간의 간격 설정
-            item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
-            //그룹은 하나로 설정 item높이만큼 그룹설정
-            
-            let groupHeight = NSCollectionLayoutDimension.absolute(height/6)
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: groupHeight )
-            
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 11)
-            
-            // 그룹으로 섹션만들기
-            let section = NSCollectionLayoutSection(group: group)
-            
-            return section
-            
-             
-            
-        }
-        return layout
-    }
-}
+
 
 
 
@@ -233,7 +188,18 @@ extension CheckVC {
         self.navigationItem.title = habitTitle
         
     }
- 
+    //Date형식을 string으로 변환
+    func dDaytext(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dDayText = dateFormatter.string(from: dDay)
+        dDayLabel.text = dDayText
+    }
+    func successCount(){
+        successLabel.text = "\(dayCount)"
+    }
+    
+    
     
     //MARK:  CheckVCTitle 설정
     func setDday(){
@@ -253,15 +219,14 @@ extension CheckVC {
     }
     
     func makeButton(){
-        for num in 0...65{
+        for num in 0...9{
             let btn = UIButton()
             btn.tag = num
-            self.myView.addSubview(btn)
-            btn.setImage(UIImage(systemName: "checkmark.seal"), for: .normal)
-            btn.setTitle("", for: .normal)
-
-            btnArr.append(btn)
+            self.elevenCheckView.addSubview(btn)
             
+            btn.setTitle("", for: .normal)
+            btn.setImage(UIImage(systemName: "flame"), for: .normal)
+            btnArr.append(btn)
         }
     }
     
@@ -269,21 +234,23 @@ extension CheckVC {
         for btn in btnArray{
             let index = btn.tag
             
-            let column = index % 6
-            let row = index / 6
+            let column = index % 5
+            let row = index / 5
             
-            let width = self.myView.frame.size.width / 6
-            let height = self.myView.frame.size.height / 11
+            let width = self.elevenCheckView.frame.size.width / 5
+            let height = self.elevenCheckView.frame.size.height / 2
             
             btn.frame = CGRect(x: CGFloat(column) * width, y: CGFloat(row) * height, width: width, height: height)
-           
+            
+            //            btn.backgroundColor = .link
+            //            btn.layer.cornerRadius = btn.frame.size.width / 2
         }
     }
     
     //MARK: - 이전에 달성한 습관 횟수 버튼에 구현
     func setButtonImage(_ count : Int){
         for count in 0..<count{
-            changeButtonImage(count)
+            changeElevenButtonImage(count)
         }
     }
     
@@ -301,3 +268,12 @@ extension CheckVC {
         successButton.backgroundColor = .clear
     }
 }
+
+
+//MARK: - Progressbar 세팅
+extension CheckVC {
+
+    
+    
+}
+
