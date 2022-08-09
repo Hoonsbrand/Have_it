@@ -1,14 +1,3 @@
-//
-//  CheckVC.swift
-//  Habits
-//
-//  Created by 안지훈 on 7/23/22.
-
-// Model CreatedTime -> 이름변경 요망.
-// ViewController 파일 여러개 만들고 그룹화
-// Beta때는 Realm으로 하는게 좋을 듯 ?? ImageVIew LayOut을 snapkit으로
-
-
 import UIKit
 import RealmSwift
 import Toast_Swift
@@ -17,9 +6,6 @@ import Toast_Swift
 class CheckVC: UIViewController {
     
     @IBOutlet weak var elevenCheckView: UIView!
-    @IBOutlet weak var sixBadge: UIView!
-    
-    
     @IBOutlet weak var circleProgressView: CircleProgress!
     
     @IBOutlet weak var successButton: UIButton!
@@ -41,7 +27,7 @@ class CheckVC: UIViewController {
     
     var dDay : Date = Date() // Dday 시간.
     var dayCount : Int = Int() // 완료 횟수
-    
+    var checkVCColor : UIColor = UIColor()
     let realm = try! Realm()
     var resultRealm: Habits?
     
@@ -60,6 +46,10 @@ class CheckVC: UIViewController {
         setButtonImage(self.dayCount) // 이전에 완료한 습관 표시
         setHabitTitle() // 맨위에 제목표시
         dDaytext() // dday 날짜 전체표시
+        setColor(self.dayCount)
+        circleProgressView.layer.cornerRadius = 20
+        elevenCheckView.layer.cornerRadius = 20
+        
     
         
         
@@ -77,8 +67,9 @@ class CheckVC: UIViewController {
             self.dayCount += 1
             self.resetSuccessButton()
             self.setRealmDate()
+            self.setColor(self.dayCount)
             let elevenDayCount = self.dayCount % 11
-            self.circleProgressView.filleProgress(CGFloat(elevenDayCount))
+            self.circleProgressView.filleProgress(fromValue: CGFloat(elevenDayCount) - 1.0, toValue: CGFloat(elevenDayCount))
             
         }
         // 습관을 완료하지 못했을 때
@@ -205,7 +196,7 @@ extension CheckVC {
     func setDday(){
         
         dDayTitleLabel.text = "D - \(dDayInt) 남음"
-        dDayTitleLabel.textColor = .white
+        dDayTitleLabel.textColor = .link
         dDayTitleLabel.font = UIFont.boldSystemFont(ofSize: 55)
         // 라벨의 사이즈를 해당크기에 맞게 설정
         dDayTitleLabel.sizeThatFits(CGSize(width: dDayTitleLabel.frame.width, height: dDayTitleLabel.frame.height))
@@ -270,10 +261,34 @@ extension CheckVC {
 }
 
 
+
 //MARK: - Progressbar 세팅
 extension CheckVC {
 
-    
+    func setColor(_ dayCount : Int){
+        let result = dayCount / 11
+        switch result {
+        case 0 :
+            self.checkVCColor = MyColor.pink
+        case 1:
+            self.checkVCColor = MyColor.orange
+        case 2:
+            self.checkVCColor = MyColor.yellow
+        case 3:
+            self.checkVCColor = MyColor.green
+        case 4:
+            self.checkVCColor = MyColor.sky
+        case 5:
+            self.checkVCColor = MyColor.blue
+        case 6:
+            self.checkVCColor = MyColor.puple
+        default :
+            self.checkVCColor = MyColor.pink
+        }
+        NotificationCenter.default.post(name: MyNotificationName.changeColor, object: nil , userInfo: nil )
+        print("setColor called () ")
+    }
     
 }
+
 
