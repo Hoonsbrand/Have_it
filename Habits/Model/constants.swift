@@ -23,5 +23,7 @@ enum ImageName {
     
 }
 
-
+enum API{
+    
+}
 
