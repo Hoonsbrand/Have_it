@@ -38,6 +38,32 @@ class HabitsCollectionVC: UIViewController {
         
         // CollectionView의 CollectionView 레이아웃 설정
         self.habitsCollectionView.collectionViewLayout = createCompositionalLayout()
+        
+        // 명예의 전당에 아무것도 없을 때 레이블 설정
+        let listCount = realm.objects(Habits.self).filter("isInHOF = true").count
+        
+        if listCount == 0 {
+            
+            let firstLabel = UILabel()
+            firstLabel.frame = CGRect(x: 95, y: 150, width: 300, height: 50)
+            
+            firstLabel.text = "아무것도 없어요!"
+            
+            //레이블 폰트 설정
+            firstLabel.font = UIFont.boldSystemFont(ofSize: 30)
+            
+            let secondLabel = UILabel()
+            secondLabel.frame = CGRect(x: 35, y: 210, width: 500, height: 50)
+            
+            secondLabel.text = "66일간의 여정을 완료해서 추가해보세요!"
+            
+            //레이블 폰트 설정
+            secondLabel.font = UIFont.boldSystemFont(ofSize: 20)
+            
+            //루트뷰에 레이블 추가
+            self.view.addSubview(firstLabel)
+            self.view.addSubview(secondLabel)
+        }
     }
 }
 
@@ -89,9 +115,7 @@ extension HabitsCollectionVC: UICollectionViewDataSource {
     
     // 각 CollectionView 셀에 대한 설정
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-//        let cellId = String(describing: HabitsCollectionViewCell.self)
-        
+                
         // cell의 인스턴스
         let cell = habitsCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: HabitsCustomCollectionViewCell.self), for: indexPath) as! HabitsCustomCollectionViewCell
         
