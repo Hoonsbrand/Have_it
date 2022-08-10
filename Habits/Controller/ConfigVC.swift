@@ -40,8 +40,6 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         tableBackGround?.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
         
         loadHabitList()
-        
-        
     }
 
     
