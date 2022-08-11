@@ -77,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCM-IY-M5l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-175" y="997"/>
+            <point key="canvasLocation" x="-684" y="1317"/>
         </scene>
         <!--CheckVC-->
         <scene sceneID="Xi5-l3-Ays">
@@ -205,9 +205,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sau-GV-aGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924" y="-245.32019704433498"/>
+            <point key="canvasLocation" x="1326" y="1317"/>
         </scene>
-        <!--Habits CollectionVC-->
+        <!--명예의 전당-->
         <scene sceneID="eYm-ub-QLK">
             <objects>
                 <viewController id="eov-Ho-YzC" customClass="HabitsCollectionVC" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController">
@@ -281,6 +281,9 @@
                             <constraint firstItem="s9h-oZ-bzB" firstAttribute="trailing" secondItem="TqY-lQ-WXg" secondAttribute="trailing" constant="88" id="r5G-tG-Fqc"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="명예의 전당" image="crown" catalog="system" selectedImage="crown.fill" id="SJB-Bn-cdN">
+                        <color key="badgeColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="P4c-nx-8mj"/>
                     <connections>
                         <outlet property="habitsCollectionView" destination="IGz-7L-a4U" id="vw3-21-wrG"/>
@@ -288,9 +291,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RTC-Tx-KNe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924.61538461538453" y="531.75355450236964"/>
+            <point key="canvasLocation" x="329" y="1318"/>
         </scene>
-        <!--ConfigureVC-->
+        <!--리스트 홈-->
         <scene sceneID="pGk-Jd-bxa">
             <objects>
                 <viewController id="IhN-9o-QYG" customClass="ConfigureVC" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController">
@@ -299,7 +302,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ezp-dd-gwd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="712"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" red="0.63921568627450975" green="0.63999998569488525" blue="0.63999998569488525" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -316,26 +319,42 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-gq-GGT">
+                                <rect key="frame" x="20" y="652" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="335" id="i1O-e8-2Vz"/>
+                                    <constraint firstAttribute="height" constant="50" id="js4-yW-1ak"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="+ 습관 추가하기"/>
+                                <connections>
+                                    <action selector="showAddView:" destination="IhN-9o-QYG" eventType="touchUpInside" id="cjj-dt-YxJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZYl-Uk-suu"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="j5D-gq-GGT" secondAttribute="bottom" constant="110" id="Fbx-vh-F2O"/>
                             <constraint firstItem="ZYl-Uk-suu" firstAttribute="trailing" secondItem="Ezp-dd-gwd" secondAttribute="trailing" id="Qhk-ps-tRe"/>
-                            <constraint firstAttribute="bottom" secondItem="Ezp-dd-gwd" secondAttribute="bottom" id="ccb-KP-rpk"/>
+                            <constraint firstItem="j5D-gq-GGT" firstAttribute="leading" secondItem="ZYl-Uk-suu" secondAttribute="leading" constant="20" id="Ulb-XW-izy"/>
+                            <constraint firstItem="ZYl-Uk-suu" firstAttribute="trailing" secondItem="j5D-gq-GGT" secondAttribute="trailing" constant="20" id="d7I-mF-Ou2"/>
                             <constraint firstItem="Ezp-dd-gwd" firstAttribute="top" secondItem="hux-Lc-jyN" secondAttribute="top" id="lqi-zL-cyy"/>
                             <constraint firstItem="Ezp-dd-gwd" firstAttribute="leading" secondItem="ZYl-Uk-suu" secondAttribute="leading" id="oPa-RD-cYI"/>
+                            <constraint firstAttribute="bottom" secondItem="Ezp-dd-gwd" secondAttribute="bottom" constant="100" id="vIl-JR-RoR"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="리스트 홈" image="house" catalog="system" selectedImage="house.fill" id="z3e-x6-Lwc"/>
                     <navigationItem key="navigationItem" id="pTz-Vy-smv">
-                        <barButtonItem key="leftBarButtonItem" title="I" image="crown" catalog="system" id="KEi-9B-d8u">
-                            <connections>
-                                <action selector="showCollectionView:" destination="IhN-9o-QYG" id="eW2-sG-WJG"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="pencil.circle" catalog="system" id="cZL-6H-nuv">
-                            <connections>
-                                <action selector="showAddView:" destination="IhN-9o-QYG" id="KSU-MM-X49"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="I" image="crown" catalog="system" id="KEi-9B-d8u">
+                                <connections>
+                                    <action selector="showCollectionView:" destination="IhN-9o-QYG" id="eW2-sG-WJG"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem id="5c3-A9-9el"/>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="pencil.circle" catalog="system" id="cZL-6H-nuv"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -346,7 +365,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B91-93-CI8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-174" y="193"/>
+            <point key="canvasLocation" x="329" y="572"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kVd-zj-z6b">
@@ -359,16 +378,41 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="IhN-9o-QYG" kind="relationship" relationship="rootViewController" id="odj-vt-pkE"/>
+                        <segue destination="5La-qz-ZDU" kind="relationship" relationship="rootViewController" id="odj-vt-pkE"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHB-Aw-57b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-968" y="194"/>
+            <point key="canvasLocation" x="330" y="-873"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="sEm-0W-ALO">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5La-qz-ZDU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="fv6-aq-ayt"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dg3-km-0mC">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="IhN-9o-QYG" kind="relationship" relationship="viewControllers" id="X4k-rA-uPO"/>
+                        <segue destination="eov-Ho-YzC" kind="relationship" relationship="viewControllers" id="hLQ-d9-WY8"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eLU-H4-SMg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="329" y="-129"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cRZ-FX-XII"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="crown" catalog="system" width="128" height="92"/>
+        <image name="crown.fill" catalog="system" width="128" height="92"/>
+        <image name="house" catalog="system" width="128" height="106"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="sparkle" width="960" height="720"/>
         <systemColor name="systemBackgroundColor">

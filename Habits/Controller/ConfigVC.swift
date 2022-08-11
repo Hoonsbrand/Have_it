@@ -38,10 +38,9 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         tableBackGround?.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
         tableBackGround?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         tableBackGround?.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
-        
+
         loadHabitList()
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         self.myTableView.reloadData()
@@ -49,7 +48,17 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
     }
     
     // MARK: - SegueToAddView
-    @IBAction func showAddView(_ sender: UIBarButtonItem) {
+//    @IBAction func showAddView(_ sender: UIBarButtonItem) {
+//        if let numberOfList = listRealm?.count {
+//            if numberOfList >= 20 {
+//                self.view.makeToast("최대 추가 개수는 20개 입니다.", duration: 1.5, position: .center, title: nil, image: nil, completion: nil)
+//            } else {
+//                performSegue(withIdentifier: Segue.goToAddView, sender: sender)
+//            }
+//        }
+//    }
+    
+    @IBAction func showAddView(_ sender: UIButton) {
         if let numberOfList = listRealm?.count {
             if numberOfList >= 20 {
                 self.view.makeToast("최대 추가 개수는 20개 입니다.", duration: 1.5, position: .center, title: nil, image: nil, completion: nil)
