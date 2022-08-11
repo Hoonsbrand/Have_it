@@ -207,6 +207,48 @@
             </objects>
             <point key="canvasLocation" x="1326" y="1317"/>
         </scene>
+        <!--쉬고있는 습관-->
+        <scene sceneID="OCv-jm-hfw">
+            <objects>
+                <viewController id="N7E-jW-I4k" customClass="PausedHabitTableViewController" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZtR-bQ-byb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Uau-Es-S5Q">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="712"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" red="0.63921568630000003" green="0.63999998570000005" blue="0.63999998570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customTableViewCell" id="7DZ-mL-UtY">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7DZ-mL-UtY" id="xVa-dX-N9p">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Kuu-7a-E3u"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Uau-Es-S5Q" firstAttribute="leading" secondItem="Kuu-7a-E3u" secondAttribute="leading" id="4yu-jr-IZZ"/>
+                            <constraint firstItem="Uau-Es-S5Q" firstAttribute="top" secondItem="ZtR-bQ-byb" secondAttribute="top" id="75K-rc-mvK"/>
+                            <constraint firstItem="Uau-Es-S5Q" firstAttribute="trailing" secondItem="Kuu-7a-E3u" secondAttribute="trailing" id="NSH-Zg-5gY"/>
+                            <constraint firstAttribute="bottom" secondItem="Uau-Es-S5Q" secondAttribute="bottom" constant="100" id="iT1-Kc-0xb"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="쉬고있는 습관" image="stop.circle" catalog="system" selectedImage="stop.circle.fill" id="lo4-gH-4v2"/>
+                    <connections>
+                        <outlet property="pausedTableView" destination="Uau-Es-S5Q" id="80y-1J-Xkg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RkK-e8-F8y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2273" y="1317"/>
+        </scene>
         <!--명예의 전당-->
         <scene sceneID="eYm-ub-QLK">
             <objects>
@@ -392,12 +434,14 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="fv6-aq-ayt"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dg3-km-0mC">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="IhN-9o-QYG" kind="relationship" relationship="viewControllers" id="X4k-rA-uPO"/>
                         <segue destination="eov-Ho-YzC" kind="relationship" relationship="viewControllers" id="hLQ-d9-WY8"/>
+                        <segue destination="N7E-jW-I4k" kind="relationship" relationship="viewControllers" id="Tq8-uf-6uX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eLU-H4-SMg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -415,6 +459,8 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="sparkle" width="960" height="720"/>
+        <image name="stop.circle" catalog="system" width="128" height="121"/>
+        <image name="stop.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

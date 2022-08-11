@@ -19,6 +19,8 @@ class Habits: Object {
     @Persisted var isInHOF: Bool = false                  // 해당 습관이 명예의 전당에 있는지
     @Persisted var clickedTime : Date?                    // 버튼을 클릭한 시간 =============
     @Persisted var dDay : Date = Date()                         // dDay 날짜 ==================
+    @Persisted var isPausedHabit: Bool = false            // 잠시 멈춘 습관인지
+    
     convenience init(title: String, createTime: Date) {
         self.init()
         self.title = title

@@ -43,7 +43,6 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.myTableView.reloadData()
         loadHabitList()
     }
     
@@ -126,7 +125,7 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     
     // MARK: - 리스트 로드
     func loadHabitList() {
-        listRealm = realm.objects(Habits.self).sorted(byKeyPath: "isBookmarked", ascending: false).filter("isInHOF = false")
+        listRealm = realm.objects(Habits.self).sorted(byKeyPath: "isBookmarked", ascending: false).filter("isInHOF = false").filter("isPausedHabit = false")
 
         UIView.transition(with: myTableView,
                           duration: 0.35,
@@ -159,11 +158,11 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
         
         switch orientation {
         case .right:
-            let deleteAction = SwipeAction(style: .destructive, title: "삭제") { action, indexPath in
+            let deleteAction = SwipeAction(style: .default, title: "잠시 쉬기") { action, indexPath in
                 
-                if let itemForDeletetion = self.listRealm?[indexPath.row] {
+                if let itemForPause = self.listRealm?[indexPath.row] {
                     
-                    let deleteAlert = UIAlertController(title: "습관 삭제", message: "정말 포기하시겠습니까?", preferredStyle: .alert)
+                    let deleteAlert = UIAlertController(title: "✋\n습관을 잠깐 멈추시겠어요?", message: "\n멈춘 습관은 '잠시 멈춤'에 보관되며\n언제든지 다시 시작하실 수 있습니다.\n다만, 다시 시작하실 때는 1일차로 돌아갑니다.😢", preferredStyle: .alert)
                     
                     let keepChallengeAlertAction = UIAlertAction(title: "계속 도전", style: .cancel) { _ in
                         // 계속 도전을 누르면 swipe 숨기는 기능 필요
@@ -173,13 +172,14 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                                           animations: { self.myTableView.reloadData() })
                         self.view.makeToast("👍 잘 선택 하셨어요! 끝까지 화이팅! 👍", duration: 1.5, position: .center, title: nil, image: nil, completion: nil)
                     }
-                    let giveUpChallengeAlertAction = UIAlertAction(title: "포기하기", style: .destructive) { _ in
+                    let pauseChallengeAlertAction = UIAlertAction(title: "멈추기", style: .destructive) { _ in
                         do {
                             try self.realm.write {
-                                self.realm.delete(itemForDeletetion)
+//                                self.realm.delete(itemForDeletetion)
+                                itemForPause.isPausedHabit = true
                             }
                         } catch {
-                            print("Error deleting item, \(error)")
+                            print("Error pause item, \(error)")
                         }
 
                         UIView.transition(with: tableView,
@@ -188,7 +188,7 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                                           animations: { self.myTableView.reloadData() })
                     }
                     deleteAlert.addAction(keepChallengeAlertAction)
-                    deleteAlert.addAction(giveUpChallengeAlertAction)
+                    deleteAlert.addAction(pauseChallengeAlertAction)
                     
                     self.present(deleteAlert, animated: true, completion: nil)
                 }

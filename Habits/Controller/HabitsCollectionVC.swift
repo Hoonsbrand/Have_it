@@ -19,6 +19,9 @@ class HabitsCollectionVC: UIViewController {
     let realm = try! Realm()
     var listRealm: Results<Habits>?
     
+    let firstLabel = UILabel()
+    let secondLabel = UILabel()
+    
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +43,19 @@ class HabitsCollectionVC: UIViewController {
         self.habitsCollectionView.collectionViewLayout = createCompositionalLayout()
         
         // 명예의 전당에 아무것도 없을 때 레이블 설정
+        loadHOF()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadHOF()
+        self.habitsCollectionView.reloadData()
+    }
+    
+    
+    func loadHOF() {
         let listCount = realm.objects(Habits.self).filter("isInHOF = true").count
-        
-        if listCount == 0 {
-            
-            let firstLabel = UILabel()
+
+        if listCount == 0 {             
             firstLabel.frame = CGRect(x: 95, y: 150, width: 300, height: 50)
             
             firstLabel.text = "아무것도 없어요!"
@@ -52,7 +63,7 @@ class HabitsCollectionVC: UIViewController {
             //레이블 폰트 설정
             firstLabel.font = UIFont.boldSystemFont(ofSize: 30)
             
-            let secondLabel = UILabel()
+            
             secondLabel.frame = CGRect(x: 35, y: 210, width: 500, height: 50)
             
             secondLabel.text = "66일간의 여정을 완료해서 추가해보세요!"
@@ -63,6 +74,9 @@ class HabitsCollectionVC: UIViewController {
             //루트뷰에 레이블 추가
             self.view.addSubview(firstLabel)
             self.view.addSubview(secondLabel)
+        } else {
+            firstLabel.removeFromSuperview()
+            secondLabel.removeFromSuperview()
         }
     }
 }
