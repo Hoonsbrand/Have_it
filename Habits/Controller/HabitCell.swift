@@ -34,7 +34,7 @@ class HabitCell: SwipeTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.backgroundColor = UIColor(named: "ViewBackground")
         habitListBubble.layer.cornerRadius = habitListBubble.frame.size.height / 5
     }
 

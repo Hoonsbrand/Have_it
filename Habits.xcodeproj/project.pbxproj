@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12EE17FA79C6DA251B1887E2 /* Pods_Habits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B15C2EC8BF252FEE02D21B3 /* Pods_Habits.framework */; };
 		204A50ED289CEC70000C03EA /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204A50EC289CEC70000C03EA /* TimeManager.swift */; };
+		208025BD28A54061008283FF /* LeeSeoyun.otf in Resources */ = {isa = PBXBuildFile; fileRef = 208025BC28A54061008283FF /* LeeSeoyun.otf */; };
 		20850887288A9A4300553252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20850886288A9A4300553252 /* AppDelegate.swift */; };
 		20850889288A9A4300553252 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20850888288A9A4300553252 /* SceneDelegate.swift */; };
 		2085088B288A9A4300553252 /* ConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085088A288A9A4300553252 /* ConfigVC.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		204A50EC289CEC70000C03EA /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
+		208025BC28A54061008283FF /* LeeSeoyun.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeeSeoyun.otf; sourceTree = "<group>"; };
 		20850883288A9A4300553252 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20850886288A9A4300553252 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20850888288A9A4300553252 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		208025B728A53D22008283FF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				208025BC28A54061008283FF /* LeeSeoyun.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		2085087A288A9A4300553252 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +97,7 @@
 		20850885288A9A4300553252 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
+				208025B728A53D22008283FF /* Fonts */,
 				20DFD243289A4CEC000DF63A /* Service */,
 				20DFD240289A4CD1000DF63A /* Model */,
 				20DFD241289A4CE0000DF63A /* View */,
@@ -220,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20850893288A9A4300553252 /* LaunchScreen.storyboard in Resources */,
+				208025BD28A54061008283FF /* LeeSeoyun.otf in Resources */,
 				722B891E28967C9300158BC5 /* HabitsCustomCollectionViewCell.xib in Resources */,
 				20850890288A9A4300553252 /* Assets.xcassets in Resources */,
 				729D89F8288FDD3A00B77EE9 /* HabitCell.xib in Resources */,

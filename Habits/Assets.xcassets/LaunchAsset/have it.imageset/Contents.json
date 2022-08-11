@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "have it.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bagan-ge82472ea9_1920.jpg",
+      "filename" : "have it-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "have it-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

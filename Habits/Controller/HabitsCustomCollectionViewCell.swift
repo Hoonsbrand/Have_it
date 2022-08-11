@@ -25,6 +25,9 @@ class HabitsCustomCollectionViewCell: UICollectionViewCell {
         didSet {
             // cell label 설정
             self.habitLabel.text = labelName
+            // 변경 텍스트 $$$$$$$$$$
+            habitLabel.textColor = UIColor(named: "textFontColor")
+            habitLabel.font = UIFont(name: "LeeSeoyun", size: 30)
         }
     }
     

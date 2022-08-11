@@ -42,7 +42,9 @@ extension PausedHabitTableViewController: UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let habitList = listRealm {
+            self.pausedTableView.backgroundColor = UIColor(named: "ViewBackground")
             return habitList.count
+            
         }
         return 0
     }

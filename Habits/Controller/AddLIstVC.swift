@@ -17,12 +17,17 @@ class AddLIstVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var inputHabitTextField: UITextField!
     
+    @IBOutlet weak var addVCTitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         inputHabitTextField.delegate = self
         inputHabitTextField.becomeFirstResponder()
         self.navigationItem.setHidesBackButton(true, animated: true)
+        // $$$$$$$$$$$$$
+        addVCTitle.textColor = UIColor(named: "textFontColor")
+        addVCTitle.font = UIFont(name: "LeeSeoyun", size: 30)
+        
     }
 
     // MARK: textField Delegate Method

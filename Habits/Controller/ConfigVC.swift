@@ -27,17 +27,20 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.register(UINib(nibName: Cell.nibName, bundle: nil), forCellReuseIdentifier: Cell.customTableViewCell)
+        // &&&&&&&%$$$*&
+        self.view.backgroundColor = UIColor(named: "ViewBackground")
         
-        let image = UIImage(named: "sparkle")
-        let imgView = UIImageView(image: image)
-        self.myTableView.backgroundView = imgView
-        let tableBackGround = self.myTableView.backgroundView
         
-        tableBackGround?.translatesAutoresizingMaskIntoConstraints = false
-        tableBackGround?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
-        tableBackGround?.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
-        tableBackGround?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        tableBackGround?.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+//        let image = UIImage(named: "sparkle")
+//        let imgView = UIImageView(image: image)
+//        self.myTableView.backgroundView = imgView
+//        let tableBackGround = self.myTableView.backgroundView
+//
+//        tableBackGround?.translatesAutoresizingMaskIntoConstraints = false
+//        tableBackGround?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+//        tableBackGround?.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
+//        tableBackGround?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+//        tableBackGround?.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
 
         loadHabitList()
     }
@@ -91,6 +94,8 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let habitList = listRealm {
+            // %%$%$%$%$%%
+            self.myTableView.backgroundColor = UIColor(named: "ViewBackground")
             return habitList.count
         }
         return 0
@@ -105,12 +110,15 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
         
         if let list = listRealm?[indexPath.row] {
             cell.habitTitle.text = list.title
+            // 폰트 사이즈,색상 변경$$$$$$$$$$$$$$$$$$$
+            cell.habitTitle.textColor = UIColor(named: "textFontColor")
+            cell.habitTitle.font = UIFont(name: "LeeSeoyun", size: 30)
 
             if list.isBookmarked {
                 cell.bookmarkOutlet.setTitle("⭐", for: .normal)
             }
             
-            cell.backgroundColor = .clear
+            cell.backgroundColor = UIColor(named: "ViewBackground")
         }
         return cell
     }

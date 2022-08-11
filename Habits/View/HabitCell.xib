@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,7 +40,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="67f-ta-W1m" firstAttribute="leading" secondItem="DMN-Yi-r8d" secondAttribute="leading" constant="8" id="JK4-dH-eUR"/>
                                     <constraint firstItem="67f-ta-W1m" firstAttribute="top" secondItem="DMN-Yi-r8d" secondAttribute="top" constant="29" id="phl-bk-tYh"/>
@@ -49,6 +50,7 @@
                         </subviews>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" name="ViewBackground"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="7Q1-uK-0Lz" secondAttribute="trailing" constant="10" id="7yS-SP-mji"/>
                     <constraint firstItem="7Q1-uK-0Lz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Bv9-b8-L7f"/>
@@ -65,4 +67,9 @@
             <point key="canvasLocation" x="267.39130434782612" y="141.62946428571428"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="ViewBackground">
+            <color red="1" green="1" blue="0.90600001811981201" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
