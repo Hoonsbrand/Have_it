@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lzs-tQ-7Sy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5La-qz-ZDU">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -10,6 +10,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="LeeSeoyun.otf">
+            <string>LeeSeoyun</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--AddL IstVC-->
         <scene sceneID="ZsV-Sc-FPf">
@@ -20,26 +25,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 습관 등록" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klf-AI-e9x">
-                                <rect key="frame" x="62" y="113.00000000000001" width="266" height="31.666666666666671"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                <rect key="frame" x="62" y="69" width="266" height="27"/>
+                                <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GeS-ea-QyK">
-                                <rect key="frame" x="62" y="184.66666666666666" width="266" height="34"/>
+                                <rect key="frame" x="62" y="136" width="266" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="eJo-SX-3Df">
-                                <rect key="frame" x="104" y="318.66666666666669" width="182" height="33"/>
+                                <rect key="frame" x="104" y="270" width="182" height="29"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEj-6D-3r1">
-                                        <rect key="frame" x="0.0" y="0.0" width="77" height="33"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="67.666666666666671" height="29"/>
                                         <color key="backgroundColor" name="ButtonColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="kEj-6D-3r1" secondAttribute="height" multiplier="7:3" id="iih-TK-8dw"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="17"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="등록">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,9 +54,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEr-Im-MVm">
-                                        <rect key="frame" x="96" y="0.0" width="86" height="33"/>
+                                        <rect key="frame" x="86.666666666666657" y="0.0" width="95.333333333333343" height="29"/>
                                         <color key="backgroundColor" name="ButtonColor"/>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="17"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="뒤로가기">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -85,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCM-IY-M5l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-684" y="1317"/>
+            <point key="canvasLocation" x="1318" y="1317"/>
         </scene>
         <!--CheckVC-->
         <scene sceneID="Xi5-l3-Ays">
@@ -96,20 +101,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CheckVC Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i80-SP-Mxl">
-                                <rect key="frame" x="45" y="112.99999999999999" width="300" height="36.333333333333329"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="31"/>
+                                <rect key="frame" x="45" y="69" width="300" height="31"/>
+                                <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zpy-zQ-o83">
-                                <rect key="frame" x="40" y="209.33333333333337" width="310" height="150"/>
+                                <rect key="frame" x="40" y="160" width="310" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWs-gE-YBB" customClass="CircleProgress" customModule="Habits" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYn-Iq-qkP">
-                                                <rect key="frame" x="54.333333333333329" y="64.999999999999972" width="41.333333333333329" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="52.666666666666671" y="66.666666666666657" width="44.666666666666671" height="17"/>
+                                                <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -123,37 +128,37 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="FBx-I6-Bt1">
-                                        <rect key="frame" x="150" y="11.333333333333307" width="160" height="127.33333333333331"/>
+                                        <rect key="frame" x="150" y="18" width="160" height="114"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Km7-gU-uuq">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="55.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="49"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AK7-yT-CBx">
-                                                        <rect key="frame" x="54.333333333333343" y="0.0" width="51.333333333333343" height="20.333333333333332"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <rect key="frame" x="55.666666666666657" y="0.0" width="48.666666666666657" height="17"/>
+                                                        <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUR-1g-IfR">
-                                                        <rect key="frame" x="59.333333333333343" y="35.333333333333343" width="41.333333333333343" height="20.333333333333329"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="57.666666666666657" y="32" width="44.666666666666657" height="17"/>
+                                                        <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3Yz-ut-4C6">
-                                                <rect key="frame" x="0.0" y="71.666666666666657" width="160" height="55.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="65" width="160" height="49"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성공 횟수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlP-DF-5gh">
-                                                        <rect key="frame" x="48.666666666666657" y="0.0" width="63" height="20.333333333333332"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <rect key="frame" x="51.666666666666657" y="0.0" width="57" height="17"/>
+                                                        <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yC-aS-TpI">
-                                                        <rect key="frame" x="59.333333333333343" y="35.333333333333371" width="41.333333333333343" height="20.333333333333329"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="57.666666666666657" y="32" width="44.666666666666657" height="17"/>
+                                                        <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -164,12 +169,13 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8v-4O-0Zp">
-                                <rect key="frame" x="45" y="419.33333333333331" width="300" height="161.66666666666669"/>
+                                <rect key="frame" x="45" y="370" width="300" height="214"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqL-D9-ESO">
-                                <rect key="frame" x="180" y="671" width="30" height="30"/>
+                                <rect key="frame" x="180" y="674" width="30" height="27"/>
                                 <color key="backgroundColor" name="ButtonColor"/>
+                                <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="성공">
@@ -210,9 +216,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sau-GV-aGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1326" y="1317"/>
+            <point key="canvasLocation" x="-860" y="1317"/>
         </scene>
-        <!--쉬고있는 습관-->
+        <!--잠시 멈춤-->
         <scene sceneID="OCv-jm-hfw">
             <objects>
                 <viewController id="N7E-jW-I4k" customClass="PausedHabitTableViewController" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController">
@@ -245,7 +251,7 @@
                             <constraint firstAttribute="bottom" secondItem="Uau-Es-S5Q" secondAttribute="bottom" constant="100" id="iT1-Kc-0xb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="쉬고있는 습관" image="stop.circle" catalog="system" selectedImage="stop.circle.fill" id="lo4-gH-4v2"/>
+                    <tabBarItem key="tabBarItem" title="잠시 멈춤" image="stop.circle" catalog="system" selectedImage="stop.circle.fill" id="lo4-gH-4v2"/>
                     <connections>
                         <outlet property="pausedTableView" destination="Uau-Es-S5Q" id="80y-1J-Xkg"/>
                     </connections>
@@ -254,16 +260,16 @@
             </objects>
             <point key="canvasLocation" x="2273" y="1317"/>
         </scene>
-        <!--명예의 전당-->
+        <!--내가 해냄-->
         <scene sceneID="eYm-ub-QLK">
             <objects>
                 <viewController id="eov-Ho-YzC" customClass="HabitsCollectionVC" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ngY-o6-fQ8">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IGz-7L-a4U">
-                                <rect key="frame" x="10" y="115" width="370" height="675"/>
+                                <rect key="frame" x="10" y="109" width="370" height="652"/>
                                 <color key="backgroundColor" name="ViewBackground"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lnI-Jv-0jY">
                                     <size key="itemSize" width="128" height="128"/>
@@ -309,9 +315,9 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="명예의 전당😃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqY-lQ-WXg">
-                                <rect key="frame" x="88" y="59" width="214" height="32"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내가 해냄😃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqY-lQ-WXg">
+                                <rect key="frame" x="88" y="59" width="214" height="26"/>
+                                <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -328,7 +334,7 @@
                             <constraint firstItem="s9h-oZ-bzB" firstAttribute="trailing" secondItem="TqY-lQ-WXg" secondAttribute="trailing" constant="88" id="r5G-tG-Fqc"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="명예의 전당" image="crown" catalog="system" selectedImage="crown.fill" id="SJB-Bn-cdN">
+                    <tabBarItem key="tabBarItem" title="내가 해냄" image="crown" catalog="system" selectedImage="crown.fill" id="SJB-Bn-cdN">
                         <color key="badgeColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="P4c-nx-8mj"/>
@@ -338,9 +344,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RTC-Tx-KNe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="329" y="1318"/>
+            <point key="canvasLocation" x="328" y="1317"/>
         </scene>
-        <!--리스트 홈-->
+        <!--ConfigureVC-->
         <scene sceneID="pGk-Jd-bxa">
             <objects>
                 <viewController id="IhN-9o-QYG" customClass="ConfigureVC" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController">
@@ -353,11 +359,11 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" name="ViewBackground"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customTableViewCell" id="zgC-jv-0Ba">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customTableViewCell" id="zgC-jv-0Ba">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zgC-jv-0Ba" id="KTQ-be-FoI">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="361.33333333333331" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -368,16 +374,17 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-gq-GGT">
                                 <rect key="frame" x="20" y="684" width="350" height="50"/>
+                                <color key="backgroundColor" name="ButtonColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="335" id="i1O-e8-2Vz"/>
                                     <constraint firstAttribute="height" constant="50" id="js4-yW-1ak"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="15"/>
                                 <color key="tintColor" name="ButtonColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="+ 습관 추가하기">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" name="ButtonColor"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="+ 습관 추가하기">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="showAddView:" destination="IhN-9o-QYG" eventType="touchUpInside" id="cjj-dt-YxJ"/>
                                 </connections>
@@ -395,46 +402,16 @@
                             <constraint firstAttribute="bottom" secondItem="Ezp-dd-gwd" secondAttribute="bottom" constant="100" id="vIl-JR-RoR"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="리스트 홈" image="house" catalog="system" selectedImage="house.fill" id="z3e-x6-Lwc"/>
-                    <navigationItem key="navigationItem" id="pTz-Vy-smv">
-                        <leftBarButtonItems>
-                            <barButtonItem title="I" image="crown" catalog="system" id="KEi-9B-d8u">
-                                <connections>
-                                    <action selector="showCollectionView:" destination="IhN-9o-QYG" id="eW2-sG-WJG"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem id="5c3-A9-9el"/>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="pencil.circle" catalog="system" id="cZL-6H-nuv"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="pTz-Vy-smv"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="myTableView" destination="Ezp-dd-gwd" id="UKc-du-z25"/>
-                        <segue destination="ovw-ES-oaq" kind="show" identifier="goToAddView" id="LbH-XS-S11"/>
-                        <segue destination="eov-Ho-YzC" kind="showDetail" identifier="goToCollectionView" id="cRZ-FX-XII"/>
+                        <segue destination="ovw-ES-oaq" kind="show" identifier="goToAddView" id="ezf-L1-3rY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B91-93-CI8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="329" y="572"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="kVd-zj-z6b">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lzs-tQ-7Sy" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9rU-pp-LET">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="5La-qz-ZDU" kind="relationship" relationship="rootViewController" id="odj-vt-pkE"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EHB-Aw-57b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="330" y="-873"/>
+            <point key="canvasLocation" x="1256.9230769230769" y="571.56398104265395"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sEm-0W-ALO">
@@ -448,7 +425,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="IhN-9o-QYG" kind="relationship" relationship="viewControllers" id="X4k-rA-uPO"/>
+                        <segue destination="ahy-R8-cUg" kind="relationship" relationship="viewControllers" id="X4k-rA-uPO"/>
                         <segue destination="eov-Ho-YzC" kind="relationship" relationship="viewControllers" id="hLQ-d9-WY8"/>
                         <segue destination="N7E-jW-I4k" kind="relationship" relationship="viewControllers" id="Tq8-uf-6uX"/>
                     </connections>
@@ -457,16 +434,30 @@
             </objects>
             <point key="canvasLocation" x="329" y="-129"/>
         </scene>
+        <!--리스트 홈-->
+        <scene sceneID="9Th-2Y-7la">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ahy-R8-cUg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="리스트 홈" image="house" catalog="system" selectedImage="house.fill" id="z3e-x6-Lwc"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iIJ-bn-Tdm">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IhN-9o-QYG" kind="relationship" relationship="rootViewController" id="avs-VN-tb6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eId-M6-gxm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="327.69230769230768" y="571.56398104265395"/>
+        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="cRZ-FX-XII"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="crown" catalog="system" width="128" height="92"/>
         <image name="crown.fill" catalog="system" width="128" height="92"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
-        <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="stop.circle" catalog="system" width="128" height="121"/>
         <image name="stop.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="ButtonColor">
