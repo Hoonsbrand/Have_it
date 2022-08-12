@@ -10,9 +10,8 @@ import RealmSwift
 import Toast_Swift
 import SwipeCellKit
 
-class ConfigureVC: UIViewController, BookmarkCellDelegate {
+class ConfigureVC: UIViewController {
    
-    
     let realm = try! Realm()
     var listRealm: Results<Habits>?
     
@@ -27,7 +26,6 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.register(UINib(nibName: Cell.nibName, bundle: nil), forCellReuseIdentifier: Cell.customTableViewCell)
-        // &&&&&&&%$$$*&
         self.view.backgroundColor = UIColor(named: "ViewBackground")
         
         loadHabitList()
@@ -35,6 +33,8 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         let appearance = UITabBarItem.appearance()
         let attributes = [NSAttributedString.Key.font:UIFont(name: "LeeSeoyun", size: 15)]
         appearance.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any], for: .normal)
+        
+        self.myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +76,6 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let habitList = listRealm {
-            // %%$%$%$%$%%
             self.myTableView.backgroundColor = UIColor(named: "ViewBackground")
             return habitList.count
         }
@@ -86,18 +85,15 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     // MARK: - 셀 추가
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myTableView.dequeueReusableCell(withIdentifier: Cell.customTableViewCell, for: indexPath) as! HabitCell
-        cell.bookmarkDelegate = self
+        
         cell.loadDelegate = self
         cell.delegate = self
         
         if let list = listRealm?[indexPath.row] {
             cell.habitTitle.text = list.title
-            // 폰트 사이즈,색상 변경$$$$$$$$$$$$$$$$$$$
-            cell.habitTitle.textColor = UIColor(named: "textFontColor")
-            cell.habitTitle.font = UIFont(name: "LeeSeoyun", size: 30)
 
             if list.isBookmarked {
-                cell.bookmarkOutlet.setTitle("⭐", for: .normal)
+                cell.bookmarkImage.image = UIImage(named: "bookmarkImage")
             }
             
             cell.backgroundColor = UIColor(named: "ViewBackground")
@@ -165,7 +161,6 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                     let pauseChallengeAlertAction = UIAlertAction(title: "멈추기", style: .destructive) { _ in
                         do {
                             try self.realm.write {
-//                                self.realm.delete(itemForDeletetion)
                                 itemForPause.isPausedHabit = true
                             }
                         } catch {
