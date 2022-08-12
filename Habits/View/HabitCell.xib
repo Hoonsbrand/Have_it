@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="LeeSeoyun.otf">
+            <string>LeeSeoyun</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -34,13 +39,13 @@
                                 <rect key="frame" x="40" y="0.0" width="439" height="85"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fefeefe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67f-ta-W1m">
-                                        <rect key="frame" x="8" y="29" width="65.5" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <rect key="frame" x="8" y="29" width="62" height="27"/>
+                                        <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="67f-ta-W1m" firstAttribute="leading" secondItem="DMN-Yi-r8d" secondAttribute="leading" constant="8" id="JK4-dH-eUR"/>
                                     <constraint firstItem="67f-ta-W1m" firstAttribute="top" secondItem="DMN-Yi-r8d" secondAttribute="top" constant="29" id="phl-bk-tYh"/>
