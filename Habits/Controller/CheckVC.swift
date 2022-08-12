@@ -53,8 +53,12 @@ class CheckVC: UIViewController {
         
         let elevenDayCount = dayCount % 11
         self.myProgress.filleProgress(fromValue: CGFloat(elevenDayCount) - 1.0 , toValue: CGFloat(elevenDayCount))
-        
-        
+    }
+    
+    // CheckVC에서만 네비게이션 바 보이게 하기
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     

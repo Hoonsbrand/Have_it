@@ -38,6 +38,8 @@ class ConfigureVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         loadHabitList()
     }
     

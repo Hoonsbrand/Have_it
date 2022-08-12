@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("====> \(sub)")
           }
         }
+        // 런치화면 1초 보여주기
+        Thread.sleep(forTimeInterval: 1.0)
         return true
     }
 
