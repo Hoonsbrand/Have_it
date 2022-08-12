@@ -35,7 +35,7 @@
                                             <constraint firstAttribute="height" constant="35" id="G0C-TQ-T9L"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="간단한 습관 만들기" translatesAutoresizingMaskIntoConstraints="NO" id="G0W-fJ-fSc">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logobottom" translatesAutoresizingMaskIntoConstraints="NO" id="G0W-fJ-fSc">
                                         <rect key="frame" x="75" y="141" width="118" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="aCU-1W-M56"/>
@@ -61,11 +61,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="LaunchBackground"/>
                         <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="CIe-n2-rdG" secondAttribute="bottom" constant="205" id="5kp-V4-qeP"/>
                             <constraint firstItem="CIe-n2-rdG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="63" id="Eco-c6-7bR"/>
                             <constraint firstItem="9sI-Vx-FtU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="PwY-kH-KML"/>
                             <constraint firstItem="CIe-n2-rdG" firstAttribute="top" secondItem="9sI-Vx-FtU" secondAttribute="bottom" constant="41" id="QUe-3n-tgt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9sI-Vx-FtU" secondAttribute="trailing" constant="64" id="iHu-YA-ZOT"/>
-                            <constraint firstItem="9sI-Vx-FtU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="230" id="jRS-KO-ZSY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CIe-n2-rdG" secondAttribute="trailing" constant="63" id="ndE-iX-nd5"/>
                         </constraints>
                     </view>
@@ -79,7 +79,7 @@
         <image name="Vector" width="83" height="79.666664123535156"/>
         <image name="alreadyHaveHabit" width="245" height="47"/>
         <image name="have it" width="49" height="12.333333015441895"/>
-        <image name="간단한 습관 만들기" width="36.333332061767578" height="4.3333334922790527"/>
+        <image name="logobottom" width="36.333332061767578" height="4.3333334922790527"/>
         <namedColor name="LaunchBackground">
             <color red="0.99199998378753662" green="1" blue="0.6470000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
