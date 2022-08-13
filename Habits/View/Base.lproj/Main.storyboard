@@ -25,18 +25,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 습관 등록" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klf-AI-e9x">
-                                <rect key="frame" x="62" y="113" width="266" height="27"/>
+                                <rect key="frame" x="62" y="69" width="266" height="27"/>
                                 <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GeS-ea-QyK">
-                                <rect key="frame" x="62" y="180" width="266" height="34"/>
+                                <rect key="frame" x="62" y="136" width="266" height="34"/>
                                 <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="eJo-SX-3Df">
-                                <rect key="frame" x="104" y="314" width="182" height="29"/>
+                                <rect key="frame" x="104" y="270" width="182" height="29"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEj-6D-3r1">
                                         <rect key="frame" x="0.0" y="0.0" width="67.666666666666671" height="29"/>
@@ -101,19 +101,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CheckVC Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i80-SP-Mxl">
-                                <rect key="frame" x="45" y="113" width="300" height="31"/>
+                                <rect key="frame" x="45" y="69" width="300" height="31"/>
                                 <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zpy-zQ-o83">
-                                <rect key="frame" x="40" y="204" width="310" height="150"/>
+                                <rect key="frame" x="40" y="160" width="310" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWs-gE-YBB" customClass="CircleProgress" customModule="Habits" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYn-Iq-qkP">
-                                                <rect key="frame" x="52.666666666666671" y="66.666666666666686" width="44.666666666666671" height="17"/>
+                                                <rect key="frame" x="52.666666666666671" y="66.666666666666657" width="44.666666666666671" height="17"/>
                                                 <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -169,7 +169,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8v-4O-0Zp">
-                                <rect key="frame" x="45" y="414" width="300" height="170"/>
+                                <rect key="frame" x="45" y="370" width="300" height="214"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqL-D9-ESO">
@@ -355,7 +355,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ezp-dd-gwd">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="744"/>
+                                <rect key="frame" x="0.0" y="174" width="390" height="570"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" name="ViewBackground"/>
                                 <prototypes>
@@ -389,17 +389,39 @@
                                     <action selector="showAddView:" destination="IhN-9o-QYG" eventType="touchUpInside" id="cjj-dt-YxJ"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKo-nD-1N0">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="164"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="habitLabel" translatesAutoresizingMaskIntoConstraints="NO" id="du5-Td-8pg">
+                                        <rect key="frame" x="30" y="58" width="215" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="215" id="LuG-bB-qdr"/>
+                                            <constraint firstAttribute="height" constant="56" id="X2m-km-cdG"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90588235289999997" green="0.91764705879999997" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="390" id="Fcl-5F-9fJ"/>
+                                    <constraint firstItem="du5-Td-8pg" firstAttribute="leading" secondItem="QKo-nD-1N0" secondAttribute="leading" constant="30" id="Xqc-AJ-ewQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="du5-Td-8pg" secondAttribute="bottom" constant="50" id="cbp-sZ-zCl"/>
+                                    <constraint firstAttribute="height" constant="164" id="vYZ-LN-rqp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZYl-Uk-suu"/>
                         <color key="backgroundColor" name="ViewBackground"/>
                         <constraints>
+                            <constraint firstItem="ZYl-Uk-suu" firstAttribute="trailing" secondItem="QKo-nD-1N0" secondAttribute="trailing" id="7Hy-hd-Dyi"/>
+                            <constraint firstItem="Ezp-dd-gwd" firstAttribute="top" secondItem="QKo-nD-1N0" secondAttribute="bottom" constant="10" id="7II-VS-yBW"/>
+                            <constraint firstItem="QKo-nD-1N0" firstAttribute="leading" secondItem="ZYl-Uk-suu" secondAttribute="leading" id="8Y4-Uw-qAM"/>
                             <constraint firstAttribute="bottom" secondItem="j5D-gq-GGT" secondAttribute="bottom" constant="110" id="Fbx-vh-F2O"/>
                             <constraint firstItem="ZYl-Uk-suu" firstAttribute="trailing" secondItem="Ezp-dd-gwd" secondAttribute="trailing" id="Qhk-ps-tRe"/>
                             <constraint firstItem="j5D-gq-GGT" firstAttribute="leading" secondItem="ZYl-Uk-suu" secondAttribute="leading" constant="20" id="Ulb-XW-izy"/>
                             <constraint firstItem="ZYl-Uk-suu" firstAttribute="trailing" secondItem="j5D-gq-GGT" secondAttribute="trailing" constant="20" id="d7I-mF-Ou2"/>
-                            <constraint firstItem="Ezp-dd-gwd" firstAttribute="top" secondItem="hux-Lc-jyN" secondAttribute="top" id="lqi-zL-cyy"/>
+                            <constraint firstAttribute="bottom" secondItem="Ezp-dd-gwd" secondAttribute="bottom" constant="100" id="ggK-iF-Kh8"/>
+                            <constraint firstItem="QKo-nD-1N0" firstAttribute="top" secondItem="hux-Lc-jyN" secondAttribute="top" id="mMK-zN-5cd"/>
                             <constraint firstItem="Ezp-dd-gwd" firstAttribute="leading" secondItem="ZYl-Uk-suu" secondAttribute="leading" id="oPa-RD-cYI"/>
-                            <constraint firstAttribute="bottom" secondItem="Ezp-dd-gwd" secondAttribute="bottom" constant="100" id="vIl-JR-RoR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pTz-Vy-smv"/>
@@ -411,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B91-93-CI8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1256.9230769230769" y="571.56398104265395"/>
+            <point key="canvasLocation" x="1256.9230769230769" y="570.85308056872032"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sEm-0W-ALO">
@@ -437,11 +459,10 @@
         <!--리스트 홈-->
         <scene sceneID="9Th-2Y-7la">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ahy-R8-cUg" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ahy-R8-cUg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="리스트 홈" image="house" catalog="system" selectedImage="house.fill" id="z3e-x6-Lwc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iIJ-bn-Tdm">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -457,6 +478,7 @@
     <resources>
         <image name="crown" catalog="system" width="128" height="92"/>
         <image name="crown.fill" catalog="system" width="128" height="92"/>
+        <image name="habitLabel" width="107" height="25.5"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="stop.circle" catalog="system" width="128" height="121"/>

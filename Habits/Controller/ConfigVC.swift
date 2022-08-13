@@ -196,8 +196,8 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                 reloadWhenTapBookmark()
             }
             
-            bookmarkAction.image = UIImage(systemName: "star.fill")
-            bookmarkAction.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+            bookmarkAction.image = UIImage(named: "swipeBookmark")
+            bookmarkAction.backgroundColor = UIColor(named: "ViewBackground")
             
             return [bookmarkAction]
         }
