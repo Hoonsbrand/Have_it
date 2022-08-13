@@ -59,10 +59,12 @@ class HabitsCollectionVC: UIViewController {
             firstLabel.frame = CGRect(x: 95, y: 150, width: 300, height: 50)
             
             firstLabel.text = "아무것도 없어요!"
+            firstLabel.font = UIFont(name: "LeeSeoyun", size: 30)
             
-            secondLabel.frame = CGRect(x: 35, y: 210, width: 500, height: 50)
+            secondLabel.frame = CGRect(x: 75, y: 210, width: 500, height: 50)
             
             secondLabel.text = "66일간의 여정을 완료해서 추가해보세요!"
+            secondLabel.font = UIFont(name: "LeeSeoyun", size: 15)
             
             //루트뷰에 레이블 추가
             self.view.addSubview(firstLabel)
