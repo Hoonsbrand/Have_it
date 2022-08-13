@@ -29,36 +29,36 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="designedCell" translatesAutoresizingMaskIntoConstraints="NO" id="0tU-t3-ArI">
                                 <rect key="frame" x="0.0" y="0.0" width="380" height="75"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="54B-e8-y1V">
-                                <rect key="frame" x="27" y="24" width="149" height="28"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZSu-aa-8q6">
-                                        <rect key="frame" x="0.0" y="0.0" width="19" height="17"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="19" id="5ty-5M-l1n"/>
-                                            <constraint firstAttribute="height" constant="17" id="Uhl-Y4-vx7"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일 아침 명상하기 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4L-Q6-rcT">
-                                        <rect key="frame" x="29" y="0.0" width="120" height="17"/>
-                                        <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일 아침 명상하기 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4L-Q6-rcT">
+                                <rect key="frame" x="59" y="29.5" width="120" height="16"/>
+                                <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiZ-Nf-NnT">
+                                <rect key="frame" x="30" y="29" width="19" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="19" id="OxB-TQ-Eux"/>
+                                    <constraint firstAttribute="height" constant="17" id="v3o-V6-qRC"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="bookmarkBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Me3-5k-FAu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="tiZ-Nf-NnT" firstAttribute="leading" secondItem="Zeo-we-6LL" secondAttribute="leading" constant="30" id="0bt-rs-fNr"/>
                             <constraint firstAttribute="trailing" secondItem="0tU-t3-ArI" secondAttribute="trailing" id="6Dd-UG-02N"/>
                             <constraint firstAttribute="height" constant="75" id="6r5-3Y-jKF"/>
                             <constraint firstItem="0tU-t3-ArI" firstAttribute="leading" secondItem="Zeo-we-6LL" secondAttribute="leading" id="7at-0l-NC4"/>
-                            <constraint firstItem="54B-e8-y1V" firstAttribute="top" secondItem="Zeo-we-6LL" secondAttribute="top" constant="24" id="L2M-DC-xVP"/>
+                            <constraint firstItem="tiZ-Nf-NnT" firstAttribute="centerY" secondItem="Zeo-we-6LL" secondAttribute="centerY" id="Lyg-WK-Zdm"/>
                             <constraint firstAttribute="bottom" secondItem="0tU-t3-ArI" secondAttribute="bottom" id="Nhv-5D-m3S"/>
-                            <constraint firstAttribute="bottom" secondItem="54B-e8-y1V" secondAttribute="bottom" constant="23" id="bP4-9T-Bh6"/>
-                            <constraint firstItem="54B-e8-y1V" firstAttribute="leading" secondItem="Zeo-we-6LL" secondAttribute="leading" constant="27" id="fUs-gZ-aZN"/>
                             <constraint firstItem="0tU-t3-ArI" firstAttribute="top" secondItem="Zeo-we-6LL" secondAttribute="top" id="ktO-Cd-zGV"/>
+                            <constraint firstItem="d4L-Q6-rcT" firstAttribute="centerY" secondItem="Zeo-we-6LL" secondAttribute="centerY" id="moL-Na-1JY"/>
                             <constraint firstAttribute="width" constant="380" id="qJN-Jc-3gI"/>
+                            <constraint firstItem="d4L-Q6-rcT" firstAttribute="leading" secondItem="tiZ-Nf-NnT" secondAttribute="trailing" constant="10" id="vfx-mb-m3v"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -72,7 +72,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="bookmarkImage" destination="ZSu-aa-8q6" id="tMR-Hx-Z8U"/>
+                <outlet property="bookmarkBtnOutlet" destination="tiZ-Nf-NnT" id="eC3-9p-sCF"/>
                 <outlet property="contentView" destination="H2p-sc-9uM" id="jai-0G-gdD"/>
                 <outlet property="habitTitle" destination="d4L-Q6-rcT" id="VOQ-kn-hwz"/>
             </connections>

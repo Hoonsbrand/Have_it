@@ -90,12 +90,15 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
         
         cell.loadDelegate = self
         cell.delegate = self
-        
+        cell.bookmarkDelegate = self
+
         if let list = listRealm?[indexPath.row] {
             cell.habitTitle.text = list.title
 
             if list.isBookmarked {
-                cell.bookmarkImage.image = UIImage(named: "bookmarkImage")
+//                cell.bookmarkImage.image = UIImage(named: "bookmarkImage")
+                cell.bookmarkBtnOutlet.isEnabled = true
+                cell.bookmarkBtnOutlet.setBackgroundImage(UIImage(named: "bookmarkImage"), for: .normal)
             }
             
             cell.backgroundColor = UIColor(named: "ViewBackground")
@@ -119,19 +122,6 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
                           duration: 0.35,
                           options: .transitionCrossDissolve,
                           animations: { self.myTableView.reloadData() })
-    }
-    
-    // MARK: - BookmarkCellDelegate Method
-    func bookmarkButtonTappedDelegate(_ habitCell: HabitCell, didTapButton button: UIButton) -> Bool? {
-        guard let row = myTableView.indexPath(for: habitCell)?.row else { return nil }
-        
-        if let bookmarkCheck = listRealm?[row].isBookmarked {
-            try! realm.write {
-                listRealm?[row].isBookmarked = !bookmarkCheck
-            }
-            return !bookmarkCheck
-        }
-        return nil
     }
     
     // MARK: - RequestLoadListDelegate Method
@@ -199,8 +189,23 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
             bookmarkAction.image = UIImage(named: "swipeBookmark")
             bookmarkAction.backgroundColor = UIColor(named: "ViewBackground")
             
-            
+
             return [bookmarkAction]
         }
+    }
+}
+
+// MARK: - BookmarkCellDelegate Method
+extension ConfigureVC: BookmarkCellDelegate {    
+    func bookmarkButtonTappedDelegate(_ habitCell: HabitCell, didTapButton button: UIButton) -> Bool? {
+        guard let row = myTableView.indexPath(for: habitCell)?.row else { return nil }
+        
+        if let bookmarkCheck = listRealm?[row].isBookmarked {
+            try! realm.write {
+                listRealm?[row].isBookmarked = !bookmarkCheck
+            }
+            return !bookmarkCheck
+        }
+        return nil
     }
 }
