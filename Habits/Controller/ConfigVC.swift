@@ -199,6 +199,7 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
             bookmarkAction.image = UIImage(named: "swipeBookmark")
             bookmarkAction.backgroundColor = UIColor(named: "ViewBackground")
             
+            
             return [bookmarkAction]
         }
     }
