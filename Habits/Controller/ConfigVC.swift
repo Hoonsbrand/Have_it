@@ -111,35 +111,49 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
         performSegue(withIdentifier: Segue.goToCheckVC, sender: nil)
     }
     
-    // MARK: - 스크롤을 감지해서 맨 밑에 있을 때 버튼을 숨김
+    
+// MARK: - 스크롤을 감지해서 맨 밑에 있을 때 버튼을 숨김
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollMethod(scrollView)
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        scrollMethod(scrollView)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        scrollMethod(scrollView)
+    }
+    
+    func scrollMethod(_ scrollView: UIScrollView) {
         let height = scrollView.frame.size.height
         let contentYOffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYOffset
         
-        if realm.objects(Habits.self).filter("isPausedHabit = false").count >= 6 {
-            if distanceFromBottom <= height {
-                addHabitOutlet.isEnabled = false
-                addHabitOutlet.isHidden = true
-            } else {
-                addHabitOutlet.isEnabled = true
-                addHabitOutlet.isHidden = false
-            }
+        if distanceFromBottom <= height {
+            addHabitOutlet.isEnabled = false
+            addHabitOutlet.isHidden = true
         } else {
             addHabitOutlet.isEnabled = true
             addHabitOutlet.isHidden = false
         }
         
+        if scrollView.contentOffset.y <= 0 {
+            addHabitOutlet.isEnabled = true
+            addHabitOutlet.isHidden = false
+        }
     }
     
     // MARK: - 리스트 로드
     func loadHabitList() {
         listRealm = realm.objects(Habits.self).sorted(byKeyPath: "isBookmarked", ascending: false).filter("isInHOF = false").filter("isPausedHabit = false")
-
+        addHabitOutlet.isEnabled = true
+        addHabitOutlet.isHidden = false
         UIView.transition(with: myTableView,
                           duration: 0.35,
                           options: .transitionCrossDissolve,
                           animations: { self.myTableView.reloadData() })
+//        myTableView.alwaysBounceVertical = false // 스크롤 뷰 block
     }
     
     // MARK: - RequestLoadListDelegate Method
@@ -176,11 +190,8 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                         } catch {
                             print("Error pause item, \(error)")
                         }
-
-                        UIView.transition(with: tableView,
-                                          duration: 0.35,
-                                          options: .transitionCrossDissolve,
-                                          animations: { self.myTableView.reloadData() })
+                        
+                        self.loadHabitList()
                     }
                     deleteAlert.addAction(keepChallengeAlertAction)
                     deleteAlert.addAction(pauseChallengeAlertAction)

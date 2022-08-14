@@ -226,16 +226,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Uau-Es-S5Q">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Uau-Es-S5Q">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="744"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" name="ViewBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customTableViewCell" id="7DZ-mL-UtY">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7DZ-mL-UtY" id="xVa-dX-N9p">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="91"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -354,16 +354,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ezp-dd-gwd">
-                                <rect key="frame" x="0.0" y="174" width="390" height="570"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ezp-dd-gwd">
+                                <rect key="frame" x="0.0" y="174" width="390" height="587"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="390" id="dbI-cq-Z3D"/>
+                                </constraints>
                                 <color key="sectionIndexBackgroundColor" name="ViewBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customTableViewCell" id="zgC-jv-0Ba">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zgC-jv-0Ba" id="KTQ-be-FoI">
-                                            <rect key="frame" x="0.0" y="0.0" width="361.33333333333331" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="361.33333333333331" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -373,7 +376,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-gq-GGT">
-                                <rect key="frame" x="20" y="684" width="350" height="50"/>
+                                <rect key="frame" x="20" y="703" width="350" height="50"/>
                                 <color key="backgroundColor" name="ButtonColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="335" id="i1O-e8-2Vz"/>
@@ -415,11 +418,11 @@
                             <constraint firstItem="ZYl-Uk-suu" firstAttribute="trailing" secondItem="QKo-nD-1N0" secondAttribute="trailing" id="7Hy-hd-Dyi"/>
                             <constraint firstItem="Ezp-dd-gwd" firstAttribute="top" secondItem="QKo-nD-1N0" secondAttribute="bottom" constant="10" id="7II-VS-yBW"/>
                             <constraint firstItem="QKo-nD-1N0" firstAttribute="leading" secondItem="ZYl-Uk-suu" secondAttribute="leading" id="8Y4-Uw-qAM"/>
-                            <constraint firstAttribute="bottom" secondItem="j5D-gq-GGT" secondAttribute="bottom" constant="110" id="Fbx-vh-F2O"/>
+                            <constraint firstItem="ZYl-Uk-suu" firstAttribute="bottom" secondItem="j5D-gq-GGT" secondAttribute="bottom" constant="8" id="Fbx-vh-F2O"/>
                             <constraint firstItem="ZYl-Uk-suu" firstAttribute="trailing" secondItem="Ezp-dd-gwd" secondAttribute="trailing" id="Qhk-ps-tRe"/>
                             <constraint firstItem="j5D-gq-GGT" firstAttribute="leading" secondItem="ZYl-Uk-suu" secondAttribute="leading" constant="20" id="Ulb-XW-izy"/>
                             <constraint firstItem="ZYl-Uk-suu" firstAttribute="trailing" secondItem="j5D-gq-GGT" secondAttribute="trailing" constant="20" id="d7I-mF-Ou2"/>
-                            <constraint firstAttribute="bottom" secondItem="Ezp-dd-gwd" secondAttribute="bottom" constant="100" id="ggK-iF-Kh8"/>
+                            <constraint firstItem="ZYl-Uk-suu" firstAttribute="bottom" secondItem="Ezp-dd-gwd" secondAttribute="bottom" id="ggK-iF-Kh8"/>
                             <constraint firstItem="QKo-nD-1N0" firstAttribute="top" secondItem="hux-Lc-jyN" secondAttribute="top" id="mMK-zN-5cd"/>
                             <constraint firstItem="Ezp-dd-gwd" firstAttribute="leading" secondItem="ZYl-Uk-suu" secondAttribute="leading" id="oPa-RD-cYI"/>
                         </constraints>
@@ -445,7 +448,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dg3-km-0mC">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="1" green="1" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="ahy-R8-cUg" kind="relationship" relationship="viewControllers" id="X4k-rA-uPO"/>
