@@ -154,7 +154,7 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
         
         switch orientation {
         case .right:
-            let deleteAction = SwipeAction(style: .default, title: "잠시 쉬기") { action, indexPath in
+            let deleteAction = SwipeAction(style: .default, title: nil) { action, indexPath in
                 
                 if let itemForPause = self.listRealm?[indexPath.row] {
                     
@@ -189,7 +189,8 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                 }
             }
             
-            deleteAction.image = UIImage(named: "delete-icon")
+            deleteAction.image = UIImage(named: "pauseImage")
+            deleteAction.backgroundColor = UIColor(named: "ViewBackground")
             
             return [deleteAction]
             
