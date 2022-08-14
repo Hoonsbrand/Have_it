@@ -19,6 +19,7 @@ class ConfigureVC: UIViewController {
     var selectIndexPath = IndexPath()
     
     @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var addHabitOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +30,8 @@ class ConfigureVC: UIViewController {
         self.view.backgroundColor = UIColor(named: "ViewBackground")
         
         loadHabitList()
-
-        let appearance = UITabBarItem.appearance()
-        let attributes = [NSAttributedString.Key.font:UIFont(name: "LeeSeoyun", size: 15)]
-        appearance.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any], for: .normal)
         
+        // 테이블 뷰 구분선 없애기
         self.myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
@@ -94,9 +92,8 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
 
         if let list = listRealm?[indexPath.row] {
             cell.habitTitle.text = list.title
-
+            
             if list.isBookmarked {
-//                cell.bookmarkImage.image = UIImage(named: "bookmarkImage")
                 cell.bookmarkBtnOutlet.isEnabled = true
                 cell.bookmarkBtnOutlet.setBackgroundImage(UIImage(named: "bookmarkImage"), for: .normal)
             }
@@ -112,6 +109,21 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
         self.selectIndexPath = indexPath
         
         performSegue(withIdentifier: Segue.goToCheckVC, sender: nil)
+    }
+    
+    // MARK: - 스크롤을 감지해서 맨 밑에 있을 때 버튼을 숨김
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYOffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYOffset
+
+        if distanceFromBottom <= height {
+            addHabitOutlet.isEnabled = false
+            addHabitOutlet.isHidden = true
+        } else {
+            addHabitOutlet.isEnabled = true
+            addHabitOutlet.isHidden = false
+        }
     }
     
     // MARK: - 리스트 로드

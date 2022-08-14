@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         // 런치화면 1초 보여주기
         Thread.sleep(forTimeInterval: 1.0)
+        
+        // 탭 바의 폰트 바꿈
+        UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont(name: "LeeSeoyun", size: 10)!], for: .normal)
         return true
     }
 
