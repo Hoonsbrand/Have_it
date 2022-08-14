@@ -116,14 +116,20 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
         let height = scrollView.frame.size.height
         let contentYOffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYOffset
-
-        if distanceFromBottom <= height {
-            addHabitOutlet.isEnabled = false
-            addHabitOutlet.isHidden = true
+        
+        if realm.objects(Habits.self).filter("isPausedHabit = false").count >= 6 {
+            if distanceFromBottom <= height {
+                addHabitOutlet.isEnabled = false
+                addHabitOutlet.isHidden = true
+            } else {
+                addHabitOutlet.isEnabled = true
+                addHabitOutlet.isHidden = false
+            }
         } else {
             addHabitOutlet.isEnabled = true
             addHabitOutlet.isHidden = false
         }
+        
     }
     
     // MARK: - 리스트 로드
