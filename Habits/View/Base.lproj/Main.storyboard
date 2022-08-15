@@ -355,11 +355,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ezp-dd-gwd">
-                                <rect key="frame" x="0.0" y="174" width="390" height="587"/>
+                                <rect key="frame" x="0.0" y="143.66666666666669" width="390" height="617.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="390" id="dbI-cq-Z3D"/>
-                                </constraints>
                                 <color key="sectionIndexBackgroundColor" name="ViewBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customTableViewCell" id="zgC-jv-0Ba">
@@ -376,11 +373,10 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-gq-GGT">
-                                <rect key="frame" x="20" y="703" width="350" height="50"/>
+                                <rect key="frame" x="20" y="697" width="350" height="56"/>
                                 <color key="backgroundColor" name="ButtonColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="335" id="i1O-e8-2Vz"/>
-                                    <constraint firstAttribute="height" constant="50" id="js4-yW-1ak"/>
+                                    <constraint firstAttribute="height" constant="56" id="Y9H-CA-445"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="15"/>
                                 <color key="tintColor" name="ButtonColor"/>
@@ -393,22 +389,21 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKo-nD-1N0">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="164"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="133.66666666666666"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="habitLabel" translatesAutoresizingMaskIntoConstraints="NO" id="du5-Td-8pg">
                                         <rect key="frame" x="30" y="58" width="215" height="56"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="215" id="LuG-bB-qdr"/>
-                                            <constraint firstAttribute="height" constant="56" id="X2m-km-cdG"/>
+                                            <constraint firstAttribute="height" constant="56" id="hZB-qH-pn9"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90588235289999997" green="0.91764705879999997" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="390" id="Fcl-5F-9fJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="du5-Td-8pg" secondAttribute="trailing" constant="145" id="MkR-ym-PMa"/>
+                                    <constraint firstAttribute="bottom" secondItem="du5-Td-8pg" secondAttribute="bottom" constant="19.670000000000002" id="O4h-dJ-RY2"/>
                                     <constraint firstItem="du5-Td-8pg" firstAttribute="leading" secondItem="QKo-nD-1N0" secondAttribute="leading" constant="30" id="Xqc-AJ-ewQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="du5-Td-8pg" secondAttribute="bottom" constant="50" id="cbp-sZ-zCl"/>
-                                    <constraint firstAttribute="height" constant="164" id="vYZ-LN-rqp"/>
+                                    <constraint firstItem="du5-Td-8pg" firstAttribute="top" secondItem="QKo-nD-1N0" secondAttribute="top" constant="58" id="qqU-ij-EsX"/>
                                 </constraints>
                             </view>
                         </subviews>
