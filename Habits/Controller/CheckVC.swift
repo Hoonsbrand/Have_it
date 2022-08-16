@@ -195,7 +195,7 @@ extension CheckVC {
         
         dDayTitleLabel.text = resultRealm?.title
         dDayTitleLabel.textColor = UIColor(named: "textFontColor")
-        dDayTitleLabel.font = UIFont(name: "LeeSeoyun", size: 30)
+        dDayTitleLabel.font = UIFont(name: "IM_Hyemin", size: 30)
         // 라벨의 사이즈를 해당크기에 맞게 설정
         dDayTitleLabel.sizeThatFits(CGSize(width: dDayTitleLabel.frame.width, height: dDayTitleLabel.frame.height))
         // checkVCTitle.sizeToFit() -> 자동으로 라벨의 크기를 텍스트에 맞게 수정
@@ -264,10 +264,10 @@ extension CheckVC {
     func setDdayLabelSuccessLabel(){
         self.dDayLabel.text = "D - \(dDayInt)"
         dDayLabel.textColor = UIColor(named: "textFontColor")
-        dDayLabel.font = UIFont(name: "LeeSeoyun", size: 30)
+        dDayLabel.font = UIFont(name: "IM_Hyemin", size: 30)
         self.successLabel.text = "\(dayCount) 회"
         successLabel.textColor = UIColor(named: "textFontColor")
-        successLabel.font = UIFont(name: "LeeSeoyun", size: 30)
+        successLabel.font = UIFont(name: "IM_Hyemin", size: 30)
     }
     //MARK: 11일로 도는 사이클의 percentage Label
     func setPercentageLabel(dayCount : Int){

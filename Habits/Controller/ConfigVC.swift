@@ -33,6 +33,12 @@ class ConfigureVC: UIViewController {
         
         // 테이블 뷰 구분선 없애기
         self.myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
+        addHabitOutlet.layer.cornerRadius = 16
+        addHabitOutlet.layer.shadowColor = UIColor.gray.cgColor
+        addHabitOutlet.layer.shadowOffset = CGSize.zero
+        addHabitOutlet.layer.shadowOpacity = 1.0
+        addHabitOutlet.layer.shadowRadius = 6
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,7 +116,6 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
         
         performSegue(withIdentifier: Segue.goToCheckVC, sender: nil)
     }
-    
     
 // MARK: - 스크롤을 감지해서 맨 밑에 있을 때 버튼을 숨김
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -200,7 +205,7 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                 }
             }
             
-            deleteAction.image = UIImage(named: "pauseImage")
+            deleteAction.image = UIImage(named: "ic-pause")
             deleteAction.backgroundColor = UIColor(named: "ViewBackground")
             
             return [deleteAction]
