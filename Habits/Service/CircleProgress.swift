@@ -26,17 +26,19 @@ class CircleProgress : UIView {
         self.frame.origin.x = 0
         self.frame.origin.y = 0
         setProgress()
-       
+        
     }
     
-    var progressColor = MyColor.pink {
+    
+    
+    var progressColor =  UIColor(named: "ProgressBackgroundColor") {
         didSet {
-            progressLayer.strokeColor = progressColor.cgColor
+            progressLayer.strokeColor = progressColor?.cgColor
         }
     }
-    var trackColor = MyColor.pink.withAlphaComponent(0.5) {
+    var trackColor = UIColor(named: "ProgressBackgroundColor") {
         didSet {
-            trackLayer.strokeColor = trackColor.withAlphaComponent(0.3).cgColor
+            trackLayer.strokeColor = trackColor?.cgColor
         }
     }
     
@@ -49,41 +51,53 @@ class CircleProgress : UIView {
         print("createProgress")
         
         let center = self.center
-        let radius = self.frame.size.width * 0.5 - 8
+        let radius = (min(self.frame.size.width, self.frame.size.height) - 10) / 2
         let circularPath = UIBezierPath(arcCenter: center , radius: radius, startAngle: -CGFloat.pi * 0.5, endAngle: 1.5 * CGFloat.pi, clockwise: true)
         
         trackLayer.path = circularPath.cgPath
         
-        trackLayer.strokeColor = trackColor.cgColor
-        trackLayer.lineWidth = 17
+        trackLayer.strokeColor = trackColor?.cgColor
+        trackLayer.lineWidth = 8
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.lineCap = .round
         self.layer.addSublayer(trackLayer)
         
         
         progressLayer.path = circularPath.cgPath
-        progressLayer.strokeColor = progressColor.cgColor
-        progressLayer.lineWidth = 17
+        
+        progressLayer.strokeColor = progressColor?.cgColor
+        progressLayer.lineWidth = 8
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.lineCap = .round
         
         progressLayer.strokeEnd = 0.01
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.5)
         
-        self.layer.addSublayer(progressLayer)
+        gradientLayer.colors = [UIColor(named: "PgStartColor")?.cgColor ?? UIColor.red.cgColor,UIColor(named: "PgEndColor")?.cgColor ?? UIColor.systemPink.cgColor]
+        gradientLayer.frame = self.bounds
+        gradientLayer.mask = progressLayer
+        
+        layer.addSublayer(gradientLayer)
+        //        self.layer.addSublayer(progressLayer)
         
         
     }
     
-    // 프로그래스바 색칠하기
+    // 프로그래스바 동작
     
-    func filleProgress(fromValue : CGFloat, toValue : CGFloat){
+    func filleProgress(fromValue : Int, toValue : Int){
+        
+        let pgFromValue = CGFloat(fromValue) / 66
+        let pgToValue = CGFloat(toValue) / 66
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.duration = 1.5
-        animation.fromValue = fromValue * 0.1
-        animation.toValue = toValue * 0.1
+        animation.fromValue = pgFromValue
+        animation.toValue = pgToValue
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        progressLayer.strokeEnd = toValue * 0.1
+        progressLayer.strokeEnd = pgToValue
         progressLayer.add(animation, forKey: "animateprogress")
         
     }
