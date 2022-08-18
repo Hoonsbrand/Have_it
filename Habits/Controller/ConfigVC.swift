@@ -43,6 +43,10 @@ class ConfigureVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+<<<<<<< .merge_file_G2qyA4
+=======
+        
+>>>>>>> .merge_file_571LKV
         navigationController?.setNavigationBarHidden(true, animated: false)
         loadHabitList()
     }
@@ -230,8 +234,11 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                         }
                         
                         self.loadHabitList()
+<<<<<<< .merge_file_G2qyA4
                         
                         self.showToast(message: "다시 시작하실 그 날을 기약하며 \n습관이 ‘잠시 멈춤’에 보관되었습니다. 👋", font: UIFont(name: "IM_Hyemin", size: 14)!, ToastWidth: 266, ToasatHeight: 64)
+=======
+>>>>>>> .merge_file_571LKV
                     }
                     
                     keepChallengeAlertAction.setValue(UIColor(red: 0.078, green: 0.804, blue: 0.541, alpha: 1), forKey: "titleTextColor")
@@ -284,5 +291,8 @@ extension ConfigureVC: BookmarkCellDelegate {
         return nil
     }
 }
+<<<<<<< .merge_file_G2qyA4
 
 
+=======
+>>>>>>> .merge_file_571LKV
