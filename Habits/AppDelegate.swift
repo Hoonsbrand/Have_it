@@ -14,14 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        print(Realm.Configuration.defaultConfiguration.fileURL)
-        for family in UIFont.familyNames {
-          print(family)
-
-          for sub in UIFont.fontNames(forFamilyName: family) {
-            print("====> \(sub)")
-          }
-        }
+                print(Realm.Configuration.defaultConfiguration.fileURL)
+//        for family in UIFont.familyNames {
+//          print(family)
+//
+//          for sub in UIFont.fontNames(forFamilyName: family) {
+//            print("====> \(sub)")
+//          }
+//        }
+        // 런치화면 1초 보여주기
+        
+        
+        // 탭 바의 폰트 바꿈
+        UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont(name: "IM_Hyemin", size: 10)!], for: .normal)
         return true
     }
 

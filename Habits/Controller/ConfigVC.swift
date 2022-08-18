@@ -10,9 +10,8 @@ import RealmSwift
 import Toast_Swift
 import SwipeCellKit
 
-class ConfigureVC: UIViewController, BookmarkCellDelegate {
+class ConfigureVC: UIViewController {
    
-    
     let realm = try! Realm()
     var listRealm: Results<Habits>?
     
@@ -20,6 +19,7 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
     var selectIndexPath = IndexPath()
     
     @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var addHabitOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,39 +27,28 @@ class ConfigureVC: UIViewController, BookmarkCellDelegate {
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.register(UINib(nibName: Cell.nibName, bundle: nil), forCellReuseIdentifier: Cell.customTableViewCell)
-        // &&&&&&&%$$$*&
         self.view.backgroundColor = UIColor(named: "ViewBackground")
         
-        
-//        let image = UIImage(named: "sparkle")
-//        let imgView = UIImageView(image: image)
-//        self.myTableView.backgroundView = imgView
-//        let tableBackGround = self.myTableView.backgroundView
-//
-//        tableBackGround?.translatesAutoresizingMaskIntoConstraints = false
-//        tableBackGround?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
-//        tableBackGround?.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
-//        tableBackGround?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-//        tableBackGround?.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
-
         loadHabitList()
+        
+        // 테이블 뷰 구분선 없애기
+        self.myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
+        addHabitOutlet.layer.cornerRadius = 16
+        addHabitOutlet.layer.shadowColor = UIColor.gray.cgColor
+        addHabitOutlet.layer.shadowOffset = CGSize.zero
+        addHabitOutlet.layer.shadowOpacity = 1.0
+        addHabitOutlet.layer.shadowRadius = 6
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
         loadHabitList()
     }
     
     // MARK: - SegueToAddView
-//    @IBAction func showAddView(_ sender: UIBarButtonItem) {
-//        if let numberOfList = listRealm?.count {
-//            if numberOfList >= 20 {
-//                self.view.makeToast("최대 추가 개수는 20개 입니다.", duration: 1.5, position: .center, title: nil, image: nil, completion: nil)
-//            } else {
-//                performSegue(withIdentifier: Segue.goToAddView, sender: sender)
-//            }
-//        }
-//    }
-    
     @IBAction func showAddView(_ sender: UIButton) {
         if let numberOfList = listRealm?.count {
             if numberOfList >= 20 {
@@ -94,7 +83,6 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let habitList = listRealm {
-            // %%$%$%$%$%%
             self.myTableView.backgroundColor = UIColor(named: "ViewBackground")
             return habitList.count
         }
@@ -104,18 +92,17 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     // MARK: - 셀 추가
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myTableView.dequeueReusableCell(withIdentifier: Cell.customTableViewCell, for: indexPath) as! HabitCell
-        cell.bookmarkDelegate = self
+        
         cell.loadDelegate = self
         cell.delegate = self
-        
+        cell.bookmarkDelegate = self
+
         if let list = listRealm?[indexPath.row] {
             cell.habitTitle.text = list.title
-            // 폰트 사이즈,색상 변경$$$$$$$$$$$$$$$$$$$
-            cell.habitTitle.textColor = UIColor(named: "textFontColor")
-            cell.habitTitle.font = UIFont(name: "LeeSeoyun", size: 30)
-
+            
             if list.isBookmarked {
-                cell.bookmarkOutlet.setTitle("⭐", for: .normal)
+                cell.bookmarkBtnOutlet.isEnabled = true
+                cell.bookmarkBtnOutlet.setBackgroundImage(UIImage(named: "bookmarkImage"), for: .normal)
             }
             
             cell.backgroundColor = UIColor(named: "ViewBackground")
@@ -131,27 +118,48 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
         performSegue(withIdentifier: Segue.goToCheckVC, sender: nil)
     }
     
+// MARK: - 스크롤을 감지해서 맨 밑에 있을 때 버튼을 숨김
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollMethod(scrollView)
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        scrollMethod(scrollView)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        scrollMethod(scrollView)
+    }
+    
+    func scrollMethod(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYOffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYOffset
+        
+        if distanceFromBottom <= height {
+            addHabitOutlet.isEnabled = false
+            addHabitOutlet.isHidden = true
+        } else {
+            addHabitOutlet.isEnabled = true
+            addHabitOutlet.isHidden = false
+        }
+        
+        if scrollView.contentOffset.y <= 0 {
+            addHabitOutlet.isEnabled = true
+            addHabitOutlet.isHidden = false
+        }
+    }
+    
     // MARK: - 리스트 로드
     func loadHabitList() {
         listRealm = realm.objects(Habits.self).sorted(byKeyPath: "isBookmarked", ascending: false).filter("isInHOF = false").filter("isPausedHabit = false")
-
+        addHabitOutlet.isEnabled = true
+        addHabitOutlet.isHidden = false
         UIView.transition(with: myTableView,
                           duration: 0.35,
                           options: .transitionCrossDissolve,
                           animations: { self.myTableView.reloadData() })
-    }
-    
-    // MARK: - BookmarkCellDelegate Method
-    func bookmarkButtonTappedDelegate(_ habitCell: HabitCell, didTapButton button: UIButton) -> Bool? {
-        guard let row = myTableView.indexPath(for: habitCell)?.row else { return nil }
-        
-        if let bookmarkCheck = listRealm?[row].isBookmarked {
-            try! realm.write {
-                listRealm?[row].isBookmarked = !bookmarkCheck
-            }
-            return !bookmarkCheck
-        }
-        return nil
+//        myTableView.alwaysBounceVertical = false // 스크롤 뷰 block
     }
     
     // MARK: - RequestLoadListDelegate Method
@@ -166,7 +174,7 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
         
         switch orientation {
         case .right:
-            let deleteAction = SwipeAction(style: .default, title: "잠시 쉬기") { action, indexPath in
+            let deleteAction = SwipeAction(style: .default, title: nil) { action, indexPath in
                 
                 if let itemForPause = self.listRealm?[indexPath.row] {
                     
@@ -183,17 +191,13 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                     let pauseChallengeAlertAction = UIAlertAction(title: "멈추기", style: .destructive) { _ in
                         do {
                             try self.realm.write {
-//                                self.realm.delete(itemForDeletetion)
                                 itemForPause.isPausedHabit = true
                             }
                         } catch {
                             print("Error pause item, \(error)")
                         }
-
-                        UIView.transition(with: tableView,
-                                          duration: 0.35,
-                                          options: .transitionCrossDissolve,
-                                          animations: { self.myTableView.reloadData() })
+                        
+                        self.loadHabitList()
                     }
                     deleteAlert.addAction(keepChallengeAlertAction)
                     deleteAlert.addAction(pauseChallengeAlertAction)
@@ -202,7 +206,8 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                 }
             }
             
-            deleteAction.image = UIImage(named: "delete-icon")
+            deleteAction.image = UIImage(named: "ic-pause")
+            deleteAction.backgroundColor = UIColor(named: "ViewBackground")
             
             return [deleteAction]
             
@@ -217,10 +222,26 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                 reloadWhenTapBookmark()
             }
             
-            bookmarkAction.image = UIImage(systemName: "star.fill")
-            bookmarkAction.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+            bookmarkAction.image = UIImage(named: "swipeBookmark")
+            bookmarkAction.backgroundColor = UIColor(named: "ViewBackground")
             
+
             return [bookmarkAction]
         }
+    }
+}
+
+// MARK: - BookmarkCellDelegate Method
+extension ConfigureVC: BookmarkCellDelegate {    
+    func bookmarkButtonTappedDelegate(_ habitCell: HabitCell, didTapButton button: UIButton) -> Bool? {
+        guard let row = myTableView.indexPath(for: habitCell)?.row else { return nil }
+        
+        if let bookmarkCheck = listRealm?[row].isBookmarked {
+            try! realm.write {
+                listRealm?[row].isBookmarked = !bookmarkCheck
+            }
+            return !bookmarkCheck
+        }
+        return nil
     }
 }

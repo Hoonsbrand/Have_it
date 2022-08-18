@@ -5,7 +5,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>LeeSeoyun.otf</string>
-		<string></string>
+		<string>IM_Hyemin-Regular.otf</string>
+		<string>Baloo-Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

@@ -59,28 +59,17 @@ class HabitsCollectionVC: UIViewController {
             firstLabel.frame = CGRect(x: 95, y: 150, width: 300, height: 50)
             
             firstLabel.text = "아무것도 없어요!"
+            firstLabel.font = UIFont(name: "IM_Hyemin", size: 30)
             
-            //레이블 폰트 설정
-//            firstLabel.font = UIFont.boldSystemFont(ofSize: 30)
-            //$$$$$$$$$$$$$$$$$$$$$$
-            firstLabel.textColor = UIColor(named: "textFontColor")
-            firstLabel.font = UIFont(name: "LeeSeoyun", size: 30)
-            
-            
-            secondLabel.frame = CGRect(x: 35, y: 210, width: 500, height: 50)
+            secondLabel.frame = CGRect(x: 75, y: 210, width: 500, height: 50)
             
             secondLabel.text = "66일간의 여정을 완료해서 추가해보세요!"
-            
-            //레이블 폰트 설정
-//            secondLabel.font = UIFont.boldSystemFont(ofSize: 20)
-            //$$$$$$$$$$$$$$$$$
-            secondLabel.textColor = UIColor(named: "textFontColor")
-            secondLabel.font = UIFont(name: "LeeSeoyun", size: 30)
-          
+            secondLabel.font = UIFont(name: "IM_Hyemin", size: 15)
             
             //루트뷰에 레이블 추가
             self.view.addSubview(firstLabel)
             self.view.addSubview(secondLabel)
+            
         } else {
             firstLabel.removeFromSuperview()
             secondLabel.removeFromSuperview()

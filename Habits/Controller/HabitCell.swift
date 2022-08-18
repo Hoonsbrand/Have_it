@@ -22,8 +22,7 @@ protocol RequestLoadList {
 class HabitCell: SwipeTableViewCell {
     
     @IBOutlet weak var habitTitle: UILabel!
-    @IBOutlet weak var habitListBubble: UIView!
-    @IBOutlet weak var bookmarkOutlet: UIButton!
+    @IBOutlet weak var bookmarkBtnOutlet: UIButton!
     
     let realm = try! Realm()
     var listRealm: Results<Habits>?
@@ -34,8 +33,8 @@ class HabitCell: SwipeTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.bookmarkBtnOutlet.isEnabled = false
         self.backgroundColor = UIColor(named: "ViewBackground")
-        habitListBubble.layer.cornerRadius = habitListBubble.frame.size.height / 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -44,26 +43,18 @@ class HabitCell: SwipeTableViewCell {
         // Configure the view for the selected state
     }
     
-    // MARK: - ReusableCell로 인한 즐겨찾기 버튼 오류 해결
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        self.bookmarkOutlet.setTitle("☆", for: .normal)
-    }
-    
-    // MARK: - 버튼 눌렀을 때 델리게이트 메서드 호출 & 별 모양 바꾸기
-    @IBAction func bookmarkButtonTapped(_ sender: UIButton) {
-        
-        if let result = self.bookmarkDelegate?.bookmarkButtonTappedDelegate(self, didTapButton: sender) {
-            if result {
-                bookmarkOutlet.setTitle("⭐", for: .normal)
-            } else {
-                bookmarkOutlet.setTitle("☆", for: .normal)
-            }
+    @IBAction func bookmarkBtnPressed(_ sender: UIButton) {
+        if let _ = self.bookmarkDelegate?.bookmarkButtonTappedDelegate(self, didTapButton: sender) {
+            self.bookmarkBtnOutlet.isEnabled = false
+            self.bookmarkBtnOutlet.setBackgroundImage(nil, for: .normal)
             self.loadDelegate?.reloadWhenTapBookmark()
         }
     }
-    // 전달 할 메서드...?
-  
+    
+    // MARK: - ReusableCell로 인한 즐겨찾기 버튼 오류 해결
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.bookmarkBtnOutlet.isEnabled = false
+        self.bookmarkBtnOutlet.setBackgroundImage(nil, for: .normal)
+    }
 }
-

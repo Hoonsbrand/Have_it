@@ -15,6 +15,8 @@ class AddLIstVC: UIViewController, UITextFieldDelegate {
     // D_day 시간계산을 위해
     let timeManager = TimeManager()
     
+    let configVC = ConfigureVC()
+    
     @IBOutlet weak var inputHabitTextField: UITextField!
     
     @IBOutlet weak var addVCTitle: UILabel!

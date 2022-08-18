@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic-pause-active.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -5,19 +5,30 @@ import Toast_Swift
 class CheckVC: UIViewController {
     
     
-    @IBOutlet weak var myProgress: CircleProgress!
+    @IBOutlet weak var myProgress: CircleProgress! // 프로그래스바
     @IBOutlet weak var successButton: UIButton!
-    @IBOutlet weak var myView: UIView!
-    @IBOutlet weak var dDayTitleLabel: UILabel!{
+    @IBOutlet weak var titleSVTopView: UIView! // 타이틀 스택뷰 탑뷰
+    @IBOutlet weak var titleStackView: UIStackView! // 타이틀스택뷰
+    @IBOutlet weak var titleSVTop: UIStackView! // 타이틀 뷰 색칠하기위한 뷰
+    @IBOutlet weak var stampView: UIView! // 스탬프 10개 뷰
+    
+    @IBOutlet var stampArray: [UIButton]! // 스탬프 어레이
+    @IBOutlet weak var checkVCTitle: UILabel!{ // 제목
         didSet{
-            setDday()
+            setTitle()
         }
     }
-    @IBOutlet weak var percentLabel: UILabel!
-    @IBOutlet weak var dDayLabel: UILabel!
-    @IBOutlet weak var successLabel: UILabel!
+    @IBOutlet weak var percentLabel: UILabel! // N %
+    @IBOutlet weak var dDayLabel: UILabel! // D+N
+    @IBOutlet weak var successLabel: UILabel!// 성공횟수
     
-    var btnArr : [UIButton] = []
+    @IBOutlet weak var habitCompleteLabel: UILabel! // 습관완료 글자 라벨
+    @IBOutlet weak var goToSuccess: UILabel! // xx 일을 향해 라벨
+    @IBOutlet weak var successText: UILabel! // // 내가 해냄! 버튼 위의 문구
+
+    
+    
+    
     var habitTitle : String = "" // chekTitle 바꿀 데이터 전달 받을 변수
     var clickedTime : Date = Date() // 클릭한 시간
     // "D-Day" + \(dDayInt) 를 구성예정
@@ -38,42 +49,56 @@ class CheckVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
-        getRealmData()
-        makeButton()
-        makeButtonLayout(btnArr)
-        setButtonImage(self.dayCount)
-        setHabitTitle()
-        setDdayLabelSuccessLabel()
-        filterCycle(dayCount: self.dayCount)
-        setPercentageLabel(dayCount: self.dayCount)
+        initStamp() // 스탬프 초기화 해준다.
+        getRealmData() // 릴름데이터 받아온다.
+        setButtonImage(self.dayCount) // 횟수에맞게 버튼 수정
+        setHabitTitle() // 타이틀설정
+        setDdayLabelSuccessLabel() // dDay,완료횟수 설정
+        setPercentageLabel(dayCount: self.dayCount) // percentage라벨 설정
+        setStackViewColor() // stackview UI 설정
+        tenCycle(dayCount: self.dayCount) // 10개기준으로 설정
+        // 폰트수정
+        habitCompleteLabel.textColor = UIColor(named: "textFontColor")
+        habitCompleteLabel.font = UIFont(name: "IM_Hyemin", size: 16)
         
-        self.myProgress.layer.cornerRadius = 20
-        self.myView.layer.cornerRadius = 20
-        self.myProgress.backgroundColor = .lightGray
+        // 내가해냄 버튼 코너레디어스
+        successButton.layer.cornerRadius = 16
+        successButton.layer.shadowColor = UIColor.gray.cgColor
+        successButton.layer.shadowOffset = CGSize.zero
+        successButton.layer.shadowOpacity = 0.6
+        successButton.layer.shadowRadius = 6
         
-        let elevenDayCount = dayCount % 11
-        self.myProgress.filleProgress(fromValue: CGFloat(elevenDayCount) - 1.0 , toValue: CGFloat(elevenDayCount))
+        
+        self.myProgress.layer.cornerRadius = 16
+        self.myProgress.backgroundColor = .clear
         
         
+        self.myProgress.filleProgress(fromValue: dayCount - 1, toValue: dayCount)
+    }
+    
+    // CheckVC에서만 네비게이션 바 보이게 하기
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     
     
-    // MARK: - makeAlert (  알람메세지 )
+    // MARK: - makeAlert (  알람메세지 ) -> self를 많이써야되는데...@escaping으로 할 수 있을지도
     func makeAlert(_ count : Int){
         let completeAlert = UIAlertController(title: "습관 완료", message: "\(count + 1)일째 완료하셨습니다.", preferredStyle: .alert) // 완료 alert
         // 확인이 눌려야 실행
-        let completeAlertAction = UIAlertAction(title: "완료", style: .default){
+        let completeAlertAction = UIAlertAction(title: "완료", style: .default){ [weak self]
             (action) in
+            guard let self = self else { return }
             self.changeButtonImage(count)
             self.dayCount += 1
-            self.resetSuccessButton()
             self.setRealmDate()
-            let elevenDayCount = count % 11
-            self.myProgress.filleProgress(fromValue: CGFloat(elevenDayCount) - 1.0 , toValue: CGFloat(elevenDayCount))
+            
+            self.myProgress.filleProgress(fromValue: count - 1 , toValue: count)
             self.setDdayLabelSuccessLabel()
-            self.filterCycle(dayCount: self.dayCount)
             self.setPercentageLabel(dayCount: self.dayCount)
+            self.tenCycle(dayCount: self.dayCount)
         }
         // 습관을 완료하지 못했을 때
         let completeAlertCancel = UIAlertAction(title: "취소", style: .destructive,handler:nil)
@@ -109,19 +134,22 @@ class CheckVC: UIViewController {
     
     // MARK:  changeButtonImage (Button이미지 변경)
     func changeButtonImage(_ dayCount : Int){
-        let filterCycle = dayCount % 11
-        let count = filterCycle % 10
-        btnArr[count].setImage(UIImage(systemName: "flame.fill"), for: .normal)
+       
+        let stampCount = dayCount % 10
+        
+        stampArray[stampCount].tintColor = UIColor(named: "StampColor")
+        stampArray[stampCount].setImage(UIImage(named: "stamp.active")?.withRenderingMode(.automatic), for: .normal)
+        
+        
     }
     
 // MARK: - @IBAction Method
     //MARK: clickSuccessButton ( 성공버튼 클릭 액션 )
     
     @IBAction func clickSuccessButton(_ sender: UIButton) {
-        resetSuccessButton()
-        filterCycle(dayCount: self.dayCount)
+       
         // 버튼입력일자가 하루 지났을 떄.
-        if (timeManager.compareDate(clickedTime) || self.dayCount == 0 || self.dayCount < 66){
+        if (timeManager.compareDate(clickedTime) || self.dayCount == 0 || self.dayCount < 66 ){
             makeAlert(dayCount) // 완료했을 때 취소 했을 때 나눔
             self.clickedTime = Date() // 버튼 누른 시간을 기억
         } else {
@@ -146,7 +174,7 @@ extension CheckVC {
         guard let time = list.clickedTime else { return }
         clickedTime = time
         dDayInt = timeManager.calDateDiffer(dDay, Date()) // 현재시간으로 계산
-        // 11로 나눈 숫자를 사용하기위해
+        
     }
 }
 
@@ -181,102 +209,110 @@ extension CheckVC{
 //MARK: - CheckVC UI설정
 extension CheckVC {
     func setHabitTitle(){
-//        self.navigationItem.title = habitTitle
+        self.navigationItem.title = " 습관상세 "
+        
         
     }
     
     
-    //MARK:  CheckVCTitle 설정
-    func setDday(){
+    func initStamp(){
+        print("초기버튼이미지 셋팅")
+        for btn in stampArray{
+            btn.setImage(UIImage(named: "stamp")?.withRenderingMode(.alwaysOriginal), for: .normal)
         
-        dDayTitleLabel.text = resultRealm?.title
-        dDayTitleLabel.textColor = UIColor(named: "textFontColor")
-        dDayTitleLabel.font = UIFont(name: "LeeSeoyun", size: 30)
+        }
+    }
+    
+    //MARK:  CheckVCTitle 설정
+    func setTitle(){
+        
+        checkVCTitle.text = resultRealm?.title
+        checkVCTitle.textColor = UIColor(named: "textFontColor")
+        
+        checkVCTitle.sizeThatFits(CGSize(width: checkVCTitle.frame.width, height: checkVCTitle.frame.height))
+        checkVCTitle.font = UIFont(name: "IM_Hyemin", size: 20)
+        
         // 라벨의 사이즈를 해당크기에 맞게 설정
-        dDayTitleLabel.sizeThatFits(CGSize(width: dDayTitleLabel.frame.width, height: dDayTitleLabel.frame.height))
+        
         // checkVCTitle.sizeToFit() -> 자동으로 라벨의 크기를 텍스트에 맞게 수정
         // 뷰에 오토레이아웃을 작용하기위해 / 뷰에따라 자동으로 제약을 변환하는 기능을 꺼야됨
         
         //autolayout설정으로 인한, 텍스트잘림현상 해결
-        dDayTitleLabel.adjustsFontSizeToFitWidth = true // 라벨의 크기에 맞게 텍스트폰트변경
-        dDayTitleLabel.minimumScaleFactor = 0.2 // 텍스트 간 최소간격
-        dDayTitleLabel.numberOfLines = 1 // 텍스트라인의 수
+        checkVCTitle.adjustsFontSizeToFitWidth = true // 라벨의 크기에 맞게 텍스트폰트변경
+        checkVCTitle.minimumScaleFactor = 0.2 // 텍스트 간 최소간격
+        checkVCTitle.numberOfLines = 1 // 텍스트라인의 수
     }
     
-    func makeButton(){
-        for num in 0...9{
-            let btn = UIButton()
-            btn.tag = num
-            self.myView.addSubview(btn)
-            btn.setImage(UIImage(systemName: "flame"), for: .normal)
-            btn.setTitle("", for: .normal)
-            
-            btnArr.append(btn)
-            
-        }
-    }
     
-    func makeButtonLayout(_ btnArray : [UIButton]){
-        for btn in btnArray{
-            let index = btn.tag
-            
-            let column = index % 5
-            let row = index / 5
-            
-            let width = self.myView.frame.size.width / 5
-            let height = self.myView.frame.size.height / 2
-            
-            
-            btn.frame = CGRect(x: CGFloat(column) * width, y: CGFloat(row) * height, width: width, height: height)
-            
-        }
-    }
     
     //MARK: - 이전에 달성한 습관 횟수 버튼에 구현
     func setButtonImage(_ count : Int){
-        let filterCylce = count % 11
-        let tenCount = filterCylce % 10
+        let tenCount = count % 10
+        
+        print("초기버튼세팅 dayCount = \(count)")
         for tenCount in 0..<tenCount{
             // 10 개의 배열일 경우로 초기화
             changeButtonImage(tenCount)
         }
     }
     
-    
-    //MARK: 버튼이 눌리는동안 색 변환
-    @objc func changeColorSuccessBtn(){
-        successButton.backgroundColor = .link
-        successButton.layer.cornerRadius = 5
-        successButton.setTitleColor(.white, for: .normal)
-    }
-    
-    //MARK: 다시 초기 버튼모양
-    func resetSuccessButton(){
-        successButton.setTitle("성공", for: .normal)
-        successButton.setTitleColor(.link, for: .normal)
-        successButton.backgroundColor = .clear
-    }
-    //MARK: 디데이,성공횟수 라벨 설정
+    //MARK: 디데이,성공횟수, 확인문구 설정
     func setDdayLabelSuccessLabel(){
-        self.dDayLabel.text = "D - \(dDayInt)"
+        
+        // D-Day
+        dDayLabel.text = "D-\(dDayInt)"
         dDayLabel.textColor = UIColor(named: "textFontColor")
-        dDayLabel.font = UIFont(name: "LeeSeoyun", size: 30)
-        self.successLabel.text = "\(dayCount) 회"
+        dDayLabel.layer.cornerRadius =  dDayLabel.frame.size.height / 2
+        dDayLabel.clipsToBounds = true
+        dDayLabel.font = UIFont(name: "IM_Hyemin", size: 12)
+        dDayLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        
+        //성공횟수
+        successLabel.text = "\(dayCount) 회"
         successLabel.textColor = UIColor(named: "textFontColor")
-        successLabel.font = UIFont(name: "LeeSeoyun", size: 30)
+        successLabel.font = UIFont(name: "IM_Hyemin", size: 17)
+        
+        successText.text = "\(dayCount)일째에요. \n 오늘 하루 습관을 실행하셨다면 아래 버튼을 눌러주세요!"
+        successText.textColor = UIColor(named: "textFontColor")
+        successText.font = UIFont(name: "IM_Hyemin", size: 14)
     }
-    //MARK: 11일로 도는 사이클의 percentage Label
+    
+//MARK: 10일간격으로 초기화
+    func tenCycle(dayCount : Int){
+        let goToSuccessInt = dayCount / 10 + 1// 0,1,2,3,4,5,6
+        goToSuccess.textColor = UIColor(named: "textFontColor")
+        goToSuccess.font = UIFont(name: "IM_Hyemin", size: 18)
+        
+        if goToSuccessInt < 7{
+            goToSuccess.text = "\(goToSuccessInt)0일을 향해 !"
+        }
+        //60일 이후엔 66일을향해
+        else{
+            goToSuccess.text = "\(goToSuccessInt)6일을 향해 !"
+        }
+        
+        if dayCount % 10 == 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.initStamp()
+            }
+        }
+        
+        
+        
+        
+        
+    }
+    
+    //MARK: 66일로 도는 사이클의 percentage Label
     func setPercentageLabel(dayCount : Int){
-        let hundred = dayCount / 11
-        let percent = dayCount % 11
-       print(hundred)
-        let initPercent : Float = Float(dayCount) / 11.0
+        let percent = dayCount % 66
+        let initPercent : Float = Float(dayCount) / 66.0
         let multiPercent = initPercent * 100
         let percent1 = Int(multiPercent) % 100
         let result = floor(Double(percent1))
    
         
-        if hundred > 0, percent == 0 {
+        if percent == 0, dayCount != 0 {
             self.percentLabel.text = " 100 % "
         }
         else{
@@ -284,35 +320,38 @@ extension CheckVC {
         }
     }
     
-    func filterCycle(dayCount : Int){
-        let result = dayCount / 11
-        switch result {
-        case 0 :
-            self.myProgress.trackColor = MyColor.pink
-            self.myProgress.progressColor = MyColor.pink.withAlphaComponent(0.3)
-            
-        case 1:
-            self.myProgress.trackColor = MyColor.orange
-            self.myProgress.progressColor = MyColor.orange.withAlphaComponent(0.3)
-        case 2:
-            self.myProgress.trackColor = MyColor.yellow
-            self.myProgress.progressColor = MyColor.yellow.withAlphaComponent(0.3)
-        case 3:
-            self.myProgress.trackColor = MyColor.green
-            self.myProgress.progressColor = MyColor.green.withAlphaComponent(0.3)
-        case 4:
-            self.myProgress.trackColor = MyColor.sky
-            self.myProgress.progressColor = MyColor.sky.withAlphaComponent(0.3)
-        case 5:
-            self.myProgress.trackColor = MyColor.blue
-            self.myProgress.progressColor = MyColor.blue.withAlphaComponent(0.3)
-        case 6:
-            self.myProgress.trackColor = MyColor.puple
-            self.myProgress.progressColor = MyColor.puple.withAlphaComponent(0.3)
-        default :
-            self.myProgress.trackColor = MyColor.pink
-            self.myProgress.progressColor = MyColor.pink.withAlphaComponent(0.3)
-        }
+    func setStackViewColor(){
+        
+        
+        titleSVTopView.backgroundColor = UIColor(named: "ButtonColor")
+        titleSVTopView.trailingAnchor.constraint(equalTo: titleSVTop.trailingAnchor).isActive = true
+        titleSVTopView.translatesAutoresizingMaskIntoConstraints = false
+        
+        titleStackView.layer.cornerRadius = 15
+        titleStackView.layer.borderWidth = 2
+        titleStackView.layer.borderColor = UIColor(named: "ButtonColor")?.cgColor
+        
+        //titleView 위부분 색 넣기
+        titleSVTop.backgroundColor = UIColor(named: "ButtonColor")
+        titleSVTop.roundCorners(corners: [.topLeft, .topRight], radius: 15)
+        
+        
+        
+        // stampCheckView설정
+        stampView.layer.cornerRadius = 15
+        stampView.layer.borderWidth = 2
+        stampView.layer.borderColor = UIColor(named: "ButtonColor")?.cgColor
     }
     
+}
+
+extension UIView {
+    //MARK: 뷰의 위쪽만 Conoradius
+   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
 }

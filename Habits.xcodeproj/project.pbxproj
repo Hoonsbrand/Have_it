@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12EE17FA79C6DA251B1887E2 /* Pods_Habits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B15C2EC8BF252FEE02D21B3 /* Pods_Habits.framework */; };
 		204A50ED289CEC70000C03EA /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204A50EC289CEC70000C03EA /* TimeManager.swift */; };
+		2059D61428AE6E990041580B /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2059D61328AE6E990041580B /* Launch.swift */; };
 		208025BD28A54061008283FF /* LeeSeoyun.otf in Resources */ = {isa = PBXBuildFile; fileRef = 208025BC28A54061008283FF /* LeeSeoyun.otf */; };
 		20850887288A9A4300553252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20850886288A9A4300553252 /* AppDelegate.swift */; };
 		20850889288A9A4300553252 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20850888288A9A4300553252 /* SceneDelegate.swift */; };
@@ -19,6 +20,8 @@
 		2085089B288A9AA300553252 /* AddLIstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085089A288A9AA300553252 /* AddLIstVC.swift */; };
 		2085089D288A9B5C00553252 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085089C288A9B5C00553252 /* Model.swift */; };
 		20A4B7A628A24352000957C3 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4B7A528A24352000957C3 /* CircleProgress.swift */; };
+		20A9D1E928AE756E00AB7EFD /* Launch.json in Resources */ = {isa = PBXBuildFile; fileRef = 20A9D1E828AE756E00AB7EFD /* Launch.json */; };
+		20A9D1EB28AE782900AB7EFD /* dongri-cha.json in Resources */ = {isa = PBXBuildFile; fileRef = 20A9D1EA28AE782900AB7EFD /* dongri-cha.json */; };
 		20DFD245289A4F90000DF63A /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DFD244289A4F90000DF63A /* constants.swift */; };
 		7224BD3928A4FB4F002DDF0E /* PausedHabitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7224BD3828A4FB4F002DDF0E /* PausedHabitTableViewController.swift */; };
 		722B891A28965FD000158BC5 /* HabitsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722B891928965FD000158BC5 /* HabitsCollectionVC.swift */; };
@@ -27,10 +30,13 @@
 		726DC33028915386005A9D6A /* CheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B695BC28902191009EBB23 /* CheckVC.swift */; };
 		729D89F7288FDD3A00B77EE9 /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729D89F5288FDD3A00B77EE9 /* HabitCell.swift */; };
 		729D89F8288FDD3A00B77EE9 /* HabitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 729D89F6288FDD3A00B77EE9 /* HabitCell.xib */; };
+		72EF582828ABD2CF003C8B2A /* IM_Hyemin-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 72EF582728ABD2CF003C8B2A /* IM_Hyemin-Regular.otf */; };
+		72EF582A28ABDBAF003C8B2A /* Baloo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72EF582928ABDBAF003C8B2A /* Baloo-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		204A50EC289CEC70000C03EA /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
+		2059D61328AE6E990041580B /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		208025BC28A54061008283FF /* LeeSeoyun.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeeSeoyun.otf; sourceTree = "<group>"; };
 		20850883288A9A4300553252 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20850886288A9A4300553252 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +49,8 @@
 		2085089A288A9AA300553252 /* AddLIstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLIstVC.swift; sourceTree = "<group>"; };
 		2085089C288A9B5C00553252 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		20A4B7A528A24352000957C3 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
+		20A9D1E828AE756E00AB7EFD /* Launch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Launch.json; sourceTree = "<group>"; };
+		20A9D1EA28AE782900AB7EFD /* dongri-cha.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dongri-cha.json"; sourceTree = "<group>"; };
 		20DFD244289A4F90000DF63A /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		3D39E534B7259F1752BA5B5D /* Pods-Habits.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.debug.xcconfig"; path = "Target Support Files/Pods-Habits/Pods-Habits.debug.xcconfig"; sourceTree = "<group>"; };
 		5E5E6C8D9947140609408D83 /* Pods-Habits.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.release.xcconfig"; path = "Target Support Files/Pods-Habits/Pods-Habits.release.xcconfig"; sourceTree = "<group>"; };
@@ -53,6 +61,8 @@
 		729D89F5288FDD3A00B77EE9 /* HabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCell.swift; sourceTree = "<group>"; };
 		729D89F6288FDD3A00B77EE9 /* HabitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitCell.xib; sourceTree = "<group>"; };
 		72B695BC28902191009EBB23 /* CheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckVC.swift; sourceTree = "<group>"; };
+		72EF582728ABD2CF003C8B2A /* IM_Hyemin-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IM_Hyemin-Regular.otf"; sourceTree = "<group>"; };
+		72EF582928ABDBAF003C8B2A /* Baloo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo-Regular.ttf"; sourceTree = "<group>"; };
 		9B15C2EC8BF252FEE02D21B3 /* Pods_Habits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,6 +81,8 @@
 		208025B728A53D22008283FF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				72EF582928ABDBAF003C8B2A /* Baloo-Regular.ttf */,
+				72EF582728ABD2CF003C8B2A /* IM_Hyemin-Regular.otf */,
 				208025BC28A54061008283FF /* LeeSeoyun.otf */,
 			);
 			path = Fonts;
@@ -97,6 +109,7 @@
 		20850885288A9A4300553252 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
+				20A9D1EE28AE78D400AB7EFD /* Lottie */,
 				208025B728A53D22008283FF /* Fonts */,
 				20DFD243289A4CEC000DF63A /* Service */,
 				20DFD240289A4CD1000DF63A /* Model */,
@@ -108,6 +121,15 @@
 				20850886288A9A4300553252 /* AppDelegate.swift */,
 			);
 			path = Habits;
+			sourceTree = "<group>";
+		};
+		20A9D1EE28AE78D400AB7EFD /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				20A9D1E828AE756E00AB7EFD /* Launch.json */,
+				20A9D1EA28AE782900AB7EFD /* dongri-cha.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		20DFD240289A4CD1000DF63A /* Model */ = {
@@ -134,10 +156,10 @@
 			isa = PBXGroup;
 			children = (
 				722B891F28967D8D00158BC5 /* HabitsCustomCollectionViewCell.swift */,
-				722B891928965FD000158BC5 /* HabitsCollectionVC.swift */,
 				729D89F5288FDD3A00B77EE9 /* HabitCell.swift */,
 				2085088A288A9A4300553252 /* ConfigVC.swift */,
 				72B695BC28902191009EBB23 /* CheckVC.swift */,
+				722B891928965FD000158BC5 /* HabitsCollectionVC.swift */,
 				2085089A288A9AA300553252 /* AddLIstVC.swift */,
 				7224BD3828A4FB4F002DDF0E /* PausedHabitTableViewController.swift */,
 			);
@@ -149,6 +171,7 @@
 			children = (
 				204A50EC289CEC70000C03EA /* TimeManager.swift */,
 				20A4B7A528A24352000957C3 /* CircleProgress.swift */,
+				2059D61328AE6E990041580B /* Launch.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -230,8 +253,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72EF582828ABD2CF003C8B2A /* IM_Hyemin-Regular.otf in Resources */,
+				20A9D1EB28AE782900AB7EFD /* dongri-cha.json in Resources */,
+				72EF582A28ABDBAF003C8B2A /* Baloo-Regular.ttf in Resources */,
 				20850893288A9A4300553252 /* LaunchScreen.storyboard in Resources */,
 				208025BD28A54061008283FF /* LeeSeoyun.otf in Resources */,
+				20A9D1E928AE756E00AB7EFD /* Launch.json in Resources */,
 				722B891E28967C9300158BC5 /* HabitsCustomCollectionViewCell.xib in Resources */,
 				20850890288A9A4300553252 /* Assets.xcassets in Resources */,
 				729D89F8288FDD3A00B77EE9 /* HabitCell.xib in Resources */,
@@ -292,6 +319,7 @@
 				2085089B288A9AA300553252 /* AddLIstVC.swift in Sources */,
 				7224BD3928A4FB4F002DDF0E /* PausedHabitTableViewController.swift in Sources */,
 				726DC33028915386005A9D6A /* CheckVC.swift in Sources */,
+				2059D61428AE6E990041580B /* Launch.swift in Sources */,
 				20DFD245289A4F90000DF63A /* constants.swift in Sources */,
 				722B891A28965FD000158BC5 /* HabitsCollectionVC.swift in Sources */,
 				204A50ED289CEC70000C03EA /* TimeManager.swift in Sources */,
