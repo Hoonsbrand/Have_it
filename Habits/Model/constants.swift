@@ -18,6 +18,8 @@ enum Cell {
     static let customTableViewCell = "customTableViewCell"
     static let HabitsCustomCollectionViewCell = "HabitsCustomCollectionViewCell"
     static let nibName = "HabitCell"
+    static let pausedHabitCell = "PausedHabitCell"
+    static let pausedNibName = "PausedHabitTableViewCell"
 }
 
 enum ImageName {

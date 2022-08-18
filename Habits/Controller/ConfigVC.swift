@@ -169,6 +169,25 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
 
 extension ConfigureVC: SwipeTableViewCellDelegate {
     
+    func showToast(message : String, font: UIFont, ToastWidth: CGFloat, ToasatHeight: CGFloat) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - (ToastWidth/2), y: self.view.frame.size.height/2, width: ToastWidth, height: ToasatHeight))
+        toastLabel.backgroundColor = UIColor(red: 0.993, green: 1, blue: 0.646, alpha: 1)
+        toastLabel.textColor = UIColor.black
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        toastLabel.numberOfLines = 0
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 1.5 , delay: 1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
         switch orientation {
@@ -177,17 +196,31 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                 
                 if let itemForPause = self.listRealm?[indexPath.row] {
                     
-                    let deleteAlert = UIAlertController(title: "✋\n습관을 잠깐 멈추시겠어요?", message: "\n멈춘 습관은 '잠시 멈춤'에 보관되며\n언제든지 다시 시작하실 수 있습니다.\n다만, 다시 시작하실 때는 1일차로 돌아갑니다.😢", preferredStyle: .alert)
+                    let titleFont = UIFont(name: "IMHyemin-Bold", size: 16) 
+                    let subTitleFont = UIFont(name: "IM_Hyemin", size: 12)
                     
-                    let keepChallengeAlertAction = UIAlertAction(title: "계속 도전", style: .cancel) { _ in
+                    let titleText = "✋습관을 잠깐 멈추시겠어요?"
+                    let subTitleText = "\n멈춘 습관은 '잠시 멈춤'에 보관되며\n언제든지 다시 시작하실 수 있습니다.\n다만, 다시 시작하실 때는 1일차로 돌아갑니다.😢"
+                    
+                    let attributeTitleString = NSMutableAttributedString(string: titleText)
+                    let attributeSubTitleString = NSMutableAttributedString(string: subTitleText)
+                    
+                    let deleteAlert = UIAlertController(title: titleText, message: subTitleText, preferredStyle: .alert)
+                    attributeTitleString.addAttribute(.font, value: titleFont!, range: (titleText as NSString).range(of: "\(titleText)"))
+                    attributeSubTitleString.addAttribute(.font, value: subTitleFont!, range: (subTitleText as NSString).range(of: "\(subTitleText)"))
+                    deleteAlert.setValue(attributeTitleString, forKey: "attributedTitle")
+                    deleteAlert.setValue(attributeSubTitleString, forKey: "attributedMessage")
+                    
+                    let keepChallengeAlertAction = UIAlertAction(title: "계속 도전", style: .default) { _ in
+                        
                         // 계속 도전을 누르면 swipe 숨기는 기능 필요
                         UIView.transition(with: tableView,
                                           duration: 0.35,
                                           options: .transitionFlipFromTop,
                                           animations: { self.myTableView.reloadData() })
-                        self.view.makeToast("👍 잘 선택 하셨어요! 끝까지 화이팅! 👍", duration: 1.5, position: .center, title: nil, image: nil, completion: nil)
+                        self.showToast(message: "잘 선택 하셨어요! 끝까지 화이팅! 👍", font:  UIFont(name: "IMHyemin-Bold", size: 14)!, ToastWidth: 240, ToasatHeight: 40)
                     }
-                    let pauseChallengeAlertAction = UIAlertAction(title: "멈추기", style: .destructive) { _ in
+                    let pauseChallengeAlertAction = UIAlertAction(title: "멈추기", style: .default) { _ in
                         do {
                             try self.realm.write {
                                 itemForPause.isPausedHabit = true
@@ -197,9 +230,16 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                         }
                         
                         self.loadHabitList()
+                        
+                        self.showToast(message: "다시 시작하실 그 날을 기약하며 \n습관이 ‘잠시 멈춤’에 보관되었습니다. 👋", font: UIFont(name: "IM_Hyemin", size: 14)!, ToastWidth: 266, ToasatHeight: 64)
                     }
-                    deleteAlert.addAction(keepChallengeAlertAction)
+                    
+                    keepChallengeAlertAction.setValue(UIColor(red: 0.078, green: 0.804, blue: 0.541, alpha: 1), forKey: "titleTextColor")
+                    pauseChallengeAlertAction.setValue(UIColor(red: 0.697, green: 0.725, blue: 0.762, alpha: 1), forKey: "titleTextColor")
+                    
                     deleteAlert.addAction(pauseChallengeAlertAction)
+                    deleteAlert.addAction(keepChallengeAlertAction)
+
                     
                     self.present(deleteAlert, animated: true, completion: nil)
                 }
@@ -244,3 +284,5 @@ extension ConfigureVC: BookmarkCellDelegate {
         return nil
     }
 }
+
+

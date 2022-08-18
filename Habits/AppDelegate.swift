@@ -15,13 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         print(Realm.Configuration.defaultConfiguration.fileURL)
-//        for family in UIFont.familyNames {
-//          print(family)
-//
-//          for sub in UIFont.fontNames(forFamilyName: family) {
-//            print("====> \(sub)")
-//          }
-//        }
+        for family in UIFont.familyNames {
+          print(family)
+
+          for sub in UIFont.fontNames(forFamilyName: family) {
+            print("====> \(sub)")
+          }
+        }
         // 런치화면 1초 보여주기
         Thread.sleep(forTimeInterval: 1.0)
         
