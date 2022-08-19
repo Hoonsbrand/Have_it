@@ -21,8 +21,6 @@ class ConfigureVC: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var addHabitOutlet: UIButton!
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -167,9 +165,6 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     func reloadWhenTapBookmark() {
         loadHabitList()
     }
-    
-    
-  
 }
 
 extension ConfigureVC: SwipeTableViewCellDelegate {

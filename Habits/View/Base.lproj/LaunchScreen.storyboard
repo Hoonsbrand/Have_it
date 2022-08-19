@@ -85,7 +85,6 @@
     <resources>
         <image name="Vector" width="83" height="79.666664123535156"/>
         <image name="alreadyHaveHabit" width="245" height="47"/>
-        <image name="alreadyHaveHabit" width="122.5" height="23.5"/>
         <image name="have it" width="49" height="12.333333015441895"/>
         <image name="logobottom" width="36.333332061767578" height="4.3333334922790527"/>
         <namedColor name="LaunchBackground">

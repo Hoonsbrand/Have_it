@@ -6,17 +6,13 @@ class CheckVC: UIViewController {
     
     
     @IBOutlet weak var myProgress: CircleProgress! // 프로그래스바
-    @IBOutlet weak var successButton: UIButton! // 내가해냄 버튼!
+    @IBOutlet weak var successButton: UIButton!
     @IBOutlet weak var titleSVTopView: UIView! // 타이틀 스택뷰 탑뷰
     @IBOutlet weak var titleStackView: UIStackView! // 타이틀스택뷰
     @IBOutlet weak var titleSVTop: UIStackView!
     @IBOutlet weak var stampView: UIView!
     
     @IBOutlet var stampArray: [UIButton]!
-    @IBOutlet weak var titleSVTop: UIStackView! // 타이틀 스택뷰 위에
-    @IBOutlet weak var stampView: UIView! // 스탬퓨 스택뷰( 테두리 칠 )
-    
-    @IBOutlet var stampArray: [UIButton]! // 스탬프배열
     @IBOutlet weak var checkVCTitle: UILabel!{ // 제목
         didSet{
             setTitle()
@@ -26,15 +22,9 @@ class CheckVC: UIViewController {
     @IBOutlet weak var dDayLabel: UILabel! // D+N
     @IBOutlet weak var successLabel: UILabel!// 성공횟수
     
-
     @IBOutlet weak var habitComplete: UILabel!
     @IBOutlet weak var goToSuccess: UILabel!
     @IBOutlet weak var successText: UILabel!
-
-    @IBOutlet weak var habitComplete: UILabel! // 습관완료 : (고정라벨 )
-    @IBOutlet weak var goToSuccess: UILabel! // xx일을 향해!
-    @IBOutlet weak var successText: UILabel! // // 0일째에요 .......
-
     
     
     
@@ -71,23 +61,9 @@ class CheckVC: UIViewController {
         habitComplete.font = UIFont(name: "IM_Hyemin", size: 16)
         
         self.myProgress.layer.cornerRadius = 20
-
-        
-        successButton.layer.cornerRadius = 16
-        successButton.layer.shadowColor = UIColor.gray.cgColor
-        successButton.layer.shadowOffset = CGSize.zero
-        successButton.layer.shadowOpacity = 0.4
-        successButton.layer.shadowRadius = 16
-        
-        successButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16 )
-        successButton.titleLabel?.font = UIFont(name: "IM_Hyemin", size: 16)
-        
-        // 폰트설정
-        habitComplete.textColor = UIColor(named: "tex3tFontColor")
-        habitComplete.font = UIFont(name: "IM_Hyemin", size: 16)
-        
->>>>>>> jihoonWorkSpace
         self.myProgress.backgroundColor = .clear
+        
+        
         self.myProgress.filleProgress(fromValue: dayCount - 1, toValue: dayCount)
     }
     
