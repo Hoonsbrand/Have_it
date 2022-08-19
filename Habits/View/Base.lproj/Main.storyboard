@@ -113,7 +113,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="WFE-BY-jnf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="IMHyemin-Regular" family="IM_Hyemin" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="내가 해냄! 😎">
@@ -215,8 +215,8 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwS-uG-jth">
-                                <rect key="frame" x="25" y="486" width="325" height="54"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwS-uG-jth">
+                                <rect key="frame" x="25" y="504" width="325" height="36"/>
                                 <string key="text">0일째에요. 
 오늘 하루 습관을 실행하셨다면 아래 버튼을 눌러주세요!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -692,6 +692,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eId-M6-gxm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="327.69230769230768" y="571.56398104265395"/>
+        </scene>
+        <!--Launch-->
+        <scene sceneID="TjJ-zf-nuI">
+            <objects>
+                <viewController storyboardIdentifier="Launch" id="NKg-az-sxP" customClass="Launch" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gDa-on-6jD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1239" y="-129"/>
         </scene>
     </scenes>
     <resources>
