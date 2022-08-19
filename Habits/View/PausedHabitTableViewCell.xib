@@ -23,10 +23,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wlh-Je-CDH">
-                        <rect key="frame" x="66" y="34" width="380" height="75"/>
+                        <rect key="frame" x="76" y="34" width="360" height="75"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pausedHabitCell" translatesAutoresizingMaskIntoConstraints="NO" id="9Ej-O9-ell">
-                                <rect key="frame" x="0.0" y="0.0" width="380" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="360" height="75"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일 아침 명상하기 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tR1-R5-7y5">
                                 <rect key="frame" x="59" y="29.5" width="120" height="16"/>
@@ -38,7 +38,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9Ej-O9-ell" firstAttribute="leading" secondItem="Wlh-Je-CDH" secondAttribute="leading" id="Ctg-v3-Okt"/>
-                            <constraint firstAttribute="width" constant="380" id="Hbb-nn-Z4B"/>
+                            <constraint firstAttribute="width" constant="360" id="Hbb-nn-Z4B"/>
                             <constraint firstAttribute="height" constant="75" id="T42-G1-Cy4"/>
                             <constraint firstItem="tR1-R5-7y5" firstAttribute="centerY" secondItem="Wlh-Je-CDH" secondAttribute="centerY" id="Yi3-Jx-KBF"/>
                             <constraint firstAttribute="trailing" secondItem="9Ej-O9-ell" secondAttribute="trailing" id="fDb-OF-c2W"/>

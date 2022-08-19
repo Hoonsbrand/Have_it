@@ -18,6 +18,8 @@ class ConfigureVC: UIViewController {
     var habitCell = HabitCell()
     var selectIndexPath = IndexPath()
     
+    let emptyLabel = UILabel()
+    
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var addHabitOutlet: UIButton!
     
@@ -46,6 +48,33 @@ class ConfigureVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         loadHabitList()
     }
+    
+    // MARK: - 리스트에 아무것도 없을 시 레이블 띄우기
+    func loadEmptyLabel() {
+        let listCount = realm.objects(Habits.self).filter("isInHOF = false").filter("isPausedHabit = false").count
+        
+        if listCount == 0 {
+            emptyLabel.frame = CGRect(x: 86, y: 382, width: 250, height: 48)
+            emptyLabel.numberOfLines = 0
+            emptyLabel.textAlignment = .center
+            emptyLabel.text = "하고 있는 습관이 아직 없어요 🥲\n습관을 만들어볼까요?"
+            emptyLabel.font = UIFont(name: "IM_Hyemin", size: 16)
+            emptyLabel.textColor = UIColor(red: 0.678, green: 0.698, blue: 0.725, alpha: 1)
+
+            let parent = self.view!
+            
+            parent.addSubview(emptyLabel)
+            
+            emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+            emptyLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
+            emptyLabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
+            emptyLabel.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 68).isActive = true
+            emptyLabel.topAnchor.constraint(equalTo: parent.topAnchor, constant: 382).isActive = true
+        } else {
+            emptyLabel.removeFromSuperview()
+        }
+    }
+    
     
     // MARK: - SegueToAddView
     @IBAction func showAddView(_ sender: UIButton) {
@@ -158,7 +187,7 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
                           duration: 0.35,
                           options: .transitionCrossDissolve,
                           animations: { self.myTableView.reloadData() })
-//        myTableView.alwaysBounceVertical = false // 스크롤 뷰 block
+        loadEmptyLabel()
     }
     
     // MARK: - RequestLoadListDelegate Method
@@ -216,8 +245,8 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                         // 계속 도전을 누르면 swipe 숨기는 기능 필요
                         UIView.transition(with: tableView,
                                           duration: 0.35,
-                                          options: .transitionFlipFromTop,
-                                          animations: { self.myTableView.reloadData() })
+                                          options: .transitionCrossDissolve,
+                                          animations: { tableView.reloadData() })
                         self.showToast(message: "잘 선택 하셨어요! 끝까지 화이팅! 👍", font:  UIFont(name: "IMHyemin-Bold", size: 14)!, ToastWidth: 240, ToasatHeight: 40)
                     }
                     let pauseChallengeAlertAction = UIAlertAction(title: "멈추기", style: .default) { _ in

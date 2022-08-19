@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class PausedHabitTableViewCell: UITableViewCell {
+class PausedHabitTableViewCell: SwipeTableViewCell {
 
     @IBOutlet weak var pausedHabitLabel: UILabel!
     

@@ -24,10 +24,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zeo-we-6LL">
-                        <rect key="frame" x="16" y="21" width="380" height="75"/>
+                        <rect key="frame" x="26" y="21" width="360" height="75"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="designedCell" translatesAutoresizingMaskIntoConstraints="NO" id="0tU-t3-ArI">
-                                <rect key="frame" x="0.0" y="0.0" width="380" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="360" height="75"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일 아침 명상하기 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4L-Q6-rcT">
                                 <rect key="frame" x="59" y="29.5" width="120" height="16"/>
@@ -57,7 +57,7 @@
                             <constraint firstAttribute="bottom" secondItem="0tU-t3-ArI" secondAttribute="bottom" id="Nhv-5D-m3S"/>
                             <constraint firstItem="0tU-t3-ArI" firstAttribute="top" secondItem="Zeo-we-6LL" secondAttribute="top" id="ktO-Cd-zGV"/>
                             <constraint firstItem="d4L-Q6-rcT" firstAttribute="centerY" secondItem="Zeo-we-6LL" secondAttribute="centerY" id="moL-Na-1JY"/>
-                            <constraint firstAttribute="width" constant="380" id="qJN-Jc-3gI"/>
+                            <constraint firstAttribute="width" constant="360" id="qJN-Jc-3gI"/>
                             <constraint firstItem="d4L-Q6-rcT" firstAttribute="leading" secondItem="tiZ-Nf-NnT" secondAttribute="trailing" constant="10" id="vfx-mb-m3v"/>
                         </constraints>
                     </view>
