@@ -92,6 +92,7 @@ extension PausedHabitTableViewController: UITableViewDataSource, UITableViewDele
                         itemForRestart.createTime = Date()
                         itemForRestart.dDay = self.timeManager.getDday(Date())
                         itemForRestart.dayCount = 0
+                        itemForRestart.isBookmarked = false
                     }
                 } catch {
                     print("Error restarting habit, \(error.localizedDescription)")
