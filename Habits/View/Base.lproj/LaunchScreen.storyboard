@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -12,18 +12,13 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController storyboardIdentifier="Launch234" id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-<<<<<<< HEAD
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="zfi-pZ-iI8">
                                 <rect key="frame" x="72" y="252.66666666666663" width="246" height="339"/>
-=======
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lNx-NM-yYb">
-                                <rect key="frame" x="64.666666666666686" y="251" width="246" height="310"/>
->>>>>>> jihoonWorkSpace
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alreadyHaveHabit" translatesAutoresizingMaskIntoConstraints="NO" id="9sI-Vx-FtU">
                                         <rect key="frame" x="0.0" y="0.0" width="246" height="62"/>
@@ -32,7 +27,6 @@
                                             <constraint firstAttribute="width" constant="246" id="yo8-CT-Cuj"/>
                                         </constraints>
                                     </imageView>
-<<<<<<< HEAD
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIe-n2-rdG" userLabel="LogoView">
                                         <rect key="frame" x="0.0" y="106.00000000000003" width="246" height="232.99999999999997"/>
                                         <subviews>
@@ -70,14 +64,6 @@
                                             <constraint firstItem="DL2-aN-y2e" firstAttribute="leading" secondItem="CIe-n2-rdG" secondAttribute="leading" constant="60" id="WyP-x5-QWA"/>
                                             <constraint firstItem="1vv-uv-1q5" firstAttribute="leading" secondItem="CIe-n2-rdG" secondAttribute="leading" constant="12" id="dwh-Oj-7rp"/>
                                             <constraint firstAttribute="bottom" secondItem="1vv-uv-1q5" secondAttribute="bottom" constant="-7" id="wSA-qX-lxN"/>
-=======
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DhQ-82-eA4">
-                                        <rect key="frame" x="6" y="70" width="240" height="240"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="ZVv-am-W3X"/>
-                                            <constraint firstAttribute="height" constant="240" id="oXU-DL-qXI"/>
->>>>>>> jihoonWorkSpace
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -86,13 +72,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="LaunchBackground"/>
                         <constraints>
-<<<<<<< HEAD
                             <constraint firstItem="zfi-pZ-iI8" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="0NV-q2-wxw"/>
                             <constraint firstItem="zfi-pZ-iI8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="iUP-be-HAd"/>
-=======
-                            <constraint firstItem="lNx-NM-yYb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Ak7-qP-yAx"/>
-                            <constraint firstItem="lNx-NM-yYb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Sba-JJ-Hdr"/>
->>>>>>> jihoonWorkSpace
                         </constraints>
                     </view>
                 </viewController>
@@ -102,7 +83,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Vector" width="83" height="79.666664123535156"/>
         <image name="alreadyHaveHabit" width="245" height="47"/>
+        <image name="have it" width="49" height="12.333333015441895"/>
+        <image name="logobottom" width="36.333332061767578" height="4.3333334922790527"/>
         <namedColor name="LaunchBackground">
             <color red="0.99199998378753662" green="1" blue="0.6470000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

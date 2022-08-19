@@ -97,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCM-IY-M5l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1318" y="1317"/>
+            <point key="canvasLocation" x="1297" y="1317"/>
         </scene>
         <!--CheckVC-->
         <scene sceneID="Xi5-l3-Ays">
@@ -385,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sau-GV-aGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-860" y="1316.7487684729065"/>
+            <point key="canvasLocation" x="-745" y="1317"/>
         </scene>
         <!--잠시 멈춤-->
         <scene sceneID="OCv-jm-hfw">
