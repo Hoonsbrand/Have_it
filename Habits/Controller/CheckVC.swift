@@ -67,12 +67,11 @@ class CheckVC: UIViewController {
         setPercentageLabel(dayCount: self.dayCount)
         setStackViewColor()
         tenCycle(dayCount: self.dayCount)
-<<<<<<< HEAD
         habitComplete.textColor = UIColor(named: "textFontColor")
         habitComplete.font = UIFont(name: "IM_Hyemin", size: 16)
         
         self.myProgress.layer.cornerRadius = 20
-=======
+
         
         successButton.layer.cornerRadius = 16
         successButton.layer.shadowColor = UIColor.gray.cgColor
