@@ -37,15 +37,15 @@ class ConfigureVC: UIViewController {
         self.myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         addHabitOutlet.layer.cornerRadius = 16
-        addHabitOutlet.layer.shadowColor = UIColor.gray.cgColor
-        addHabitOutlet.layer.shadowOffset = CGSize.zero
+        addHabitOutlet.layer.shadowColor = UIColor(red: 0.16, green: 0.21, blue: 0.14, alpha: 0.3).cgColor
+        addHabitOutlet.layer.shadowOffset = CGSize(width: 0, height: 2)
         addHabitOutlet.layer.shadowOpacity = 1.0
-        addHabitOutlet.layer.shadowRadius = 6
+        addHabitOutlet.layer.shadowRadius = 10
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+//        navigationController?.setNavigationBarHidden(true, animated: false)
         loadHabitList()
     }
     

@@ -63,6 +63,11 @@ extension PausedHabitTableViewController: UITableViewDataSource, UITableViewDele
             
             cell.backgroundColor = .clear
         }
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor(red: 0.962, green: 0.962, blue: 0.831, alpha: 1)
+        cell.selectedBackgroundView = bgColorView
+        
         return cell
     }
     
