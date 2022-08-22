@@ -441,7 +441,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IGz-7L-a4U">
-                                <rect key="frame" x="10" y="115" width="370" height="646"/>
+                                <rect key="frame" x="10" y="115" width="370" height="636"/>
                                 <color key="backgroundColor" name="ViewBackground"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lnI-Jv-0jY">
                                     <size key="itemSize" width="327" height="122"/>
@@ -472,11 +472,11 @@
                         <constraints>
                             <constraint firstItem="IGz-7L-a4U" firstAttribute="leading" secondItem="s9h-oZ-bzB" secondAttribute="leading" constant="10" id="1nm-mZ-jy8"/>
                             <constraint firstItem="TqY-lQ-WXg" firstAttribute="top" secondItem="ngY-o6-fQ8" secondAttribute="topMargin" constant="15" id="D06-bv-EWa"/>
-                            <constraint firstItem="IGz-7L-a4U" firstAttribute="bottom" secondItem="s9h-oZ-bzB" secondAttribute="bottom" id="My9-l5-fDJ"/>
                             <constraint firstItem="s9h-oZ-bzB" firstAttribute="trailing" secondItem="IGz-7L-a4U" secondAttribute="trailing" constant="10" id="QBq-h2-IKg"/>
                             <constraint firstItem="TqY-lQ-WXg" firstAttribute="leading" secondItem="s9h-oZ-bzB" secondAttribute="leading" constant="88" id="X7X-fB-r6D"/>
                             <constraint firstItem="IGz-7L-a4U" firstAttribute="top" secondItem="TqY-lQ-WXg" secondAttribute="bottom" constant="24" id="kNx-La-1a8"/>
                             <constraint firstItem="s9h-oZ-bzB" firstAttribute="trailing" secondItem="TqY-lQ-WXg" secondAttribute="trailing" constant="88" id="r5G-tG-Fqc"/>
+                            <constraint firstItem="s9h-oZ-bzB" firstAttribute="bottom" secondItem="IGz-7L-a4U" secondAttribute="bottom" constant="10" id="tKm-mP-ODr"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="습관의 전당" image="ic-thumbsup" selectedImage="ic-thumbsup-active" id="SJB-Bn-cdN">
@@ -489,7 +489,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RTC-Tx-KNe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="328" y="1317"/>
+            <point key="canvasLocation" x="327.69230769230768" y="1316.5876777251185"/>
         </scene>
         <!--ConfigureVC-->
         <scene sceneID="pGk-Jd-bxa">

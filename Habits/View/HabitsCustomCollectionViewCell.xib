@@ -23,25 +23,25 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="1Z3-hu-eQF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="23t-v8-ME7">
-                        <rect key="frame" x="110.5" y="43.5" width="154" height="88"/>
+                        <rect key="frame" x="105.5" y="35.5" width="164.5" height="88"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlX-TM-RUM">
-                                <rect key="frame" x="56.5" y="0.0" width="41.5" height="20.5"/>
+                                <rect key="frame" x="61.5" y="0.0" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95Z-h0-Hnu">
-                                <rect key="frame" x="56.5" y="36.5" width="41.5" height="20.5"/>
+                                <rect key="frame" x="61.5" y="36.5" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="라는 멋진 습관을 해내셨어요. 👍" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab3-Ft-FcG">
-                                <rect key="frame" x="0.0" y="73" width="154" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해당 습관을 멋지게 해내셨어요. 👍" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab3-Ft-FcG">
+                                <rect key="frame" x="0.0" y="73" width="164.5" height="15"/>
                                 <fontDescription key="fontDescription" name="IMHyemin-Regular" family="IM_Hyemin" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -50,12 +50,12 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="23t-v8-ME7" firstAttribute="centerY" secondItem="VL9-l4-EII" secondAttribute="centerY" id="FNz-cZ-EU7"/>
+                    <constraint firstItem="23t-v8-ME7" firstAttribute="centerY" secondItem="VL9-l4-EII" secondAttribute="centerY" constant="-8" id="FNz-cZ-EU7"/>
                     <constraint firstItem="1Z3-hu-eQF" firstAttribute="leading" secondItem="VL9-l4-EII" secondAttribute="leading" id="H51-64-vzV"/>
                     <constraint firstItem="1Z3-hu-eQF" firstAttribute="top" secondItem="VL9-l4-EII" secondAttribute="top" id="ZKj-uq-4e1"/>
                     <constraint firstAttribute="trailing" secondItem="1Z3-hu-eQF" secondAttribute="trailing" id="cPS-WQ-EdG"/>
                     <constraint firstItem="23t-v8-ME7" firstAttribute="centerX" secondItem="VL9-l4-EII" secondAttribute="centerX" id="cg1-2l-Sg7"/>
-                    <constraint firstAttribute="bottom" secondItem="1Z3-hu-eQF" secondAttribute="bottom" id="vxb-fR-tmn"/>
+                    <constraint firstAttribute="bottom" secondItem="1Z3-hu-eQF" secondAttribute="bottom" constant="16" id="vxb-fR-tmn"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="375" height="175"/>
