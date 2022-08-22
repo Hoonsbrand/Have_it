@@ -39,6 +39,12 @@ class AddLIstVC: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.topItem?.title = ""
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
 
     // MARK: textField Delegate Method
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

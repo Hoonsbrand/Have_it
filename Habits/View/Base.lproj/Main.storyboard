@@ -421,7 +421,9 @@
                             <constraint firstAttribute="bottom" secondItem="Uau-Es-S5Q" secondAttribute="bottom" constant="100" id="iT1-Kc-0xb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="잠시 멈춤" image="ic-pause" selectedImage="ic-pause-active" id="lo4-gH-4v2"/>
+                    <tabBarItem key="tabBarItem" title="잠시 멈춤" image="ic-pause" selectedImage="ic-pause-active" id="lo4-gH-4v2">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="pausedTableView" destination="Uau-Es-S5Q" id="80y-1J-Xkg"/>
                     </connections>
@@ -477,7 +479,9 @@
                             <constraint firstItem="s9h-oZ-bzB" firstAttribute="trailing" secondItem="TqY-lQ-WXg" secondAttribute="trailing" constant="88" id="r5G-tG-Fqc"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="습관의 전당" image="ic-thumbsup" selectedImage="ic-thumbsup-active" id="SJB-Bn-cdN"/>
+                    <tabBarItem key="tabBarItem" title="습관의 전당" image="ic-thumbsup" selectedImage="ic-thumbsup-active" id="SJB-Bn-cdN">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="P4c-nx-8mj"/>
                     <connections>
                         <outlet property="habitsCollectionView" destination="IGz-7L-a4U" id="vw3-21-wrG"/>
@@ -496,7 +500,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ezp-dd-gwd">
-                                <rect key="frame" x="0.0" y="224" width="390" height="537"/>
+                                <rect key="frame" x="0.0" y="224" width="390" height="457"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" name="ViewBackground"/>
                                 <prototypes>
@@ -600,7 +604,7 @@
                             <constraint firstItem="ZYl-Uk-suu" firstAttribute="trailing" secondItem="Ezp-dd-gwd" secondAttribute="trailing" id="Qhk-ps-tRe"/>
                             <constraint firstItem="j5D-gq-GGT" firstAttribute="leading" secondItem="ZYl-Uk-suu" secondAttribute="leading" constant="20" id="Ulb-XW-izy"/>
                             <constraint firstItem="ZYl-Uk-suu" firstAttribute="trailing" secondItem="j5D-gq-GGT" secondAttribute="trailing" constant="20" id="d7I-mF-Ou2"/>
-                            <constraint firstItem="ZYl-Uk-suu" firstAttribute="bottom" secondItem="Ezp-dd-gwd" secondAttribute="bottom" id="ggK-iF-Kh8"/>
+                            <constraint firstItem="ZYl-Uk-suu" firstAttribute="bottom" secondItem="Ezp-dd-gwd" secondAttribute="bottom" constant="80" id="ggK-iF-Kh8"/>
                             <constraint firstItem="Ezp-dd-gwd" firstAttribute="top" secondItem="QKo-nD-1N0" secondAttribute="bottom" constant="24" id="gyI-Er-AOO"/>
                             <constraint firstItem="QKo-nD-1N0" firstAttribute="top" secondItem="hux-Lc-jyN" secondAttribute="top" id="mMK-zN-5cd"/>
                             <constraint firstItem="Ezp-dd-gwd" firstAttribute="leading" secondItem="ZYl-Uk-suu" secondAttribute="leading" id="oPa-RD-cYI"/>
@@ -645,7 +649,9 @@
         <scene sceneID="9Th-2Y-7la">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ahy-R8-cUg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="리스트" image="ic-list" selectedImage="ic-list-active" id="z3e-x6-Lwc"/>
+                    <tabBarItem key="tabBarItem" title="리스트" image="ic-list" selectedImage="ic-list-active" id="z3e-x6-Lwc">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iIJ-bn-Tdm">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>

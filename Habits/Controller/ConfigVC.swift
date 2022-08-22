@@ -45,8 +45,21 @@ class ConfigureVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         loadHabitList()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        // 노치가 없으면 탭바의 크기를 바꿈
+        if !UIDevice.current.hasNotch {
+            print("don't have a notch")
+            tabBarController?.tabBar.frame.size.height = 60
+            tabBarController?.tabBar.frame.origin.y = view.frame.height - 60
+            tabBarController?.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+//            UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+        }
     }
     
     // MARK: - 리스트에 아무것도 없을 시 레이블 띄우기
@@ -147,36 +160,36 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     }
     
 // MARK: - 스크롤을 감지해서 맨 밑에 있을 때 버튼을 숨김
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollMethod(scrollView)
-    }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        scrollMethod(scrollView)
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        scrollMethod(scrollView)
-    }
-    
-    func scrollMethod(_ scrollView: UIScrollView) {
-        let height = scrollView.frame.size.height
-        let contentYOffset = scrollView.contentOffset.y
-        let distanceFromBottom = scrollView.contentSize.height - contentYOffset
-        
-        if distanceFromBottom <= height {
-            addHabitOutlet.isEnabled = false
-            addHabitOutlet.isHidden = true
-        } else {
-            addHabitOutlet.isEnabled = true
-            addHabitOutlet.isHidden = false
-        }
-        
-        if scrollView.contentOffset.y <= 0 {
-            addHabitOutlet.isEnabled = true
-            addHabitOutlet.isHidden = false
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        scrollMethod(scrollView)
+//    }
+//
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        scrollMethod(scrollView)
+//    }
+//
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        scrollMethod(scrollView)
+//    }
+//
+//    func scrollMethod(_ scrollView: UIScrollView) {
+//        let height = scrollView.frame.size.height
+//        let contentYOffset = scrollView.contentOffset.y
+//        let distanceFromBottom = scrollView.contentSize.height - contentYOffset
+//
+//        if distanceFromBottom <= height {
+//            addHabitOutlet.isEnabled = false
+//            addHabitOutlet.isHidden = true
+//        } else {
+//            addHabitOutlet.isEnabled = true
+//            addHabitOutlet.isHidden = false
+//        }
+//
+//        if scrollView.contentOffset.y <= 0 {
+//            addHabitOutlet.isEnabled = true
+//            addHabitOutlet.isHidden = false
+//        }
+//    }
     
     // MARK: - 리스트 로드
     func loadHabitList() {
@@ -314,4 +327,10 @@ extension ConfigureVC: BookmarkCellDelegate {
     }
 }
 
-
+// 노치가 있는지 없는지
+extension UIDevice {
+    var hasNotch: Bool {
+        let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        return bottom > 0
+    }
+}
