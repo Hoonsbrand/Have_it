@@ -18,10 +18,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         let storyboard = UIStoryboard(name: "LottieLaunch", bundle: nil)
-               let initialViewController = storyboard.instantiateViewController(withIdentifier: "LottieLaunch")
-               // rootViewController 설정하기
-               self.window?.rootViewController = initialViewController
-               self.window?.makeKeyAndVisible()
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "LottieLaunch")
+//                rootViewController 설정하기
+//        let storyBoard = UIStoryboard.init(name: "PopUpSixtySixth", bundle: nil)
+//        // storyBoard를 ViewController로가져오기
+//        let popUpView = storyBoard.instantiateViewController(withIdentifier: "PopUpSixtySixth") as! PopUpSixtySixth
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 

@@ -61,7 +61,6 @@ class CheckVC: UIViewController {
         
         habitComplete.font = UIFont(name: "IM_Hyemin", size: 16)
         
-        successUI()
         
         self.myProgress.layer.cornerRadius = 20
         self.myProgress.backgroundColor = .clear
@@ -70,10 +69,20 @@ class CheckVC: UIViewController {
         self.myProgress.filleProgress(fromValue: dayCount - 1, toValue: dayCount)
     }
     
-    // CheckVC에서만 네비게이션 바 보이게 하기
+    // CheckVC에서만 네비게이션 바 보이게 하기 ( Navigation 설정 )
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "IMHyemin-Bold", size: 24)!]
+        
+        // navigation back button 설정
+        let backBarBtnItem = UIBarButtonItem()
+        backBarBtnItem.title = ""
+        backBarBtnItem.tintColor = .black
+        navigationController?.navigationBar.backItem?.backBarButtonItem = backBarBtnItem
+        
+        
     }
     
     
@@ -83,11 +92,11 @@ class CheckVC: UIViewController {
         
         let titleFont = [NSAttributedString.Key.font: UIFont(name: "IM_Hyemin", size: 20)]
         let titleAttrString = NSMutableAttributedString(string: "오늘도 내가 해냄! 😎", attributes: titleFont as [NSAttributedString.Key : Any])
-
-    
-
+        
+        
+        
         let completeAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert) // 완료 alert
-            completeAlert.setValue(titleAttrString, forKey:"attributedTitle")
+        completeAlert.setValue(titleAttrString, forKey:"attributedTitle")
         // 확인이 눌려야 실행
         let completeAlertAction = UIAlertAction(title: "완료", style: .default){ [weak self]
             (action) in
@@ -106,19 +115,11 @@ class CheckVC: UIViewController {
         let completeAlertCancel = UIAlertAction(title: "취소", style: .cancel,handler:nil)
         completeAlertCancel.setValue(UIColor.lightGray, forKey: "titleTextColor")
         
-        let finishAlert = UIAlertController(title: "  성공  ", message: "\(count + 1)일 달성 완료", preferredStyle: .alert)
-        let finishAlertAction = UIAlertAction(title: "확인", style: .default){
-            _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.navigationController?.popToRootViewController(animated: true)
-            }  // 1 초뒤 팝뷰 , 메인쓰레드에서만 동장해야됨.
-        }
-        
         // 알림창 설정
         completeAlert.addAction(completeAlertCancel)
         completeAlert.addAction(completeAlertAction)
         
-        finishAlert.addAction(finishAlertAction)
+        
         switch count {
         case 65:
             changeButtonImage(count)
@@ -128,16 +129,42 @@ class CheckVC: UIViewController {
             try! realm.write {
                 resultRealm?.isInHOF = true
             }
-            present(finishAlert,animated: true, completion: nil)
+            let storyBoard = UIStoryboard.init(name: "PopUpSixtySixth", bundle: nil)
+            // storyBoard를 ViewController로가져오기
+           let popUpView = storyBoard.instantiateViewController(withIdentifier: "PopUpSixtySixth")
+            // 뷰가 보여질 떄 스타일
+            popUpView.modalPresentationStyle = .overCurrentContext
+            // 뷰가 사라질 떄 스타일
+            popUpView.modalTransitionStyle = .crossDissolve
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.present(popUpView, animated: true, completion: nil)
+            }
+            NotificationCenter.default.addObserver(self, selector: #selector(showHonor), name: NSNotification.Name(rawValue: Notification.goToHoner), object: nil)
+            
             
         default:
             return self.present(completeAlert, animated: true, completion: nil)
         }
     }
     
+    //MARK: - goToHonor 명예의 전당으로 가는 Notification
+    @objc func showHonor(){
+        
+        let Storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        guard let HonorVC = Storyboard.instantiateViewController(identifier: "Main") as? UITabBarController else { return }
+        HonorVC.modalPresentationStyle = .fullScreen
+        HonorVC.selectedIndex = 1
+        DispatchQueue.main.async {
+            self.present(HonorVC,animated: true,completion: nil)
+        }
+        
+        
+        
+    }
+    
     // MARK:  changeButtonImage (Button이미지 변경)
     func changeButtonImage(_ dayCount : Int){
-       
+        
         let stampCount = dayCount % 10
         
         stampArray[stampCount].tintColor = UIColor(named: "StampColor")
@@ -146,11 +173,11 @@ class CheckVC: UIViewController {
         
     }
     
-// MARK: - @IBAction Method
+    // MARK: - @IBAction Method
     //MARK: clickSuccessButton ( 성공버튼 클릭 액션 )
     
     @IBAction func clickSuccessButton(_ sender: UIButton) {
-       
+        
         // 버튼입력일자가 하루 지났을 떄.
         if (timeManager.compareDate(clickedTime) || self.dayCount == 0 || self.dayCount < 66 ){
             makeAlert(dayCount) // 완료했을 때 취소 했을 때 나눔
@@ -222,7 +249,7 @@ extension CheckVC {
         print("초기버튼이미지 셋팅")
         for btn in stampArray{
             btn.setImage(UIImage(named: "stamp")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        
+            
         }
     }
     
@@ -275,23 +302,23 @@ extension CheckVC {
         
         
         // 확인문구
-       
+        
         successText.text = "\(dayCount)일째에요. \n 오늘 하루 습관을 실행하셨다면 아래 버튼을 눌러주세요!"
         successText.font = UIFont(name: "IM_Hyemin", size: 14)
         successText.textColor = UIColor(named: "textFontColor")
-                
+        
         let attributtedString = NSMutableAttributedString(string: successText.text!)
-           attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(named: "StampColor")!, range: (successText.text! as NSString).range(of:"\(dayCount)"))
+        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(named: "StampColor")!, range: (successText.text! as NSString).range(of:"\(dayCount)"))
         attributtedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name:"IMHyemin-Bold",size: 15)!, range: (successText.text! as NSString).range(of:"\(dayCount)"))
-                
+        
         successText.attributedText = attributtedString
-        // 크기가 변경 될 수 도 있으니까 
+        // 크기가 변경 될 수 도 있으니까
         successText.adjustsFontSizeToFitWidth = true
         
     }
     
     
-//MARK: 10일간격으로 초기화
+    //MARK: 10일간격으로 초기화
     func tenCycle(dayCount : Int){
         let goToSuccessInt = dayCount / 10 + 1// 0,1,2,3,4,5,6
         goToSuccess.textColor = UIColor(named: "textFontColor")
@@ -302,7 +329,7 @@ extension CheckVC {
         }
         //60일 이후엔 66일을향해
         else{
-            goToSuccess.text = "\(goToSuccessInt)6일을 향해 !"
+            goToSuccess.text = "\(goToSuccessInt-1)6일을 향해 !"
         }
         
         if dayCount % 10 == 0 {
@@ -320,7 +347,7 @@ extension CheckVC {
         let percent1 = Int(multiPercent) % 100
         let result = floor(Double(percent1))
         percentLabel.font = UIFont(name: "Baloo", size: 20)
-   
+        
         
         if percent == 0, dayCount != 0 {
             self.percentLabel.text = " 100 % "
@@ -368,7 +395,7 @@ extension CheckVC {
 
 extension UIView {
     //MARK: 뷰의 위쪽만 Conoradius
-   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         
         let mask = CAShapeLayer()
