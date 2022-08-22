@@ -307,6 +307,7 @@ extension CheckVC {
             self.percentLabel.text = " 100 % "
         }
         else{
+            percentLabel.textColor = UIColor(named: "StampColor")
             self.percentLabel.text = "\(Int(result))% "
         }
     }
@@ -318,7 +319,7 @@ extension CheckVC {
         titleSVTopView.trailingAnchor.constraint(equalTo: titleSVTop.trailingAnchor).isActive = true
         titleSVTopView.translatesAutoresizingMaskIntoConstraints = false
         
-        titleStackView.layer.cornerRadius = 15
+        titleStackView.layer.cornerRadius = 16
         titleStackView.layer.borderWidth = 2
         titleStackView.layer.borderColor = UIColor(named: "ButtonColor")?.cgColor
         
@@ -329,7 +330,7 @@ extension CheckVC {
         
         
         // stampCheckView설정
-        stampView.layer.cornerRadius = 15
+        stampView.layer.cornerRadius = 16
         stampView.layer.borderWidth = 2
         stampView.layer.borderColor = UIColor(named: "ButtonColor")?.cgColor
     }

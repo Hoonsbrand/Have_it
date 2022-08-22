@@ -26,22 +26,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="23t-v8-ME7">
-                        <rect key="frame" x="105.5" y="35.5" width="164.5" height="88"/>
+                        <rect key="frame" x="103.5" y="36" width="168" height="87"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlX-TM-RUM">
-                                <rect key="frame" x="61.5" y="0.0" width="41.5" height="20.5"/>
+                                <rect key="frame" x="63.5" y="0.0" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95Z-h0-Hnu">
-                                <rect key="frame" x="61.5" y="36.5" width="41.5" height="20.5"/>
+                                <rect key="frame" x="63.5" y="36.5" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해당 습관을 멋지게 해내셨어요. 👍" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab3-Ft-FcG">
-                                <rect key="frame" x="0.0" y="73" width="164.5" height="15"/>
+                                <rect key="frame" x="0.0" y="73" width="168" height="14"/>
                                 <fontDescription key="fontDescription" name="IMHyemin-Regular" family="IM_Hyemin" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

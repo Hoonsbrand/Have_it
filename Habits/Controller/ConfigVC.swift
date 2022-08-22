@@ -26,6 +26,8 @@ class ConfigureVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         myTableView.dataSource = self
         myTableView.delegate = self
         myTableView.register(UINib(nibName: Cell.nibName, bundle: nil), forCellReuseIdentifier: Cell.customTableViewCell)
