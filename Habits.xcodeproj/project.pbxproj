@@ -12,6 +12,8 @@
 		203B51FD28B390D3003C6AE2 /* LottieLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203B51FC28B390D3003C6AE2 /* LottieLaunch.swift */; };
 		203B520128B396DC003C6AE2 /* dongri-cha.json in Resources */ = {isa = PBXBuildFile; fileRef = 203B51FF28B396DC003C6AE2 /* dongri-cha.json */; };
 		203B520228B396DC003C6AE2 /* Launch.json in Resources */ = {isa = PBXBuildFile; fileRef = 203B520028B396DC003C6AE2 /* Launch.json */; };
+		203B520428B3C999003C6AE2 /* PopUpSixtySixth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203B520328B3C999003C6AE2 /* PopUpSixtySixth.swift */; };
+		203B520628B3C9B1003C6AE2 /* SixtySixth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203B520528B3C9B1003C6AE2 /* SixtySixth.storyboard */; };
 		204A50ED289CEC70000C03EA /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204A50EC289CEC70000C03EA /* TimeManager.swift */; };
 		208025BD28A54061008283FF /* LeeSeoyun.otf in Resources */ = {isa = PBXBuildFile; fileRef = 208025BC28A54061008283FF /* LeeSeoyun.otf */; };
 		20850887288A9A4300553252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20850886288A9A4300553252 /* AppDelegate.swift */; };
@@ -43,6 +45,8 @@
 		203B51FC28B390D3003C6AE2 /* LottieLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieLaunch.swift; sourceTree = "<group>"; };
 		203B51FF28B396DC003C6AE2 /* dongri-cha.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dongri-cha.json"; sourceTree = "<group>"; };
 		203B520028B396DC003C6AE2 /* Launch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Launch.json; sourceTree = "<group>"; };
+		203B520328B3C999003C6AE2 /* PopUpSixtySixth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpSixtySixth.swift; sourceTree = "<group>"; };
+		203B520528B3C9B1003C6AE2 /* SixtySixth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SixtySixth.storyboard; sourceTree = "<group>"; };
 		204A50EC289CEC70000C03EA /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		208025BC28A54061008283FF /* LeeSeoyun.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeeSeoyun.otf; sourceTree = "<group>"; };
 		20850883288A9A4300553252 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +163,7 @@
 				20850891288A9A4300553252 /* LaunchScreen.storyboard */,
 				7272683E28AE82E100274864 /* PausedHabitTableViewCell.xib */,
 				203B51FA28B38EC6003C6AE2 /* LottieLaunch.storyboard */,
+				203B520528B3C9B1003C6AE2 /* SixtySixth.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 				7224BD3828A4FB4F002DDF0E /* PausedHabitTableViewController.swift */,
 				7272683D28AE82E100274864 /* PausedHabitTableViewCell.swift */,
 				203B51FC28B390D3003C6AE2 /* LottieLaunch.swift */,
+				203B520328B3C999003C6AE2 /* PopUpSixtySixth.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -276,6 +282,7 @@
 				20850890288A9A4300553252 /* Assets.xcassets in Resources */,
 				729D89F8288FDD3A00B77EE9 /* HabitCell.xib in Resources */,
 				7272683C28AE783700274864 /* IM_Hyemin-Bold.otf in Resources */,
+				203B520628B3C9B1003C6AE2 /* SixtySixth.storyboard in Resources */,
 				2085088E288A9A4300553252 /* Main.storyboard in Resources */,
 				203B520128B396DC003C6AE2 /* dongri-cha.json in Resources */,
 			);
@@ -335,6 +342,7 @@
 				2085089B288A9AA300553252 /* AddLIstVC.swift in Sources */,
 				7224BD3928A4FB4F002DDF0E /* PausedHabitTableViewController.swift in Sources */,
 				726DC33028915386005A9D6A /* CheckVC.swift in Sources */,
+				203B520428B3C999003C6AE2 /* PopUpSixtySixth.swift in Sources */,
 				20DFD245289A4F90000DF63A /* constants.swift in Sources */,
 				722B891A28965FD000158BC5 /* HabitsCollectionVC.swift in Sources */,
 				204A50ED289CEC70000C03EA /* TimeManager.swift in Sources */,

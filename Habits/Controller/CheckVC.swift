@@ -58,7 +58,10 @@ class CheckVC: UIViewController {
         setStackViewColor()
         tenCycle(dayCount: self.dayCount)
         habitComplete.textColor = UIColor(named: "textFontColor")
+        
         habitComplete.font = UIFont(name: "IM_Hyemin", size: 16)
+        
+        successUI()
         
         self.myProgress.layer.cornerRadius = 20
         self.myProgress.backgroundColor = .clear
@@ -77,7 +80,14 @@ class CheckVC: UIViewController {
     
     // MARK: - makeAlert (  알람메세지 ) -> self를 많이써야되는데...@escaping으로 할 수 있을지도
     func makeAlert(_ count : Int){
-        let completeAlert = UIAlertController(title: "습관 완료", message: "\(count + 1)일째 완료하셨습니다.", preferredStyle: .alert) // 완료 alert
+        
+        let titleFont = [NSAttributedString.Key.font: UIFont(name: "IM_Hyemin", size: 20)]
+        let titleAttrString = NSMutableAttributedString(string: "오늘도 내가 해냄! 😎", attributes: titleFont as [NSAttributedString.Key : Any])
+
+    
+
+        let completeAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert) // 완료 alert
+            completeAlert.setValue(titleAttrString, forKey:"attributedTitle")
         // 확인이 눌려야 실행
         let completeAlertAction = UIAlertAction(title: "완료", style: .default){ [weak self]
             (action) in
@@ -91,8 +101,10 @@ class CheckVC: UIViewController {
             self.setPercentageLabel(dayCount: self.dayCount)
             self.tenCycle(dayCount: self.dayCount)
         }
+        completeAlertAction.setValue(UIColor(named: "StampColor"), forKey: "titleTextColor")
         // 습관을 완료하지 못했을 때
-        let completeAlertCancel = UIAlertAction(title: "취소", style: .destructive,handler:nil)
+        let completeAlertCancel = UIAlertAction(title: "취소", style: .cancel,handler:nil)
+        completeAlertCancel.setValue(UIColor.lightGray, forKey: "titleTextColor")
         
         let finishAlert = UIAlertController(title: "  성공  ", message: "\(count + 1)일 달성 완료", preferredStyle: .alert)
         let finishAlertAction = UIAlertAction(title: "확인", style: .default){
@@ -221,9 +233,7 @@ extension CheckVC {
         checkVCTitle.textColor = UIColor(named: "textFontColor")
         
         checkVCTitle.sizeThatFits(CGSize(width: checkVCTitle.frame.width, height: checkVCTitle.frame.height))
-        checkVCTitle.font = UIFont(name: "IM_Hyemin", size: 20)
-        
-        // 라벨의 사이즈를 해당크기에 맞게 설정
+        checkVCTitle.font = UIFont(name: "IMHyemin-Bold", size: 20)
         
         // checkVCTitle.sizeToFit() -> 자동으로 라벨의 크기를 텍스트에 맞게 수정
         // 뷰에 오토레이아웃을 작용하기위해 / 뷰에따라 자동으로 제약을 변환하는 기능을 꺼야됨
@@ -255,24 +265,37 @@ extension CheckVC {
         dDayLabel.textColor = UIColor(named: "textFontColor")
         dDayLabel.layer.cornerRadius =  dDayLabel.frame.size.height / 2
         dDayLabel.clipsToBounds = true
-        dDayLabel.font = UIFont(name: "IM_Hyemin", size: 12)
-        dDayLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        dDayLabel.font = UIFont(name: "Baloo", size: 16)
+        
         
         //성공횟수
         successLabel.text = "\(dayCount) 회"
         successLabel.textColor = UIColor(named: "textFontColor")
         successLabel.font = UIFont(name: "IM_Hyemin", size: 17)
         
+        
+        // 확인문구
+       
         successText.text = "\(dayCount)일째에요. \n 오늘 하루 습관을 실행하셨다면 아래 버튼을 눌러주세요!"
-        successText.textColor = UIColor(named: "textFontColor")
         successText.font = UIFont(name: "IM_Hyemin", size: 14)
+        successText.textColor = UIColor(named: "textFontColor")
+                
+        let attributtedString = NSMutableAttributedString(string: successText.text!)
+           attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(named: "StampColor")!, range: (successText.text! as NSString).range(of:"\(dayCount)"))
+        attributtedString.addAttribute(NSAttributedString.Key.font, value: UIFont(name:"IMHyemin-Bold",size: 15)!, range: (successText.text! as NSString).range(of:"\(dayCount)"))
+                
+        successText.attributedText = attributtedString
+        // 크기가 변경 될 수 도 있으니까 
+        successText.adjustsFontSizeToFitWidth = true
+        
     }
+    
     
 //MARK: 10일간격으로 초기화
     func tenCycle(dayCount : Int){
         let goToSuccessInt = dayCount / 10 + 1// 0,1,2,3,4,5,6
         goToSuccess.textColor = UIColor(named: "textFontColor")
-        goToSuccess.font = UIFont(name: "IM_Hyemin", size: 18)
+        goToSuccess.font = UIFont(name: "IMHyemin-Bold", size: 18)
         
         if goToSuccessInt < 7{
             goToSuccess.text = "\(goToSuccessInt)0일을 향해 !"
@@ -287,11 +310,6 @@ extension CheckVC {
                 self.initStamp()
             }
         }
-        
-        
-        
-        
-        
     }
     
     //MARK: 66일로 도는 사이클의 percentage Label
@@ -301,6 +319,7 @@ extension CheckVC {
         let multiPercent = initPercent * 100
         let percent1 = Int(multiPercent) % 100
         let result = floor(Double(percent1))
+        percentLabel.font = UIFont(name: "Baloo", size: 20)
    
         
         if percent == 0, dayCount != 0 {
@@ -312,6 +331,7 @@ extension CheckVC {
         }
     }
     
+    // 상당과 하단 UI 설정 ( 테두리 )
     func setStackViewColor(){
         
         
@@ -335,6 +355,15 @@ extension CheckVC {
         stampView.layer.borderColor = UIColor(named: "ButtonColor")?.cgColor
     }
     
+    func successUI(){
+        successButton.titleLabel?.font = UIFont(name: "IMHyemin-Bold", size: 18)
+        successButton.layer.cornerRadius = 16
+        successButton.layer.shadowColor = UIColor(red: 188/255, green: 188/255, blue: 34/255, alpha: 0.4).cgColor
+        successButton.layer.shadowOpacity = 1.0
+        successButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        successButton.layer.shadowRadius = 10
+    }
+    
 }
 
 extension UIView {
@@ -347,3 +376,4 @@ extension UIView {
         layer.mask = mask
     }
 }
+
