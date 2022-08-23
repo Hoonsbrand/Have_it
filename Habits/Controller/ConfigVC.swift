@@ -9,6 +9,7 @@ import UIKit
 import RealmSwift
 import Toast_Swift
 import SwipeCellKit
+import Lottie
 
 class ConfigureVC: UIViewController {
    
@@ -22,6 +23,7 @@ class ConfigureVC: UIViewController {
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var addHabitOutlet: UIButton!
+    @IBOutlet weak var LottieDonguri: AnimationView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +51,7 @@ class ConfigureVC: UIViewController {
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(true, animated: false)
         loadHabitList()
+        dongruri()
     }
     
     override func viewDidLayoutSubviews() {
@@ -325,6 +328,34 @@ extension ConfigureVC: BookmarkCellDelegate {
         }
         return nil
     }
+}
+
+extension ConfigureVC {
+    
+    fileprivate func dongruri(){
+        
+        let customAnimationView = AnimationView(name: "Launch")
+        
+        //Do your configurations
+        customAnimationView.contentMode = .scaleAspectFit
+        customAnimationView.loopMode = .loop
+        customAnimationView.backgroundBehavior = .pauseAndRestore
+        //And play
+        customAnimationView.play()
+        customAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        self.LottieDonguri.addSubview(customAnimationView)
+        
+        
+        NSLayoutConstraint.activate([
+            customAnimationView.trailingAnchor.constraint(equalTo: LottieDonguri.trailingAnchor),
+            customAnimationView.bottomAnchor.constraint(equalTo: LottieDonguri.bottomAnchor),
+            customAnimationView.widthAnchor.constraint(lessThanOrEqualToConstant: 100),
+            customAnimationView.heightAnchor.constraint(lessThanOrEqualToConstant: 100)
+            
+        ])
+        
+    }
+    
 }
 
 // 노치가 있는지 없는지

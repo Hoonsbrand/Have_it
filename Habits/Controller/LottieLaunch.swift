@@ -42,8 +42,10 @@ class LottieLaunch: UIViewController{
             customAnimationView.topAnchor.constraint(equalTo: self.view.topAnchor,constant: 50),
             customAnimationView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
-        print(self.lottieView.topAnchor)
-        print(view.topAnchor)
+        
     }
+    
+    
+    
     
 }
