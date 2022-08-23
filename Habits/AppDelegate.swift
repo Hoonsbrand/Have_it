@@ -10,10 +10,8 @@ import RealmSwift
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
         print(Realm.Configuration.defaultConfiguration.fileURL)
 //        for family in UIFont.familyNames {
 //          print(family)
@@ -22,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            print("====> \(sub)")
 //          }
 //        }
-        // 런치화면 1초 보여주기
         
         // 탭 바의 폰트 바꿈
         UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont(name: "IM_Hyemin", size: 10)!], for: .normal)
@@ -42,7 +39,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 

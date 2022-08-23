@@ -64,53 +64,13 @@ class HabitsCollectionVC: UIViewController {
             parent.addSubview(emptyLabel)
             
             emptyLabel.translatesAutoresizingMaskIntoConstraints = false
-            emptyLabel.widthAnchor.constraint(equalToConstant: 171).isActive = true
-            
-            emptyLabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
-            emptyLabel.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 110).isActive = true
-            emptyLabel.topAnchor.constraint(equalTo: parent.topAnchor, constant: 382).isActive = true
+            emptyLabel.centerXAnchor.constraint(equalTo: parent.centerXAnchor).isActive = true
+            emptyLabel.centerYAnchor.constraint(equalTo: parent.centerYAnchor).isActive = true
         } else {
             emptyLabel.removeFromSuperview()
 
         }
     }
-}
-
-// MARK: - CollectionView 컴포지셔널 레이아웃 관련
-extension HabitsCollectionVC {
-    
-    // 컴포지셔널 레이아웃 설정
-//    fileprivate func createCompositionalLayout() -> UICollectionViewLayout {
-//        // 컴포지셔널 레이아웃 생성
-//        let layout = UICollectionViewCompositionalLayout {
-//            // 만들게 되면 튜플 (키: 값, 키: 값) 의 묶음으로 들어옴, 반환 하는 것은 NSCollectionLayoutSection 컬렉션 레이아웃 섹션을 반환해야 함
-//            (sectionIndex: Int, layoutEnvrionment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-//
-//            // 아이템에 대한 사이즈
-//            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100))
-//
-//            // 위에서 만든 아이템 사이즈로 아이템 만들기
-//            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//
-//            // 아이템 간의 간격 설정
-//            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-//
-//            // 그룹 사이즈
-//            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1/5))
-//
-//            // 그룹 사이즈로 그룹 만들기
-//            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
-//
-//            // 그룹으로 섹션 만들기
-//            let section = NSCollectionLayoutSection(group: group)
-//
-//            // 쎅션에 대한 간격 설정
-//            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-//
-//            return section
-//        }
-//        return layout
-//    }
 }
 
 // MARK: - 데이터 소스 설정 - 데이터와 관련된 것들

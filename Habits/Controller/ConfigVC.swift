@@ -69,22 +69,20 @@ class ConfigureVC: UIViewController {
         let listCount = realm.objects(Habits.self).filter("isInHOF = false").filter("isPausedHabit = false").count
         
         if listCount == 0 {
-            emptyLabel.frame = CGRect(x: 86, y: 382, width: 250, height: 48)
-            emptyLabel.numberOfLines = 0
-            emptyLabel.textAlignment = .center
             emptyLabel.text = "하고 있는 습관이 아직 없어요 🥲\n습관을 만들어볼까요?"
             emptyLabel.font = UIFont(name: "IM_Hyemin", size: 16)
             emptyLabel.textColor = UIColor(red: 0.678, green: 0.698, blue: 0.725, alpha: 1)
-
+            
+            emptyLabel.numberOfLines = 0
+            emptyLabel.textAlignment = .center
+            
             let parent = self.view!
             
             parent.addSubview(emptyLabel)
             
             emptyLabel.translatesAutoresizingMaskIntoConstraints = false
-            emptyLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
-            emptyLabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
-            emptyLabel.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 68).isActive = true
-            emptyLabel.topAnchor.constraint(equalTo: parent.topAnchor, constant: 382).isActive = true
+            emptyLabel.centerXAnchor.constraint(equalTo: parent.centerXAnchor).isActive = true
+            emptyLabel.centerYAnchor.constraint(equalTo: parent.centerYAnchor).isActive = true
         } else {
             emptyLabel.removeFromSuperview()
         }

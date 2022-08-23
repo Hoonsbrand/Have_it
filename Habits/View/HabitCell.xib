@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -23,49 +23,37 @@
                 <rect key="frame" x="0.0" y="0.0" width="412" height="117"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zeo-we-6LL">
-                        <rect key="frame" x="26" y="21" width="360" height="75"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="designedCell" translatesAutoresizingMaskIntoConstraints="NO" id="0tU-t3-ArI">
-                                <rect key="frame" x="0.0" y="0.0" width="360" height="75"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일 아침 명상하기 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4L-Q6-rcT">
-                                <rect key="frame" x="59" y="29.5" width="120" height="16"/>
-                                <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiZ-Nf-NnT">
-                                <rect key="frame" x="30" y="29" width="19" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="19" id="OxB-TQ-Eux"/>
-                                    <constraint firstAttribute="height" constant="17" id="v3o-V6-qRC"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <connections>
-                                    <action selector="bookmarkBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Me3-5k-FAu"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="designedCell" translatesAutoresizingMaskIntoConstraints="NO" id="0tU-t3-ArI">
+                        <rect key="frame" x="0.0" y="0.0" width="412" height="117"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiZ-Nf-NnT">
+                        <rect key="frame" x="19" y="50" width="19" height="17"/>
                         <constraints>
-                            <constraint firstItem="tiZ-Nf-NnT" firstAttribute="leading" secondItem="Zeo-we-6LL" secondAttribute="leading" constant="30" id="0bt-rs-fNr"/>
-                            <constraint firstAttribute="trailing" secondItem="0tU-t3-ArI" secondAttribute="trailing" id="6Dd-UG-02N"/>
-                            <constraint firstAttribute="height" constant="75" id="6r5-3Y-jKF"/>
-                            <constraint firstItem="0tU-t3-ArI" firstAttribute="leading" secondItem="Zeo-we-6LL" secondAttribute="leading" id="7at-0l-NC4"/>
-                            <constraint firstItem="tiZ-Nf-NnT" firstAttribute="centerY" secondItem="Zeo-we-6LL" secondAttribute="centerY" id="Lyg-WK-Zdm"/>
-                            <constraint firstAttribute="bottom" secondItem="0tU-t3-ArI" secondAttribute="bottom" id="Nhv-5D-m3S"/>
-                            <constraint firstItem="0tU-t3-ArI" firstAttribute="top" secondItem="Zeo-we-6LL" secondAttribute="top" id="ktO-Cd-zGV"/>
-                            <constraint firstItem="d4L-Q6-rcT" firstAttribute="centerY" secondItem="Zeo-we-6LL" secondAttribute="centerY" id="moL-Na-1JY"/>
-                            <constraint firstAttribute="width" constant="360" id="qJN-Jc-3gI"/>
-                            <constraint firstItem="d4L-Q6-rcT" firstAttribute="leading" secondItem="tiZ-Nf-NnT" secondAttribute="trailing" constant="10" id="vfx-mb-m3v"/>
+                            <constraint firstAttribute="width" constant="19" id="OxB-TQ-Eux"/>
+                            <constraint firstAttribute="height" constant="17" id="v3o-V6-qRC"/>
                         </constraints>
-                    </view>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <connections>
+                            <action selector="bookmarkBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Me3-5k-FAu"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일 아침 명상하기 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4L-Q6-rcT">
+                        <rect key="frame" x="48" y="50.5" width="120" height="16"/>
+                        <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" name="ViewBackground"/>
                 <constraints>
-                    <constraint firstItem="Zeo-we-6LL" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="tes-VW-7h9"/>
-                    <constraint firstItem="Zeo-we-6LL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tvz-Tm-q9q"/>
+                    <constraint firstItem="d4L-Q6-rcT" firstAttribute="leading" secondItem="tiZ-Nf-NnT" secondAttribute="trailing" constant="10" id="GWc-is-7op"/>
+                    <constraint firstItem="0tU-t3-ArI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NJ6-FN-QiD"/>
+                    <constraint firstItem="d4L-Q6-rcT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Nac-vX-e0O"/>
+                    <constraint firstAttribute="trailing" secondItem="0tU-t3-ArI" secondAttribute="trailing" id="QNO-9D-HoD"/>
+                    <constraint firstAttribute="bottom" secondItem="0tU-t3-ArI" secondAttribute="bottom" id="fGn-xz-2Ox"/>
+                    <constraint firstItem="0tU-t3-ArI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hfm-SN-Iz6"/>
+                    <constraint firstItem="tiZ-Nf-NnT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mIB-PT-C49"/>
+                    <constraint firstItem="tiZ-Nf-NnT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="19" id="o22-fb-iXe"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
