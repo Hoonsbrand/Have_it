@@ -52,20 +52,22 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inputTextField" translatesAutoresizingMaskIntoConstraints="NO" id="AT0-4O-ews">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="64"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GeS-ea-QyK">
-                                        <rect key="frame" x="50" y="21.666666666666686" width="5" height="21"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GeS-ea-QyK">
+                                        <rect key="frame" x="50" y="5" width="278" height="54"/>
                                         <fontDescription key="fontDescription" name="IMHyemin-Regular" family="IM_Hyemin" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="GeS-ea-QyK" firstAttribute="centerY" secondItem="xro-ve-cID" secondAttribute="centerY" id="0Na-gm-bbH"/>
                                     <constraint firstAttribute="trailing" secondItem="AT0-4O-ews" secondAttribute="trailing" id="6EW-6Y-4fD"/>
+                                    <constraint firstAttribute="trailing" secondItem="GeS-ea-QyK" secondAttribute="trailing" constant="30" id="CYk-N0-c07"/>
                                     <constraint firstItem="AT0-4O-ews" firstAttribute="leading" secondItem="xro-ve-cID" secondAttribute="leading" id="JO8-z7-s4b"/>
                                     <constraint firstAttribute="width" constant="358" id="JV1-WL-Hud"/>
                                     <constraint firstAttribute="bottom" secondItem="AT0-4O-ews" secondAttribute="bottom" id="JhU-ET-ao7"/>
+                                    <constraint firstItem="GeS-ea-QyK" firstAttribute="top" secondItem="xro-ve-cID" secondAttribute="top" constant="5" id="NZu-zZ-nOj"/>
                                     <constraint firstAttribute="height" constant="64" id="VaN-Hz-dse"/>
+                                    <constraint firstAttribute="bottom" secondItem="GeS-ea-QyK" secondAttribute="bottom" constant="5" id="d2X-fB-jq1"/>
                                     <constraint firstItem="GeS-ea-QyK" firstAttribute="leading" secondItem="xro-ve-cID" secondAttribute="leading" constant="50" id="ztW-je-BfP"/>
                                 </constraints>
                             </view>
