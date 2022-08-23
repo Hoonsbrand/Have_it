@@ -49,23 +49,26 @@ class CheckVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
-        initStamp()
-        getRealmData()
-        setButtonImage(self.dayCount)
-        setHabitTitle()
-        setDdayLabelSuccessLabel()
-        setPercentageLabel(dayCount: self.dayCount)
-        setStackViewColor()
-        tenCycle(dayCount: self.dayCount)
-        habitComplete.textColor = UIColor(named: "textFontColor")
         
+        getRealmData() // 데이터베이스 받아옴
+        initStamp() // 스탬프 이미지 설정
+        setButtonImage(self.dayCount) // 성공횟수에따른 스탬프 수 설정
+        setHabitTitle() // 타이틀 설정
+        setDdayLabelSuccessLabel() // 디데이,성공횟수, 성공문구 설정
+        setPercentageLabel(dayCount: self.dayCount) // 퍼센트라벨 설정
+        setStackViewColor() // 테두리 색 설정
+        tenCycle(dayCount: self.dayCount) // 10회를 기준으로 초기화
+        
+        successUI() // 성공버튼 UI 설정
+        // 성공횟수 라벨 (변동x)
+        habitComplete.textColor = UIColor(named: "textFontColor")
         habitComplete.font = UIFont(name: "IM_Hyemin", size: 16)
         
-        
+        // 프로그래스바 설정
         self.myProgress.layer.cornerRadius = 20
         self.myProgress.backgroundColor = .clear
         
-        
+        // 데이터에따른 초기 프로그래스바 상태 설정
         self.myProgress.filleProgress(fromValue: dayCount - 1, toValue: dayCount)
     }
     
@@ -74,9 +77,8 @@ class CheckVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
         
-        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "IMHyemin-Bold", size: 24)!]
-        
         // navigation back button 설정
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "IMHyemin-Bold", size: 24)!]
         let backBarBtnItem = UIBarButtonItem()
         backBarBtnItem.title = ""
         backBarBtnItem.tintColor = .black
@@ -87,7 +89,7 @@ class CheckVC: UIViewController {
     
     
     
-    // MARK: - makeAlert (  알람메세지 ) -> self를 많이써야되는데...@escaping으로 할 수 있을지도
+    // MARK: - makeAlert (  알람메세지 )
     func makeAlert(_ count : Int){
         
         let titleFont = [NSAttributedString.Key.font: UIFont(name: "IM_Hyemin", size: 20)]
@@ -101,14 +103,15 @@ class CheckVC: UIViewController {
         let completeAlertAction = UIAlertAction(title: "완료", style: .default){ [weak self]
             (action) in
             guard let self = self else { return }
-            self.changeButtonImage(count)
-            self.dayCount += 1
-            self.setRealmDate()
+            self.changeButtonImage(count) // 스탬프 색칠
+            self.dayCount += 1 // 횟수증가
+            self.setRealmDate() // 데이터베이스에 데이터전달
+            self.myProgress.filleProgress(fromValue: count - 1 , toValue: count) // 프로그래스바 애니메이션
+            self.setDdayLabelSuccessLabel() // 성공횟수,d day 설정
+            self.setPercentageLabel(dayCount: self.dayCount) // 퍼센트라벨 설정
+            self.tenCycle(dayCount: self.dayCount) // 10 번째인지 확인
+            self.onceClickedDay()
             
-            self.myProgress.filleProgress(fromValue: count - 1 , toValue: count)
-            self.setDdayLabelSuccessLabel()
-            self.setPercentageLabel(dayCount: self.dayCount)
-            self.tenCycle(dayCount: self.dayCount)
         }
         completeAlertAction.setValue(UIColor(named: "StampColor"), forKey: "titleTextColor")
         // 습관을 완료하지 못했을 때
@@ -161,6 +164,13 @@ class CheckVC: UIViewController {
         
         
     }
+    //MARK: - ButtonAction Method
+    
+    func onceClickedDay(){
+        successButton.backgroundColor = UIColor(red: 208/255, green: 214/255, blue: 221/255, alpha: 1)
+        successButton.setTitle("습관 실행 완료!", for: .normal)
+        successButton.setTitleColor(UIColor(red: 178/255, green: 185/255, blue: 194/255, alpha: 1), for: .normal)
+    }
     
     // MARK:  changeButtonImage (Button이미지 변경)
     func changeButtonImage(_ dayCount : Int){
@@ -179,7 +189,7 @@ class CheckVC: UIViewController {
     @IBAction func clickSuccessButton(_ sender: UIButton) {
         
         // 버튼입력일자가 하루 지났을 떄.
-        if (timeManager.compareDate(clickedTime) || self.dayCount == 0 || self.dayCount < 66 ){
+        if (timeManager.compareDate(clickedTime) || self.dayCount == 0  ){
             makeAlert(dayCount) // 완료했을 때 취소 했을 때 나눔
             self.clickedTime = Date() // 버튼 누른 시간을 기억
         } else {
@@ -381,7 +391,7 @@ extension CheckVC {
         stampView.layer.borderWidth = 2
         stampView.layer.borderColor = UIColor(named: "ButtonColor")?.cgColor
     }
-    
+    //MARK: success버튼 설정
     func successUI(){
         successButton.titleLabel?.font = UIFont(name: "IMHyemin-Bold", size: 18)
         successButton.layer.cornerRadius = 16
@@ -389,6 +399,15 @@ extension CheckVC {
         successButton.layer.shadowOpacity = 1.0
         successButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         successButton.layer.shadowRadius = 10
+        
+        if timeManager.compareDate(Date()) || self.dayCount == 0  {
+            successButton.backgroundColor = UIColor(named: "ButtonColor")
+            successButton.setTitle("내가 해냄! 😎", for: .normal)
+            successButton.setTitleColor(UIColor.black, for: .normal)
+        }
+        else {
+            onceClickedDay()
+        }
     }
     
 }
