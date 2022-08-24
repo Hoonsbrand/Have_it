@@ -20,7 +20,7 @@ class LottieLaunch: UIViewController{
         let customAnimationView = AnimationView(name: "Launch")
         
         customAnimationView.contentMode = .scaleAspectFit
-        customAnimationView.loopMode = .repeat(5)
+        customAnimationView.loopMode = .repeat(1)
         customAnimationView.backgroundBehavior = .pauseAndRestore
         customAnimationView.animationSpeed = 0.6
         customAnimationView.play { [weak self] _ in
