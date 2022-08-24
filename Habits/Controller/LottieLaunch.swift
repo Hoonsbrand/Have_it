@@ -20,7 +20,7 @@ class LottieLaunch: UIViewController{
         let customAnimationView = AnimationView(name: "Launch")
         
         customAnimationView.contentMode = .scaleAspectFit
-        customAnimationView.loopMode = .repeat(1)
+        customAnimationView.loopMode = .repeat(5)
         customAnimationView.backgroundBehavior = .pauseAndRestore
         customAnimationView.animationSpeed = 0.6
         customAnimationView.play { [weak self] _ in
@@ -37,10 +37,10 @@ class LottieLaunch: UIViewController{
         
         
         NSLayoutConstraint.activate([
-            customAnimationView.leftAnchor.constraint(equalTo: self.lottieView.leftAnchor),
-            customAnimationView.rightAnchor.constraint(equalTo: self.lottieView.rightAnchor),
-            customAnimationView.topAnchor.constraint(equalTo: self.lottieView.topAnchor,constant: -8),
-            customAnimationView.bottomAnchor.constraint(equalTo: self.lottieView.bottomAnchor)
+            customAnimationView.leftAnchor.constraint(equalTo: self.lottieView.leftAnchor,constant: -10),
+            customAnimationView.rightAnchor.constraint(equalTo: self.lottieView.rightAnchor,constant:  -10),
+            customAnimationView.topAnchor.constraint(equalTo: self.lottieView.topAnchor,constant: -20),
+            customAnimationView.bottomAnchor.constraint(equalTo: self.lottieView.bottomAnchor,constant: -20)
         ])
         
     }
