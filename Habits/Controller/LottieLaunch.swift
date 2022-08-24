@@ -37,10 +37,10 @@ class LottieLaunch: UIViewController{
         
         
         NSLayoutConstraint.activate([
-            customAnimationView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            customAnimationView.rightAnchor.constraint(equalTo: self.view.rightAnchor,constant: -15),
-            customAnimationView.topAnchor.constraint(equalTo: self.view.topAnchor,constant: 50),
-            customAnimationView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            customAnimationView.leftAnchor.constraint(equalTo: self.lottieView.leftAnchor),
+            customAnimationView.rightAnchor.constraint(equalTo: self.lottieView.rightAnchor),
+            customAnimationView.topAnchor.constraint(equalTo: self.lottieView.topAnchor,constant: -8),
+            customAnimationView.bottomAnchor.constraint(equalTo: self.lottieView.bottomAnchor)
         ])
         
     }

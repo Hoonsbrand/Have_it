@@ -134,7 +134,7 @@ class CheckVC: UIViewController {
             }
             let storyBoard = UIStoryboard.init(name: "PopUpSixtySixth", bundle: nil)
             // storyBoard를 ViewController로가져오기
-           let popUpView = storyBoard.instantiateViewController(withIdentifier: "PopUpSixtySixth")
+            let popUpView = storyBoard.instantiateViewController(withIdentifier: "PopUpSixtySixth")
             // 뷰가 보여질 떄 스타일
             popUpView.modalPresentationStyle = .overCurrentContext
             // 뷰가 사라질 떄 스타일
@@ -368,6 +368,27 @@ extension CheckVC {
         }
     }
     
+    
+    //MARK: success버튼 설정
+    func successUI(){
+        successButton.titleLabel?.font = UIFont(name: "IMHyemin-Bold", size: 18)
+        successButton.layer.cornerRadius = 16
+        successButton.layer.shadowColor = UIColor(red: 188/255, green: 188/255, blue: 34/255, alpha: 0.4).cgColor
+        successButton.layer.shadowOpacity = 1.0
+        successButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        successButton.layer.shadowRadius = 10
+        
+        // CompareDate(클릭했던 시간을 넘겨줘야됨)
+        if timeManager.compareDate(clickedTime) || self.dayCount == 0  {
+            successButton.backgroundColor = UIColor(named: "ButtonColor")
+            successButton.setTitle("내가 해냄! 😎", for: .normal)
+            successButton.setTitleColor(UIColor.black, for: .normal)
+        }
+        else {
+            print("successUI - onceClickedDay() called")
+            onceClickedDay()
+        }
+    }
     // 상당과 하단 UI 설정 ( 테두리 )
     func setStackViewColor(){
         
@@ -382,8 +403,9 @@ extension CheckVC {
         
         //titleView 위부분 색 넣기
         titleSVTop.backgroundColor = UIColor(named: "ButtonColor")
-        titleSVTop.roundCorners(corners: [.topLeft, .topRight], radius: 15)
-        
+        titleSVTop.clipsToBounds = true
+        titleSVTop.layer.cornerRadius = 16
+        titleSVTop.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
         
         
         // stampCheckView설정
@@ -391,35 +413,7 @@ extension CheckVC {
         stampView.layer.borderWidth = 2
         stampView.layer.borderColor = UIColor(named: "ButtonColor")?.cgColor
     }
-    //MARK: success버튼 설정
-    func successUI(){
-        successButton.titleLabel?.font = UIFont(name: "IMHyemin-Bold", size: 18)
-        successButton.layer.cornerRadius = 16
-        successButton.layer.shadowColor = UIColor(red: 188/255, green: 188/255, blue: 34/255, alpha: 0.4).cgColor
-        successButton.layer.shadowOpacity = 1.0
-        successButton.layer.shadowOffset = CGSize(width: 0, height: 2)
-        successButton.layer.shadowRadius = 10
-        
-        if timeManager.compareDate(Date()) || self.dayCount == 0  {
-            successButton.backgroundColor = UIColor(named: "ButtonColor")
-            successButton.setTitle("내가 해냄! 😎", for: .normal)
-            successButton.setTitleColor(UIColor.black, for: .normal)
-        }
-        else {
-            onceClickedDay()
-        }
-    }
-    
 }
 
-extension UIView {
-    //MARK: 뷰의 위쪽만 Conoradius
-    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
-    }
-}
+
 

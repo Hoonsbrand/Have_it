@@ -334,7 +334,7 @@ extension ConfigureVC {
     
     fileprivate func dongruri(){
         
-        let customAnimationView = AnimationView(name: "Launch")
+        let customAnimationView = AnimationView(name: "Dongri")
         
         //Do your configurations
         customAnimationView.contentMode = .scaleAspectFit
@@ -349,8 +349,8 @@ extension ConfigureVC {
         NSLayoutConstraint.activate([
             customAnimationView.trailingAnchor.constraint(equalTo: LottieDonguri.trailingAnchor),
             customAnimationView.bottomAnchor.constraint(equalTo: LottieDonguri.bottomAnchor),
-            customAnimationView.widthAnchor.constraint(lessThanOrEqualToConstant: 100),
-            customAnimationView.heightAnchor.constraint(lessThanOrEqualToConstant: 100)
+            customAnimationView.widthAnchor.constraint(lessThanOrEqualToConstant: 86),
+            customAnimationView.heightAnchor.constraint(lessThanOrEqualToConstant: 86)
             
         ])
         
