@@ -84,7 +84,12 @@ class CheckVC: UIViewController {
         backBarBtnItem.tintColor = .black
         navigationController?.navigationBar.backItem?.backBarButtonItem = backBarBtnItem
         
-        
+        // 노치가 없으면 탭바의 크기를 바꿈
+        if !UIDevice.current.hasNotch {
+            tabBarController?.tabBar.frame.size.height = 60
+            tabBarController?.tabBar.frame.origin.y = view.frame.height - 60
+            tabBarController?.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+        }
     }
     
     

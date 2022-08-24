@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 탭 바의 폰트 바꿈
         UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont(name: "IM_Hyemin", size: 10)!], for: .normal)
+        
         return true
     }
 

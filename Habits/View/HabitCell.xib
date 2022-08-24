@@ -38,7 +38,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일 아침 명상하기 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4L-Q6-rcT">
-                        <rect key="frame" x="48" y="49" width="128.5" height="19"/>
+                        <rect key="frame" x="48" y="50.5" width="120" height="16"/>
                         <fontDescription key="fontDescription" name="LeeSeoyun" family="LeeSeoyun" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
