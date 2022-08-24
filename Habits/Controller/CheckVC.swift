@@ -202,7 +202,18 @@ class CheckVC: UIViewController {
             toastStyle.titleFont = .boldSystemFont(ofSize: 20)
             toastStyle.titleAlignment = .center
             toastStyle.messageAlignment = .center
-            self.view.makeToast(" 아직 하루가 지나지 않았습니다. ", duration: 1.0, position: .center, title: " ❌ 실패 ❌", image: nil, style: toastStyle, completion: nil)
+            toastStyle.backgroundColor =  UIColor(red: 0.993, green: 1, blue: 0.646, alpha: 1)
+            toastStyle.messageFont = UIFont(name: "IMHyemin-Bold", size: 16) ?? UIFont.systemFont(ofSize: 18)
+            toastStyle.messageColor = .black
+            toastStyle.displayShadow = true
+            toastStyle.shadowOffset = CGSize(width: toastStyle.maxWidthPercentage, height: toastStyle.maxHeightPercentage)
+            toastStyle.shadowOpacity = 0.25
+            toastStyle.shadowRadius = 8
+            toastStyle.cornerRadius = 16
+            toastStyle.verticalPadding = 8
+            toastStyle.horizontalPadding = 16
+            
+            self.view.makeToast(" 이미 오늘 이 습관을 해내셨어요! \n 버튼은 00시에 초기화됩니다! ", duration: 1.0, position: .center, image: nil, style: toastStyle, completion: nil)
         }
     }
 }
