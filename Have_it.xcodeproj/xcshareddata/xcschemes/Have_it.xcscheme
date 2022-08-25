@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "20850882288A9A4300553252"
-               BuildableName = "Habits .app"
+               BuildableName = "Have it.app"
                BlueprintName = "Have it"
                ReferencedContainer = "container:Have_it.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "20850882288A9A4300553252"
-            BuildableName = "Habits .app"
+            BuildableName = "Have it.app"
             BlueprintName = "Have it"
             ReferencedContainer = "container:Have_it.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "20850882288A9A4300553252"
-            BuildableName = "Habits .app"
+            BuildableName = "Have it.app"
             BlueprintName = "Have it"
             ReferencedContainer = "container:Have_it.xcodeproj">
          </BuildableReference>
