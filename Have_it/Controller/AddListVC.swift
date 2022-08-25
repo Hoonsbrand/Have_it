@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 import Toast_Swift
 
-class AddLIstVC: UIViewController, UITextFieldDelegate {
+class AddListVC: UIViewController, UITextFieldDelegate {
     
     let realm = try! Realm()
     // D_day 시간계산을 위해
@@ -106,7 +106,7 @@ class AddLIstVC: UIViewController, UITextFieldDelegate {
 }
 
 // MARK: - extension
-extension AddLIstVC {
+extension AddListVC {
     
     // MARK: 다른 곳 탭 했을 때 키보드가 사라지는 메서드
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
