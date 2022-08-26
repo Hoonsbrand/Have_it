@@ -2,17 +2,17 @@
   "images" : [
     {
       "filename" : "have it.png",
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "1x"
     },
     {
       "filename" : "have it-1.png",
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "2x"
     },
     {
       "filename" : "have it-2.png",
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "3x"
     }
   ],
