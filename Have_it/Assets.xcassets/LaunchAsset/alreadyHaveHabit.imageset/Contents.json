@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "이미 훌륭한 습관을 가지고 있는 당신을 도와주는.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "alreadyHaveHabit.png",
+      "filename" : "이미 훌륭한 습관을 가지고 있는 당신을 도와주는@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "이미 훌륭한 습관을 가지고 있는 당신을 도와주는@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
