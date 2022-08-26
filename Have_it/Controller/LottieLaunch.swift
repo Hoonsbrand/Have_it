@@ -35,7 +35,6 @@ class LottieLaunch: UIViewController{
         customAnimationView.translatesAutoresizingMaskIntoConstraints = false
         self.lottieView.addSubview(customAnimationView)
         
-        
         NSLayoutConstraint.activate([
             customAnimationView.leftAnchor.constraint(equalTo: self.lottieView.leftAnchor,constant: -10),
             customAnimationView.rightAnchor.constraint(equalTo: self.lottieView.rightAnchor,constant:  -10),
