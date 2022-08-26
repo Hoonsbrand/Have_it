@@ -175,6 +175,7 @@ class CheckVC: UIViewController {
         successButton.backgroundColor = UIColor(red: 208/255, green: 214/255, blue: 221/255, alpha: 1)
         successButton.setTitle("습관 실행 완료!", for: .normal)
         successButton.setTitleColor(UIColor(red: 178/255, green: 185/255, blue: 194/255, alpha: 1), for: .normal)
+        successButton.layer.shadowOpacity = 0.0
     }
     
     // MARK:  changeButtonImage (Button이미지 변경)
