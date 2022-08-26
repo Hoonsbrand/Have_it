@@ -20,6 +20,8 @@ class PausedHabitTableViewController: UIViewController {
     
     var habitCell = HabitCell()
     
+    let emptyLabel = UILabel()
+    
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,6 +168,8 @@ extension PausedHabitTableViewController: UITableViewDataSource, UITableViewDele
                           duration: 0.35,
                           options: .transitionCrossDissolve,
                           animations: { self.pausedTableView.reloadData() })
+        
+        loadEmptyLabel()
     }
 }
 
@@ -220,10 +224,7 @@ extension PausedHabitTableViewController: SwipeTableViewCellDelegate {
                     }
                     
                     // tableView 리로드
-                    UIView.transition(with: tableView,
-                                      duration: 0.35,
-                                      options: .transitionCrossDissolve,
-                                      animations: { self.pausedTableView.reloadData() })
+                    self.loadHabitList()
                     
                     // 토스트 띄우기
                     self.showToast(message: "습관이 삭제되었습니다.", font: UIFont.systemFont(ofSize: 12), ToastWidth: 180, ToasatHeight: 32, yPos: 1.2, backgroundColor: .black, textColor: .white)
@@ -272,5 +273,31 @@ extension PausedHabitTableViewController {
         }, completion: {(isCompleted) in
             toastLabel.removeFromSuperview()
         })
+    }
+    
+    // MARK: - 리스트에 아무것도 없을 시 레이블 띄우기
+    func loadEmptyLabel() {
+        let listCount = realm.objects(Habits.self).filter("isInHOF = false").filter("isPausedHabit = true").count
+        
+        if listCount == 0 {
+            
+            // 레이블 세부사항 지정
+            emptyLabel.text = "멈춰있는 습관이 없어요!"
+            emptyLabel.font = UIFont(name: "IM_Hyemin", size: 16)
+            emptyLabel.textColor = UIColor(red: 0.678, green: 0.698, blue: 0.725, alpha: 1)
+            emptyLabel.numberOfLines = 0
+            emptyLabel.textAlignment = .center
+            
+            // 레이블 오토레이아웃
+            let parent = self.view!
+            parent.addSubview(emptyLabel)
+            
+            emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+            emptyLabel.centerXAnchor.constraint(equalTo: parent.centerXAnchor).isActive = true
+            emptyLabel.centerYAnchor.constraint(equalTo: parent.centerYAnchor).isActive = true
+        } else {
+            // 리스트에 데이터가 있다면 레이블을 지움
+            emptyLabel.removeFromSuperview()
+        }
     }
 }
