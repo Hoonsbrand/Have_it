@@ -54,6 +54,7 @@
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GeS-ea-QyK">
                                         <rect key="frame" x="50" y="5" width="278" height="54"/>
+                                        <color key="textColor" name="CellFontColor"/>
                                         <fontDescription key="fontDescription" name="IMHyemin-Regular" family="IM_Hyemin" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -689,6 +690,9 @@
         <image name="stamp" width="35" height="36"/>
         <namedColor name="ButtonColor">
             <color red="0.35699999332427979" green="0.94900000095367432" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="CellFontColor">
+            <color red="0.16470588235294117" green="0.20784313725490197" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ViewBackground">
             <color red="1" green="1" blue="0.90600001811981201" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

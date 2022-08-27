@@ -97,13 +97,17 @@ class CheckVC: UIViewController {
     // MARK: - makeAlert (  알람메세지 )
     func makeAlert(_ count : Int){
         
-        let titleFont = [NSAttributedString.Key.font: UIFont(name: "IM_Hyemin", size: 20)]
-        let titleAttrString = NSMutableAttributedString(string: "오늘도 내가 해냄! 😎", attributes: titleFont as [NSAttributedString.Key : Any])
+        let titleFont = [NSAttributedString.Key.font: UIFont(name: "IMHyemin-Bold", size: 20)]
+        let titleAttrString = NSMutableAttributedString(string: "오늘도 내가 해냄!", attributes: titleFont as [NSAttributedString.Key : Any])
+        
         
         
         
         let completeAlert = UIAlertController(title: nil, message: nil, preferredStyle: .alert) // 완료 alert
         completeAlert.setValue(titleAttrString, forKey:"attributedTitle")
+        
+       
+        
         // 확인이 눌려야 실행
         let completeAlertAction = UIAlertAction(title: "완료", style: .default){ [weak self]
             (action) in
@@ -119,15 +123,18 @@ class CheckVC: UIViewController {
             
         }
         completeAlertAction.setValue(UIColor(named: "StampColor"), forKey: "titleTextColor")
+        
         // 습관을 완료하지 못했을 때
         let completeAlertCancel = UIAlertAction(title: "취소", style: .cancel,handler:nil)
         completeAlertCancel.setValue(UIColor.lightGray, forKey: "titleTextColor")
         
+        
         // 알림창 설정
         completeAlert.addAction(completeAlertCancel)
         completeAlert.addAction(completeAlertAction)
-        
-        
+      
+       
+       
         switch count {
         case 65:
             changeButtonImage(count)
