@@ -48,15 +48,15 @@ class HabitsCollectionVC: UIViewController {
     
     // MARK: - 습관의 전당 로드
     func loadHOF() {
-        let listCount = realm.objects(Habits.self).filter("isInHOF = true").count
+        let listCount = realm.objects(Habits.self).filter(RealmQuery.InHOF).count
         
         // 습관의 전당에 데이터가 없다면 레이블 생성
         if listCount == 0 {             
             emptyLabel.frame = CGRect(x: 86, y: 382, width: 171, height: 48)
             emptyLabel.numberOfLines = 0
             emptyLabel.textAlignment = .center
-            emptyLabel.text = "66일 간의 여정을 완료해서\n습관의 전당을 채워보세요!"
-            emptyLabel.font = UIFont(name: "IM_Hyemin", size: 16)
+            emptyLabel.text = HOFLabel.hOFEmptyLabel
+            emptyLabel.font = UIFont(name: CustomFont.hyemin, size: 16)
             emptyLabel.textColor = UIColor(red: 0.678, green: 0.698, blue: 0.725, alpha: 1)
 
             // 레이블 오토레이아웃
@@ -81,7 +81,7 @@ extension HabitsCollectionVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         // 습관의 전당이 true인 데이터만 return
-        listRealm = realm.objects(Habits.self).filter("isInHOF = true")
+        listRealm = realm.objects(Habits.self).filter(RealmQuery.InHOF)
         return listRealm?.count ?? 0
     }
     
@@ -103,10 +103,10 @@ extension HabitsCollectionVC: UICollectionViewDataSource {
             
             // Calendar의 포맷에 따라 cell text 지정
             cell.firstLabel.text = "\(startDate.year!)년 \(startDate.month!)월 \(startDate.day!)일 ~ \(endDate.year!)년 \(endDate.month!)월 \(endDate.day!)일"
-            cell.firstLabel.font = UIFont(name: "IM_Hyemin", size: 12)
+            cell.firstLabel.font = UIFont(name: CustomFont.hyemin, size: 12)
             
             cell.secondLabel.text = list.title
-            cell.secondLabel.font = UIFont(name: "IMHyemin-Bold", size: 16)
+            cell.secondLabel.font = UIFont(name: CustomFont.hyemin_Bold, size: 16)
         }
         return cell
     }

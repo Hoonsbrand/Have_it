@@ -38,7 +38,7 @@ class AddListVC: UIViewController, UITextFieldDelegate {
         addButtonOutlet.layer.shadowRadius = 10
         
         // 네비게이션 바 타이틀 지정
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "IMHyemin-Bold", size: 24)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: CustomFont.hyemin_Bold, size: 24)!]
         
         // 네비게이션 back 버튼 검은색으로 변경 & title 삭제
         navigationController?.navigationBar.tintColor = .black
@@ -76,17 +76,17 @@ class AddListVC: UIViewController, UITextFieldDelegate {
         if let habitTitle = inputHabitTextField.text {
             if habitTitle == "" {
                 // 습관 이름을 안쓰고 등록을 누르면 Toast 팝업
-                self.view.makeToast("습관을 입력해주세요!", duration: 1.5, position: .center, title: nil, image: nil, completion: nil)
+                self.view.makeToast(ToastMessage.emptyTitleToast, duration: 1.5, position: .center, title: nil, image: nil, completion: nil)
                 return
             }
             
             // 명예의 전당에 있지 않은 습관들 목록을 가져옴
-            let list = realm.objects(Habits.self).filter("isInHOF = false")
+            let list = realm.objects(Habits.self).filter(RealmQuery.notInHOF)
             
             // 그 목록들 중에서 이미 있는 습관 제목이면 등록을 막음
             for elements in list {
                 if elements.title == inputHabitTextField.text {
-                    self.view.makeToast("이미 있는 습관입니다!", duration: 1.5, position: .center, title: nil, image: nil, completion: nil)
+                    self.view.makeToast(ToastMessage.alreadyExistHabitToast, duration: 1.5, position: .center, title: nil, image: nil, completion: nil)
                     return
                 }
             }
@@ -123,7 +123,7 @@ extension AddListVC {
         
         // count가 15가 넘으면 Toast 팝업, 백스페이스(지우기)를 누를 땐 글자수가 15자라도 토스트 팝업 x
         if count >= 15 && !string.isEmpty {
-            self.view.makeToast("15자 내로 작성해주세요.", duration: 1.5, position: .center, title: nil, image: nil, style: .init(), completion: nil)
+            self.view.makeToast(ToastMessage.textLimitToast, duration: 1.5, position: .center, title: nil, image: nil, style: .init(), completion: nil)
         }
         
         // count가 15보다 크다면 false이므로 더 이상 글자 추가 불가
