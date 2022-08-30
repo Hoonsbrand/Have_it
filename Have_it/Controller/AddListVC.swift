@@ -95,8 +95,6 @@ class AddListVC: UIViewController, UITextFieldDelegate {
             guard let creatTime = newHabit.createTime else { return }
             // dDay계산
             newHabit.dDay = timeManager.getDday(creatTime)
-            print(creatTime)
-            print(newHabit.dDay)
             try! realm.write {
                 realm.add(newHabit)
             }

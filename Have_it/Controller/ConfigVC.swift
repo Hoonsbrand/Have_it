@@ -21,6 +21,8 @@ class ConfigureVC: UIViewController {
     
     let emptyLabel = UILabel()
     
+    let tempToast = TempToast()
+    
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var addHabitOutlet: UIButton!
     @IBOutlet weak var LottieDonguri: AnimationView!
@@ -200,26 +202,6 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
 
 extension ConfigureVC: SwipeTableViewCellDelegate {
     
-    // MARK: - 토스트 method
-    func showToast(message : String, font: UIFont, ToastWidth: CGFloat, ToasatHeight: CGFloat) {
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - (ToastWidth/2), y: self.view.frame.size.height/2, width: ToastWidth, height: ToasatHeight))
-        toastLabel.backgroundColor = UIColor(red: 0.993, green: 1, blue: 0.646, alpha: 1)
-        toastLabel.textColor = UIColor.black
-        toastLabel.font = font
-        toastLabel.textAlignment = .center;
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-        toastLabel.numberOfLines = 0
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 1.5 , delay: 1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    }
-    
     // MARK: - Cell Swipe 구성
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
@@ -262,7 +244,8 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                                           duration: 0.35,
                                           options: .transitionCrossDissolve,
                                           animations: { tableView.reloadData() })
-                        self.showToast(message: ToastMessage.goodChoiceToast, font:  UIFont(name: CustomFont.hyemin_Bold, size: 14)!, ToastWidth: 240, ToasatHeight: 40)
+                        self.tempToast.showToast(view: self.view, message: ToastMessage.goodChoiceToast, font:  UIFont(name: CustomFont.hyemin_Bold, size: 14)!, ToastWidth: 240, ToasatHeight: 40)
+                        
                     }
                     
                     // 멈추기 action을 눌렀을 때
@@ -280,7 +263,7 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
                         // 리스트 새로고침
                         self.loadHabitList()
                         
-                        self.showToast(message: ToastMessage.pauseCompleteToast, font: UIFont(name: CustomFont.hyemin, size: 14)!, ToastWidth: 266, ToasatHeight: 64)
+                        self.tempToast.showToast(view: self.view, message: ToastMessage.pauseCompleteToast, font: UIFont(name: CustomFont.hyemin, size: 14)!, ToastWidth: 266, ToasatHeight: 64)
                     }
                     
                     // 계속 도전 action 색 지정

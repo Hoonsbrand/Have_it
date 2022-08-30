@@ -22,6 +22,9 @@ class PausedHabitTableViewController: UIViewController {
     
     let emptyLabel = UILabel()
     
+    let tempToast = TempToast()
+    let realmWriteLogic = RealmWriteLogic()
+    
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,11 +121,7 @@ extension PausedHabitTableViewController: UITableViewDataSource, UITableViewDele
                 // Realm 데이터 업데이트
                 do {
                     try self.realm.write {
-                        itemForRestart.isPausedHabit = false
-                        itemForRestart.createTime = Date()
-                        itemForRestart.dDay = self.timeManager.getDday(Date())
-                        itemForRestart.dayCount = 0
-                        itemForRestart.isBookmarked = false
+                        self.realmWriteLogic.restartHabit(itemForRestart: itemForRestart, timeManager: self.timeManager)
                     }
                 } catch {
                     print("Error restarting habit, \(error.localizedDescription)")
@@ -134,7 +133,9 @@ extension PausedHabitTableViewController: UITableViewDataSource, UITableViewDele
                                   duration: 0.35,
                                   options: .transitionCrossDissolve,
                                   animations: { self.pausedTableView.reloadData() })
-                self.showToast(message: ToastMessage.goodChoiceToast, font:  UIFont(name: CustomFont.hyemin_Bold, size: 14)!, ToastWidth: 240, ToasatHeight: 40)
+                
+                // 토스트 띄우기
+                self.tempToast.showToast(view: self.view, message: ToastMessage.goodChoiceToast, font: UIFont(name: CustomFont.hyemin_Bold, size: 14)!, ToastWidth: 240, ToasatHeight: 40)
             }
             
             // 취소 action을 눌렀을 때
@@ -227,7 +228,7 @@ extension PausedHabitTableViewController: SwipeTableViewCellDelegate {
                     self.loadHabitList()
                     
                     // 토스트 띄우기
-                    self.showToast(message: ToastMessage.habitDeleteCompleteToast, font: UIFont.systemFont(ofSize: 12), ToastWidth: 180, ToasatHeight: 32, yPos: 1.2, backgroundColor: .black, textColor: .white)
+                    self.tempToast.showToast(view: self.view, message: ToastMessage.habitDeleteCompleteToast, font: UIFont.systemFont(ofSize: 12), ToastWidth: 180, ToasatHeight: 32, yPos: 1.2, backgroundColor: .black, textColor: .white)
                 }
                 
                 // 취소 action 색 지정
@@ -255,25 +256,25 @@ extension PausedHabitTableViewController: SwipeTableViewCellDelegate {
 extension PausedHabitTableViewController {
     
     // 토스트 method
-    func showToast(message : String, font: UIFont, ToastWidth: CGFloat, ToasatHeight: CGFloat, yPos: CGFloat = 2, backgroundColor: UIColor = UIColor(red: 0.993, green: 1, blue: 0.646, alpha: 1), textColor: UIColor = .black) {
-        
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - (ToastWidth/2), y: self.view.frame.size.height/yPos, width: ToastWidth, height: ToasatHeight))
-        toastLabel.backgroundColor = backgroundColor
-        toastLabel.textColor = textColor
-        toastLabel.font = font
-        toastLabel.textAlignment = .center;
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-        toastLabel.numberOfLines = 0
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 1.5 , delay: 1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    }
+//    func showToast(message : String, font: UIFont, ToastWidth: CGFloat, ToasatHeight: CGFloat, yPos: CGFloat = 2, backgroundColor: UIColor = UIColor(red: 0.993, green: 1, blue: 0.646, alpha: 1), textColor: UIColor = .black) {
+//
+//        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - (ToastWidth/2), y: self.view.frame.size.height/yPos, width: ToastWidth, height: ToasatHeight))
+//        toastLabel.backgroundColor = backgroundColor
+//        toastLabel.textColor = textColor
+//        toastLabel.font = font
+//        toastLabel.textAlignment = .center;
+//        toastLabel.text = message
+//        toastLabel.alpha = 1.0
+//        toastLabel.layer.cornerRadius = 10;
+//        toastLabel.clipsToBounds  =  true
+//        toastLabel.numberOfLines = 0
+//        self.view.addSubview(toastLabel)
+//        UIView.animate(withDuration: 1.5 , delay: 1, options: .curveEaseOut, animations: {
+//            toastLabel.alpha = 0.0
+//        }, completion: {(isCompleted) in
+//            toastLabel.removeFromSuperview()
+//        })
+//    }
     
     // MARK: - 리스트에 아무것도 없을 시 레이블 띄우기
     func loadEmptyLabel() {
