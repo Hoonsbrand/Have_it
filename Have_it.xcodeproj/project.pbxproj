@@ -155,6 +155,8 @@
 			children = (
 				2085089C288A9B5C00553252 /* Model.swift */,
 				20DFD244289A4F90000DF63A /* constants.swift */,
+				728A73ED28BDDAA300C4C4AE /* RealmWriteLogic.swift */,
+				728A73EB28BDD7ED00C4C4AE /* TempToast.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,12 +180,10 @@
 			children = (
 				722B891F28967D8D00158BC5 /* HabitsCustomCollectionViewCell.swift */,
 				722B891928965FD000158BC5 /* HabitsCollectionVC.swift */,
-				728A73EB28BDD7ED00C4C4AE /* TempToast.swift */,
 				729D89F5288FDD3A00B77EE9 /* HabitCell.swift */,
 				2085088A288A9A4300553252 /* ConfigVC.swift */,
 				72B695BC28902191009EBB23 /* CheckVC.swift */,
 				2085089A288A9AA300553252 /* AddListVC.swift */,
-				728A73ED28BDDAA300C4C4AE /* RealmWriteLogic.swift */,
 				7224BD3828A4FB4F002DDF0E /* PausedHabitTableViewController.swift */,
 				7272683D28AE82E100274864 /* PausedHabitTableViewCell.swift */,
 				203B51FC28B390D3003C6AE2 /* LottieLaunch.swift */,
