@@ -7,7 +7,6 @@
 
 import UIKit
 import RealmSwift
-import Toast_Swift
 
 class AddListVC: UIViewController, UITextFieldDelegate {
     
@@ -15,7 +14,7 @@ class AddListVC: UIViewController, UITextFieldDelegate {
     // D_day 시간계산을 위해
     let timeManager = TimeManager()
     
-    let configVC = ConfigureVC()
+    let configVC = ListHomeVC()
     
     @IBOutlet weak var inputHabitTextField: UITextField!
     @IBOutlet weak var addButtonOutlet: UIButton!
@@ -24,7 +23,12 @@ class AddListVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TextField Delegaate
+        configureUI()
+    }
+    
+    // MARK: - 초기 화면 구성
+    func configureUI() {
+        // TextField Delegate
         inputHabitTextField.delegate = self
         
         // 화면이 보일 때 텍스트필드에 자동으로 커서가 올라감

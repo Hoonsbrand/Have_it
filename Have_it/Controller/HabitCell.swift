@@ -44,11 +44,11 @@ class HabitCell: SwipeTableViewCell {
     }
     
     @IBAction func bookmarkBtnPressed(_ sender: UIButton) {
-        if let _ = self.bookmarkDelegate?.bookmarkButtonTappedDelegate(self, didTapButton: sender) {
-            self.bookmarkBtnOutlet.isEnabled = false
-            self.bookmarkBtnOutlet.setBackgroundImage(nil, for: .normal)
-            self.loadDelegate?.reloadWhenTapBookmark()
-        }
+        guard let _ = self.bookmarkDelegate?.bookmarkButtonTappedDelegate(self, didTapButton: sender) else { return }
+        self.bookmarkBtnOutlet.isEnabled = false
+        self.bookmarkBtnOutlet.setBackgroundImage(nil, for: .normal)
+        self.loadDelegate?.reloadWhenTapBookmark()
+        
     }
     
     // MARK: - ReusableCell로 인한 즐겨찾기 버튼 오류 해결

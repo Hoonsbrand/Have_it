@@ -496,10 +496,10 @@
             </objects>
             <point key="canvasLocation" x="327.69230769230768" y="1316.5876777251185"/>
         </scene>
-        <!--ConfigureVC-->
+        <!--List HomeVC-->
         <scene sceneID="pGk-Jd-bxa">
             <objects>
-                <viewController id="IhN-9o-QYG" customClass="ConfigureVC" customModule="Have_it" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IhN-9o-QYG" customClass="ListHomeVC" customModule="Have_it" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hux-Lc-jyN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -7,11 +7,10 @@
 
 import UIKit
 import RealmSwift
-import Toast_Swift
 import SwipeCellKit
 import Lottie
 
-class ConfigureVC: UIViewController {
+class ListHomeVC: UIViewController {
    
     let realm = try! Realm()
     var listRealm: Results<Habits>?
@@ -31,6 +30,11 @@ class ConfigureVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
+    }
+    
+    // MARK: - 초기 화면 구성
+    func configureUI() {
         // TableView Delegate
         myTableView.dataSource = self
         myTableView.delegate = self
@@ -51,7 +55,6 @@ class ConfigureVC: UIViewController {
         
         // 테이블 뷰 구분선 없애기
         self.myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
     }
     
     // MARK: - viewWillAppear
@@ -135,7 +138,7 @@ class ConfigureVC: UIViewController {
 }
 
     // MARK: - TableView DataSource, Delegate
-extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadList {
+extension ListHomeVC : UITableViewDataSource, UITableViewDelegate, RequestLoadList {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let habitList = listRealm {
@@ -200,7 +203,7 @@ extension ConfigureVC : UITableViewDataSource, UITableViewDelegate, RequestLoadL
     }
 }
 
-extension ConfigureVC: SwipeTableViewCellDelegate {
+extension ListHomeVC: SwipeTableViewCellDelegate {
     
     // MARK: - Cell Swipe 구성
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
@@ -311,7 +314,7 @@ extension ConfigureVC: SwipeTableViewCellDelegate {
 }
 
 // MARK: - BookmarkCellDelegate Method
-extension ConfigureVC: BookmarkCellDelegate {
+extension ListHomeVC: BookmarkCellDelegate {
     
     // bookmarkButtonTappedDelegate 구현
     func bookmarkButtonTappedDelegate(_ habitCell: HabitCell, didTapButton button: UIButton) -> Bool? {
@@ -332,7 +335,7 @@ extension ConfigureVC: BookmarkCellDelegate {
 }
 
 // MARK: - 동그리 로티
-extension ConfigureVC {
+extension ListHomeVC {
     
     fileprivate func dongruri(){
         

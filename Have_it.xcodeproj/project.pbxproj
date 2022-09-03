@@ -18,7 +18,7 @@
 		208025BD28A54061008283FF /* LeeSeoyun.otf in Resources */ = {isa = PBXBuildFile; fileRef = 208025BC28A54061008283FF /* LeeSeoyun.otf */; };
 		20850887288A9A4300553252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20850886288A9A4300553252 /* AppDelegate.swift */; };
 		20850889288A9A4300553252 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20850888288A9A4300553252 /* SceneDelegate.swift */; };
-		2085088B288A9A4300553252 /* ConfigVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085088A288A9A4300553252 /* ConfigVC.swift */; };
+		2085088B288A9A4300553252 /* ListHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085088A288A9A4300553252 /* ListHomeVC.swift */; };
 		2085088E288A9A4300553252 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2085088C288A9A4300553252 /* Main.storyboard */; };
 		20850890288A9A4300553252 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2085088F288A9A4300553252 /* Assets.xcassets */; };
 		20850893288A9A4300553252 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20850891288A9A4300553252 /* LaunchScreen.storyboard */; };
@@ -54,7 +54,7 @@
 		20850883288A9A4300553252 /* Have it.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Have it.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20850886288A9A4300553252 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20850888288A9A4300553252 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2085088A288A9A4300553252 /* ConfigVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigVC.swift; sourceTree = "<group>"; };
+		2085088A288A9A4300553252 /* ListHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHomeVC.swift; sourceTree = "<group>"; };
 		2085088D288A9A4300553252 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2085088F288A9A4300553252 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20850892288A9A4300553252 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 				722B891F28967D8D00158BC5 /* HabitsCustomCollectionViewCell.swift */,
 				722B891928965FD000158BC5 /* HabitsCollectionVC.swift */,
 				729D89F5288FDD3A00B77EE9 /* HabitCell.swift */,
-				2085088A288A9A4300553252 /* ConfigVC.swift */,
+				2085088A288A9A4300553252 /* ListHomeVC.swift */,
 				72B695BC28902191009EBB23 /* CheckVC.swift */,
 				2085089A288A9AA300553252 /* AddListVC.swift */,
 				7224BD3828A4FB4F002DDF0E /* PausedHabitTableViewController.swift */,
@@ -355,7 +355,7 @@
 				722B891A28965FD000158BC5 /* HabitsCollectionVC.swift in Sources */,
 				204A50ED289CEC70000C03EA /* TimeManager.swift in Sources */,
 				729D89F7288FDD3A00B77EE9 /* HabitCell.swift in Sources */,
-				2085088B288A9A4300553252 /* ConfigVC.swift in Sources */,
+				2085088B288A9A4300553252 /* ListHomeVC.swift in Sources */,
 				728A73EC28BDD7ED00C4C4AE /* TempToast.swift in Sources */,
 				203B51FD28B390D3003C6AE2 /* LottieLaunch.swift in Sources */,
 				20A4B7A628A24352000957C3 /* CircleProgress.swift in Sources */,
