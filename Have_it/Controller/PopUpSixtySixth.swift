@@ -31,11 +31,13 @@ class PopUpSixtySixth: UIViewController {
         
         goToHonorButton.addTarget(self, action: #selector(goToHonor), for: .touchUpInside)
         backGround.layer.cornerRadius = 16
-       
-        
-        
         
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Notification.goToHoner), object: nil)
+    }
+    
     @objc fileprivate func goToHonor(){
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.goToHoner), object: nil)
         self.dismiss(animated: true,completion: nil)

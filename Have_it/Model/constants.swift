@@ -37,6 +37,9 @@ enum Notification {
 
 enum Color {
     static let backgroundColor = "ViewBackground"
+    static let buttonColor = "ButtonColor"
+    static let stampColor = "StampColor"
+    static let textFontColor = "textFontColor"
 }
 
 enum RealmQuery {
@@ -53,6 +56,7 @@ enum RealmQuery {
 enum CustomFont {
     static let hyemin = "IM_Hyemin"
     static let hyemin_Bold = "IMHyemin-Bold"
+    static let baloo = "Baloo"
 }
 
 enum KeyText {

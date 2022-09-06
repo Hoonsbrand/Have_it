@@ -23,6 +23,8 @@ class LottieLaunch: UIViewController{
         customAnimationView.loopMode = .repeat(1)
         customAnimationView.backgroundBehavior = .pauseAndRestore
         customAnimationView.animationSpeed = 0.6
+        
+        // dispatch queue에서는 바로 참조가 해제되기 떄문에 weak self가 필요하지않다.
         customAnimationView.play { [weak self] _ in
             let Storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             guard let VC = Storyboard.instantiateViewController(identifier: "Main") as? UITabBarController else { return }
@@ -41,7 +43,6 @@ class LottieLaunch: UIViewController{
             customAnimationView.topAnchor.constraint(equalTo: self.lottieView.topAnchor,constant: -20),
             customAnimationView.bottomAnchor.constraint(equalTo: self.lottieView.bottomAnchor,constant: -20)
         ])
-        
     }
     
     
