@@ -34,7 +34,6 @@ class TimeManager {
         let interval = firstTime.timeIntervalSince(secondeTime)
         let differenceDays =  Int(interval / 86400)
         
-        print(" 날짜 차이 : \(differenceDays) ")
         return differenceDays
         
     }

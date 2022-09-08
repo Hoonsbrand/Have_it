@@ -16,7 +16,6 @@ class CircleProgress : UIView {
     
     override init(frame : CGRect){
         super.init(frame: frame)
-        print("init")
         
     }
     
@@ -47,8 +46,6 @@ class CircleProgress : UIView {
     
     //MARK: - 프로그래스바 설정 색 and 초기 설정
     fileprivate func setProgress(){
-        
-        print("createProgress")
         
         let center = self.center
         let radius = (min(self.frame.size.width, self.frame.size.height) - 10) / 2
