@@ -22,6 +22,11 @@ class HabitsCollectionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
+    }
+    
+    // MARK: - 초기 화면 구성
+    func configureUI() {
         // CollectionView에 대한 설정
         habitsCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         habitsCollectionView.dataSource = self

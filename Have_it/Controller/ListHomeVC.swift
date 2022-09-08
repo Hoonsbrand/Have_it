@@ -20,7 +20,6 @@ class ListHomeVC: UIViewController {
     
     let emptyLabel = UILabel()
     
-    let tempToast = TempToast()
     var listHomeLogic = ListHomeLogic()
     let realmLogic = RealmLogic()
     
@@ -244,7 +243,7 @@ extension ListHomeVC: SwipeTableViewCellDelegate {
                         // 새로고침 & 리로드
                         self.tableViewReloadAnimation()
                         
-                        self.tempToast.showToast(view: self.view, message: ToastMessage.goodChoiceToast, font:  UIFont(name: CustomFont.hyemin_Bold, size: 14)!, ToastWidth: 240, ToasatHeight: 40)
+                        TempToast.shared.showToast(view: self.view, message: ToastMessage.goodChoiceToast, font:  UIFont(name: CustomFont.hyemin_Bold, size: 14)!, ToastWidth: 240, ToasatHeight: 40)
                         
                     }
                     
@@ -257,7 +256,7 @@ extension ListHomeVC: SwipeTableViewCellDelegate {
                         // 리스트 새로고침
                         self.loadHabitList()
                         
-                        self.tempToast.showToast(view: self.view, message: ToastMessage.pauseCompleteToast, font: UIFont(name: CustomFont.hyemin, size: 14)!, ToastWidth: 266, ToasatHeight: 64)
+                        TempToast.shared.showToast(view: self.view, message: ToastMessage.pauseCompleteToast, font: UIFont(name: CustomFont.hyemin, size: 14)!, ToastWidth: 266, ToasatHeight: 64)
                     }
                     
                     // 계속 도전 action 색 지정
@@ -286,7 +285,7 @@ extension ListHomeVC: SwipeTableViewCellDelegate {
                 guard let self = self else { return }
                 
                 // 즐겨찾기 버튼 클릭 시 Realm 데이터 변경
-                self.realmLogic.changeRealmDataWhenBookmark(listRealm: self.listRealm, indexPath: indexPath)
+                self.realmLogic.changeBookmarkDataWhenSwipe(listRealm: self.listRealm, indexPath: indexPath)
                 
                 // 즐겨찾기 버튼 클릭 시 리스트 리로드
                 self.reloadWhenTapBookmark()
@@ -307,19 +306,7 @@ extension ListHomeVC: BookmarkCellDelegate {
     
     // bookmarkButtonTappedDelegate 구현
     func bookmarkButtonTappedDelegate(_ habitCell: HabitCell, didTapButton button: UIButton) -> Bool? {
-        guard let row = myTableView.indexPath(for: habitCell)?.row else { return nil }
-        
-        if let bookmarkCheck = listRealm?[row].isBookmarked {
-            
-            // 즐겨찾기 버튼 클릭 시 Realm 데이터 업데이트
-            try! realm.write {
-                listRealm?[row].isBookmarked = !bookmarkCheck
-            }
-            
-            // 처음 받아온 bookmarkCheck는 변경전의 내용이므로 반환할 때는 변화 한 후 즉, 반대의 경우를 반환
-            return !bookmarkCheck
-        }
-        return nil
+        realmLogic.changeBookmarkDataWhenTapped(tableView: myTableView, cell: habitCell, listRealm: listRealm)
     }
 }
 

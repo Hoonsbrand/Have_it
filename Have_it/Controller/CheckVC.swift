@@ -202,8 +202,7 @@ class CheckVC: UIViewController {
             
         } else {
             
-            let checkVCToast = TempToast()
-            checkVCToast.showToast(view: self.view, message: " 이미 오늘 이 습관을 해내셨어요! \n 버튼은 00시에 초기화됩니다! ", font: UIFont(name: CustomFont.hyemin, size: 16) ?? UIFont.systemFont(ofSize: 18), ToastWidth: 232, ToasatHeight: 64, yPos: 1.4, backgroundColor: UIColor(red: 0.993, green: 1, blue: 0.646, alpha: 1), textColor: UIColor(named: Color.textFontColor) ?? UIColor(.black))
+            TempToast.shared.showToast(view: self.view, message: " 이미 오늘 이 습관을 해내셨어요! \n 버튼은 00시에 초기화됩니다! ", font: UIFont(name: CustomFont.hyemin, size: 16) ?? UIFont.systemFont(ofSize: 18), ToastWidth: 232, ToasatHeight: 64, yPos: 1.4, backgroundColor: UIColor(red: 0.993, green: 1, blue: 0.646, alpha: 1), textColor: UIColor(named: Color.textFontColor) ?? UIColor(.black))
 //            self.view.makeToast(" 이미 오늘 이 습관을 해내셨어요! \n 버튼은 00시에 초기화됩니다! ", duration: 2.0, position: .center, image: nil, style: toastStyle, completion: nil)
         }
     }

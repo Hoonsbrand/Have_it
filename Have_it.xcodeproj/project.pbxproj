@@ -158,7 +158,6 @@
 				2085089C288A9B5C00553252 /* Model.swift */,
 				20DFD244289A4F90000DF63A /* constants.swift */,
 				728A73ED28BDDAA300C4C4AE /* RealmLogic.swift */,
-				728A73EB28BDD7ED00C4C4AE /* TempToast.swift */,
 				7257D1ED28C9E8FB0042AAC4 /* ListHomeLogic.swift */,
 			);
 			path = Model;
@@ -200,6 +199,7 @@
 			children = (
 				204A50EC289CEC70000C03EA /* TimeManager.swift */,
 				20A4B7A528A24352000957C3 /* CircleProgress.swift */,
+				728A73EB28BDD7ED00C4C4AE /* TempToast.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";

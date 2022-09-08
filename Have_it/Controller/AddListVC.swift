@@ -10,11 +10,13 @@ import RealmSwift
 
 class AddListVC: UIViewController, UITextFieldDelegate {
     
-    let realm = try! Realm()
-    // D_day 시간계산을 위해
-    let timeManager = TimeManager()
+    private let realm = try! Realm()
     
-    let configVC = ListHomeVC()
+    // D_day 시간계산을 위해
+    private let timeManager = TimeManager()
+    
+    private let listHomeVC = ListHomeVC()
+    private let realmLogic = RealmLogic()
     
     @IBOutlet weak var inputHabitTextField: UITextField!
     @IBOutlet weak var addButtonOutlet: UIButton!
@@ -94,14 +96,11 @@ class AddListVC: UIViewController, UITextFieldDelegate {
                     return
                 }
             }
+            
             let newHabit = Habits(title: habitTitle, createTime: Date())
             
-            guard let creatTime = newHabit.createTime else { return }
-            // dDay계산
-            newHabit.dDay = timeManager.getDday(creatTime)
-            try! realm.write {
-                realm.add(newHabit)
-            }
+            realmLogic.addHabit(newHabit: newHabit, timeManager: timeManager)
+            
             navigationController?.popViewController(animated: true)
         }
     }

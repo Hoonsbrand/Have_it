@@ -9,6 +9,11 @@ import Foundation
 import Toast_Swift
 
 struct TempToast {
+    
+    static let shared = TempToast()
+    
+    private init() {}
+    
     func showToast(view: UIView, message : String, font: UIFont, ToastWidth: CGFloat, ToasatHeight: CGFloat, yPos: CGFloat = 2, backgroundColor: UIColor = UIColor(red: 0.993, green: 1, blue: 0.646, alpha: 1), textColor: UIColor = .black) {
         
         let toastLabel = UILabel(frame: CGRect(x: view.frame.size.width/2 - (ToastWidth/2), y: view.frame.size.height/yPos, width: ToastWidth, height: ToasatHeight))
