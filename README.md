@@ -1,5 +1,7 @@
 # [ About ]
 ![0908154103243428](https://user-images.githubusercontent.com/51688166/189052663-d9ea54a4-2d9f-4267-a4e0-f0eca3d79cf1.jpg)
+![1](https://user-images.githubusercontent.com/51688166/189055732-0ff55e71-28f3-4066-a399-9f8d5ffa080c.gif)
+
 
 # [Update]
 
