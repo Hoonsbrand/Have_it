@@ -79,7 +79,7 @@ class CheckVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
         
         // navigation back button 설정
-        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: CustomFont.hyemin_Bold, size: 24)!]
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: CustomFont.hyemin_Bold, size: 20)!]
         let backBarBtnItem = UIBarButtonItem()
         backBarBtnItem.title = ""
         backBarBtnItem.tintColor = .black

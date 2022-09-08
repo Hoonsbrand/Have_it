@@ -42,7 +42,7 @@ class AddListVC: UIViewController, UITextFieldDelegate {
         addButtonOutlet.layer.shadowRadius = 10
         
         // 네비게이션 바 타이틀 지정
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: CustomFont.hyemin_Bold, size: 24)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: CustomFont.hyemin_Bold, size: 20)!]
         
         // 네비게이션 back 버튼 검은색으로 변경 & title 삭제
         navigationController?.navigationBar.tintColor = .black
