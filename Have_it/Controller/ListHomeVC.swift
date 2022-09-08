@@ -12,15 +12,15 @@ import Lottie
 
 class ListHomeVC: UIViewController {
    
-    let realm = try! Realm()
-    var listRealm: Results<Habits>?
+    private let realm = try! Realm()
+    private var listRealm: Results<Habits>?
     
-    var habitCell = HabitCell()
-    var selectIndexPath = IndexPath()
+    private var habitCell = HabitCell()
+    private var selectIndexPath = IndexPath()
     
-    let emptyLabel = UILabel()
+    private let emptyLabel = UILabel()
     
-    let tempToast = TempToast()
+    private let tempToast = TempToast()
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var addHabitOutlet: UIButton!
@@ -252,7 +252,9 @@ extension ListHomeVC: SwipeTableViewCellDelegate {
                     }
                     
                     // 멈추기 action을 눌렀을 때
-                    let pauseChallengeAlertAction = UIAlertAction(title: ListHomeLabel.alertActionPauseHabit, style: .default) { _ in
+                    let pauseChallengeAlertAction = UIAlertAction(title: ListHomeLabel.alertActionPauseHabit, style: .default) { [weak self] _ in
+                        
+                        guard let self = self else { return }
                         
                         // Realm 데이터 업데이트
                         do {
@@ -291,16 +293,18 @@ extension ListHomeVC: SwipeTableViewCellDelegate {
         
         // 왼쪽 스와이프 시
         case .left:
-            let bookmarkAction = SwipeAction(style: .default, title: nil) { [self] action, indexPath in
+            let bookmarkAction = SwipeAction(style: .default, title: nil) { [weak self] action, indexPath in
+                
+                guard let self = self else { return }
                 
                 // 즐겨찾기 버튼 클릭 시 Realm 데이터 변경
-                if let bookmarkCheck = listRealm?[indexPath.row].isBookmarked {
-                    try! realm.write {
-                        listRealm?[indexPath.row].isBookmarked = !bookmarkCheck
+                if let bookmarkCheck = self.listRealm?[indexPath.row].isBookmarked {
+                    try! self.realm.write {
+                        self.listRealm?[indexPath.row].isBookmarked = !bookmarkCheck
                     }
                 }
                 // 즐겨찾기 버튼 클릭 시 리스트 리로드
-                reloadWhenTapBookmark()
+                self.reloadWhenTapBookmark()
             }
             
             // 즐겨찾기 버튼 이미지 & 백그라운드 지정
