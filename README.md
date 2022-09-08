@@ -11,9 +11,9 @@ version 1.0.1 : 다크모드 오류 해결  ( 22.08.27 )
 
 # [ Develop Environment ]
 
-Language : Swift 5
-iOS Deployment Target : 14.0
-Xcode : 13.4.1
+Language : Swift 5 </br>
+iOS Deployment Target : 14.0 </br>
+Xcode : 13.4.1 </br>
 
 # [ Technical Skills ]
 UIKit</br>
@@ -23,12 +23,12 @@ CocoaPods
 # [ Library ]
 CocoaPods
 
-Realm
-Toast
-Lottie
+Realm</br>
+Toast</br>
+Lottie</br>
 SwipeCellKit
 
 [ And More.. ]
 
-푸시알림 
-튜토리얼 스크린.
+푸시알림 </br>
+튜토리얼 스크린.</br>
