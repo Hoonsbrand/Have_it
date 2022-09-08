@@ -12,15 +12,17 @@ import Lottie
 
 class ListHomeVC: UIViewController {
    
-    private let realm = try! Realm()
-    private var listRealm: Results<Habits>?
+    let realm = try! Realm()
+    var listRealm: Results<Habits>?
     
-    private var habitCell = HabitCell()
-    private var selectIndexPath = IndexPath()
+    var habitCell = HabitCell()
+    var selectIndexPath = IndexPath()
     
-    private let emptyLabel = UILabel()
+    let emptyLabel = UILabel()
     
-    private let tempToast = TempToast()
+    let tempToast = TempToast()
+    var listHomeLogic = ListHomeLogic()
+    let realmLogic = RealmLogic()
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var addHabitOutlet: UIButton!
@@ -82,7 +84,7 @@ class ListHomeVC: UIViewController {
     
     // MARK: - 리스트에 아무것도 없을 시 레이블 띄우기
     func loadEmptyLabel() {
-        let listCount = realm.objects(Habits.self).filter(RealmQuery.notInHOF).filter(RealmQuery.notPausedHabit).count
+        let listCount = realmLogic.getCountFromListHome()
         
         if listCount == 0 {
             
@@ -184,16 +186,21 @@ extension ListHomeVC : UITableViewDataSource, UITableViewDelegate, RequestLoadLi
     func loadHabitList() {
         
         // 즐겨찾기를 기준으로 정렬 & 습관의 전당에 있다면 표시x & 멈춰있는 습관이라면 표시x
-        listRealm = realm.objects(Habits.self).sorted(byKeyPath: KeyText.isBookmarked, ascending: false).filter(RealmQuery.notInHOF).filter(RealmQuery.notPausedHabit)
+        listRealm = realmLogic.loadHabitListFromRealm()
         
         // 테이블 뷰 새로고침 애니메이션
+        tableViewReloadAnimation()
+        
+        // 데이터의 유무에 따른 레이블 호출
+        loadEmptyLabel()
+    }
+    
+    // MARK: - 테이블 뷰 리로드 애니메이션
+    func tableViewReloadAnimation() {
         UIView.transition(with: myTableView,
                           duration: 0.35,
                           options: .transitionCrossDissolve,
                           animations: { self.myTableView.reloadData() })
-        
-        // 데이터의 유무에 따른 레이블 호출
-        loadEmptyLabel()
     }
     
     // MARK: - RequestLoadListDelegate Method
@@ -212,58 +219,40 @@ extension ListHomeVC: SwipeTableViewCellDelegate {
             
         // 오른쪽 스와이프 시
         case .right:
-            let pauseAction = SwipeAction(style: .default, title: nil) { action, indexPath in
+            let pauseAction = SwipeAction(style: .default, title: nil) { [weak self] action, indexPath in
+                
+                guard let self = self else { return }
                 
                 if let itemForPause = self.listRealm?[indexPath.row] {
                     
-                    // 폰트 지정
-                    let titleFont = UIFont(name: CustomFont.hyemin_Bold, size: 16)
-                    let subTitleFont = UIFont(name: CustomFont.hyemin, size: 12)
-                    
-                    // 텍스트 지정
-                    let titleText = ListHomeLabel.wantToPauseLabel
-                    let subTitleText = ListHomeLabel.wantToPauseSubLabel
-                    
-                    // 특정 문자열로 지정
-                    let attributeTitleString = NSMutableAttributedString(string: titleText)
-                    let attributeSubTitleString = NSMutableAttributedString(string: subTitleText)
-                    
-                    // 위에서 지정한 특정 문자열에 폰트 지정
-                    attributeTitleString.addAttribute(.font, value: titleFont!, range: (titleText as NSString).range(of: "\(titleText)"))
-                    attributeSubTitleString.addAttribute(.font, value: subTitleFont!, range: (subTitleText as NSString).range(of: "\(subTitleText)"))
+                    // 폰트 세팅
+                    self.listHomeLogic.setAlertFont()
                     
                     // Alert title, message 지정
-                    let deleteAlert = UIAlertController(title: titleText, message: subTitleText, preferredStyle: .alert)
-                    
+                    let deleteAlert = UIAlertController(title: self.listHomeLogic.getTitleText(), message: self.listHomeLogic.getSubTitleText(), preferredStyle: .alert)
+
                     // 주어진 키 경로로 식별되는 속성 값을 주어진 값으로 설정
-                    deleteAlert.setValue(attributeTitleString, forKey: KeyText.alertTitleKey)
-                    deleteAlert.setValue(attributeSubTitleString, forKey: KeyText.alertSubTitleKey)
+                    deleteAlert.setValue(self.listHomeLogic.getAttributeTitleString(), forKey: KeyText.alertTitleKey)
+                    deleteAlert.setValue(self.listHomeLogic.getAttributeSubTitleString(), forKey: KeyText.alertSubTitleKey)
+                    
+                    
                     
                     // 계속 도전 action을 눌렀을 때
-                    let keepChallengeAlertAction = UIAlertAction(title: ListHomeLabel.alertActionKeepChallenge, style: .default) { _ in
+                    let keepChallengeAlertAction = UIAlertAction(title: ListHomeLabel.alertActionKeepChallenge, style: .default) { [weak self] _ in
+                        guard let self = self else { return }
                         
-                        // 계속 도전 action을 누르면 swipe 숨기는 기능 필요
-                        UIView.transition(with: tableView,
-                                          duration: 0.35,
-                                          options: .transitionCrossDissolve,
-                                          animations: { tableView.reloadData() })
+                        // 새로고침 & 리로드
+                        self.tableViewReloadAnimation()
+                        
                         self.tempToast.showToast(view: self.view, message: ToastMessage.goodChoiceToast, font:  UIFont(name: CustomFont.hyemin_Bold, size: 14)!, ToastWidth: 240, ToasatHeight: 40)
                         
                     }
                     
                     // 멈추기 action을 눌렀을 때
                     let pauseChallengeAlertAction = UIAlertAction(title: ListHomeLabel.alertActionPauseHabit, style: .default) { [weak self] _ in
-                        
                         guard let self = self else { return }
-                        
                         // Realm 데이터 업데이트
-                        do {
-                            try self.realm.write {
-                                itemForPause.isPausedHabit = true
-                            }
-                        } catch {
-                            print("Error pause item, \(error)")
-                        }
+                        self.realmLogic.changeRealmDataWhenPause(itemForPause: itemForPause)
                         
                         // 리스트 새로고침
                         self.loadHabitList()
@@ -294,15 +283,11 @@ extension ListHomeVC: SwipeTableViewCellDelegate {
         // 왼쪽 스와이프 시
         case .left:
             let bookmarkAction = SwipeAction(style: .default, title: nil) { [weak self] action, indexPath in
-                
                 guard let self = self else { return }
                 
                 // 즐겨찾기 버튼 클릭 시 Realm 데이터 변경
-                if let bookmarkCheck = self.listRealm?[indexPath.row].isBookmarked {
-                    try! self.realm.write {
-                        self.listRealm?[indexPath.row].isBookmarked = !bookmarkCheck
-                    }
-                }
+                self.realmLogic.changeRealmDataWhenBookmark(listRealm: self.listRealm, indexPath: indexPath)
+                
                 // 즐겨찾기 버튼 클릭 시 리스트 리로드
                 self.reloadWhenTapBookmark()
             }

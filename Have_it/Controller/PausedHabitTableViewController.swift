@@ -23,7 +23,7 @@ class PausedHabitTableViewController: UIViewController {
     let emptyLabel = UILabel()
     
     let tempToast = TempToast()
-    let realmWriteLogic = RealmWriteLogic()
+    let realmWriteLogic = RealmLogic()
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
