@@ -109,6 +109,7 @@ class CheckVC: UIViewController {
             (action) in
             guard let self = self else { return }
             self.changeButtonImage(count) // 스탬프 색칠
+            self.clickedTime = Date()
             self.dayCount += 1 // 횟수증가
             self.setRealmDate() // 데이터베이스에 데이터전달
             self.myProgress.filleProgress(fromValue: count - 1 , toValue: count) // 프로그래스바 애니메이션
@@ -116,7 +117,7 @@ class CheckVC: UIViewController {
             self.setPercentageLabel(dayCount: self.dayCount) // 퍼센트라벨 설정
             self.tenCycle(dayCount: self.dayCount) // 10 번째인지 확인
             self.onceClickedDay()
-            self.clickedTime = Date() // 버튼 누른 시간을 기억
+             // 버튼 누른 시간을 기억
         }
         completeAlertAction.setValue(UIColor(named: Color.stampColor), forKey: "titleTextColor")
         
@@ -135,7 +136,6 @@ class CheckVC: UIViewController {
         case 65:
             changeButtonImage(count)
             self.dayCount += 1
-            
             
             try! realm.write {
                 resultRealm?.isInHOF = true
@@ -199,23 +199,12 @@ class CheckVC: UIViewController {
         // 버튼입력일자가 하루 지났을 떄.
         if (timeManager.compareDate(clickedTime) || self.dayCount == 0  ){
             makeAlert(dayCount) // 완료했을 때 취소 했을 때 나눔
-        } else {
-            var toastStyle = ToastStyle()
-            toastStyle.titleFont = .boldSystemFont(ofSize: 20)
-            toastStyle.titleAlignment = .center
-            toastStyle.messageAlignment = .center
-            toastStyle.backgroundColor =  UIColor(red: 0.993, green: 1, blue: 0.646, alpha: 1)
-            toastStyle.messageFont = UIFont(name: CustomFont.hyemin_Bold, size: 16) ?? UIFont.systemFont(ofSize: 18)
-            toastStyle.messageColor = .black
-            toastStyle.displayShadow = true
-            toastStyle.shadowOffset = CGSize(width: toastStyle.maxWidthPercentage, height: toastStyle.maxHeightPercentage)
-            toastStyle.shadowOpacity = 0.25
-            toastStyle.shadowRadius = 8
-            toastStyle.cornerRadius = 16
-            toastStyle.verticalPadding = 8
-            toastStyle.horizontalPadding = 16
             
-            self.view.makeToast(" 이미 오늘 이 습관을 해내셨어요! \n 버튼은 00시에 초기화됩니다! ", duration: 1.0, position: .center, image: nil, style: toastStyle, completion: nil)
+        } else {
+            
+            let checkVCToast = TempToast()
+            checkVCToast.showToast(view: self.view, message: " 이미 오늘 이 습관을 해내셨어요! \n 버튼은 00시에 초기화됩니다! ", font: UIFont(name: CustomFont.hyemin, size: 16) ?? UIFont.systemFont(ofSize: 18), ToastWidth: 232, ToasatHeight: 64, yPos: 1.4, backgroundColor: UIColor(red: 0.993, green: 1, blue: 0.646, alpha: 1), textColor: UIColor(named: Color.textFontColor) ?? UIColor(.black))
+//            self.view.makeToast(" 이미 오늘 이 습관을 해내셨어요! \n 버튼은 00시에 초기화됩니다! ", duration: 2.0, position: .center, image: nil, style: toastStyle, completion: nil)
         }
     }
     //MARK: - 이전에 달성한 습관 횟수 버튼에 구현
