@@ -383,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sau-GV-aGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-745" y="1317"/>
+            <point key="canvasLocation" x="-746.37681159420299" y="1316.5178571428571"/>
         </scene>
         <!--잠시 멈춤-->
         <scene sceneID="OCv-jm-hfw">
@@ -676,9 +676,6 @@
             <point key="canvasLocation" x="327.69230769230768" y="571.56398104265395"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="fby-DO-47c"/>
-    </designables>
     <resources>
         <image name="ic-list" width="24" height="24"/>
         <image name="ic-list-active" width="24" height="24"/>
