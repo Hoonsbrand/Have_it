@@ -232,7 +232,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CheckVC Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i80-SP-Mxl">
-                                                        <rect key="frame" x="86.5" y="6" width="191" height="38"/>
+                                                        <rect key="frame" x="83.5" y="7" width="197" height="36.5"/>
                                                         <fontDescription key="fontDescription" name="IMHyemin-Regular" family="IM_Hyemin" pointSize="31"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -394,7 +394,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Uau-Es-S5Q">
-                                <rect key="frame" x="24" y="120.5" width="366" height="675.5"/>
+                                <rect key="frame" x="24" y="119.5" width="366" height="676.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" name="ViewBackground"/>
                                 <prototypes>
@@ -409,7 +409,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="잠시 멈춤" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fO5-Ah-JBV">
-                                <rect key="frame" x="167.5" y="59" width="79.5" height="24.5"/>
+                                <rect key="frame" x="169.5" y="59" width="75" height="23.5"/>
                                 <fontDescription key="fontDescription" name="IMHyemin-Bold" family="IM_Hyemin" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -446,7 +446,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IGz-7L-a4U">
-                                <rect key="frame" x="10" y="107.5" width="394" height="695.5"/>
+                                <rect key="frame" x="10" y="106.5" width="394" height="696.5"/>
                                 <color key="backgroundColor" name="ViewBackground"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lnI-Jv-0jY">
                                     <size key="itemSize" width="327" height="122"/>
@@ -466,7 +466,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="습관의 전당" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqY-lQ-WXg">
-                                <rect key="frame" x="88" y="59" width="238" height="24.5"/>
+                                <rect key="frame" x="88" y="59" width="238" height="23.5"/>
                                 <fontDescription key="fontDescription" name="IMHyemin-Bold" family="IM_Hyemin" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -570,7 +570,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작은 습관으로 단단한 사람 되기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-1y-vkK">
-                                                <rect key="frame" x="0.0" y="58" width="195" height="20"/>
+                                                <rect key="frame" x="0.0" y="58" width="198" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="195" id="EZK-Vl-XHm"/>
                                                     <constraint firstAttribute="height" constant="20" id="qF1-a5-U0V"/>

@@ -72,7 +72,8 @@ class CircleProgress : UIView {
         gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.5)
         
-        gradientLayer.colors = [UIColor(named: "PgStartColor")?.cgColor ?? UIColor.red.cgColor,UIColor(named: "PgEndColor")?.cgColor ?? UIColor.systemPink.cgColor]
+        gradientLayer.colors = [UIColor(named: "PgStartColor")?.cgColor ?? UIColor.red.cgColor,
+                                UIColor(named: "PgEndColor")?.cgColor ?? UIColor.systemPink.cgColor]
         gradientLayer.frame = self.bounds
         gradientLayer.mask = progressLayer
         
