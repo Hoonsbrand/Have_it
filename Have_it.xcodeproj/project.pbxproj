@@ -19,7 +19,6 @@
 		20850887288A9A4300553252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20850886288A9A4300553252 /* AppDelegate.swift */; };
 		20850889288A9A4300553252 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20850888288A9A4300553252 /* SceneDelegate.swift */; };
 		2085088B288A9A4300553252 /* ListHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085088A288A9A4300553252 /* ListHomeVC.swift */; };
-		2085088E288A9A4300553252 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2085088C288A9A4300553252 /* Main.storyboard */; };
 		20850890288A9A4300553252 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2085088F288A9A4300553252 /* Assets.xcassets */; };
 		20850893288A9A4300553252 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20850891288A9A4300553252 /* LaunchScreen.storyboard */; };
 		2085089B288A9AA300553252 /* AddListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085089A288A9AA300553252 /* AddListVC.swift */; };
@@ -35,8 +34,11 @@
 		7272683C28AE783700274864 /* IM_Hyemin-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7272683B28AE783700274864 /* IM_Hyemin-Bold.otf */; };
 		7272683F28AE82E100274864 /* PausedHabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272683D28AE82E100274864 /* PausedHabitTableViewCell.swift */; };
 		7272684028AE82E100274864 /* PausedHabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7272683E28AE82E100274864 /* PausedHabitTableViewCell.xib */; };
+		7274221328D36408009569B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2085088C288A9A4300553252 /* Main.storyboard */; };
+		7274221528D3660E009569B2 /* TutorialView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7274221428D3660E009569B2 /* TutorialView.storyboard */; };
 		728A73EC28BDD7ED00C4C4AE /* TempToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728A73EB28BDD7ED00C4C4AE /* TempToast.swift */; };
 		728A73EE28BDDAA300C4C4AE /* RealmLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728A73ED28BDDAA300C4C4AE /* RealmLogic.swift */; };
+		728CAA4D28D360A6006DCE41 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728CAA4C28D360A6006DCE41 /* TutorialViewController.swift */; };
 		729D89F7288FDD3A00B77EE9 /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729D89F5288FDD3A00B77EE9 /* HabitCell.swift */; };
 		729D89F8288FDD3A00B77EE9 /* HabitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 729D89F6288FDD3A00B77EE9 /* HabitCell.xib */; };
 		72EF582828ABD2CF003C8B2A /* IM_Hyemin-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 72EF582728ABD2CF003C8B2A /* IM_Hyemin-Regular.otf */; };
@@ -74,8 +76,10 @@
 		7272683B28AE783700274864 /* IM_Hyemin-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IM_Hyemin-Bold.otf"; sourceTree = "<group>"; };
 		7272683D28AE82E100274864 /* PausedHabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedHabitTableViewCell.swift; sourceTree = "<group>"; };
 		7272683E28AE82E100274864 /* PausedHabitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PausedHabitTableViewCell.xib; sourceTree = "<group>"; };
+		7274221428D3660E009569B2 /* TutorialView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TutorialView.storyboard; sourceTree = "<group>"; };
 		728A73EB28BDD7ED00C4C4AE /* TempToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempToast.swift; sourceTree = "<group>"; };
 		728A73ED28BDDAA300C4C4AE /* RealmLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmLogic.swift; sourceTree = "<group>"; };
+		728CAA4C28D360A6006DCE41 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		729D89F5288FDD3A00B77EE9 /* HabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCell.swift; sourceTree = "<group>"; };
 		729D89F6288FDD3A00B77EE9 /* HabitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitCell.xib; sourceTree = "<group>"; };
 		72B695BC28902191009EBB23 /* CheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckVC.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 		20850885288A9A4300553252 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
+				20850888288A9A4300553252 /* SceneDelegate.swift */,
+				20850886288A9A4300553252 /* AppDelegate.swift */,
 				203B51FE28B396C5003C6AE2 /* Lottie */,
 				208025B728A53D22008283FF /* Fonts */,
 				20DFD243289A4CEC000DF63A /* Service */,
@@ -145,8 +151,6 @@
 				20DFD242289A4CE6000DF63A /* Controller */,
 				20850894288A9A4300553252 /* Info.plist */,
 				2085088F288A9A4300553252 /* Assets.xcassets */,
-				20850888288A9A4300553252 /* SceneDelegate.swift */,
-				20850886288A9A4300553252 /* AppDelegate.swift */,
 			);
 			name = Habits;
 			path = Have_it;
@@ -173,6 +177,8 @@
 				7272683E28AE82E100274864 /* PausedHabitTableViewCell.xib */,
 				203B51FA28B38EC6003C6AE2 /* LottieLaunch.storyboard */,
 				203B520528B3C9B1003C6AE2 /* PopUpSixtySixth.storyboard */,
+				7274221428D3660E009569B2 /* TutorialView.storyboard */,
+				728CAA4C28D360A6006DCE41 /* TutorialViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -288,13 +294,14 @@
 				72EF582A28ABDBAF003C8B2A /* Baloo-Regular.ttf in Resources */,
 				20850893288A9A4300553252 /* LaunchScreen.storyboard in Resources */,
 				208025BD28A54061008283FF /* LeeSeoyun.otf in Resources */,
+				7274221328D36408009569B2 /* Main.storyboard in Resources */,
 				722B891E28967C9300158BC5 /* HabitsCustomCollectionViewCell.xib in Resources */,
 				20850890288A9A4300553252 /* Assets.xcassets in Resources */,
 				205302DC28B5B4F400061143 /* Launch.json in Resources */,
 				729D89F8288FDD3A00B77EE9 /* HabitCell.xib in Resources */,
+				7274221528D3660E009569B2 /* TutorialView.storyboard in Resources */,
 				7272683C28AE783700274864 /* IM_Hyemin-Bold.otf in Resources */,
 				203B520628B3C9B1003C6AE2 /* PopUpSixtySixth.storyboard in Resources */,
-				2085088E288A9A4300553252 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +356,7 @@
 			files = (
 				728A73EE28BDDAA300C4C4AE /* RealmLogic.swift in Sources */,
 				7272683F28AE82E100274864 /* PausedHabitTableViewCell.swift in Sources */,
+				728CAA4D28D360A6006DCE41 /* TutorialViewController.swift in Sources */,
 				7257D1EE28C9E8FB0042AAC4 /* ListHomeLogic.swift in Sources */,
 				2085089D288A9B5C00553252 /* Model.swift in Sources */,
 				2085089B288A9AA300553252 /* AddListVC.swift in Sources */,

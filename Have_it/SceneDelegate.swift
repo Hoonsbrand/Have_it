@@ -17,8 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        let storyboard = UIStoryboard(name: "LottieLaunch", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "LottieLaunch")
+//        let storyboard = UIStoryboard(name: "LottieLaunch", bundle: nil)
+//        let initialViewController = storyboard.instantiateViewController(withIdentifier: "LottieLaunch")
+        
+        let storyboard = UIStoryboard(name: "TutorialView", bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "tutorialView")
+        
 //                rootViewController 설정하기
 //        let storyBoard = UIStoryboard.init(name: "PopUpSixtySixth", bundle: nil)
 //        // storyBoard를 ViewController로가져오기

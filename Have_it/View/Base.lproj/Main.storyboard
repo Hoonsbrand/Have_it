@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5La-qz-ZDU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5La-qz-ZDU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -47,7 +47,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xro-ve-cID">
-                                <rect key="frame" x="28" y="138" width="358" height="64"/>
+                                <rect key="frame" x="28" y="142" width="358" height="64"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inputTextField" translatesAutoresizingMaskIntoConstraints="NO" id="AT0-4O-ews">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="64"/>
@@ -96,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCM-IY-M5l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1296.9230769230769" y="1316.5876777251185"/>
+            <point key="canvasLocation" x="1222" y="1317"/>
         </scene>
         <!--CheckVC-->
         <scene sceneID="Xi5-l3-Ays">
@@ -123,7 +123,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="YLc-Kh-IbB">
-                                <rect key="frame" x="25" y="333" width="364" height="210.5"/>
+                                <rect key="frame" x="25" y="337" width="364" height="210.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10일을 향해! " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1y-tu-e0H">
                                         <rect key="frame" x="0.0" y="0.0" width="135" height="29.5"/>
@@ -223,7 +223,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SDc-Gf-pcc" userLabel="TitleStackView">
-                                <rect key="frame" x="25" y="118" width="364" height="175"/>
+                                <rect key="frame" x="25" y="122" width="364" height="175"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fhs-hX-NNU">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
@@ -232,7 +232,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CheckVC Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i80-SP-Mxl">
-                                                        <rect key="frame" x="83.5" y="7" width="197" height="36.5"/>
+                                                        <rect key="frame" x="86.5" y="6" width="191" height="38"/>
                                                         <fontDescription key="fontDescription" name="IMHyemin-Regular" family="IM_Hyemin" pointSize="31"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -383,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sau-GV-aGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-746.37681159420299" y="1316.5178571428571"/>
+            <point key="canvasLocation" x="-720" y="1317"/>
         </scene>
         <!--잠시 멈춤-->
         <scene sceneID="OCv-jm-hfw">
@@ -394,12 +394,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Uau-Es-S5Q">
-                                <rect key="frame" x="24" y="119.5" width="366" height="676.5"/>
+                                <rect key="frame" x="24" y="120.5" width="366" height="675.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" name="ViewBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PausedHabitCell" id="7DZ-mL-UtY">
-                                        <rect key="frame" x="0.0" y="44.5" width="366" height="91"/>
+                                        <rect key="frame" x="0.0" y="50" width="366" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7DZ-mL-UtY" id="xVa-dX-N9p">
                                             <rect key="frame" x="0.0" y="0.0" width="366" height="91"/>
@@ -409,7 +409,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="잠시 멈춤" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fO5-Ah-JBV">
-                                <rect key="frame" x="169.5" y="59" width="75" height="23.5"/>
+                                <rect key="frame" x="167.5" y="59" width="79" height="24.5"/>
                                 <fontDescription key="fontDescription" name="IMHyemin-Bold" family="IM_Hyemin" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -446,7 +446,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IGz-7L-a4U">
-                                <rect key="frame" x="10" y="106.5" width="394" height="696.5"/>
+                                <rect key="frame" x="10" y="111.5" width="394" height="691.5"/>
                                 <color key="backgroundColor" name="ViewBackground"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lnI-Jv-0jY">
                                     <size key="itemSize" width="327" height="122"/>
@@ -466,7 +466,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="습관의 전당" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqY-lQ-WXg">
-                                <rect key="frame" x="88" y="59" width="238" height="23.5"/>
+                                <rect key="frame" x="88" y="63" width="238" height="24.5"/>
                                 <fontDescription key="fontDescription" name="IMHyemin-Bold" family="IM_Hyemin" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -494,7 +494,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RTC-Tx-KNe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="327.69230769230768" y="1316.5876777251185"/>
+            <point key="canvasLocation" x="328" y="1317"/>
         </scene>
         <!--List HomeVC-->
         <scene sceneID="pGk-Jd-bxa">
@@ -510,10 +510,10 @@
                                 <color key="sectionIndexBackgroundColor" name="ViewBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customTableViewCell" id="zgC-jv-0Ba">
-                                        <rect key="frame" x="0.0" y="44.5" width="366" height="90"/>
+                                        <rect key="frame" x="0.0" y="50" width="366" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zgC-jv-0Ba" id="KTQ-be-FoI">
-                                            <rect key="frame" x="0.0" y="0.0" width="337.5" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335.5" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -570,7 +570,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작은 습관으로 단단한 사람 되기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-1y-vkK">
-                                                <rect key="frame" x="0.0" y="58" width="198" height="20"/>
+                                                <rect key="frame" x="0.0" y="58" width="195" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="195" id="EZK-Vl-XHm"/>
                                                     <constraint firstAttribute="height" constant="20" id="qF1-a5-U0V"/>
@@ -626,7 +626,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B91-93-CI8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1256.9230769230769" y="570.85308056872032"/>
+            <point key="canvasLocation" x="1223" y="571"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sEm-0W-ALO">
@@ -649,7 +649,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eLU-H4-SMg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="329" y="-129"/>
+            <point key="canvasLocation" x="328" y="-159"/>
         </scene>
         <!--리스트-->
         <scene sceneID="9Th-2Y-7la">
@@ -660,7 +660,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iIJ-bn-Tdm">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -695,7 +695,7 @@
             <color red="1" green="1" blue="0.90600001811981201" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
