@@ -676,6 +676,9 @@
             <point key="canvasLocation" x="327.69230769230768" y="571.56398104265395"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="fby-DO-47c"/>
+    </designables>
     <resources>
         <image name="ic-list" width="24" height="24"/>
         <image name="ic-list-active" width="24" height="24"/>

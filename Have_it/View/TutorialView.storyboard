@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGe-S0-xxn">
-                                <rect key="frame" x="130" y="297" width="130" height="130"/>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGe-S0-xxn">
+                                <rect key="frame" x="130" y="400" width="130" height="130"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial_green" translatesAutoresizingMaskIntoConstraints="NO" id="PcP-4T-dRY">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
@@ -48,7 +48,7 @@
                                     <constraint firstItem="PcP-4T-dRY" firstAttribute="centerX" secondItem="HGe-S0-xxn" secondAttribute="centerX" id="nBv-YH-wYH"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="습관 첫 시작,     해브잇이 도와드릴게요.😀" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLa-S5-I1G">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="습관 첫 시작,     해브잇이 도와드릴게요.😀" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLa-S5-I1G">
                                 <rect key="frame" x="85" y="451" width="220" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="IQR-Ow-hYQ"/>
@@ -64,14 +64,15 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="ViewBackground"/>
                         <constraints>
-                            <constraint firstItem="HGe-S0-xxn" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="297" id="Obn-yh-Ik2"/>
+                            <constraint firstItem="HGe-S0-xxn" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="400" id="Obn-yh-Ik2"/>
                             <constraint firstItem="HGe-S0-xxn" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="d43-xA-swg"/>
                             <constraint firstItem="wLa-S5-I1G" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="451" id="fXL-7Q-uWO"/>
                             <constraint firstItem="wLa-S5-I1G" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="yFH-ng-Y3L"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="descriptionTextTopAnchor" destination="fXL-7Q-uWO" id="RBT-74-cFc"/>
+                        <outlet property="haveItLabel" destination="wLa-S5-I1G" id="4fg-CT-pUI"/>
+                        <outlet property="haveItLabelTopAnchor" destination="fXL-7Q-uWO" id="YeO-H9-As6"/>
                         <outlet property="haveItTopAnchor" destination="Obn-yh-Ik2" id="wFL-0h-Qfe"/>
                         <outlet property="haveItView" destination="HGe-S0-xxn" id="IJu-ln-zVy"/>
                     </connections>
