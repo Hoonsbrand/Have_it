@@ -14,6 +14,7 @@ class TutorialViewController: UIViewController {
     @IBOutlet weak var haveItTopAnchor: NSLayoutConstraint!
     @IBOutlet weak var haveItLabel: UILabel!
     @IBOutlet weak var haveItLabelTopAnchor: NSLayoutConstraint!
+    @IBOutlet weak var exampleCollectionView: UICollectionView!
     
     private lazy var exampleLabel: UILabel = {
         let label = UILabel()
