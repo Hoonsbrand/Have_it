@@ -14,7 +14,8 @@ class TutorialViewController: UIViewController {
     @IBOutlet weak var haveItTopAnchor: NSLayoutConstraint!
     @IBOutlet weak var haveItLabel: UILabel!
     @IBOutlet weak var haveItLabelTopAnchor: NSLayoutConstraint!
-    @IBOutlet weak var exampleCollectionView: UICollectionView!
+    @IBOutlet weak var exampleScrollView: UIScrollView!
+    
     
     private lazy var exampleLabel: UILabel = {
         let label = UILabel()
@@ -41,7 +42,8 @@ class TutorialViewController: UIViewController {
     
     
     func configureUI() {
-        
+        exampleScrollView.alpha = 0
+        exampleScrollView.isHidden = true
         haveItTopAnchor.constant = 297
         
         UIView.animate(withDuration: 1, animations: {
@@ -75,12 +77,15 @@ class TutorialViewController: UIViewController {
                     UIView.animate(withDuration: 1, animations: {
                         label.alpha = 1
                         
+                    }, completion: { _ in
+                        self.exampleScrollView.isHidden = false
+                        
+                        UIView.animate(withDuration: 1, animations: {
+                            self.exampleScrollView.alpha = 1
+                        })
                     })
                 })
             })
         })
     }
-    
-    
-    
 }
