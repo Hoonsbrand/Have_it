@@ -64,7 +64,7 @@
                                 <rect key="frame" x="16" y="396" width="361" height="60"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xUb-fR-nob">
-                                        <rect key="frame" x="0.0" y="0.0" width="670" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="715" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9f-t1-O9v">
                                                 <rect key="frame" x="5" y="6" width="140" height="48"/>
@@ -74,42 +74,62 @@
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="firstBtn"/>
+                                                <state key="selected" image="firstBtn_selected"/>
+                                                <connections>
+                                                    <action selector="firstBtnTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="GIf-f9-yDQ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMo-09-6sH">
-                                                <rect key="frame" x="161" y="6" width="96" height="48"/>
+                                                <rect key="frame" x="161" y="6" width="141" height="48"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="96" id="Q4e-qq-alj"/>
+                                                    <constraint firstAttribute="width" constant="141" id="Q4e-qq-alj"/>
                                                     <constraint firstAttribute="height" constant="48" id="k31-b0-0DF"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Button" image="secondBtn"/>
+                                                <state key="normal" image="secondBtn"/>
+                                                <state key="selected" image="secondBtn_selected"/>
+                                                <connections>
+                                                    <action selector="secondBtnTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fVE-Hz-Hbh"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bd-hB-26H">
-                                                <rect key="frame" x="273" y="6" width="92" height="48"/>
+                                                <rect key="frame" x="318" y="6" width="92" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="81R-PP-ZRI"/>
                                                     <constraint firstAttribute="width" constant="92" id="c9c-oe-Pgl"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Button" image="thirdBtn"/>
+                                                <state key="normal" image="thirdBtn"/>
+                                                <state key="selected" image="thirdBtn_selected"/>
+                                                <connections>
+                                                    <action selector="thirdBtnTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="vyn-Sb-o7i"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUO-A4-B2x">
-                                                <rect key="frame" x="381" y="6" width="111" height="48"/>
+                                                <rect key="frame" x="426" y="6" width="111" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="111" id="5Jw-zy-wno"/>
                                                     <constraint firstAttribute="height" constant="48" id="cHe-xr-iI4"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Button" image="fourthBtn"/>
+                                                <state key="normal" image="fourthBtn"/>
+                                                <state key="selected" image="fourthBtn_selected"/>
+                                                <connections>
+                                                    <action selector="fourthBtnTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="C44-z7-xFX"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2y-kv-OGf">
-                                                <rect key="frame" x="508" y="6" width="162" height="48"/>
+                                                <rect key="frame" x="553" y="6" width="162" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="0ef-sL-sxL"/>
                                                     <constraint firstAttribute="width" constant="162" id="3F1-bD-2Ji"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Button" image="lastBtn"/>
+                                                <state key="normal" image="lastBtn"/>
+                                                <state key="selected" image="lastBtn_selected"/>
+                                                <connections>
+                                                    <action selector="lastBtnTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ska-H4-XQ9"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" name="ViewBackground"/>
@@ -166,10 +186,15 @@
     </scenes>
     <resources>
         <image name="firstBtn" width="141" height="48"/>
+        <image name="firstBtn_selected" width="141" height="48"/>
         <image name="fourthBtn" width="111" height="48"/>
+        <image name="fourthBtn_selected" width="111" height="48"/>
         <image name="lastBtn" width="162" height="48"/>
-        <image name="secondBtn" width="96" height="48"/>
+        <image name="lastBtn_selected" width="162" height="48"/>
+        <image name="secondBtn" width="141" height="48"/>
+        <image name="secondBtn_selected" width="141" height="48"/>
         <image name="thirdBtn" width="92" height="48"/>
+        <image name="thirdBtn_selected" width="92" height="48"/>
         <image name="tutorial_green" width="130" height="130"/>
         <image name="tutorial_have_it" width="80" height="60"/>
         <namedColor name="ViewBackground">

@@ -16,7 +16,7 @@ class TutorialViewController: UIViewController {
     @IBOutlet weak var haveItLabelTopAnchor: NSLayoutConstraint!
     @IBOutlet weak var exampleScrollView: UIScrollView!
     
-    
+    // MARK: - label 코드로 설정
     private lazy var exampleLabel: UILabel = {
         let label = UILabel()
         label.text = "아래 예시 중에서\n시작하고 싶은 습관이 있으시다면 선택해주세요.\n나중에 수정 가능하니 비슷한 느낌의 습관을\n선택하셔도 무방해요."
@@ -41,6 +41,7 @@ class TutorialViewController: UIViewController {
     }
     
     
+    // MARK: - UI구성
     func configureUI() {
         exampleScrollView.alpha = 0
         exampleScrollView.isHidden = true
@@ -87,5 +88,26 @@ class TutorialViewController: UIViewController {
                 })
             })
         })
+    }
+    
+    // MARK: - 각 버튼 클릭 시 toggle()을 이용해 버튼의 상태를 selected로 변경 -> 이미지도 자동으로 변경 됨.
+    @IBAction func firstBtnTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+    }
+    
+    @IBAction func secondBtnTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+    }
+    
+    @IBAction func thirdBtnTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+    }
+    
+    @IBAction func fourthBtnTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+    }
+    
+    @IBAction func lastBtnTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
     }
 }
